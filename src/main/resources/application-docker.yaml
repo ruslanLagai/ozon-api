@@ -1,0 +1,39 @@
+service:
+  ozon:
+    api:
+      api-key: ${API_KEY}
+      client-id: ${CLIENT_ID}
+      url: ${OZON_API_URL}
+server:
+  shutdown: graceful
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+    url: jdbc:mysql://localhost:3307/ozon_name?allowPublicKeyRetrieval=true
+    username: 12
+    password: 12
+  data:
+    redis:
+      host: 127.0.0.1
+      port: ${REDIS_PORT}
+      password:
+      client-name: house-mouse-ozon-app
+      client-type: lettuce
+  flyway:
+    enabled: false
+    baseline-on-migrate: true
+    locations: classpath:migration
+    schemas: ozon_name
+  codec:
+    max-in-memory-size: 10MB
+
+
+telegram:
+  bot:
+    token: ${HOUSE_MOUSE_BOT_TOKEN}
+    username: ${HOUSE_MOUSE_USER_ID}
+
+logging:
+  level:
+    org: ${LOGGING_LEVEL}

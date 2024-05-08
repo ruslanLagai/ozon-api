@@ -1,0 +1,38 @@
+{
+    "result": {
+        "operations": [
+            {
+                "operation_id": 14939207395,
+                "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+                "operation_date": "2023-09-05 00:00:00",
+                "operation_type_name": "Оплата эквайринга",
+                "delivery_charge": 0,
+                "return_delivery_charge": 0,
+                "accruals_for_sale": 0,
+                "sale_commission": 0,
+                "amount": -6.9,
+                "type": "other",
+                "posting": {
+                  "delivery_schema": "",
+                  "order_date": "2023-09-05 02:29:21",
+                  "posting_number": "66995153-0218",
+                  "warehouse_id": 0
+                },
+                "items": [
+                  {
+                    "name": "Держатель для полотенец, 1 шт",
+                    "sku": 1078592641
+                  }
+                ],
+                "services": [
+                  {
+                    "name": "MarketplaceRedistributionOfAcquiringOperation",
+                    "price": -6.9
+                  }
+                ]
+            }
+        ],
+        "page_count": 1,
+        "row_count": 2
+    }
+}

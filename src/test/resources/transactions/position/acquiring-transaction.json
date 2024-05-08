@@ -1,0 +1,38 @@
+{
+    "result": {
+        "operations": [
+            {
+                "operation_id": 14923559675,
+                "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+                "operation_date": "2023-09-04 00:00:00",
+                "operation_type_name": "Оплата эквайринга",
+                "delivery_charge": 0,
+                "return_delivery_charge": 0,
+                "accruals_for_sale": 0,
+                "sale_commission": 0,
+                "amount": -13.86,
+                "type": "other",
+                "posting": {
+                  "delivery_schema": "",
+                  "order_date": "2023-09-04 16:07:35",
+                  "posting_number": "0118344100-0102",
+                  "warehouse_id": 0
+                },
+                "items": [
+                  {
+                    "name": "Швабра, длина 130 см",
+                    "sku": 1142892245
+                  }
+                ],
+                "services": [
+                  {
+                    "name": "MarketplaceRedistributionOfAcquiringOperation",
+                    "price": -13.86
+                  }
+                ]
+              }
+        ],
+        "page_count": 1,
+        "row_count": 37
+    }
+}

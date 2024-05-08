@@ -1,0 +1,11 @@
+package ru.home.project.ozonapi.dto.finance.response
+
+import com.fasterxml.jackson.annotation.JsonProperty
+
+/**
+ * @author rlagay
+ */
+data class RefundResp(
+    @JsonProperty("returns") val returns: List<RefundData>?,
+    @JsonProperty("last_id") val lastId: Long?
+)

@@ -1,0 +1,68 @@
+{
+    "result": {
+        "operations": [
+            {
+                "operation_id": 14893963263,
+                "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+                "operation_date": "2023-09-03 00:00:00",
+                "operation_type_name": "Оплата эквайринга",
+                "delivery_charge": 0,
+                "return_delivery_charge": 0,
+                "accruals_for_sale": 0,
+                "sale_commission": 0,
+                "amount": -2.64,
+                "type": "other",
+                "posting": {
+                    "delivery_schema": "",
+                    "order_date": "2023-09-03 10:19:35",
+                    "posting_number": "21736065-0242",
+                    "warehouse_id": 0
+                },
+                "items": [
+                    {
+                        "name": "Форма для льда, 33 яч, 1 шт",
+                        "sku": 1052327634
+                    }
+                ],
+                "services": [
+                    {
+                        "name": "MarketplaceRedistributionOfAcquiringOperation",
+                        "price": -2.64
+                    }
+                ]
+            },
+            {
+                "operation_id": 14894038892,
+                "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+                "operation_date": "2023-09-03 00:00:00",
+                "operation_type_name": "Оплата эквайринга",
+                "delivery_charge": 0,
+                "return_delivery_charge": 0,
+                "accruals_for_sale": 0,
+                "sale_commission": 0,
+                "amount": 2.64,
+                "type": "other",
+                "posting": {
+                    "delivery_schema": "",
+                    "order_date": "2023-09-03 10:19:35",
+                    "posting_number": "21736065-0242",
+                    "warehouse_id": 0
+                },
+                "items": [
+                    {
+                        "name": "Форма для льда, 33 яч, 1 шт",
+                        "sku": 1052327634
+                    }
+                ],
+                "services": [
+                    {
+                        "name": "MarketplaceRedistributionOfAcquiringOperation",
+                        "price": 2.64
+                    }
+                ]
+            }
+        ],
+        "page_count": 1,
+        "row_count": 2
+    }
+}

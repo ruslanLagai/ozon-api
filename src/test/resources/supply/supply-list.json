@@ -1,0 +1,35 @@
+{
+    "supply_orders": [
+        {
+            "supply_order_id": 24745718,
+            "supply_order_number": "24745718",
+            "created_at": "2024-05-02",
+            "state": "ACCEPTANCE_AT_STORAGE_WAREHOUSE",
+            "preferred_supply_date_from": "",
+            "preferred_supply_date_to": "",
+            "time_left_to_select_supply_variant": 0,
+            "time_left_to_prepare_supply": 0,
+            "local_timeslot": {
+                "from": "2024-05-03T11:00:00",
+                "to": "2024-05-03T12:00:00"
+            },
+            "local_timeslot": 8,
+            "total_quantity": 157,
+            "supply_warehouse": {
+                "warehouse_id": 1020000909502000,
+                "address": "140150 Россия, обл. Московская, р-н Раменский, Быково, ул. Аэропортовская, д. 14, корп. Т",
+                "name": "МО_БЫКОВО_ФБС"
+            },
+            "product_bundle_ids": [
+                "018f39d0-584e-73df-ae83-51f916fd4584",
+                "018f39d0-584e-723e-a280-67f25eaa6169",
+                "018f39d0-584e-73e0-b427-9a05cfc1dea5",
+                "018f39d0-584e-772d-9668-037682a8103e",
+                "018f39d0-584e-723d-8e56-f50c23ae4fb3"
+            ],
+            "rounded_total_volume_in_litres": 286
+        }
+    ],
+    "total_supply_orders_count": 1,
+    "has_next": false
+}

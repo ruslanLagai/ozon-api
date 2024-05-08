@@ -1,0 +1,120 @@
+package ru.home.project.ozonapi.service.impl
+
+import lombok.extern.slf4j.Slf4j
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.stereotype.Service
+import org.springframework.util.CollectionUtils
+import ru.home.project.ozonapi.client.OzonApiClient
+import ru.home.project.ozonapi.dto.finance.response.RefundData
+import ru.home.project.ozonapi.dto.finance.response.Transaction
+import ru.home.project.ozonapi.dto.stocks.response.StocksResultItem
+import ru.home.project.ozonapi.dto.supply.response.SupplyItem
+import ru.home.project.ozonapi.dto.supply.response.SupplyOrderItem
+import ru.home.project.ozonapi.service.OzonService
+import java.time.LocalTime
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
+
+/**
+ * @author rlagay
+ */
+@Service
+@Slf4j
+class OzonServiceImpl(
+    val ozonApiClient: OzonApiClient
+) : OzonService {
+
+    companion object {
+        val log: Logger = LoggerFactory.getLogger(OzonServiceImpl::class.java)
+    }
+
+    @Cacheable(cacheNames = ["ozon-transactions"], key = "#key")
+    override fun getTransaction(from: OffsetDateTime, to: OffsetDateTime, key: String): List<Transaction> {
+        val numberOfDays = moreThanMonth(from, to)
+        return if (numberOfDays > 31) {
+            val transactions = ArrayList<Transaction>()
+            for (i: Int in 0..numberOfDays step 30) {
+                val rest = numberOfDays - i
+                val startPoint = from.plusDays(i.toLong())
+                val endPoint = startPoint.plusDays(if (rest > 30) 29L else rest.toLong())
+                val part = getTransactions(
+                    OffsetDateTime.of(startPoint.toLocalDate().atTime(LocalTime.MIN), ZoneOffset.UTC),
+                    OffsetDateTime.of(endPoint.toLocalDate().atTime(LocalTime.now()), ZoneOffset.UTC)
+                )
+                transactions.addAll(part)
+            }
+            transactions
+        } else {
+            getTransactions(from, to)
+        }
+    }
+
+    @Cacheable(cacheNames = ["ozon-transactions"], key = "#postingNumber")
+    override fun getTransaction(postingNumber: String): List<Transaction> {
+        val transactions = ozonApiClient.getTransactions(postingNumber)
+        if (CollectionUtils.isEmpty(transactions)) {
+            log.info("Empty transactions for '$postingNumber'")
+        }
+        return transactions.orEmpty()
+    }
+
+    @Cacheable(cacheNames = ["ozon-refund"], key = "#postingNumber")
+    override fun getRefundData(postingNumber: String): RefundData? {
+        val refund = ozonApiClient.getRefundData(postingNumber)
+        if (refund == null) {
+            log.info("No refund data for {}", postingNumber)
+            return null
+        }
+        return refund
+    }
+
+    @Cacheable(cacheNames = ["ozon-supply"], key = "#orderId")
+    override fun getSupplyItemsInOrder(orderId: Int): List<SupplyItem> {
+        val supplyItems = ozonApiClient.getSupplyItems(orderId)
+        if (supplyItems.isNullOrEmpty()) {
+            log.info("No supply items for {}", orderId)
+            return listOf()
+        }
+        return supplyItems
+    }
+
+    override fun getSupplyOrders(): List<SupplyOrderItem> {
+        val supplyOrders = ozonApiClient.getSupplyOrders()
+        if (supplyOrders.isNullOrEmpty()) {
+            log.info("No supply orders")
+            return listOf()
+        }
+        return supplyOrders
+    }
+
+    @Cacheable(cacheNames = ["ozon-supply"], key = "#cacheKey")
+    override fun getStockItems(cacheKey: String): List<StocksResultItem> {
+        val stocks = ozonApiClient.getStocks()
+        if (stocks.isEmpty()) {
+            log.info("No stock data")
+            return listOf()
+        }
+//        stocks.filter { it.stocks }
+        return stocks
+    }
+
+    private fun getTransactions(from: OffsetDateTime, to: OffsetDateTime): List<Transaction> {
+        val transactions = ArrayList<Transaction>()
+        var pageNumber = 1
+        do {
+            val page = ozonApiClient.getTransactions(from, to, pageNumber)
+            page?.let { transactions.addAll(it) }
+            pageNumber++
+        } while (!page.isNullOrEmpty())
+        if (CollectionUtils.isEmpty(transactions)) {
+            log.info("Empty transactions from '$from' to '$to'")
+        }
+        return transactions
+    }
+
+    private fun moreThanMonth(from: OffsetDateTime, to: OffsetDateTime): Int {
+        return to.dayOfYear - from.dayOfYear
+    }
+}

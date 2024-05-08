@@ -1,0 +1,19 @@
+{
+    "returns": [
+        {
+            "return_id": 178979281,
+            "id": 1019562900141614,
+            "sku": 1134671293,
+            "company_id": 1224331,
+            "posting_number": "33133978-0121-1",
+            "accepted_from_customer_moment": "2024-04-19T15:56:43.720Z",
+            "return_reason_name": "Покупатель отказался при вручении: товар не подошел",
+            "is_opened": true,
+            "status_name": "Возврат создан",
+            "returned_to_ozon_moment": null,
+            "current_place_name": "ВОЛОГДА_63",
+            "dst_place_name": "САНКТ-ПЕТЕРБУРГ_ВОЗВРАТЫ_РФЦ"
+        }
+    ],
+    "last_id": 178979281
+}

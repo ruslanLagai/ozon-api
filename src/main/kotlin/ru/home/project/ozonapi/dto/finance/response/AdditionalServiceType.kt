@@ -1,0 +1,41 @@
+package ru.home.project.ozonapi.dto.finance.response
+
+/**
+ * @author rlagay
+ */
+enum class AdditionalServiceType(val description: String) {
+    MarketplaceNotDeliveredCostItem("возврат невостребованного товара от покупателя на склад"),
+    MarketplaceReturnAfterDeliveryCostItem("возврат от покупателя на склад после доставки"),
+    MarketplaceDeliveryCostItem("доставка товара до покупателя"),
+    MarketplaceSaleReviewsItem("приобретение отзывов на платформе"),
+    ItemAdvertisementForSupplierLogistic("доставка товаров на склад Ozon(кросс-докинг"),
+    MarketplaceServiceStorageItem("размещения товаров"),
+    MarketplaceMarketingActionCostItem("продвижение товаров"),
+    MarketplaceServiceItemInstallment("продвижениe и продажа в рассрочку"),
+    MarketplaceServiceItemMarkingItems("обязательная маркировка товаров"),
+    MarketplaceServiceItemFlexiblePaymentSchedule("гибкий график выплат"),
+    MarketplaceServiceItemReturnFromStock("комплектация товаров для вывоза продавцом"),
+    ItemAdvertisementForSupplierLogisticSeller("транспортно-экспедиционные услуги"),
+    MarketplaceServiceItemDelivToCustomer("последняя миля"),
+    MarketplaceServiceItemDirectFlowTrans("магистраль"),
+    MarketplaceServiceItemDropoffFF("обработка отправления"),
+    MarketplaceServiceItemDropoffPVZ("обработка отправления"),
+    MarketplaceServiceItemDropoffSC("обработка отправления"),
+    MarketplaceServiceItemFulfillment("сборка заказа"),
+    MarketplaceServiceItemPickup("выезд транспортного средства по адресу продавца для забора отправлений(\"Pick-up\""),
+    MarketplaceServiceItemReturnAfterDelivToCustomer("обработка возврата"),
+    MarketplaceServiceItemReturnFlowTrans("обратная магистраль"),
+    MarketplaceServiceItemReturnNotDelivToCustomer("обработка отмен"),
+    MarketplaceServiceItemReturnPartGoodsCustomer("обработка невыкупа"),
+    MarketplaceRedistributionOfAcquiringOperation("оплата эквайринга"),
+    MarketplaceReturnStorageServiceAtThePickupPointFbsItem("краткосрочное размещение возврата FBS"),
+    MarketplaceReturnStorageServiceInTheWarehouseFbsItem("долгосрочное размещение возврата FBS"),
+    MarketplaceServiceItemDeliveryKGT("доставка крупногабаритного товара (КГТ)"),
+    MarketplaceServiceItemDirectFlowLogistic("логистика"),
+    MarketplaceServiceItemReturnFlowLogistic("обратная логистика"),
+    MarketplaceServicePremiumCashbackIndividualPoints("услуга продвижения «Бонусы продавца»"),
+    MarketplaceServicePremiumPromotion("услуга продвижение Premium, фиксированная комиссия"),
+    OperationMarketplaceWithHoldingForUndeliverableGoods("удержание за недовложение товара"),
+    MarketplaceServiceItemDirectFlowLogisticVDC("Логистика?"),
+    MarketplaceServiceItemRedistributionReturnsPVZ("Обработка возвратов партнёрами")
+}

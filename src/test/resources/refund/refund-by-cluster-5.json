@@ -1,0 +1,19 @@
+{
+    "returns": [
+        {
+            "return_id": 176448439,
+            "id": 1019625382804149,
+            "sku": 1134731178,
+            "company_id": 1224331,
+            "posting_number": "46951727-0242-1",
+            "accepted_from_customer_moment": "2024-04-14T18:16:44.067Z",
+            "return_reason_name": "Товар не работает / брак",
+            "is_opened": true,
+            "status_name": "Принят на складе Ozon",
+            "returned_to_ozon_moment": "2024-04-16T14:32:26.680Z",
+            "current_place_name": "ПУШКИНО_1_РФЦ_ВОЗВРАТЫ",
+            "dst_place_name": "ХОРУГВИНО_ВОЗВРАТЫ"
+        }
+    ],
+    "last_id": 176448439
+}

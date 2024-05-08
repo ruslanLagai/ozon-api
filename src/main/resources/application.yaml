@@ -1,0 +1,54 @@
+service:
+  ozon:
+    api:
+      api-key: 7845fe09-9410-4c36-a0ba-c3e2e799a0d1
+#      61302c6d-3a69-4c02-8b7d-45897058537d
+      client-id: 1224331
+      url: https://api-seller.ozon.ru
+server:
+  shutdown: graceful
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+    url: jdbc:mysql://localhost:3307/ozon_name?allowPublicKeyRetrieval=true
+    username: root
+    password: j&4$R>TqA2
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    database: mysql
+  main:
+    allow-bean-definition-overriding: true
+  cache:
+    type: redis
+    redis:
+      time-to-live: 10m
+      cache-null-values: false
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+      client-name: house-mouse-ozon-app
+      client-type: lettuce
+  flyway:
+    enabled: false
+    baseline-on-migrate: true
+    locations: classpath:migration
+    schemas: ozon_name
+  codec:
+    max-in-memory-size: 10MB
+
+
+telegram:
+  bot:
+    token: 6514473532:AAFM-Ve3G4bssuM90j47kdywFbE1Hnn0ZeE
+    username: HouseMouseBot
+
+logging:
+  level:
+    org: DEBUG

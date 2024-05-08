@@ -1,0 +1,80 @@
+{
+  "result": {
+    "operations": [
+      {
+          "operation_id": 15481537626,
+          "operation_type": "OperationItemReturn",
+          "operation_date": "2023-09-28 00:00:00",
+          "operation_type_name": "Доставка и обработка возврата, отмены, невыкупа",
+          "delivery_charge": 0,
+          "return_delivery_charge": 0,
+          "accruals_for_sale": 0,
+          "sale_commission": 0,
+          "amount": -61.2,
+          "type": "returns",
+          "posting": {
+              "delivery_schema": "FBO",
+              "order_date": "2023-09-25 10:29:21",
+              "posting_number": "35220896-0207-1",
+              "warehouse_id": 18044494830000
+          },
+          "items": [
+              {
+                  "name": "Зонт",
+                  "sku": 1134731178
+              }
+          ],
+          "services": [
+              {
+                  "name": "MarketplaceServiceItemFulfillment",
+                  "price": 0
+              },
+              {
+                  "name": "MarketplaceServiceItemDirectFlowTrans",
+                  "price": 0
+              },
+              {
+                  "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+                  "price": -61.2
+              }
+          ]
+      },
+      {
+          "operation_id": 15481611163,
+          "operation_type": "OperationItemReturn",
+          "operation_date": "2023-09-28 00:00:00",
+          "operation_type_name": "Доставка и обработка возврата, отмены, невыкупа",
+          "delivery_charge": 0,
+          "return_delivery_charge": 0,
+          "accruals_for_sale": 0,
+          "sale_commission": 0,
+          "amount": -101,
+          "type": "returns",
+          "posting": {
+              "delivery_schema": "FBO",
+              "order_date": "2023-09-25 10:29:21",
+              "posting_number": "35220896-0207-1",
+              "warehouse_id": 18044494830000
+          },
+          "items": [
+              {
+                  "name": "Зонт",
+                  "sku": 1134731178
+              }
+          ],
+          "services": [
+              {
+                  "name": "MarketplaceServiceItemReturnPartGoodsCustomer",
+                  "price": -50
+              },
+              {
+                  "name": "MarketplaceServiceItemReturnFlowLogistic",
+                  "price": -51
+              }
+          ]
+      }
+    ],
+    "page_count": 1,
+    "row_count": 172
+  }
+}

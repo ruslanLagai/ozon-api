@@ -1,0 +1,578 @@
+{
+  "result": {
+    "operations": [
+      {
+        "operation_id": 15463217485,
+        "operation_type": "OperationMarketplaceSupplyAdditional",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Обработка товара в составе грузоместа на FBO",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": 0,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "2000000731798",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15464070378,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -4.06,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 09:56:18",
+          "posting_number": "74901036-0040",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -4.06
+          }
+        ]
+      },
+      {
+        "operation_id": 15464473161,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -12.44,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 10:31:56",
+          "posting_number": "10192166-0156",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Зонт",
+            "sku": 1135684591
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -12.44
+          }
+        ]
+      },
+      {
+        "operation_id": 15465411379,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.67,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 11:47:13",
+          "posting_number": "19841750-0040",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -3.67
+          }
+        ]
+      },
+      {
+        "operation_id": 15465519373,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.25,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "0109988574-0074-1",
+          "warehouse_id": 18044249781000
+        },
+        "items": [
+          {
+            "name": "Швабра, длина 130 см",
+            "sku": 1142892245
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -3.25
+          }
+        ]
+      },
+      {
+        "operation_id": 15467073557,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.96,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 13:21:26",
+          "posting_number": "0130697533-0031",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -3.96
+          }
+        ]
+      },
+      {
+        "operation_id": 15468738873,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -1.15,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 14:51:15",
+          "posting_number": "0141629734-0004",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -1.15
+          }
+        ]
+      },
+      {
+        "operation_id": 15469546029,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -12.28,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 15:25:06",
+          "posting_number": "56816030-0063",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Зонт",
+            "sku": 1134733705
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -12.28
+          }
+        ]
+      },
+      {
+        "operation_id": 15470556920,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -4.2,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 16:16:25",
+          "posting_number": "0114887770-0096",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -4.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15486161728,
+        "operation_type": "MarketplaceMarketingActionCostOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуги продвижения товаров",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -133.5,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "",
+          "posting_number": "",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486749654,
+        "operation_type": "MarketplaceMarketingActionCostOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуги продвижения товаров",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -242,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "",
+          "posting_number": "",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486889529,
+        "operation_type": "MarketplaceMarketingActionCostOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуги продвижения товаров",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -310.5,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "",
+          "posting_number": "",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15485673930,
+        "operation_type": "OperationMarketplaceSupplyAdditional",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Обработка товара в составе грузоместа на FBO",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": 0,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 00:00:00",
+          "posting_number": "2000000731797",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486083079,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": 4.76,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-13 19:31:20",
+          "posting_number": "55310057-0008",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": 4.76
+          }
+        ]
+      },
+      {
+        "operation_id": 15486087153,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -4.2,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 06:29:37",
+          "posting_number": "48540440-0237",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -4.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15486177255,
+        "operation_type": "OperationMarketplaceSupplyAdditional",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Обработка товара в составе грузоместа на FBO",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": 0,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 00:00:00",
+          "posting_number": "2000000731799",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486236817,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.7800000000000002,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 06:58:13",
+          "posting_number": "62026624-0076",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -3.7800000000000002
+          }
+        ]
+      },
+      {
+        "operation_id": 15486774957,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -4.2,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 08:28:19",
+          "posting_number": "98364004-0055",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -4.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15487659404,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -12.26,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 10:04:09",
+          "posting_number": "0131333416-0014",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Зонт",
+            "sku": 1134715033
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -12.26
+          }
+        ]
+      },
+      {
+        "operation_id": 15488161800,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -1.15,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 00:00:00",
+          "posting_number": "0114703074-0035-1",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -1.15
+          }
+        ]
+      },
+      {
+        "operation_id": 15488381771,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -6.65,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 10:59:05",
+          "posting_number": "94142595-0118",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -6.65
+          }
+        ]
+      }
+    ],
+    "page_count": 1,
+    "row_count": 37
+  }
+}

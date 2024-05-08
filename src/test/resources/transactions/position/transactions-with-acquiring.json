@@ -1,0 +1,1186 @@
+{
+  "result": {
+    "operations": [
+      {
+        "operation_id": 14923559675,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-04 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -13.86,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-04 16:07:35",
+          "posting_number": "0118344100-0102",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Швабра, длина 130 см",
+            "sku": 1142892245
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -13.86
+          }
+        ]
+      },
+      {
+        "operation_id": 15463217485,
+        "operation_type": "OperationMarketplaceSupplyAdditional",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Обработка товара в составе грузоместа на FBO",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": 0,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "2000000731798",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15464070378,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -4.06,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 09:56:18",
+          "posting_number": "74901036-0040",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -4.06
+          }
+        ]
+      },
+      {
+        "operation_id": 15464473161,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -12.44,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 10:31:56",
+          "posting_number": "10192166-0156",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Зонт",
+            "sku": 1135684591
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -12.44
+          }
+        ]
+      },
+      {
+        "operation_id": 15465411379,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.67,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 11:47:13",
+          "posting_number": "19841750-0040",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -3.67
+          }
+        ]
+      },
+      {
+        "operation_id": 15465438265,
+        "operation_type": "OperationAgentDeliveredToCustomer",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка покупателю",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 1650,
+        "sale_commission": -280.5,
+        "amount": 1183.95,
+        "type": "orders",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-20 09:31:27",
+          "posting_number": "0109988574-0074-1",
+          "warehouse_id": 18044249781000
+        },
+        "items": [
+          {
+            "name": "Швабра, длина 130 см",
+            "sku": 1142892245
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDelivToCustomer",
+            "price": -90.75
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -94.8
+          }
+        ]
+      },
+      {
+        "operation_id": 15465519373,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.25,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "0109988574-0074-1",
+          "warehouse_id": 18044249781000
+        },
+        "items": [
+          {
+            "name": "Швабра, длина 130 см",
+            "sku": 1142892245
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -3.25
+          }
+        ]
+      },
+      {
+        "operation_id": 15465648514,
+        "operation_type": "OperationAgentDeliveredToCustomer",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка покупателю",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 590,
+        "sale_commission": -112.1,
+        "amount": 384.25,
+        "type": "orders",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-24 19:37:42",
+          "posting_number": "55901454-0042-1",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDelivToCustomer",
+            "price": -32.45
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -61.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15465718347,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -1.25,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "55901454-0042-1",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -1.25
+          }
+        ]
+      },
+      {
+        "operation_id": 15467073557,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.96,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 13:21:26",
+          "posting_number": "0130697533-0031",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -3.96
+          }
+        ]
+      },
+      {
+        "operation_id": 15468738873,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -1.15,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 14:51:15",
+          "posting_number": "0141629734-0004",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -1.15
+          }
+        ]
+      },
+      {
+        "operation_id": 15469377364,
+        "operation_type": "OperationAgentDeliveredToCustomer",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка покупателю",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 590,
+        "sale_commission": -112.1,
+        "amount": 384.25,
+        "type": "orders",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-19 09:15:54",
+          "posting_number": "41191915-0047-3",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDelivToCustomer",
+            "price": -32.45
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -61.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15469449064,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -1.35,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "41191915-0047-3",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -1.35
+          }
+        ]
+      },
+      {
+        "operation_id": 15469546029,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -12.28,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 15:25:06",
+          "posting_number": "56816030-0063",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Зонт",
+            "sku": 1134733705
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -12.28
+          }
+        ]
+      },
+      {
+        "operation_id": 15470556920,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -4.2,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 16:16:25",
+          "posting_number": "0114887770-0096",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -4.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15470580829,
+        "operation_type": "OperationAgentDeliveredToCustomer",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка покупателю",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 552,
+        "sale_commission": -104.88,
+        "amount": 355.56,
+        "type": "orders",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-26 10:50:20",
+          "posting_number": "30349421-0121-1",
+          "warehouse_id": 18044249781000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDelivToCustomer",
+            "price": -30.36
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -61.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15470949950,
+        "operation_type": "OperationAgentDeliveredToCustomer",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка покупателю",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 1800,
+        "sale_commission": -306,
+        "amount": 1300.2,
+        "type": "orders",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-24 19:51:20",
+          "posting_number": "0118344100-0102-1",
+          "warehouse_id": 1020000115166000
+        },
+        "items": [
+          {
+            "name": "Швабра, длина 130 см",
+            "sku": 1142892245
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDelivToCustomer",
+            "price": -99
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -94.8
+          }
+        ]
+      },
+      {
+        "operation_id": 15471070022,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.45,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "0118344100-0102-1",
+          "warehouse_id": 1020000115166000
+        },
+        "items": [
+          {
+            "name": "Швабра, длина 130 см",
+            "sku": 1142892245
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -3.45
+          }
+        ]
+      },
+      {
+        "operation_id": 15478771083,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -0.6,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "17434319-0168-1",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Форма для мороженого, 3 яч.",
+            "sku": 1056861395
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -0.6
+          }
+        ]
+      },
+      {
+        "operation_id": 15478775547,
+        "operation_type": "OperationAgentDeliveredToCustomer",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка покупателю",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 255,
+        "sale_commission": -48.45,
+        "amount": 132.55,
+        "type": "orders",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-24 19:14:04",
+          "posting_number": "17434319-0168-1",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Форма для мороженого, 3 яч.",
+            "sku": 1056861395
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDelivToCustomer",
+            "price": -20
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -54
+          }
+        ]
+      },
+      {
+        "operation_id": 15481537626,
+        "operation_type": "OperationItemReturn",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка и обработка возврата, отмены, невыкупа",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -61.2,
+        "type": "returns",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-25 10:29:21",
+          "posting_number": "35220896-0207-1",
+          "warehouse_id": 18044494830000
+        },
+        "items": [
+          {
+            "name": "Зонт",
+            "sku": 1134731178
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -61.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15481611163,
+        "operation_type": "OperationItemReturn",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка и обработка возврата, отмены, невыкупа",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -101,
+        "type": "returns",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-25 10:29:21",
+          "posting_number": "35220896-0207-1",
+          "warehouse_id": 18044494830000
+        },
+        "items": [
+          {
+            "name": "Зонт",
+            "sku": 1134731178
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemReturnPartGoodsCustomer",
+            "price": -50
+          },
+          {
+            "name": "MarketplaceServiceItemReturnFlowLogistic",
+            "price": -51
+          }
+        ]
+      },
+      {
+        "operation_id": 15482786564,
+        "operation_type": "OperationAgentDeliveredToCustomer",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Доставка покупателю",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 552,
+        "sale_commission": -104.88,
+        "amount": 355.56,
+        "type": "orders",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-26 11:09:08",
+          "posting_number": "0102656578-0046-1",
+          "warehouse_id": 18044249781000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDelivToCustomer",
+            "price": -30.36
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -61.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15482919414,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -1.2,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-28 00:00:00",
+          "posting_number": "0102656578-0046-1",
+          "warehouse_id": 18044249781000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -1.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15485474789,
+        "operation_type": "MarketplaceSaleReviewsOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Приобретение отзывов на платформе",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -144,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "",
+          "posting_number": "",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486161728,
+        "operation_type": "MarketplaceMarketingActionCostOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуги продвижения товаров",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -133.5,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "",
+          "posting_number": "",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486749654,
+        "operation_type": "MarketplaceMarketingActionCostOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуги продвижения товаров",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -242,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "",
+          "posting_number": "",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486889529,
+        "operation_type": "MarketplaceMarketingActionCostOperation",
+        "operation_date": "2023-09-28 00:00:00",
+        "operation_type_name": "Услуги продвижения товаров",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -310.5,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "",
+          "posting_number": "",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15485673930,
+        "operation_type": "OperationMarketplaceSupplyAdditional",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Обработка товара в составе грузоместа на FBO",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": 0,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 00:00:00",
+          "posting_number": "2000000731797",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486083079,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": 4.76,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-13 19:31:20",
+          "posting_number": "55310057-0008",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": 4.76
+          }
+        ]
+      },
+      {
+        "operation_id": 15486087153,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -4.2,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 06:29:37",
+          "posting_number": "48540440-0237",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -4.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15486177255,
+        "operation_type": "OperationMarketplaceSupplyAdditional",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Обработка товара в составе грузоместа на FBO",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": 0,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 00:00:00",
+          "posting_number": "2000000731799",
+          "warehouse_id": 0
+        },
+        "items": [],
+        "services": []
+      },
+      {
+        "operation_id": 15486236817,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -3.7800000000000002,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 06:58:13",
+          "posting_number": "62026624-0076",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -3.7800000000000002
+          }
+        ]
+      },
+      {
+        "operation_id": 15486774957,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -4.2,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 08:28:19",
+          "posting_number": "98364004-0055",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель кухонный для губки, мыла, для кухонной утвари, 18 см х 11 см х 4 см, 1 шт",
+            "sku": 1075294535
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -4.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15487659404,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -12.26,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 10:04:09",
+          "posting_number": "0131333416-0014",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Зонт",
+            "sku": 1134715033
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -12.26
+          }
+        ]
+      },
+      {
+        "operation_id": 15488047222,
+        "operation_type": "OperationAgentDeliveredToCustomer",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Доставка покупателю",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 552,
+        "sale_commission": -104.88,
+        "amount": 355.56,
+        "type": "orders",
+        "posting": {
+          "delivery_schema": "FBO",
+          "order_date": "2023-09-21 10:55:35",
+          "posting_number": "0114703074-0035-1",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServiceItemFulfillment",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDelivToCustomer",
+            "price": -30.36
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowTrans",
+            "price": 0
+          },
+          {
+            "name": "MarketplaceServiceItemDirectFlowLogisticVDC",
+            "price": -61.2
+          }
+        ]
+      },
+      {
+        "operation_id": 15488161800,
+        "operation_type": "OperationMarketplaceServicePremiumCashbackIndividualPoints",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Услуга продвижения Бонусы продавца",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -1.15,
+        "type": "services",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 00:00:00",
+          "posting_number": "0114703074-0035-1",
+          "warehouse_id": 17717042026000
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceServicePremiumCashbackIndividualPoints",
+            "price": -1.15
+          }
+        ]
+      },
+      {
+        "operation_id": 15488381771,
+        "operation_type": "MarketplaceRedistributionOfAcquiringOperation",
+        "operation_date": "2023-09-29 00:00:00",
+        "operation_type_name": "Оплата эквайринга",
+        "delivery_charge": 0,
+        "return_delivery_charge": 0,
+        "accruals_for_sale": 0,
+        "sale_commission": 0,
+        "amount": -6.65,
+        "type": "other",
+        "posting": {
+          "delivery_schema": "",
+          "order_date": "2023-09-29 10:59:05",
+          "posting_number": "94142595-0118",
+          "warehouse_id": 0
+        },
+        "items": [
+          {
+            "name": "Держатель для полотенец, 1 шт",
+            "sku": 1078592641
+          }
+        ],
+        "services": [
+          {
+            "name": "MarketplaceRedistributionOfAcquiringOperation",
+            "price": -6.65
+          }
+        ]
+      }
+    ],
+    "page_count": 1,
+    "row_count": 37
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "returns": [
+        {
+            "return_id": 172152473,
+            "id": 1019687873547377,
+            "sku": 1134731178,
+            "company_id": 1224331,
+            "posting_number": "16212139-0157-2",
+            "accepted_from_customer_moment": "2024-04-06T15:52:23.410Z",
+            "return_reason_name": "Товар не работает / брак",
+            "is_opened": true,
+            "status_name": "Принят на складе Ozon",
+            "returned_to_ozon_moment": "2024-04-09T06:08:14.387Z",
+            "current_place_name": "СПБ_БУГРЫ_РФЦ_ВОЗВРАТЫ",
+            "dst_place_name": "СПБ_БУГРЫ_РФЦ_ВОЗВРАТЫ"
+        }
+    ],
+    "last_id": 172152473
+}

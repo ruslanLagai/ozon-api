@@ -1,0 +1,328 @@
+{
+    "result": {
+        "items": [
+            {
+                "product_id": 603086151,
+                "offer_id": "0000009",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 28,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 603093898,
+                "offer_id": "0000010",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 12,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 603102469,
+                "offer_id": "0000011",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 4,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 603103737,
+                "offer_id": "0000012",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 16,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 603107471,
+                "offer_id": "0000013",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 603601291,
+                "offer_id": "0000015",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 29,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 607624414,
+                "offer_id": "0000016",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 64,
+                        "reserved": 2
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "discounted",
+                        "present": 1,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 655504729,
+                "offer_id": "0000018",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 66,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 714604252,
+                "offer_id": "0000019",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 714652388,
+                "offer_id": "0000020",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 5,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 776063170,
+                "offer_id": "0000025",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 59,
+                        "reserved": 2
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 813067417,
+                "offer_id": "0000026",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 33,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 813067492,
+                "offer_id": "0000028",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 54,
+                        "reserved": 1
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 813067524,
+                "offer_id": "0000027",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 92,
+                        "reserved": 3
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            },
+            {
+                "product_id": 818230912,
+                "offer_id": "0000029",
+                "stocks": [
+                    {
+                        "type": "fbs",
+                        "present": 0,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "fbo",
+                        "present": 76,
+                        "reserved": 0
+                    },
+                    {
+                        "type": "crossborder",
+                        "present": 0,
+                        "reserved": 0
+                    }
+                ]
+            }
+        ],
+        "total": 15,
+        "last_id": "WzgxODIzMDkxMiw4MTgyMzA5MTJd"
+    }
+}
