@@ -7,5 +7,8 @@ enum class ActionType {
     Revenue,
     AddPosition,
     EditPosistion,
-    Refund
+    Refund,
+    StockWorth,
+    AddOrder,
+    AddDelivery
 }

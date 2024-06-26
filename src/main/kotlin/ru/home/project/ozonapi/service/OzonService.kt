@@ -1,10 +1,14 @@
 package ru.home.project.ozonapi.service
 
+import ru.home.project.ozonapi.dto.delivery.Delivery
+import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.finance.response.RefundData
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.stocks.response.StocksResultItem
 import ru.home.project.ozonapi.dto.supply.response.SupplyItem
 import ru.home.project.ozonapi.dto.supply.response.SupplyOrderItem
+import ru.home.project.ozonapi.entity.PositionEntity
+import ru.home.project.ozonapi.model.Product
 import java.time.OffsetDateTime
 
 /**
@@ -40,5 +44,10 @@ interface OzonService {
     /**
      * Получение остатков на складе озон FBO + FBS
      */
-    fun getStockItems(cacheKey: String): List<StocksResultItem>
+    fun getStockItems(cacheKey: String): List<Product>
+
+    /**
+     * Получение отправлений по статусу
+     */
+    fun getDeliveryByStatus(status: DeliveryStatus): List<Delivery>
 }

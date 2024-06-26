@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class SupplyWaterhouse(
-    @JsonProperty("warehouse_id") val warehouseId: Int,
+    @JsonProperty("warehouse_id") val warehouseId: Long,
     @JsonProperty("address") val address : String,
     @JsonProperty("name") val name: String
 )

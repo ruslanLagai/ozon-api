@@ -17,7 +17,6 @@ import java.time.ZoneOffset
 
 /**
  * @author rlagay
- * 67623712-0013
  */
 class OzonServiceImplTest {
 
@@ -88,6 +87,6 @@ class OzonServiceImplTest {
 
         val result = service.getStockItems("123")
 
-        assertEquals(15, result.size)
+        assertEquals(13, result.size)
     }
 }

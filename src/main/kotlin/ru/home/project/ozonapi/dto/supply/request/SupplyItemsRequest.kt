@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
  * @author rlagay
  */
 data class SupplyItemsRequest(
-    @JsonProperty("page") val page: Int,
-    @JsonProperty("page_size") val size: Int,
-    @JsonProperty("supply_order_id") val orderId: Int
+    @get:JsonProperty("page") val page: Int,
+    @get:JsonProperty("page_size") val size: Int,
+    @get:JsonProperty("supply_order_id") val orderId: Int
 )

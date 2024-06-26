@@ -69,7 +69,7 @@ class ClientConfig {
                     log.info(ObjectMapper().writeValueAsString(resp.bodyToMono<String>()))
                     Mono.error(
                         OzonException(
-                            resp.bodyToMono<String>().block().toString(),
+                            resp.bodyToMono<String>().toString(),
                             resp.statusCode().value()
                         )
                     )

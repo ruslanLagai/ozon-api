@@ -13,7 +13,9 @@ data class TelegramChatEntity(
 
     @Column(name = "chat_id", nullable = false) val chatId: Long,
 
-    @Column(name = "position_name", nullable = true, unique = false) val positionName: String,
+    @Column(name = "position_name", nullable = true, unique = false) var positionName: String,
+
+    @Column(name = "deliveryId", nullable = true, unique = false) var deliveryId: Long = 0,
 
     @Column(name = "from_column", length = 50) var from: OffsetDateTime? = null,
 

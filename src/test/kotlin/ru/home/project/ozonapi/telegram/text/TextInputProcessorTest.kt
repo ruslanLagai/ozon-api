@@ -9,19 +9,21 @@ import org.junit.jupiter.params.provider.ValueSource
 import org.mockito.Mockito
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.test.util.ReflectionTestUtils
 import org.telegram.telegrambots.meta.api.objects.Message
 import org.telegram.telegrambots.meta.api.objects.Update
+import ru.home.project.ozonapi.dto.request.ProductRequest
 import ru.home.project.ozonapi.entity.ActionType
+import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.PositionEntity
 import ru.home.project.ozonapi.entity.TelegramChatEntity
+import ru.home.project.ozonapi.repository.ChinaOrdersRepository
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.TelegramChatRepository
-import ru.home.project.ozonapi.service.RevenueCalculationService
-import ru.home.project.ozonapi.service.TotalRefundsService
-import ru.home.project.ozonapi.service.TotalRevenueCalculationService
+import ru.home.project.ozonapi.service.*
 import ru.home.project.ozonapi.telegram.commands.*
 import ru.home.project.ozonapi.util.*
 
@@ -37,6 +39,9 @@ class TextInputProcessorTest {
     private val totalRevenueCalculationService = mock<TotalRevenueCalculationService>()
     private val totalRefundsService = mock<TotalRefundsService>()
     private val publisher = mock<ApplicationEventPublisher>()
+    private val chinaOrdersRepository = mock<ChinaOrdersRepository>()
+    private val stockService = mock<StocksService>()
+    private val ordersService = mock<OrdersService>()
 
     private val calculationsCmdProcessor = CalculationsCmdProcessor(positionRepository)
     private val addPositionCmdProcessor = AddPositionCmdProcessor(telegramChatRepository)
@@ -45,11 +50,20 @@ class TextInputProcessorTest {
     private val positionAddedCmdProcessor = PositionAddedCmdProcessor(telegramChatRepository, positionRepository, publisher)
     private val positionEditedCmdProcessor = PositionEditedCmdProcessor(telegramChatRepository, positionRepository)
     private val refunCmdProcessor = RefundsCmdProcessor(positionRepository)
-    private val commandProcessor = CommandProcessor(calculationsCmdProcessor, addPositionCmdProcessor, positionsCmdProcessor, editPoCommandProcessor, refunCmdProcessor)
+    private val stockWorthCmdProcessor = StockWorthCmdProcessor(stockService)
+    private val deliveryDataCmdProcessor = DeliveryDataCmdProcessor(chinaOrdersRepository)
+    private val orderCmdProcessor = OrderCmdProcessor(telegramChatRepository)
+
+    private val commandProcessor = CommandProcessor(calculationsCmdProcessor, addPositionCmdProcessor, positionsCmdProcessor,
+        editPoCommandProcessor, refunCmdProcessor, stockWorthCmdProcessor, orderCmdProcessor, deliveryDataCmdProcessor)
     private val dateInputProcessor = DateInputProcessor(telegramChatRepository, revenueCalculationServices, totalRevenueCalculationService, totalRefundsService)
     private val positionsInputProcessor = PositionsInputProcessor(positionRepository, telegramChatRepository)
+    private val addOrderInputProcessor = AddOrderInputProcessor(telegramChatRepository, ordersService)
+    private val addDeliveryInputProcessor = AddDeliveryInputProcessor(telegramChatRepository, ordersService)
+    private val deliveryItemProcessor = DeliveryItemProcessor(telegramChatRepository, chinaOrdersRepository)
     private val inputProcessors = listOf(commandProcessor, dateInputProcessor,
-        positionAddedCmdProcessor, positionsInputProcessor, positionEditedCmdProcessor)
+        positionAddedCmdProcessor, positionsInputProcessor, positionEditedCmdProcessor, addOrderInputProcessor,
+        addDeliveryInputProcessor, deliveryItemProcessor)
 
     private val message = mock<Message>()
 
@@ -342,6 +356,227 @@ class TextInputProcessorTest {
 
             assertEquals("Некорректный формат данных, не удалось обработать 'себестоимость' и/или 'доп расходы'", result?.text ?: "")
             verify(telegramChatRepository).updateStateByChatIdAndAction(1, false, ActionType.EditPosistion)
+        }
+    }
+
+    @Nested
+    inner class TestAddOrderInput {
+
+        private val errorMsg = "Добавьте данные по поставке в формате: \n" +
+                "<поставщик>,<стоимость товара>,<номер заказа (при наличии)>\n" +
+                "<артикул товара>,<количество>,<цена>\n" +
+                "<артикул товара>,<количество>,<цена>\n"
+
+        private val telegramChatEntity = TelegramChatEntity(id = 1, chatId = 2, positionName = "",
+            state = true, action =  ActionType.AddOrder)
+
+        @Test
+        fun `test invalid input - no positions`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddOrder))
+                .thenReturn(telegramChatEntity)
+
+            val result = inputProcessors.map { it.processInput("1234,10,10", getUpdate()) }
+                .first { it != null }
+
+            assertEquals(errorMsg, result?.text ?: "")
+        }
+
+        @Test
+        fun `test invalid input - invalid number format`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddOrder))
+                .thenReturn(telegramChatEntity)
+
+            val result = inputProcessors.map { it.processInput(
+                "gomarkt,100,asfdsg" +
+                        "\n00012,45,4" +
+                        "\n0021,dasf,5",
+                getUpdate()) }
+                .first { it != null }
+
+            assertEquals("Некорректный формат данных, не удалось обработать 'количество' / 'цену'", result?.text ?: "")
+        }
+
+        @Test
+        fun `test invalid input - positions with errors`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddOrder))
+                .thenReturn(telegramChatEntity)
+
+            val result = inputProcessors.map { it.processInput(
+                "gomarkt,100,asfdsg" +
+                        "\n00012,45",
+                getUpdate()) }
+                .first { it != null }
+            assertEquals(errorMsg, result?.text ?: "")
+        }
+
+        @Test
+        fun `test add order`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddOrder))
+                .thenReturn(telegramChatEntity)
+
+            val result = inputProcessors.map { it.processInput(
+                "gomarkt,100,number" +
+                        "\n00012,45,7.6" +
+                        "\n00014,40,19.8",
+                getUpdate()) }
+                .first { it != null }
+
+            assertEquals("Поставка успешно добавлена", result?.text ?: "")
+            val products = listOf(
+                ProductRequest(artikul = "00012", quantity = 45, price = 7.6),
+                ProductRequest(artikul = "00014", quantity = 40, price = 19.8)
+            )
+            verify(ordersService).saveNewOrder("gomarkt", 100.0, "number", products = products)
+        }
+    }
+
+    @Nested
+    inner class TestDeliveryItemInput {
+
+        private val msg = "Добавьте данные по доставке в формате: \n" +
+                "<стоимость доставки>,<масса груза>,<объем груза (при наличии)>\n"
+        private val errorMsg = "Не удалось найти поставку"
+
+        private val telegramChatEntity = TelegramChatEntity(id = 1, chatId = 2, positionName = "",
+            state = true, action =  ActionType.AddDelivery)
+
+        @Test
+        fun `test supplier + price input`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
+                .thenReturn(telegramChatEntity)
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+
+            val result = inputProcessors.map { it.processInput("gomarkt 100", getUpdate()) }
+                .first { it != null }
+
+            assertEquals(msg, result?.text ?: "")
+        }
+
+        @Test
+        fun `test number input`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
+                .thenReturn(telegramChatEntity)
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+
+            val result = inputProcessors.map { it.processInput("1234", getUpdate()) }
+                .first { it != null }
+
+            assertEquals(msg, result?.text ?: "")
+        }
+
+        @Test
+        fun `test order is not found`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
+                .thenReturn(telegramChatEntity)
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
+                .thenReturn(setOf(ChinaOrderEntity(supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+
+            val result = inputProcessors.map { it.processInput("12342", getUpdate()) }
+                .first { it != null }
+
+            assertEquals(errorMsg, result?.text ?: "")
+        }
+
+    }
+
+    @Nested
+    inner class TestAddDeliveryInput {
+
+        private val errorMsg = "Добавьте данные по поставке в формате: \n" +
+                "<стоимость доставки>,<масса груза>,<вес груза>"
+
+        private val telegramChatEntity = TelegramChatEntity(id = 1, chatId = 2, positionName = "",
+            state = true, action =  ActionType.AddDelivery, deliveryId = 1)
+
+        @Test
+        fun `test add delivery data`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
+                .thenReturn(telegramChatEntity)
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+
+            val result = inputProcessors.map { it.processInput("21232,32.2,0.2", getUpdate()) }
+                .first { it != null }
+
+            assertEquals("Данные по доставке успешно добавлены", result?.text ?: "")
+            verify(ordersService).addDelivery(1, 21232.0, 32.2, 0.2)
+        }
+
+        @Test
+        fun `test add delivery data - no volume`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
+                .thenReturn(telegramChatEntity)
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+
+            val result = inputProcessors.map { it.processInput("21232,32.2", getUpdate()) }
+                .first { it != null }
+
+            assertEquals("Данные по доставке успешно добавлены", result?.text ?: "")
+            verify(ordersService).addDelivery(1, 21232.0, 32.2, 0.0)
+        }
+
+        @Test
+        fun `test number format exception`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
+                .thenReturn(telegramChatEntity)
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+
+            val result = inputProcessors.map { it.processInput("21232,32.2.2,0.2", getUpdate()) }
+                .first { it != null }
+
+            assertEquals("Некорректный формат данных, не удалось обработать 'массу' / 'сумму'", result?.text ?: "")
+            verify(ordersService, times(0)).addDelivery(1, 21232.0, 32.2, 0.2)
+        }
+
+        @Test
+        fun `test invalid input`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("1234,10,10")
+            Mockito.`when`(message.isCommand).thenReturn(false)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
+                .thenReturn(telegramChatEntity)
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+
+            val result = inputProcessors.map { it.processInput("21232,32.2,a,21", getUpdate()) }
+                .first { it != null }
+
+            assertEquals(errorMsg, result?.text ?: "")
+            verify(ordersService, times(0)).addDelivery(1, 21232.0, 32.2, 0.0)
         }
     }
 

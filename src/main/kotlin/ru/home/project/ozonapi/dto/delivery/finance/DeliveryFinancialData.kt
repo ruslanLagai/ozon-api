@@ -18,7 +18,8 @@ data class DeliveryFinancialData(@JsonProperty("products") val products: List<Pr
                                     @JsonProperty("product_id") val productId: String,
                                     @JsonProperty("client_price") val clientPrice: Double,
                                     @JsonProperty("currency_code") val currency: Double,
-                                    val payout: Double, val price: Double,
+                                    @JsonProperty("payout") val payout: Double,
+                                    @JsonProperty("price") val price: Double,
     )
 }
 

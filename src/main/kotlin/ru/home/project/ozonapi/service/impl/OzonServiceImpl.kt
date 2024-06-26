@@ -7,11 +7,15 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 import org.springframework.util.CollectionUtils
 import ru.home.project.ozonapi.client.OzonApiClient
+import ru.home.project.ozonapi.dto.delivery.Delivery
+import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.finance.response.RefundData
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.stocks.response.StocksResultItem
 import ru.home.project.ozonapi.dto.supply.response.SupplyItem
 import ru.home.project.ozonapi.dto.supply.response.SupplyOrderItem
+import ru.home.project.ozonapi.entity.PositionEntity
+import ru.home.project.ozonapi.model.Product
 import ru.home.project.ozonapi.service.OzonService
 import java.time.LocalTime
 import java.time.OffsetDateTime
@@ -41,7 +45,7 @@ class OzonServiceImpl(
                 val endPoint = startPoint.plusDays(if (rest > 30) 29L else rest.toLong())
                 val part = getTransactions(
                     OffsetDateTime.of(startPoint.toLocalDate().atTime(LocalTime.MIN), ZoneOffset.UTC),
-                    OffsetDateTime.of(endPoint.toLocalDate().atTime(LocalTime.now()), ZoneOffset.UTC)
+                    OffsetDateTime.of(endPoint.toLocalDate().atTime(LocalTime.MAX), ZoneOffset.UTC)
                 )
                 transactions.addAll(part)
             }
@@ -90,14 +94,32 @@ class OzonServiceImpl(
     }
 
     @Cacheable(cacheNames = ["ozon-supply"], key = "#cacheKey")
-    override fun getStockItems(cacheKey: String): List<StocksResultItem> {
+    override fun getStockItems(cacheKey: String): List<Product> {
         val stocks = ozonApiClient.getStocks()
         if (stocks.isEmpty()) {
             log.info("No stock data")
             return listOf()
         }
-//        stocks.filter { it.stocks }
         return stocks
+            .map {
+                val fbo = it.stocks.firstOrNull { item -> item.type == "fbo" }
+                val fboStock = fbo?.let { item -> item.present + item.reserved } ?: 0
+                val fbs = it.stocks.firstOrNull { item -> item.type == "fbs" }
+                val fbsStock = fbs?.let { item -> item.present + item.reserved } ?: 0
+                val discounted = it.stocks.firstOrNull { item -> item.type == "discounted" }?.present ?: 0
+                Product(sku = "", artikul = it.offerId, fboStock = fboStock, fbsStock = fbsStock, totalStock = fbsStock + fboStock + discounted)
+            }
+            .filter { it.totalStock != 0 }
+    }
+
+    @Cacheable(cacheNames = ["ozon-delivery"], key = "#status.name()")
+    override fun getDeliveryByStatus(status: DeliveryStatus): List<Delivery> {
+        val deliveries = ozonApiClient.getDeliveriesByStatus(status)
+        if (deliveries.isNullOrEmpty()) {
+            log.info("No deliveries")
+            return listOf()
+        }
+        return deliveries
     }
 
     private fun getTransactions(from: OffsetDateTime, to: OffsetDateTime): List<Transaction> {

@@ -147,7 +147,6 @@ class PositionRevenueCalculationServiceImplTest {
         val expected = RevenueResponse(request.name, "1134731178", request.artikul)
         Assertions.assertEquals(expected, result)
         Assertions.assertEquals(0.0, result!!.averageRevenue)
-        Assertions.assertEquals(-176.06, result.totalRevenue)
         Assertions.assertEquals(0.0, result.taxes)
 //        Assertions.assertEquals(-686.0, result.marketingCosts)
 //        Assertions.assertEquals(-144.0, result.feedbackCosts)

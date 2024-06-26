@@ -6,6 +6,10 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.bodyToMono
 import org.springframework.web.util.UriBuilder
 import reactor.util.retry.Retry
+import ru.home.project.ozonapi.dto.delivery.Delivery
+import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
+import ru.home.project.ozonapi.dto.delivery.request.DeliveryRequest
+import ru.home.project.ozonapi.dto.delivery.response.DeliveryResponse
 import ru.home.project.ozonapi.dto.finance.request.Date
 import ru.home.project.ozonapi.dto.finance.request.Filter
 import ru.home.project.ozonapi.dto.finance.request.RefundRequest
@@ -134,6 +138,25 @@ class OzonApiClient(
             .bodyToMono<SupplyItemsResp>()
             .cache(Duration.ofSeconds(5))
             .mapNotNull { resp -> resp.items.ifEmpty { null } }
+            .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(1)))
+            .block()
+    }
+
+    fun getDeliveriesByStatus(status: DeliveryStatus): List<Delivery>? {
+        val filter = ru.home.project.ozonapi.dto.delivery.request.Filter(
+            status = status, since = OffsetDateTime.now().minusMonths(1), to = OffsetDateTime.now())
+        val request = DeliveryRequest(filter = filter)
+        return ozonClient.post()
+            .uri { uriBuilder: UriBuilder ->
+                uriBuilder
+                    .path("/v2/posting/fbo/list")
+                    .build()
+            }
+            .body(BodyInserters.fromValue(request))
+            .retrieve()
+            .bodyToMono<DeliveryResponse>()
+            .cache(Duration.ofSeconds(5))
+            .mapNotNull { resp -> resp.result.ifEmpty { null } }
             .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(1)))
             .block()
     }
