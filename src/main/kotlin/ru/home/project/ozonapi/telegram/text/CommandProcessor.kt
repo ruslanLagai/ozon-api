@@ -17,7 +17,8 @@ class CommandProcessor(
     val refundsCmdProcessor: CmdProcessor,
     val stockWorthCmdProcessor: CmdProcessor,
     val orderCmdProcessor: CmdProcessor,
-    val deliveryDataCmdProcessor: CmdProcessor
+    val deliveryDataCmdProcessor: CmdProcessor,
+    val deliveriesCmdProcessor: CmdProcessor
 ): TextInputProcessor {
 
     private val commandProcessors: MutableMap<String, (String, Update) -> SendMessage?> = mutableMapOf(
@@ -28,7 +29,8 @@ class CommandProcessor(
         Pair("/refunds") { command: String, update: Update -> refundsCmdProcessor.processCmd(command, update) },
 //        Pair("/stock_worth") { command: String, update: Update -> stockWorthCmdProcessor.processCmd(command, update) },
         Pair("/add_order") { command: String, update: Update -> orderCmdProcessor.processCmd(command, update) },
-        Pair("/add_delivery") { command: String, update: Update -> deliveryDataCmdProcessor.processCmd(command, update) }
+        Pair("/add_delivery") { command: String, update: Update -> deliveryDataCmdProcessor.processCmd(command, update) },
+        Pair("/deliveries") { command: String, update: Update -> deliveriesCmdProcessor.processCmd(command, update) }
     )
 
     override fun processInput(input: String, update: Update): SendMessage? {

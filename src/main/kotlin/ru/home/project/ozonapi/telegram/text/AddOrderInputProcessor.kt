@@ -20,7 +20,7 @@ class AddOrderInputProcessor(
 ): TextInputProcessor {
 
     private val errorMsg = "Добавьте данные по поставке в формате: \n" +
-            "<поставщик>,<стоимость товара>,<номер заказа (при наличии)>\n" +
+            "<наименование поставки>,<стоимость товара>,<номер заказа (при наличии)>\n" +
             "<артикул товара>,<количество>,<цена>\n" +
             "<артикул товара>,<количество>,<цена>\n"
     companion object {
@@ -50,7 +50,7 @@ class AddOrderInputProcessor(
                 .map { it.split(delimiters = arrayOf(",", ";"), ignoreCase = false) }
                 .toList()
 
-            if (data.size < 2 || data.size > 3) {
+            if (data.size < 2) {
                 msg.text = errorMsg
                 return msg
             }

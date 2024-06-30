@@ -24,11 +24,11 @@ class OrderCmdProcessor(
         msg.chatId = update.message?.chatId.toString()
         try {
             telegramChatRepository.save(
-                TelegramChatEntity(chatId = update.message.chatId, positionName = "", action = ActionType.AddOrder, state = true)
+                TelegramChatEntity(chatId = update.message.chatId, positionName = "", deliveryId = 0, action = ActionType.AddOrder, state = true)
             )
 
             msg.text = "Добавьте данные по поставке в формате: \n" +
-                    "<поставщик>,<стоимость товара>,<номер заказа (при наличии)>\n" +
+                    "<наименование поставки>,<стоимость товара>,<номер заказа (при наличии)>\n" +
                     "<артикул товара>,<количество>,<цена>\n" +
                     "<артикул товара>,<количество>,<цена>\n"
 

@@ -17,6 +17,7 @@ import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.ChinaStockEntity
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
 import ru.home.project.ozonapi.service.StocksService
+import java.time.LocalDate
 
 /**
  * @author rlagay
@@ -59,12 +60,12 @@ class StocksServiceIntegrationTest {
             ChinaStockEntity(name = "Мини зонт черный", price = 19.8, priceRub = 277.2, artikul = "0000015", quantity = 50, ozonId = "1135684591"),
             ChinaStockEntity(name = "Мини зонт серый", price = 19.8, priceRub = 277.2, artikul = "0000012", quantity = 10, ozonId = "1134733705")
         )
-        val umbrellaOrder = ChinaOrderEntity(supplier = "GOMARKT", delivered = false, mass = 40.0, volume = 0.4, stockCost = 30759.0, products = umbrellas)
+        val umbrellaOrder = ChinaOrderEntity(supplier = "GOMARKT", delivered = false, mass = 40.0, volume = 0.4, stockCost = 30759.0, products = umbrellas, orderDate = LocalDate.now())
 
         val hanger = listOf(
             ChinaStockEntity(name = "Вешалки плечики, серые", price = 7.2, priceRub = 100.8, artikul = "0000027", quantity = 100, ozonId = "1368971009")
         )
-        val hangerOrder = ChinaOrderEntity(supplier = "GOMARKT", delivered = false, mass = 80.0, volume = 0.4, stockCost = 11977.0, products = hanger)
+        val hangerOrder = ChinaOrderEntity(supplier = "GOMARKT", delivered = false, mass = 80.0, volume = 0.4, stockCost = 11977.0, products = hanger, orderDate = LocalDate.now())
 
         chinaOrdersRepository.save(umbrellaOrder)
         chinaOrdersRepository.save(hangerOrder)

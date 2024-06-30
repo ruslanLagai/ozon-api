@@ -32,9 +32,9 @@ class ChinaOrdersServiceTest {
             ChinaStockEntity(name = "Зонт 1", quantity = 50, artikul = "000001", ozonId = "1"),
             ChinaStockEntity(name = "Зонт 2", quantity = 40, artikul = "000002", ozonId = "2")
         )
-        val orderEntity = ChinaOrderEntity(supplier = "test", products = products)
+        val orderEntity = ChinaOrderEntity(supplier = "test", products = products, orderDate = LocalDate.now())
         val saved = ChinaOrderEntity(supplier = "test", mass = 20.0, volume = 0.0, delivered = true, deliveryDate = LocalDate.now(), deliveryCost = 100.0,
-            products = products)
+            products = products, orderDate = LocalDate.now())
         `when`(chinaOrdersRepository.findById(any())).thenReturn(Optional.of(orderEntity))
         `when`(positionRepository.getPositionEntityByArtikul("000001")).thenReturn(
             PositionEntity(name = "Зонт 1", artikul = "000001", ozonId = "1", additionalCost = 0.0, costPrice = 1.0))

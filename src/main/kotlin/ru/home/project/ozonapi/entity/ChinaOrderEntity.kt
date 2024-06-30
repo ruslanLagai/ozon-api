@@ -13,6 +13,8 @@ data class ChinaOrderEntity(
 
     @Column(name = "supplier", nullable = false) val supplier: String,
 
+    @Column(name = "order_date", nullable = false) val orderDate: LocalDate,
+
     @Column(name = "isDelivered") var delivered: Boolean = false,
 
     @Column(name = "delivery_date") var deliveryDate: LocalDate? = null,
@@ -27,6 +29,8 @@ data class ChinaOrderEntity(
 
     @Column(name = "number", nullable = true, unique = true) val number: String? = null,
 
-    @OneToMany(fetch = FetchType.EAGER) @JoinColumn(name = "stock_entity_id") @Column(name = "products")
+    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "stock_entity_id")
+    @Column(name = "products")
     val products: List<ChinaStockEntity>? = null
 )

@@ -38,7 +38,14 @@ class DeliveryItemProcessor(
                 return null
             }
             val order = ordersRepository.getChinaOrderEntityByDelivered(false)
-                .find { it.number == input.trim() || it.supplier + " " + it.stockCost.toString().substringBefore(".") == input.trim() }
+                .find {
+                    val builder = StringBuilder().append(it.supplier)
+                    if (it.number != null) {
+                        builder.append(" №${it.number}")
+                    }
+                    builder.append(" от " + it.orderDate + " на сумму " + it.stockCost)
+                    builder.toString() == input.trim()
+                }
             if (order?.id == null) {
                 msg.text = "Не удалось найти поставку"
             } else {
@@ -52,7 +59,7 @@ class DeliveryItemProcessor(
             log.error("Failed to add order", e)
             msg.text = "Не удалось обработать сообщение"
 
-            telegramChatRepository.updateStateByChatIdAndAction(chatId, false, ActionType.AddOrder)
+            telegramChatRepository.updateStateByChatIdAndAction(chatId, false, ActionType.AddDelivery)
 
             return msg
         }

@@ -26,6 +26,7 @@ import ru.home.project.ozonapi.repository.TelegramChatRepository
 import ru.home.project.ozonapi.service.*
 import ru.home.project.ozonapi.telegram.commands.*
 import ru.home.project.ozonapi.util.*
+import java.time.LocalDate
 
 /**
  * @author rlagay
@@ -51,11 +52,12 @@ class TextInputProcessorTest {
     private val positionEditedCmdProcessor = PositionEditedCmdProcessor(telegramChatRepository, positionRepository)
     private val refunCmdProcessor = RefundsCmdProcessor(positionRepository)
     private val stockWorthCmdProcessor = StockWorthCmdProcessor(stockService)
-    private val deliveryDataCmdProcessor = DeliveryDataCmdProcessor(chinaOrdersRepository)
+    private val deliveryDataCmdProcessor = DeliveryDataCmdProcessor(chinaOrdersRepository, telegramChatRepository)
     private val orderCmdProcessor = OrderCmdProcessor(telegramChatRepository)
+    private val deliveriesCmdProcessor = DeliveriesCmdProcessor(chinaOrdersRepository)
 
     private val commandProcessor = CommandProcessor(calculationsCmdProcessor, addPositionCmdProcessor, positionsCmdProcessor,
-        editPoCommandProcessor, refunCmdProcessor, stockWorthCmdProcessor, orderCmdProcessor, deliveryDataCmdProcessor)
+        editPoCommandProcessor, refunCmdProcessor, stockWorthCmdProcessor, orderCmdProcessor, deliveryDataCmdProcessor, deliveriesCmdProcessor)
     private val dateInputProcessor = DateInputProcessor(telegramChatRepository, revenueCalculationServices, totalRevenueCalculationService, totalRefundsService)
     private val positionsInputProcessor = PositionsInputProcessor(positionRepository, telegramChatRepository)
     private val addOrderInputProcessor = AddOrderInputProcessor(telegramChatRepository, ordersService)
@@ -363,7 +365,7 @@ class TextInputProcessorTest {
     inner class TestAddOrderInput {
 
         private val errorMsg = "Добавьте данные по поставке в формате: \n" +
-                "<поставщик>,<стоимость товара>,<номер заказа (при наличии)>\n" +
+                "<наименование поставки>,<стоимость товара>,<номер заказа (при наличии)>\n" +
                 "<артикул товара>,<количество>,<цена>\n" +
                 "<артикул товара>,<количество>,<цена>\n"
 
@@ -460,7 +462,7 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
 
             val result = inputProcessors.map { it.processInput("gomarkt 100", getUpdate()) }
                 .first { it != null }
@@ -476,7 +478,7 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
 
             val result = inputProcessors.map { it.processInput("1234", getUpdate()) }
                 .first { it != null }
@@ -492,7 +494,7 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+                .thenReturn(setOf(ChinaOrderEntity(supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
 
             val result = inputProcessors.map { it.processInput("12342", getUpdate()) }
                 .first { it != null }
@@ -519,7 +521,7 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
 
             val result = inputProcessors.map { it.processInput("21232,32.2,0.2", getUpdate()) }
                 .first { it != null }
@@ -536,7 +538,7 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
 
             val result = inputProcessors.map { it.processInput("21232,32.2", getUpdate()) }
                 .first { it != null }
@@ -553,7 +555,7 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
 
             val result = inputProcessors.map { it.processInput("21232,32.2.2,0.2", getUpdate()) }
                 .first { it != null }
@@ -570,7 +572,7 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0)))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
 
             val result = inputProcessors.map { it.processInput("21232,32.2,a,21", getUpdate()) }
                 .first { it != null }

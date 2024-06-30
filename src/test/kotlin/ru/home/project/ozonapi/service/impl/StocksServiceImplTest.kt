@@ -20,6 +20,7 @@ import ru.home.project.ozonapi.repository.OzonSupplyRepository
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.StockRepository
 import ru.home.project.ozonapi.util.readResource
+import java.time.LocalDate
 
 /**
  * @author rlagay
@@ -46,8 +47,8 @@ class StocksServiceImplTest {
     private val stock2 = StockEntity(2, "Мини зонт лавандовый", 0, "1134671293", "0000009")
     private val stock3 = StockEntity(3, "Мини зонт голубой", 0, "1134740183", "0000013")
     private val stock4 = StockEntity(4, "Мини зонт бежевый", 2, "1134715033", "0000010")
-    private val orderEntity1 = ChinaOrderEntity(1, "supplier", mass = 34.0, stockCost = 10000.0, products = listOf())
-    private val orderEntity2 = ChinaOrderEntity(2, "supplier", mass = 34.0, stockCost = 20000.0, products = listOf())
+    private val orderEntity1 = ChinaOrderEntity(1, "supplier", mass = 34.0, stockCost = 10000.0, products = listOf(), orderDate = LocalDate.now())
+    private val orderEntity2 = ChinaOrderEntity(2, "supplier", mass = 34.0, stockCost = 20000.0, products = listOf(), orderDate = LocalDate.now())
 
     @Test
     fun `test worth calculation - ozon + stock + order + deliveries - remove ozon supply goods from stock`() {

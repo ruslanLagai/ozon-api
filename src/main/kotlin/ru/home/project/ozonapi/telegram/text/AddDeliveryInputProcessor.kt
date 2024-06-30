@@ -34,13 +34,13 @@ class AddDeliveryInputProcessor(
         }
         msg.chatId = update.message?.chatId.toString()
 
+
+        val chat = telegramChatRepository.getByChatIdAndStateAndAction(chatId, true, ActionType.AddDelivery)
+
+        if (chat == null || chat.action != ActionType.AddDelivery || !input.contains(",")) {
+            return null
+        }
         try {
-            val chat = telegramChatRepository.getByChatIdAndStateAndAction(chatId, true, ActionType.AddDelivery)
-
-            if (chat == null || chat.action != ActionType.AddDelivery || !input.contains(",")) {
-                return null
-            }
-
             val data = input.split(delimiters = arrayOf(",", ";"), ignoreCase = false)
 
             if (data.size > 3 || data.size < 2) {

@@ -38,11 +38,12 @@ class ChinaOrdersService(
                 throw NoPositionsException()
             }
             val stockItem = ChinaStockEntity(name = position.name, quantity = it.quantity, ozonId = position.ozonId,
-                artikul = it.artikul, priceRub = it.price ?: 0.0)
+                artikul = it.artikul, price = it.price ?: 0.0)
             stockEntities.add(stockItem)
         }
 
-        val entity = ChinaOrderEntity(supplier = supplier, stockCost = stockWorthRub, number = number, products = stockEntities)
+        val entity = ChinaOrderEntity(supplier = supplier, stockCost = stockWorthRub, number = number, products = stockEntities,
+            orderDate = LocalDate.now())
         chinaOrdersRepository.save(entity)
     }
 
