@@ -61,8 +61,9 @@ class AddOrderInputProcessor(
                 }
             }
 
+            val number = if (order.size == 3) { order[2] } else { null }
             val products = productItems.map { ProductRequest(artikul = it[0], quantity = it[1].toInt(), price = it[2].toDouble()) }.toList()
-            ordersService.saveNewOrder(order[0], order[1].toDouble(), order[2], products)
+            ordersService.saveNewOrder(order[0], order[1].toDouble(), number, products)
 
             msg.text = "Поставка успешно добавлена"
             return msg

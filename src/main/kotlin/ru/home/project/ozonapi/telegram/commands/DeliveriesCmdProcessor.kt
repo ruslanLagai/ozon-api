@@ -26,7 +26,7 @@ class DeliveriesCmdProcessor(
             val orders = chinaOrdersRepository.getChinaOrderEntityByDelivered(false)
             orders.forEach {
                 val builder = StringBuilder().append(it.supplier)
-                if (it.number != null) {
+                if (!it.number.isNullOrEmpty()) {
                     builder.append(" №${it.number}")
                 }
                 builder.append(" от " + it.orderDate + " на сумму " + it.stockCost)
