@@ -30,7 +30,7 @@ class CacheConfig {
         val type: TypeReference<List<Transaction>> = object : TypeReference<List<Transaction>>() {}
         return RedisCacheConfiguration.defaultCacheConfig()
             .disableCachingNullValues()
-            .entryTtl(Duration.ofHours(1))
+            .entryTtl(Duration.ofMinutes(30))
             .prefixCacheNameWith("ozon")
             .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(
                 GenericJackson2JsonRedisSerializer().configure {

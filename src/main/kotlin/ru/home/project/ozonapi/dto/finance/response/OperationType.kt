@@ -47,5 +47,6 @@ enum class OperationType(val description: String) {
     OperationMarketplaceServiceProcessingSpoilageSurplus("Обработка брака с приемки"),
     OperationMarketplaceSellerReturnsGeneral("Доставка возвратов до склада продавца силами Ozon"),
     OperationElectronicServiceStencil("Трафареты"),
-    OperationElectronicServicesPromotionInSearch("Продвижение в поиске")
+    OperationElectronicServicesPromotionInSearch("Продвижение в поиске"),
+    MarketplaceServiceItemCrossdocking("Кросс-докинг")
 }

@@ -113,6 +113,7 @@ class TotalRevenueCalculationServiceImpl(
         // Расходы на кросс док
         val crossDoc = transactions
             .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceCrossDockServiceWriteOff
+                    || transaction.operationType == OperationType.MarketplaceServiceItemCrossdocking
                     || transaction.operationType == OperationType.OperationMarketplaceSupplyAdditional }
             .sumOf { transaction -> transaction.income }
 
