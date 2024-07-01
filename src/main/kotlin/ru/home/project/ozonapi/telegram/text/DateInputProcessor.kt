@@ -48,7 +48,7 @@ class DateInputProcessor(
         val isDateInput = predefinedDates.contains(input) ||  datePattern.matcher(input).matches()
         if (isDateInput) {
             val chatId = update.message.chatId
-            val chat = telegramChatRepository.getByChatIdAndStateAndAction(chatId, true, ActionType.Revenue)
+            val chat = telegramChatRepository.getByChatIdAndState(chatId, true)
             return if (chat != null && dateProcessor.containsKey(chat.action)) {
                 dateProcessor[chat.action]!!.apply(update, input, chat)
             } else {
