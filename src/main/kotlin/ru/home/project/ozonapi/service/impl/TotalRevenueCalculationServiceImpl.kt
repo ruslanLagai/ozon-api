@@ -153,6 +153,9 @@ class TotalRevenueCalculationServiceImpl(
         // Всего возвратов
         val totalRefunds = revenueList.sumOf { it.refundCount }
 
+        // Себестоимость проданного товара
+        val costPrice = revenueList.sumOf { it.costPrice }
+
         val totalPrice = revenueList.sumOf { it.price }
         val totalCommission = revenueList.sumOf { it.saleCommission }
         val totalLogistic = revenueList.sumOf { it.logistic }
@@ -181,10 +184,11 @@ class TotalRevenueCalculationServiceImpl(
                 premium = premiumSubscription
                 totalRefund = BigDecimal(totalRefundCosts).setScale(2, RoundingMode.HALF_UP).toDouble()
                 compensation = compensationIncome
-                xDoc = crossDoc
+                xDoc = BigDecimal(crossDoc).setScale(2, RoundingMode.HALF_UP).toDouble()
                 spoilageCosts = spoilageSurplus
                 videoCoverCosts = videoCover
                 storageCosts = BigDecimal(storage).setScale(2, RoundingMode.HALF_UP).toDouble()
+                totalCostPrice = BigDecimal(costPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
             }
         }
 

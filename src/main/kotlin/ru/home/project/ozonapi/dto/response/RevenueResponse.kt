@@ -12,6 +12,8 @@ data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: 
     var totalRefund = 0.0
     var saleCommission = 0.0
     var price = 0.0
+    var costPrice = 0.0
+    var totalCostPrice = 0.0
     var taxes = 0.0
     var totalRevenue = 0.0
     var deliveryItemCount = 0

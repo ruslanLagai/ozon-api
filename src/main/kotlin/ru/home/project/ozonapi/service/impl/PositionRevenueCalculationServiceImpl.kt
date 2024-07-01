@@ -259,12 +259,14 @@ class PositionRevenueCalculationServiceImpl(
             val commissionCosts = revenuesMap.values.sumOf { item -> item.commission }
             val totalPrice = revenuesMap.values.sumOf { item -> item.price }
             val refundCosts = revenuesMap.values.sumOf { item -> item.refund }
+            var positionCostPrice = 0.0
 
             var averageRevenue = if (deliveries != 0) { (totalRevenue + refundCosts) / deliveries } else { 0.0 }
 
             // пропускаем, если в периоде не было доставок (только отмены)
             if (totalRevenue > 0) {
                 val costPrice = positionEntity.costPrice + positionEntity.additionalCost
+                positionCostPrice = costPrice * deliveries
                 totalRevenue = totalRevenue - costPrice * deliveries + refundCosts
                 averageRevenue -= costPrice
                 log.debug("Cost price for '${request.name}' '$costPrice'" )
@@ -287,6 +289,7 @@ class PositionRevenueCalculationServiceImpl(
                 saleCommission = BigDecimal(commissionCosts).setScale(2, RoundingMode.HALF_UP).toDouble()
                 refund = BigDecimal(refundCosts).setScale(2, RoundingMode.HALF_UP).toDouble()
                 price = BigDecimal(totalPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
+                costPrice = BigDecimal(positionCostPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
             }
             return response
         } catch (e: WebClientException) {

@@ -139,6 +139,7 @@ class DateInputProcessor(
             val msg = "\uD83D\uDCDD По всем позициям\n" +
                     "Оборот                                 $totalPrice\n" +
                     "Чистая прибыль                 $totalRevenueForAllDeliveredItems\n" +
+                    "Себестоимость                   $totalCostPrice\n" +
                     " - Логистика                        $totalLogisticCosts\n" +
                     " - Последняя миля             $totalLastMileCosts\n" +
                     " - Комиссия озон                $totalCommissionCosts\n" +
@@ -172,6 +173,7 @@ class DateInputProcessor(
                     val message = "\uD83D\uDCDD ${it.name}\n" +
 //                            "Оборот                        $price\n" +
                             "Чистая прибыль        $totalRevenue\n" +
+                            "Себестоимость         $costPrice\n" +
                             " - Комиссия озон        $saleCommission\n" +
                             " - Логистика                $logistic\n" +
                             " - Последняя миля      $lastMile\n" +
@@ -201,6 +203,7 @@ class DateInputProcessor(
             } else {
                 "\uD83D\uDCDD Расчет прибыли по ${name}\n" +
                         "Оборот                      $price\n" +
+                        "Себестоимость         $costPrice\n" +
                         "Чистая прибыль         $totalRevenue\n" +
                         " - Комиссия озон        $saleCommission\n" +
                         " - Логистика                $logistic\n" +
