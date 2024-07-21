@@ -31,6 +31,8 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-mysql")
     implementation("org.hibernate.validator:hibernate-validator")
+    implementation ("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation(project(":yandex-market"))
 
 //    developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
@@ -41,6 +43,8 @@ dependencies {
     testImplementation("org.testcontainers:junit-jupiter:1.19.0")
     testImplementation("org.testcontainers:mysql:1.19.0")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+    implementation ("com.squareup.moshi:moshi-kotlin:1.15.1")
+    implementation ("com.squareup.moshi:moshi-adapters:1.15.1")
 }
 
 tasks.test {

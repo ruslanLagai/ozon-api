@@ -1,0 +1,367 @@
+{
+  "status": "OK",
+  "result": {
+    "orders": [
+      {
+        "id": 474298090,
+        "creationDate": "2024-06-11",
+        "statusUpdateDate": "2024-06-12T19:20:51.569+03:00",
+        "status": "CANCELLED_IN_PROCESSING",
+        "partnerOrderId": "474298090",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 213,
+          "name": "Москва"
+        },
+        "items": [
+          {
+            "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+            "marketSku": 102085703934,
+            "shopSku": "0000005",
+            "count": 1,
+            "prices": [
+              {
+                "type": "MARKETPLACE",
+                "costPerItem": 17,
+                "total": 17
+              },
+              {
+                "type": "BUYER",
+                "costPerItem": 380,
+                "total": 380
+              }
+            ],
+            "warehouse": {
+              "id": 1387316,
+              "name": "House Mouse"
+            },
+            "details": [
+              {
+                "itemStatus": "REJECTED",
+                "itemCount": 1
+              }
+            ],
+            "cisList": [],
+            "bidFee": 1670,
+            "cofinanceThreshold": 340
+          }
+        ],
+        "payments": [
+          {
+            "id": "554137830",
+            "date": "2024-06-12",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 380
+          },
+          {
+            "id": "554271362",
+            "date": "2024-06-12",
+            "type": "REFUND",
+            "source": "BUYER",
+            "total": 380
+          }
+        ],
+        "commissions": [
+          {
+            "type": "AGENCY",
+            "actual": 0.12
+          }
+        ],
+        "buyerType": "PERSON"
+      },
+      {
+        "id": 473422002,
+        "creationDate": "2024-06-10",
+        "statusUpdateDate": "2024-06-14T22:58:50.51+03:00",
+        "status": "DELIVERED",
+        "partnerOrderId": "473422002",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 10757,
+          "name": "Талдом"
+        },
+        "items": [
+          {
+            "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+            "marketSku": 102085703934,
+            "shopSku": "0000005",
+            "count": 1,
+            "prices": [
+              {
+                "type": "BUYER",
+                "costPerItem": 400,
+                "total": 400
+              }
+            ],
+            "warehouse": {
+              "id": 1387316,
+              "name": "House Mouse"
+            },
+            "details": [],
+            "cisList": [],
+            "bidFee": 1573,
+            "cofinanceThreshold": 340
+          }
+        ],
+        "payments": [
+          {
+            "id": "551979872",
+            "date": "2024-06-10",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 400
+          }
+        ],
+        "commissions": [
+          {
+            "type": "DELIVERY_TO_CUSTOMER",
+            "actual": 100
+          },
+          {
+            "type": "LOYALTY_PARTICIPATION_FEE",
+            "actual": 2.8
+          },
+          {
+            "type": "SORTING",
+            "actual": 30
+          },
+          {
+            "type": "AUCTION_PROMOTION",
+            "actual": 62.92
+          },
+          {
+            "type": "AGENCY",
+            "actual": 0.12
+          },
+          {
+            "type": "FEE",
+            "actual": 80
+          },
+          {
+            "type": "PAYMENT_TRANSFER",
+            "actual": 5.2
+          }
+        ],
+        "buyerType": "PERSON"
+      },
+      {
+        "id": 472739698,
+        "creationDate": "2024-06-09",
+        "statusUpdateDate": "2024-06-13T16:58:47.43+03:00",
+        "status": "CANCELLED_IN_DELIVERY",
+        "partnerOrderId": "472739698",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 213,
+          "name": "Москва"
+        },
+        "items": [
+          {
+            "offerName": "Органайзер для хранения одежды и белья, коробка для хранения вещей, ящик для хранения, серый 40х50х20см",
+            "marketSku": 102601290465,
+            "shopSku": "000012",
+            "count": 2,
+            "prices": [
+              {
+                "type": "MARKETPLACE",
+                "costPerItem": 15,
+                "total": 30
+              },
+              {
+                "type": "BUYER",
+                "costPerItem": 920,
+                "total": 1840
+              }
+            ],
+            "warehouse": {
+              "id": 1387316,
+              "name": "House Mouse"
+            },
+            "details": [
+              {
+                "itemStatus": "REJECTED",
+                "itemCount": 1
+              },
+              {
+                "itemStatus": "REJECTED",
+                "itemCount": 1
+              }
+            ],
+            "cisList": [],
+            "bidFee": 0,
+            "cofinanceThreshold": 807
+          }
+        ],
+        "payments": [
+          {
+            "id": "555298580",
+            "date": "2024-06-13",
+            "type": "REFUND",
+            "source": "SPLIT",
+            "total": 1840
+          },
+          {
+            "id": "550984848",
+            "date": "2024-06-09",
+            "type": "PAYMENT",
+            "source": "SPLIT",
+            "total": 1840
+          }
+        ],
+        "commissions": [
+          {
+            "type": "AGENCY",
+            "actual": 0.12
+          },
+          {
+            "type": "SORTING",
+            "actual": 30
+          },
+          {
+            "type": "RETURNED_ORDERS_STORAGE",
+            "actual": 15
+          },
+          {
+            "type": "FEE",
+            "actual": 37.4
+          }
+        ],
+        "buyerType": "PERSON"
+      },
+      {
+        "id": 469869773,
+        "creationDate": "2024-06-04",
+        "statusUpdateDate": "2024-06-08T22:49:51.867+03:00",
+        "status": "DELIVERED",
+        "partnerOrderId": "469869773",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 213,
+          "name": "Москва"
+        },
+        "items": [
+          {
+            "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+            "marketSku": 102085703934,
+            "shopSku": "0000005",
+            "count": 1,
+            "prices": [
+              {
+                "type": "MARKETPLACE",
+                "costPerItem": 50,
+                "total": 50
+              },
+              {
+                "type": "BUYER",
+                "costPerItem": 300,
+                "total": 300
+              }
+            ],
+            "warehouse": {
+              "id": 1387316,
+              "name": "House Mouse"
+            },
+            "details": [],
+            "cisList": [],
+            "bidFee": 580,
+            "cofinanceThreshold": 340,
+            "cofinanceValue": 50
+          }
+        ],
+        "payments": [
+          {
+            "id": "549724476",
+            "date": "2024-06-08",
+            "type": "PAYMENT",
+            "source": "MARKETPLACE",
+            "total": 50
+          },
+          {
+            "id": "546716329",
+            "date": "2024-06-05",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 300
+          }
+        ],
+        "commissions": [
+          {
+            "type": "AUCTION_PROMOTION",
+            "actual": 20.3
+          },
+          {
+            "type": "AGENCY",
+            "actual": 0.12
+          },
+          {
+            "type": "DELIVERY_TO_CUSTOMER",
+            "actual": 100
+          },
+          {
+            "type": "SORTING",
+            "actual": 30
+          },
+          {
+            "type": "PAYMENT_TRANSFER",
+            "actual": 3.9
+          },
+          {
+            "type": "FEE",
+            "actual": 70
+          }
+        ],
+        "buyerType": "PERSON"
+      },
+      {
+        "id": 469722396,
+        "creationDate": "2024-06-04",
+        "statusUpdateDate": "2024-06-04T11:55:10.725+03:00",
+        "status": "CANCELLED_BEFORE_PROCESSING",
+        "partnerOrderId": "",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 10716,
+          "name": "Балашиха"
+        },
+        "items": [
+          {
+            "offerName": "Сумка пляжная женская, сумка шоппер",
+            "marketSku": 103079452519,
+            "shopSku": "0000034",
+            "count": 1,
+            "prices": [
+              {
+                "type": "MARKETPLACE",
+                "costPerItem": 151,
+                "total": 151
+              },
+              {
+                "type": "BUYER",
+                "costPerItem": 1191,
+                "total": 1191
+              }
+            ],
+            "warehouse": {
+              "id": 1387316,
+              "name": "House Mouse"
+            },
+            "details": [],
+            "cisList": []
+          }
+        ],
+        "payments": [],
+        "commissions": [],
+        "buyerType": "PERSON"
+      }
+    ],
+    "paging": {
+      "nextPageToken": "eyJvcCI6Ij4iLCJrZXkiOnsib3JkZXJJZCI6NDY5NzIyMzk2fSwic2tpcCI6MH0"
+    }
+  }
+}

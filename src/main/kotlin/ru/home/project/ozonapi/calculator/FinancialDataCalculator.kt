@@ -1,5 +1,6 @@
 package ru.home.project.ozonapi.calculator
 
+import org.openapitools.client.models.OrdersStatsOrderDTO
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 
 /**
@@ -36,4 +37,34 @@ interface FinancialDataCalculator {
      * Расчет затрат по возвратам
      */
     fun calculateRefund(transaction: Transaction): Double
+
+    /**
+     * Расчет начисления по заказу Яндекс маркета
+     */
+    fun calculateYandexRevenue(order: OrdersStatsOrderDTO): Double
+
+    /**
+     * Расчет оборота по позиции
+     */
+    fun calculateYandexPrice(order: OrdersStatsOrderDTO): Double
+
+    /**
+     * Расчет комиссии
+     */
+    fun calculateYandexCommission(order: OrdersStatsOrderDTO): Double
+
+    /**
+     * Расчет логистики
+     */
+    fun calculateYandexDelivery(order: OrdersStatsOrderDTO): Double
+
+    /**
+     * Расчет рекламы
+     */
+    fun calculateYandexMarketing(order: OrdersStatsOrderDTO): Double
+
+    /**
+     * Расчет эквайринга
+     */
+    fun calculateYandexAcquiring(order: OrdersStatsOrderDTO): Double
 }

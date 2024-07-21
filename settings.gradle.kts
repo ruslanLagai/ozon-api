@@ -3,3 +3,5 @@ plugins {
 }
 rootProject.name = "ozon-api"
 
+include(":yandex-market")
+

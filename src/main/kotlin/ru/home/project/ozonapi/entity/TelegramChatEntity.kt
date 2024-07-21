@@ -23,5 +23,7 @@ data class TelegramChatEntity(
 
     @Column(name = "state") var state: Boolean = true,
 
-    @Enumerated(value = EnumType.STRING) @Column(name = "action_type") var action: ActionType? = null
+    @Enumerated(value = EnumType.STRING) @Column(name = "action_type") var action: ActionType? = null,
+
+    @Enumerated(value = EnumType.STRING) @Column(name = "market_type") var market: MarketType? = null
 )

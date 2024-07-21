@@ -1,8 +1,12 @@
 package ru.home.project.ozonapi.calculator
 
+import org.openapitools.client.models.OrdersStatsCommissionType
+import org.openapitools.client.models.OrdersStatsOrderDTO
+import org.openapitools.client.models.OrdersStatsPaymentType
 import org.springframework.stereotype.Component
 import ru.home.project.ozonapi.dto.finance.response.AdditionalServiceType
 import ru.home.project.ozonapi.dto.finance.response.Transaction
+import java.math.BigDecimal
 
 /**
  * @author rlagay
@@ -37,5 +41,73 @@ class FinancialAmountCalculator: FinancialDataCalculator {
 
     override fun calculateRefund(transaction: Transaction): Double {
         return transaction.income
+    }
+
+    override fun calculateYandexRevenue(order: OrdersStatsOrderDTO): Double {
+        var payment = 0.0
+        order.payments?.forEach {
+            if (OrdersStatsPaymentType.PAYMENT == it.type && it.total != null) {
+                payment += it.total!!.toDouble()
+            } else if (OrdersStatsPaymentType.REFUND == it.type && it.total != null) {
+                payment -= it.total!!.toDouble()
+            }
+        }
+        var commission = 0.0
+        order.commissions?.forEach {
+            if (it.actual != null) {
+                commission += it.actual!!.toDouble()
+            }
+        }
+
+        return payment - commission
+    }
+
+    override fun calculateYandexPrice(order: OrdersStatsOrderDTO): Double {
+        var payment = 0.0
+        order.payments?.forEach {
+            if (OrdersStatsPaymentType.PAYMENT == it.type && it.total != null) {
+                payment += it.total!!.toDouble()
+            }
+        }
+        return payment
+    }
+
+    override fun calculateYandexCommission(order: OrdersStatsOrderDTO): Double {
+        return order.commissions
+            ?.filter { OrdersStatsCommissionType.FEE == it.type }
+            ?.filter { it.actual != null }
+            ?.sumOf { it.actual!!.toDouble() } ?: 0.0
+    }
+
+    override fun calculateYandexDelivery(order: OrdersStatsOrderDTO): Double {
+        return order.commissions
+            ?.filter { OrdersStatsCommissionType.DELIVERY_TO_CUSTOMER == it.type
+                    || OrdersStatsCommissionType.FULFILLMENT == it.type
+                    || OrdersStatsCommissionType.EXPRESS_DELIVERY_TO_CUSTOMER == it.type
+                    || OrdersStatsCommissionType.SORTING == it.type
+                    || OrdersStatsCommissionType.INTAKE_SORTING == it.type
+                    || OrdersStatsCommissionType.RETURNED_ORDERS_STORAGE == it.type
+                    || OrdersStatsCommissionType.RETURN_PROCESSING == it.type
+            }
+            ?.filter { it.actual != null }
+            ?.sumOf { it.actual!!.toDouble() } ?: 0.0
+    }
+
+    override fun calculateYandexMarketing(order: OrdersStatsOrderDTO): Double {
+        return order.commissions
+            ?.filter { OrdersStatsCommissionType.AUCTION_PROMOTION == it.type
+                    || OrdersStatsCommissionType.LOYALTY_PARTICIPATION_FEE == it.type
+            }
+            ?.filter { it.actual != null }
+            ?.sumOf { it.actual!!.toDouble() } ?: 0.0
+    }
+
+    override fun calculateYandexAcquiring(order: OrdersStatsOrderDTO): Double {
+        return order.commissions
+            ?.filter { OrdersStatsCommissionType.PAYMENT_TRANSFER == it.type
+                    || OrdersStatsCommissionType.AGENCY == it.type
+            }
+            ?.filter { it.actual != null }
+            ?.sumOf { it.actual!!.toDouble() } ?: 0.0
     }
 }

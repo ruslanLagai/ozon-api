@@ -18,5 +18,7 @@ data class PositionEntity(
 
     @Column(name = "ozon_id") val ozonId: String,
 
-    @Column(name = "artikul") val artikul: String
+    @Column(name = "artikul") val artikul: String,
+
+    @Column(name = "yandex_id") val yandexArtikul: String = ""
 )

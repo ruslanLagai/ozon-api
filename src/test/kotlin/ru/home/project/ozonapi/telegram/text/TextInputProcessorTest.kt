@@ -16,10 +16,7 @@ import org.springframework.test.util.ReflectionTestUtils
 import org.telegram.telegrambots.meta.api.objects.Message
 import org.telegram.telegrambots.meta.api.objects.Update
 import ru.home.project.ozonapi.dto.request.ProductRequest
-import ru.home.project.ozonapi.entity.ActionType
-import ru.home.project.ozonapi.entity.ChinaOrderEntity
-import ru.home.project.ozonapi.entity.PositionEntity
-import ru.home.project.ozonapi.entity.TelegramChatEntity
+import ru.home.project.ozonapi.entity.*
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.TelegramChatRepository
@@ -38,13 +35,14 @@ class TextInputProcessorTest {
     private val positionRevenueCalculationService = mock<RevenueCalculationService>()
     private val revenueCalculationServices = listOf(positionRevenueCalculationService)
     private val totalRevenueCalculationService = mock<TotalRevenueCalculationService>()
+    private val totalYandexRevenueCalculationService = mock<TotalRevenueCalculationService>()
     private val totalRefundsService = mock<TotalRefundsService>()
     private val publisher = mock<ApplicationEventPublisher>()
     private val chinaOrdersRepository = mock<ChinaOrdersRepository>()
     private val stockService = mock<StocksService>()
     private val ordersService = mock<OrdersService>()
 
-    private val calculationsCmdProcessor = CalculationsCmdProcessor(positionRepository)
+    private val calculationsCmdProcessor = CalculationsCmdProcessor()
     private val addPositionCmdProcessor = AddPositionCmdProcessor(telegramChatRepository)
     private val positionsCmdProcessor = PositionsCmdProcessor(positionRepository)
     private val editPoCommandProcessor = EditPositionCmdProcessor(telegramChatRepository)
@@ -58,7 +56,8 @@ class TextInputProcessorTest {
 
     private val commandProcessor = CommandProcessor(calculationsCmdProcessor, addPositionCmdProcessor, positionsCmdProcessor,
         editPoCommandProcessor, refunCmdProcessor, stockWorthCmdProcessor, orderCmdProcessor, deliveryDataCmdProcessor, deliveriesCmdProcessor)
-    private val dateInputProcessor = DateInputProcessor(telegramChatRepository, revenueCalculationServices, totalRevenueCalculationService, totalRefundsService)
+    private val dateInputProcessor = DateInputProcessor(telegramChatRepository, revenueCalculationServices,
+        totalRevenueCalculationService, totalYandexRevenueCalculationService, totalRefundsService)
     private val positionsInputProcessor = PositionsInputProcessor(positionRepository, telegramChatRepository)
     private val addOrderInputProcessor = AddOrderInputProcessor(telegramChatRepository, ordersService)
     private val addDeliveryInputProcessor = AddDeliveryInputProcessor(telegramChatRepository, ordersService)
@@ -152,7 +151,7 @@ class TextInputProcessorTest {
 
             assertEquals("Введите период, за который хотите посчитать маржинальность. Формат: 21.10.2023-21.11.2023.",
                 result?.text ?: "")
-            verify(telegramChatRepository).save(TelegramChatEntity(chatId = 1, positionName = "Зонт", action = ActionType.Revenue))
+            verify(telegramChatRepository).updatePositionByChatIdAnAndAction(1L, true, "Зонт")
         }
 
         @Test
@@ -204,8 +203,7 @@ class TextInputProcessorTest {
 
             val result = inputProcessors.map { it.processInput("/calculations", getUpdate()) }
                 .firstOrNull { it != null }
-            assertEquals("Выберите товар для расчета", result?.text ?: "")
-            verify(positionRepository).findAll()
+            assertEquals("Выберите магазин", result?.text ?: "")
         }
 
         @Test
@@ -229,13 +227,12 @@ class TextInputProcessorTest {
         @ValueSource(strings = [lastDayDate, lastTwoDaysDate, forCurrentMonth, forCurrentWeek])
         fun `test predefined date - all items`(period: String) {
             val telegramChatEntity = TelegramChatEntity(id = 1, chatId = 2, positionName = allItems,
-                state = true, action =  ActionType.Revenue)
+                state = true, action =  ActionType.Revenue, market = MarketType.Ozon)
 
             Mockito.`when`(message.chatId).thenReturn(1)
             Mockito.`when`(message.text).thenReturn(period)
             Mockito.`when`(message.isCommand).thenReturn(true)
-            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.Revenue))
-                .thenReturn(telegramChatEntity)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndState(1, true)).thenReturn(telegramChatEntity)
 
             val result = inputProcessors.map { it.processInput(period, getUpdate()) }
                 .firstOrNull { it != null }
@@ -248,12 +245,11 @@ class TextInputProcessorTest {
             "01.11.23-02.11.23"])
         fun `test date format`(input: String) {
             val telegramChatEntity = TelegramChatEntity(id = 1, chatId = 2, positionName = "зонт",
-                state = true, action =  ActionType.Revenue)
+                state = true, action =  ActionType.Revenue, market = MarketType.Ozon)
             Mockito.`when`(message.chatId).thenReturn(1)
             Mockito.`when`(message.text).thenReturn(input)
             Mockito.`when`(message.isCommand).thenReturn(true)
-            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.Revenue))
-                .thenReturn(telegramChatEntity)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndState(1, true)).thenReturn(telegramChatEntity)
 
             val result = inputProcessors.map { it.processInput(input, getUpdate()) }
                 .firstOrNull { it != null }
@@ -478,9 +474,9 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.of(2024, 7, 16))))
 
-            val result = inputProcessors.map { it.processInput("1234", getUpdate()) }
+            val result = inputProcessors.map { it.processInput("gomarkt №1234 от 2024-07-16 на сумму 100.0", getUpdate()) }
                 .first { it != null }
 
             assertEquals(msg, result?.text ?: "")

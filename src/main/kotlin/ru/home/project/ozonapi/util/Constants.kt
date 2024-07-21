@@ -17,6 +17,9 @@ const val allItems = "По всем товарам"
 const val refundsByCluster = "Возвраты по кластерам"
 const val refundsStatistics = "Возвраты по позициям"
 
+const val yandex = "Яндекс маркет"
+const val ozon = "Ozon"
+
 val moscowWestStocks = setOf("Гривно", "Давыдовское", "Павловская Слобода", "Петровское", "Хоругвино")
 val moscowEastStocks = setOf("Жуковский", "Ногинск", "Пушкино")
 val farEastStocks = setOf("Хабаровск")

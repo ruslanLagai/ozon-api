@@ -11,6 +11,7 @@ import ru.home.project.ozonapi.dto.finance.response.OperationType
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.request.RevenueRequest
 import ru.home.project.ozonapi.dto.response.RevenueResponse
+import ru.home.project.ozonapi.entity.MarketType
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.service.RevenueCalculationService
@@ -31,7 +32,7 @@ class PostRevenueCalculationServiceImpl(
     }
 
     override fun calculateRevenue(request: RevenueRequest): RevenueResponse? {
-        if (StringUtils.isBlank(request.postingNumber)) {
+        if (StringUtils.isBlank(request.postingNumber) || request.type != MarketType.Ozon) {
             log.debug("Posting number is empty, skipping calculation by posting number")
             return null
         }
@@ -39,7 +40,7 @@ class PostRevenueCalculationServiceImpl(
             return null
         }
 
-        val response = RevenueResponse(request.name, "", request.artikul)
+        val response = RevenueResponse(request.name, "", request.artikul, "")
 
         try {
             if (StringUtils.isBlank(request.name)) {

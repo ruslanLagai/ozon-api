@@ -26,6 +26,11 @@ interface TelegramChatRepository: JpaRepository<TelegramChatEntity, Long> {
 
     @Transactional
     @Modifying
+    @Query("update TelegramChatEntity entity set entity.positionName = ?3 where entity.chatId = ?1 and entity.state = ?2")
+    fun updatePositionByChatIdAnAndAction(id: Long, state: Boolean, positionName: String)
+
+    @Transactional
+    @Modifying
     @Query("update TelegramChatEntity entity set entity.state = ?2 where entity.chatId = ?1 and entity.action = ?3")
     fun updateStateByChatIdAndAction(id: Long, state: Boolean, action: ActionType)
 
@@ -36,8 +41,8 @@ interface TelegramChatRepository: JpaRepository<TelegramChatEntity, Long> {
 
     @Transactional
     @Modifying
-    @Query("update TelegramChatEntity entity set entity.to = ?2 where entity.chatId = ?1")
-    fun updateToByChatId(chatId: Long, to: OffsetDateTime)
+    @Query("update TelegramChatEntity entity set entity.state = ?2 where entity.chatId = ?1")
+    fun updateToByChatId(chatId: Long, state: Boolean)
 
     @Transactional
     @Modifying

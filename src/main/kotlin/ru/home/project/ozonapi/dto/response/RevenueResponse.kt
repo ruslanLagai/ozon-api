@@ -3,7 +3,7 @@ package ru.home.project.ozonapi.dto.response
 /**
  * @author rlagay
  */
-data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: String?) {
+data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: String?, var yandexId: String? = "") {
     var revenue: Double = 0.0
     var averageRevenue = 0.0
     var logistic = 0.0
@@ -42,4 +42,6 @@ data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: 
     var spoilageCosts: Double = 0.0
     var videoCoverCosts = 0.0
     var storageCosts: Double = 0.0
+    var marketing: Double = 0.0
+    var acquiring: Double = 0.0
 }

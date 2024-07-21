@@ -40,35 +40,42 @@ class PositionsInputProcessor(
     override fun processInput(input: String, update: Update): SendMessage? {
         val isPositionInput = positionNames.contains(input.trim())
         if (isPositionInput) {
-            telegramChatRepository.save(
-                TelegramChatEntity(chatId = update.message.chatId, positionName = input.trim(),
-                action = ActionType.Revenue)
-            )
+            kotlin.runCatching {
+                telegramChatRepository.updatePositionByChatIdAnAndAction(
+                    update.message.chatId,
+                    true,
+                    input.trim()
+                )
 
-            val keyBoardRows = ArrayList<KeyboardRow>()
-            val keyboardRow1 = KeyboardRow()
-            keyboardRow1.add(lastDayDate)
-            keyboardRow1.add(lastTwoDaysDate)
-            keyBoardRows.add(keyboardRow1)
+                val keyBoardRows = ArrayList<KeyboardRow>()
+                val keyboardRow1 = KeyboardRow()
+                keyboardRow1.add(lastDayDate)
+                keyboardRow1.add(lastTwoDaysDate)
+                keyBoardRows.add(keyboardRow1)
 
-            val keyboardRow2 = KeyboardRow()
-            keyboardRow2.add(forCurrentWeek)
-            keyboardRow2.add(forCurrentMonth)
-            keyBoardRows.add(keyboardRow2)
+                val keyboardRow2 = KeyboardRow()
+                keyboardRow2.add(forCurrentWeek)
+                keyboardRow2.add(forCurrentMonth)
+                keyBoardRows.add(keyboardRow2)
 
-            val replyKeyboardMarkup = ReplyKeyboardMarkup()
-            replyKeyboardMarkup.apply {
-                selective = true
-                resizeKeyboard = true
-                oneTimeKeyboard = true
-                keyboard = keyBoardRows
+                val replyKeyboardMarkup = ReplyKeyboardMarkup()
+                replyKeyboardMarkup.apply {
+                    selective = false
+                    resizeKeyboard = true
+                    oneTimeKeyboard = true
+                    keyboard = keyBoardRows
+                }
+
+                val msg = SendMessage()
+                msg.text = "Введите период, за который хотите посчитать маржинальность. Формат: 21.10.2023-21.11.2023."
+                msg.replyMarkup = replyKeyboardMarkup
+                msg.chatId = update.message?.chatId.toString()
+                return msg
+            }.onFailure {
+                val chat = telegramChatRepository.getByChatIdAndState(update.message.chatId, true)
+                chat!!.id?.let { it1 -> telegramChatRepository.updateToByChatId(it1, false) }
             }
 
-            val msg = SendMessage()
-            msg.text = "Введите период, за который хотите посчитать маржинальность. Формат: 21.10.2023-21.11.2023."
-            msg.replyMarkup = replyKeyboardMarkup
-            msg.chatId = update.message?.chatId.toString()
-            return msg
         }
         return null
     }

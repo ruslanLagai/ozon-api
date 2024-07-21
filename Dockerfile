@@ -14,6 +14,7 @@ WORKDIR /workspace/
 COPY build.gradle.kts settings.gradle.kts gradlew ./
 COPY gradlew gradlew
 COPY src src
+COPY yandex-market yandex-market
 
 RUN --mount=type=cache,target=/root/.m2/ \
     --mount=type=cache,sharing=locked,target=/root/.gradle \

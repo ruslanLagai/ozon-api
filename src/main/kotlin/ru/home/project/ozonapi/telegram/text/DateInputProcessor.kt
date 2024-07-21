@@ -8,6 +8,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
 import ru.home.project.ozonapi.dto.request.RevenueRequest
 import ru.home.project.ozonapi.entity.ActionType
+import ru.home.project.ozonapi.entity.MarketType
 import ru.home.project.ozonapi.entity.TelegramChatEntity
 import ru.home.project.ozonapi.repository.TelegramChatRepository
 import ru.home.project.ozonapi.service.RevenueCalculationService
@@ -26,7 +27,8 @@ import java.util.regex.Pattern
 class DateInputProcessor(
     val telegramChatRepository: TelegramChatRepository,
     val revenueCalculationServices: List<RevenueCalculationService>,
-    val totalRevenueCalculationService: TotalRevenueCalculationService,
+    val ozonTotalRevenueCalculationServiceImpl: TotalRevenueCalculationService,
+    val yandexTotalRevenueCalculationServiceImpl: TotalRevenueCalculationService,
     val totalRefundsService: TotalRefundsService
 ): TextInputProcessor {
 
@@ -41,7 +43,11 @@ class DateInputProcessor(
     private val dateProcessor = mapOf<ActionType, TriFunction<Update, String, TelegramChatEntity, SendMessage?>>(
         Pair(ActionType.Revenue, TriFunction { update, input, chat -> processRevenue(update, input, chat) }),
         Pair(ActionType.Refund, TriFunction { update, input, chat -> processRefund(update, input, chat) })
+    )
 
+    private val marketProccessor = mapOf<MarketType, BiFunction<TelegramChatEntity, RevenueRequest, String>>(
+        Pair(MarketType.Ozon, BiFunction { chat, request -> calculateOzon(chat, request) }),
+        Pair(MarketType.Yandex, BiFunction { chat, request -> calculateYandex(chat, request) })
     )
 
     override fun processInput(input: String, update: Update): SendMessage? {
@@ -75,11 +81,7 @@ class DateInputProcessor(
             val from = parseFromDate(fromDate)
 
             val request = RevenueRequest(name = chatEntity.positionName, to = to, from = from)
-            text = if (chatEntity.positionName == allItems) {
-                calculateAllItems(request)
-            } else {
-                calculateItem(request)
-            }
+            text = marketProccessor[chatEntity.market]!!.apply(chatEntity, request)
             val msg = SendMessage()
             msg.chatId = update.message?.chatId.toString()
             msg.text = text
@@ -90,6 +92,24 @@ class DateInputProcessor(
         } finally {
             telegramChatRepository.updateStateByChatIdAndAction(chatId, false, ActionType.Revenue)
         }
+    }
+
+    private fun calculateYandex(
+        chatEntity: TelegramChatEntity,
+        request: RevenueRequest
+    ) = if (chatEntity.positionName == allItems) {
+        calculateAllItemsYandex(request)
+    } else {
+        calculateItemYandex(request)
+    }
+
+    private fun calculateOzon(
+        chatEntity: TelegramChatEntity,
+        request: RevenueRequest
+    ) = if (chatEntity.positionName == allItems) {
+        calculateAllItems(request)
+    } else {
+        calculateItem(request)
     }
 
     private fun processRefund(update: Update, input: String, chatEntity: TelegramChatEntity): SendMessage? {
@@ -127,95 +147,44 @@ class DateInputProcessor(
 
     private fun calculateAllItems(request: RevenueRequest): String {
         val allItemsRequest = RevenueRequest(to = request.to, from = request.from, name = null)
-        val result = totalRevenueCalculationService.calculateRevenue(allItemsRequest)
-        val sb = StringBuilder()
+        val result = ozonTotalRevenueCalculationServiceImpl.calculateRevenue(allItemsRequest)
 
         if (result.isEmpty()) {
             log.warn("Revenue calculation is null, request '${allItemsRequest}'")
             return "Не удалось рассчитать маржинальность"
         }
-
-        result.first().apply {
-            val msg = "\uD83D\uDCDD По всем позициям\n" +
-                    "Оборот                                 $totalPrice\n" +
-                    "Чистая прибыль                 $totalRevenueForAllDeliveredItems\n" +
-                    "Себестоимость                   $totalCostPrice\n" +
-                    " - Логистика                        $totalLogisticCosts\n" +
-                    " - Последняя миля             $totalLastMileCosts\n" +
-                    " - Комиссия озон                $totalCommissionCosts\n" +
-                    " - Реклама                            $marketingCosts\n" +
-                    "   • Трафареты                       $stencil\n" +
-                    "   • Продвижение                 $promotionInSearch\n" +
-                    " - Возвраты                          $totalRefund\n" +
-                    " - Отзывы                             $totalFeedBackCost\n" +
-                    "   • Закрепление                   $pinFeedback\n" +
-                    "   • Отзывы за балы              $feedbackCosts\n" +
-                    " - Утилизация                     $destroyCosts\n" +
-                    " - Премиум                          $premium\n" +
-                    " - Компенсация                  $compensation\n" +
-                    " - Кросс-док                         $xDoc\n" +
-                    " - Обработка брака            $spoilageCosts\n" +
-                    " - Видеообложка                  $videoCoverCosts\n" +
-                    " - Хранение                          $storageCosts\n" +
-                    "Доставки                              $totalDeliveryItemCount\n" +
-                    "Возвраты                             $totalRefundsCount\n" +
-                    "Количество продаж          $soldItemsCount\n" +
-                    "Налоги                                 $totalTaxes\n"
-
-            sb.append(msg).append("\n-----------------------------------\n")
-        }
-
-        result
-            .filter { it.errorMessage == null }
-            .filter { it.totalRevenue != 0.0 || it.deliveryItemCount != 0 || it.refundCount != 0 }
-            .forEach {
-                it.apply {
-                    val message = "\uD83D\uDCDD ${it.name}\n" +
-//                            "Оборот                        $price\n" +
-                            "Чистая прибыль        $totalRevenue\n" +
-                            "Себестоимость         $costPrice\n" +
-                            " - Комиссия озон        $saleCommission\n" +
-                            " - Логистика                $logistic\n" +
-                            " - Последняя миля      $lastMile\n" +
-                            " - Возвраты                 $refund\n" +
-                            "Средняя прибыль      $averageRevenue\n" +
-                            "Доставки                       $deliveryItemCount\n" +
-                            "Налог                              $taxes\n" +
-                            "Возвраты                      $refundCount\n"
-                    sb.append(message).append("\n")
-                }
-            }
-        return sb.toString()
+        return produceOzonAllItemsMessage(result)
     }
 
-    private fun calculateItem(request: RevenueRequest): String {
+    private fun calculateAllItemsYandex(request: RevenueRequest): String {
+        val allItemsRequest = RevenueRequest(to = request.to, from = request.from, name = null)
+        val result = yandexTotalRevenueCalculationServiceImpl.calculateRevenue(allItemsRequest)
+
+        if (result.isEmpty()) {
+            log.warn("Revenue calculation is null, request '${allItemsRequest}'")
+            return "Не удалось рассчитать маржинальность"
+        }
+        return produceYandexAllItemsMessage(result)
+    }
+
+    private fun calculateItemYandex(request: RevenueRequest): String {
         val result = revenueCalculationServices.map { it.calculateRevenue(request) }.firstOrNull(Objects::nonNull)
-        val text: String
 
         if (result == null) {
             log.warn("Revenue calculation is null, request ${request}")
             return "Не удалось рассчитать маржинальность"
         }
+        return produceYandexItemMessage(result)
+    }
 
-        result.apply {
-            text = if (result.errorMessage != null) {
-                result.errorMessage as String
-            } else {
-                "\uD83D\uDCDD Расчет прибыли по ${name}\n" +
-                        "Оборот                      $price\n" +
-                        "Себестоимость         $costPrice\n" +
-                        "Чистая прибыль         $totalRevenue\n" +
-                        " - Комиссия озон        $saleCommission\n" +
-                        " - Логистика                $logistic\n" +
-                        " - Последняя миля      $lastMile\n" +
-                        "Средняя прибыль       $averageRevenue\n" +
-                        "Доставки                      $deliveryItemCount\n" +
-                        "Налог                             $taxes\n" +
-                        "Возвраты                      $refundCount\n" +
-                        "Продано                        $soldItemsCount\n"
-            }
+    private fun calculateItem(request: RevenueRequest): String {
+        val result = revenueCalculationServices.map { it.calculateRevenue(request) }.firstOrNull(Objects::nonNull)
+
+        if (result == null) {
+            log.warn("Revenue calculation is null, request ${request}")
+            return "Не удалось рассчитать маржинальность"
         }
-        return text
+        return produceOzonItemMessage(result)
     }
 
     private fun processRefundByCluster(from: OffsetDateTime, to: OffsetDateTime): String {

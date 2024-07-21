@@ -1,0 +1,32 @@
+{
+  "campaigns": [
+    {
+      "domain": "ИП Лагай О.Н. House Mouse",
+      "id": 66071470,
+      "clientId": 106864570,
+      "business": {
+        "id": 75019228,
+        "name": "House Mouse"
+      },
+      "placementType": "FBY"
+    },
+    {
+      "domain": "House Mouse",
+      "id": 93726650,
+      "clientId": 300974967,
+      "business": {
+        "id": 75019228,
+        "name": "House Mouse"
+      },
+      "placementType": "FBS"
+    }
+  ],
+  "pager": {
+    "total": 2,
+    "from": 1,
+    "to": 2,
+    "currentPage": 1,
+    "pagesCount": 1,
+    "pageSize": 2
+  }
+}

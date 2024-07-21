@@ -11,6 +11,7 @@ import ru.home.project.ozonapi.dto.finance.response.OperationType
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.request.RevenueRequest
 import ru.home.project.ozonapi.dto.response.RevenueResponse
+import ru.home.project.ozonapi.entity.MarketType
 import ru.home.project.ozonapi.model.PositionFinanceData
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.service.OzonService
@@ -32,7 +33,7 @@ class PositionRevenueCalculationServiceImpl(
 ) : RevenueCalculationService {
 
     private val formatter: DateTimeFormatter = DateTimeFormatter.ISO_DATE_TIME
-    private val taxPercentage: Double = 0.06
+    private val taxPercentage: Double = 0.07
     private val deliveryPattern = Regex("\\d+-\\d+-\\d+")
 
     private val deliveryOrRefundPredicate = Predicate<Transaction> {
@@ -48,7 +49,7 @@ class PositionRevenueCalculationServiceImpl(
     }
 
     override fun calculateRevenue(request: RevenueRequest): RevenueResponse? {
-        if (StringUtils.isBlank(request.name)) {
+        if (StringUtils.isBlank(request.name) || request.type != MarketType.Ozon) {
             log.debug("Position name is empty, skipping calculation for position")
             return null
         }
@@ -57,7 +58,7 @@ class PositionRevenueCalculationServiceImpl(
             return null
         }
 
-        val response = RevenueResponse(request.name, "", request.artikul)
+        val response = RevenueResponse(request.name, "", request.artikul, "")
 
         try {
             if (request.from == null || request.to == null) {

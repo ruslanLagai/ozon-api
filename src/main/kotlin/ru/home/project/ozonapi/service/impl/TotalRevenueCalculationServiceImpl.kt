@@ -95,6 +95,10 @@ class TotalRevenueCalculationServiceImpl(
         val feedback = transactions
             .filter { transaction -> transaction.operationType == OperationType.MarketplaceSaleReviewsOperation }
             .sumOf { transaction -> transaction.income }
+        // Начисление по претензиям
+        val otherIncome = transactions
+            .filter { transaction -> transaction.operationType == OperationType.AccrualInternalClaim }
+            .sumOf { transaction -> transaction.income }
         val pinFeedback = transactions
             .filter { transaction -> transaction.operationType == OperationType.OperationMarketPlaceItemPinReview }
             .sumOf { transaction -> transaction.income }
@@ -144,7 +148,7 @@ class TotalRevenueCalculationServiceImpl(
         var totalRevenue = revenueList
             .map(RevenueResponse::totalRevenue)
             .sum()
-        totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome + crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage
+        totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome + crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage + otherIncome
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено

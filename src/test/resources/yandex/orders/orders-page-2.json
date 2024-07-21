@@ -1,0 +1,5667 @@
+{
+  "pager": {
+    "total": 100,
+    "from": 51,
+    "to": 100,
+    "currentPage": 2,
+    "pagesCount": 3,
+    "pageSize": 50
+  },
+  "orders": [
+    {
+      "id": 479079179,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "19-06-2024 20:28:51",
+      "currency": "RUR",
+      "itemsTotal": 143,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 364,
+      "buyerTotal": 364,
+      "buyerItemsTotalBeforeDiscount": 394,
+      "buyerTotalBeforeDiscount": 394,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 623514590,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 143,
+          "buyerPrice": 143,
+          "buyerPriceBeforeDiscount": 394,
+          "priceBeforeDiscount": 394,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 251,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 23
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 7
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "YANDEX_CASHBACK",
+              "amount": 221
+            },
+            {
+              "type": "SUBSIDY",
+              "amount": 30
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "YANDEX_CASHBACK",
+          "amount": 221
+        },
+        {
+          "type": "SUBSIDY",
+          "amount": 30
+        }
+      ],
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "Доставка",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "21-06-2024",
+          "toDate": "21-06-2024",
+          "fromTime": "00:00:00",
+          "toTime": "00:00:00",
+          "realDeliveryDate": "22-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "city": "Москва",
+          "street": "бульвар Маршала Рокоссовского",
+          "house": "6к1",
+          "entrance": "11",
+          "entryphone": "1649",
+          "floor": "16",
+          "apartment": "1649",
+          "gps": {
+            "latitude": 55.80993,
+            "longitude": 37.72789
+          }
+        },
+        "deliveryServiceId": 18881,
+        "liftPrice": 0,
+        "shipments": [
+          {
+            "id": 473768047,
+            "shipmentDate": "20-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 478910680,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "19-06-2024 15:35:25",
+      "currency": "RUR",
+      "itemsTotal": 330,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 330,
+      "buyerTotal": 330,
+      "buyerItemsTotalBeforeDiscount": 330,
+      "buyerTotalBeforeDiscount": 330,
+      "paymentType": "POSTPAID",
+      "paymentMethod": "CARD_ON_DELIVERY",
+      "fake": false,
+      "items": [
+        {
+          "id": 623311676,
+          "offerId": "0000029",
+          "offerName": "Крючки держатели пластиковые для ванной комнаты, кухни самоклеющиеся настенные, для одежды в прихожую, полотенец в ванную, 4 шт",
+          "price": 330,
+          "buyerPrice": 330,
+          "buyerPriceBeforeDiscount": 330,
+          "priceBeforeDiscount": 330,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000029",
+          "subsidy": 0,
+          "partnerWarehouseId": "308"
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "20-06-2024",
+          "toDate": "20-06-2024",
+          "fromTime": "10:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "20-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "109428",
+          "city": "Москва",
+          "street": "Рязанский проспект",
+          "house": "30",
+          "block": "2",
+          "gps": {
+            "latitude": 55.718187,
+            "longitude": 37.784066
+          }
+        },
+        "deliveryServiceId": 1006416,
+        "liftPrice": 0,
+        "outletCode": "929",
+        "shipments": [
+          {
+            "id": 473599549,
+            "shipmentDate": "19-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 478570442,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "19-06-2024 07:44:35",
+      "currency": "RUR",
+      "itemsTotal": 392,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 392,
+      "buyerTotal": 392,
+      "buyerItemsTotalBeforeDiscount": 397,
+      "buyerTotalBeforeDiscount": 397,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 622904143,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 392,
+          "buyerPrice": 392,
+          "buyerPriceBeforeDiscount": 397,
+          "priceBeforeDiscount": 397,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 5,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 4
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 5
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 5
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "20-06-2024",
+          "toDate": "20-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "20-06-2024"
+        },
+        "region": {
+          "id": 10732,
+          "name": "Кашира",
+          "type": "CITY",
+          "parent": {
+            "id": 98587,
+            "name": "Городской округ Кашира",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 1,
+              "name": "Москва и Московская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "142921",
+          "city": "Кашира",
+          "street": "Гвардейская улица",
+          "house": "3",
+          "gps": {
+            "latitude": 54.792713,
+            "longitude": 38.267993
+          }
+        },
+        "deliveryServiceId": 647324,
+        "liftPrice": 0,
+        "outletCode": "29686",
+        "shipments": [
+          {
+            "id": 473259311,
+            "shipmentDate": "19-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 477959174,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "18-06-2024 05:41:12",
+      "currency": "RUR",
+      "itemsTotal": 884,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 884,
+      "buyerTotal": 884,
+      "buyerItemsTotalBeforeDiscount": 990,
+      "buyerTotalBeforeDiscount": 990,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 622207135,
+          "offerId": "0000028",
+          "offerName": "Вешалка для одежды, набор плечиков с нескользящим покрытием и вырезом под ворот, 10 штук, оранжевыезом",
+          "price": 884,
+          "buyerPrice": 884,
+          "buyerPriceBeforeDiscount": 990,
+          "priceBeforeDiscount": 990,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000028",
+          "subsidy": 106,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 106
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 106
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 106
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "19-06-2024",
+          "toDate": "19-06-2024",
+          "fromTime": "10:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "19-06-2024"
+        },
+        "region": {
+          "id": 20523,
+          "name": "Электросталь",
+          "type": "CITY",
+          "parent": {
+            "id": 120993,
+            "name": "Городской округ Электросталь",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 1,
+              "name": "Москва и Московская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "144003",
+          "city": "Электросталь",
+          "street": "Фрязевское шоссе",
+          "house": "50",
+          "gps": {
+            "latitude": 55.781064,
+            "longitude": 38.433736
+          }
+        },
+        "deliveryServiceId": 799727,
+        "liftPrice": 0,
+        "outletCode": "30378",
+        "shipments": [
+          {
+            "id": 472648052,
+            "shipmentDate": "18-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 477653436,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "17-06-2024 15:47:53",
+      "currency": "RUR",
+      "itemsTotal": 390,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 390,
+      "buyerTotal": 390,
+      "buyerItemsTotalBeforeDiscount": 395,
+      "buyerTotalBeforeDiscount": 395,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 621862941,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 390,
+          "buyerPrice": 390,
+          "buyerPriceBeforeDiscount": 395,
+          "priceBeforeDiscount": 395,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 5,
+          "partnerWarehouseId": "302",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 5
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 5
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 5
+        }
+      ],
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "Доставка",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "27-06-2024",
+          "toDate": "27-06-2024",
+          "fromTime": "10:00:00",
+          "toTime": "23:00:00",
+          "realDeliveryDate": "27-06-2024"
+        },
+        "region": {
+          "id": 56,
+          "name": "Челябинск",
+          "type": "CITY",
+          "parent": {
+            "id": 121115,
+            "name": "Челябинский городской округ",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 11225,
+              "name": "Челябинская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 52,
+                "name": "Уральский федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "454003",
+          "city": "Челябинск",
+          "street": "улица Чичерина",
+          "house": "36",
+          "entrance": "7",
+          "entryphone": "252",
+          "floor": "3",
+          "apartment": "252",
+          "gps": {
+            "latitude": 55.17777,
+            "longitude": 61.29561
+          }
+        },
+        "deliveryServiceId": 83575,
+        "liftPrice": 0,
+        "shipments": [
+          {
+            "id": 472342317,
+            "shipmentDate": "22-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 477400730,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "17-06-2024 11:18:45",
+      "currency": "RUR",
+      "itemsTotal": 198,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 347,
+      "buyerTotal": 347,
+      "buyerItemsTotalBeforeDiscount": 376,
+      "buyerTotalBeforeDiscount": 376,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 621556269,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 198,
+          "buyerPrice": 198,
+          "buyerPriceBeforeDiscount": 376,
+          "priceBeforeDiscount": 376,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 178,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 7
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 21
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "YANDEX_CASHBACK",
+              "amount": 149
+            },
+            {
+              "type": "SUBSIDY",
+              "amount": 29
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "YANDEX_CASHBACK",
+          "amount": 149
+        },
+        {
+          "type": "SUBSIDY",
+          "amount": 29
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "19-06-2024",
+          "toDate": "19-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "19-06-2024"
+        },
+        "region": {
+          "id": 10747,
+          "name": "Подольск",
+          "type": "CITY",
+          "parent": {
+            "id": 98603,
+            "name": "Городской округ Подольск",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 1,
+              "name": "Москва и Московская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "142180",
+          "city": "Подольск",
+          "street": "Октябрьская площадь",
+          "house": "2А",
+          "gps": {
+            "latitude": 55.375521,
+            "longitude": 37.537659
+          }
+        },
+        "deliveryServiceId": 1006560,
+        "liftPrice": 0,
+        "outletCode": "16676",
+        "shipments": [
+          {
+            "id": 472089614,
+            "shipmentDate": "18-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 477154390,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "16-06-2024 20:53:24",
+      "currency": "RUR",
+      "itemsTotal": 250,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 250,
+      "buyerTotal": 250,
+      "buyerItemsTotalBeforeDiscount": 358,
+      "buyerTotalBeforeDiscount": 358,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 621278116,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 250,
+          "buyerPrice": 250,
+          "buyerPriceBeforeDiscount": 358,
+          "priceBeforeDiscount": 358,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 108,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 3
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 64
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 40
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 108
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 108
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "18-06-2024",
+          "toDate": "18-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "18-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "195221",
+          "city": "Санкт-Петербург",
+          "street": "проспект Металлистов",
+          "house": "59",
+          "gps": {
+            "latitude": 59.969349,
+            "longitude": 30.40879
+          }
+        },
+        "deliveryServiceId": 1006392,
+        "liftPrice": 0,
+        "outletCode": "5367",
+        "shipments": [
+          {
+            "id": 471843276,
+            "shipmentDate": "17-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 477110771,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "16-06-2024 19:35:22",
+      "currency": "RUR",
+      "itemsTotal": 344,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 344,
+      "buyerTotal": 344,
+      "buyerItemsTotalBeforeDiscount": 372,
+      "buyerTotalBeforeDiscount": 372,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 621228887,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 344,
+          "buyerPrice": 344,
+          "buyerPriceBeforeDiscount": 372,
+          "priceBeforeDiscount": 372,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 28,
+          "partnerWarehouseId": "302",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 28
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 28
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 28
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "18-06-2024",
+          "toDate": "18-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "18-06-2024"
+        },
+        "region": {
+          "id": 51,
+          "name": "Самара",
+          "type": "CITY",
+          "parent": {
+            "id": 120861,
+            "name": "Городской округ Самара",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 11131,
+              "name": "Самарская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 40,
+                "name": "Приволжский федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "443083",
+          "city": "Самара",
+          "street": "улица Победы",
+          "house": "18",
+          "gps": {
+            "latitude": 53.207308,
+            "longitude": 50.235695
+          }
+        },
+        "deliveryServiceId": 1006035,
+        "liftPrice": 0,
+        "outletCode": "1362",
+        "shipments": [
+          {
+            "id": 471799658,
+            "shipmentDate": "17-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 476953702,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "16-06-2024 14:54:40",
+      "currency": "RUR",
+      "itemsTotal": 315,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 315,
+      "buyerTotal": 315,
+      "buyerItemsTotalBeforeDiscount": 378,
+      "buyerTotalBeforeDiscount": 378,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 621051994,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 315,
+          "buyerPrice": 315,
+          "buyerPriceBeforeDiscount": 378,
+          "priceBeforeDiscount": 378,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 63,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 43
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 19
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 63
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 63
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "17-06-2024",
+          "toDate": "17-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "17-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "197375",
+          "city": "Санкт-Петербург",
+          "street": "Новоколомяжский проспект",
+          "house": "4",
+          "block": "1",
+          "gps": {
+            "latitude": 60.026848,
+            "longitude": 30.296979
+          }
+        },
+        "deliveryServiceId": 155549,
+        "liftPrice": 0,
+        "outletCode": "21428",
+        "shipments": [
+          {
+            "id": 471642591,
+            "shipmentDate": "16-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 476718644,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "16-06-2024 03:43:17",
+      "currency": "RUR",
+      "itemsTotal": 327,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 327,
+      "buyerTotal": 327,
+      "buyerItemsTotalBeforeDiscount": 367,
+      "buyerTotalBeforeDiscount": 367,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 620787871,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 327,
+          "buyerPrice": 327,
+          "buyerPriceBeforeDiscount": 367,
+          "priceBeforeDiscount": 367,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 40,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 7
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 32
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 40
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 40
+        }
+      ],
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "Доставка",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "17-06-2024",
+          "toDate": "17-06-2024",
+          "fromTime": "00:00:00",
+          "toTime": "00:00:00",
+          "realDeliveryDate": "18-06-2024"
+        },
+        "region": {
+          "id": 118936,
+          "name": "Мурино",
+          "type": "CITY",
+          "parent": {
+            "id": 165784,
+            "name": "Муринское городское поселение",
+            "type": "OTHER",
+            "parent": {
+              "id": 98621,
+              "name": "Всеволожский район",
+              "type": "REPUBLIC_AREA",
+              "parent": {
+                "id": 10174,
+                "name": "Санкт-Петербург и Ленинградская область",
+                "type": "REPUBLIC",
+                "parent": {
+                  "id": 17,
+                  "name": "Северо-Западный федеральный округ",
+                  "type": "COUNTRY_DISTRICT",
+                  "parent": {
+                    "id": 225,
+                    "name": "Россия",
+                    "type": "COUNTRY"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "city": "Мурино",
+          "street": "Екатерининская улица",
+          "house": "12",
+          "entrance": "2",
+          "floor": "7",
+          "apartment": "76",
+          "gps": {
+            "latitude": 60.05868,
+            "longitude": 30.43925
+          }
+        },
+        "deliveryServiceId": 18881,
+        "liftPrice": 0,
+        "shipments": [
+          {
+            "id": 471407536,
+            "shipmentDate": "16-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 476705710,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "16-06-2024 01:26:31",
+      "currency": "RUR",
+      "itemsTotal": 390,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 390,
+      "buyerTotal": 390,
+      "buyerItemsTotalBeforeDiscount": 395,
+      "buyerTotalBeforeDiscount": 395,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 620772944,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 390,
+          "buyerPrice": 390,
+          "buyerPriceBeforeDiscount": 395,
+          "priceBeforeDiscount": 395,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 5,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 5
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 5
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 5
+        }
+      ],
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "Доставка",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "17-06-2024",
+          "toDate": "17-06-2024",
+          "fromTime": "00:00:00",
+          "toTime": "00:00:00",
+          "realDeliveryDate": "18-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "127422",
+          "city": "Москва",
+          "street": "улица Костякова",
+          "house": "2/6",
+          "entrance": "4",
+          "entryphone": "121в",
+          "floor": "8",
+          "apartment": "121",
+          "gps": {
+            "latitude": 55.80986,
+            "longitude": 37.57471
+          }
+        },
+        "deliveryServiceId": 18881,
+        "liftPrice": 0,
+        "shipments": [
+          {
+            "id": 471394602,
+            "shipmentDate": "16-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "notes": "Прошу позвонить за час до вручения заказа.",
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 476592976,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "15-06-2024 20:32:39",
+      "currency": "RUR",
+      "itemsTotal": 358,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 358,
+      "buyerTotal": 358,
+      "buyerItemsTotalBeforeDiscount": 379,
+      "buyerTotalBeforeDiscount": 379,
+      "paymentType": "POSTPAID",
+      "paymentMethod": "CARD_ON_DELIVERY",
+      "fake": false,
+      "items": [
+        {
+          "id": 620644520,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 358,
+          "buyerPrice": 358,
+          "buyerPriceBeforeDiscount": 379,
+          "priceBeforeDiscount": 379,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 21,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 21
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 21
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 21
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "16-06-2024",
+          "toDate": "16-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "16-06-2024"
+        },
+        "region": {
+          "id": 10891,
+          "name": "Сосновый Бор",
+          "type": "CITY",
+          "parent": {
+            "id": 121010,
+            "name": "Сосновоборский городской округ",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 10174,
+              "name": "Санкт-Петербург и Ленинградская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 17,
+                "name": "Северо-Западный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "188540",
+          "city": "Сосновый Бор",
+          "street": "Ленинградская улица",
+          "house": "70",
+          "gps": {
+            "latitude": 59.902677,
+            "longitude": 29.069698
+          }
+        },
+        "deliveryServiceId": 91693,
+        "liftPrice": 0,
+        "outletCode": "26167",
+        "shipments": [
+          {
+            "id": 471281869,
+            "shipmentDate": "15-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 476446976,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "15-06-2024 15:44:15",
+      "currency": "RUR",
+      "itemsTotal": 358,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 358,
+      "buyerTotal": 358,
+      "buyerItemsTotalBeforeDiscount": 379,
+      "buyerTotalBeforeDiscount": 379,
+      "paymentType": "POSTPAID",
+      "paymentMethod": "CASH_ON_DELIVERY",
+      "fake": false,
+      "items": [
+        {
+          "id": 620479681,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 358,
+          "buyerPrice": 358,
+          "buyerPriceBeforeDiscount": 379,
+          "priceBeforeDiscount": 379,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 21,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 21
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 21
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 21
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "16-06-2024",
+          "toDate": "16-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "16-06-2024"
+        },
+        "region": {
+          "id": 10861,
+          "name": "Бокситогорск",
+          "type": "CITY",
+          "parent": {
+            "id": 165530,
+            "name": "Городское поселение Бокситогорское",
+            "type": "OTHER",
+            "parent": {
+              "id": 98618,
+              "name": "Бокситогорский район",
+              "type": "REPUBLIC_AREA",
+              "parent": {
+                "id": 10174,
+                "name": "Санкт-Петербург и Ленинградская область",
+                "type": "REPUBLIC",
+                "parent": {
+                  "id": 17,
+                  "name": "Северо-Западный федеральный округ",
+                  "type": "COUNTRY_DISTRICT",
+                  "parent": {
+                    "id": 225,
+                    "name": "Россия",
+                    "type": "COUNTRY"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "187650",
+          "city": "Бокситогорск",
+          "street": "Советская улица",
+          "house": "3А",
+          "gps": {
+            "latitude": 59.472914,
+            "longitude": 33.838881
+          }
+        },
+        "deliveryServiceId": 528994,
+        "liftPrice": 0,
+        "outletCode": "28364",
+        "shipments": [
+          {
+            "id": 471135870,
+            "shipmentDate": "15-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 476434898,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "15-06-2024 15:20:37",
+      "currency": "RUR",
+      "itemsTotal": 724,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 724,
+      "buyerTotal": 724,
+      "buyerItemsTotalBeforeDiscount": 762,
+      "buyerTotalBeforeDiscount": 762,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 620465795,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 362,
+          "buyerPrice": 362,
+          "buyerPriceBeforeDiscount": 381,
+          "priceBeforeDiscount": 381,
+          "count": 2,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 19,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 19
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 19
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 38
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "16-06-2024",
+          "toDate": "16-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "16-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "197350",
+          "city": "Санкт-Петербург",
+          "street": "проспект Королёва",
+          "house": "65",
+          "gps": {
+            "latitude": 60.033304,
+            "longitude": 30.241843
+          }
+        },
+        "deliveryServiceId": 57839,
+        "liftPrice": 0,
+        "outletCode": "4879",
+        "shipments": [
+          {
+            "id": 471123792,
+            "shipmentDate": "15-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 476381673,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "15-06-2024 13:37:48",
+      "currency": "RUR",
+      "itemsTotal": 369,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 369,
+      "buyerTotal": 369,
+      "buyerItemsTotalBeforeDiscount": 395,
+      "buyerTotalBeforeDiscount": 395,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 620405206,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 369,
+          "buyerPrice": 369,
+          "buyerPriceBeforeDiscount": 395,
+          "priceBeforeDiscount": 395,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 26,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 5
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 21
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 26
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 26
+        }
+      ],
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "Доставка",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "16-06-2024",
+          "toDate": "16-06-2024",
+          "fromTime": "00:00:00",
+          "toTime": "00:00:00",
+          "realDeliveryDate": "17-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "121359",
+          "city": "Москва",
+          "street": "Партизанская улица",
+          "house": "36",
+          "entrance": "2",
+          "entryphone": "1458",
+          "floor": "17",
+          "apartment": "131",
+          "gps": {
+            "latitude": 55.74154,
+            "longitude": 37.40321
+          }
+        },
+        "deliveryServiceId": 18881,
+        "liftPrice": 0,
+        "shipments": [
+          {
+            "id": 471070568,
+            "shipmentDate": "15-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "notes": "Для входа в подъезд надо набрать код 1458 (первая дверь) и далее 131 -домофон (вторая дверь)",
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 476350358,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "15-06-2024 12:39:25",
+      "currency": "RUR",
+      "itemsTotal": 330,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 330,
+      "buyerTotal": 330,
+      "buyerItemsTotalBeforeDiscount": 330,
+      "buyerTotalBeforeDiscount": 330,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 620369438,
+          "offerId": "0000029",
+          "offerName": "Крючки держатели пластиковые для ванной комнаты, кухни самоклеющиеся настенные, для одежды в прихожую, полотенец в ванную, 4 шт",
+          "price": 330,
+          "buyerPrice": 330,
+          "buyerPriceBeforeDiscount": 330,
+          "priceBeforeDiscount": 330,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000029",
+          "subsidy": 0,
+          "partnerWarehouseId": "308"
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "16-06-2024",
+          "toDate": "16-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "16-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "115093",
+          "city": "Москва",
+          "street": "2-й Павловский переулок",
+          "house": "20",
+          "gps": {
+            "latitude": 55.717317,
+            "longitude": 37.632367
+          }
+        },
+        "deliveryServiceId": 195497,
+        "liftPrice": 0,
+        "outletCode": "26313",
+        "shipments": [
+          {
+            "id": 471039253,
+            "shipmentDate": "15-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 475750692,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "14-06-2024 11:29:32",
+      "currency": "RUR",
+      "itemsTotal": 394,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 394,
+      "buyerTotal": 394,
+      "buyerItemsTotalBeforeDiscount": 397,
+      "buyerTotalBeforeDiscount": 397,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 619691899,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 394,
+          "buyerPrice": 394,
+          "buyerPriceBeforeDiscount": 397,
+          "priceBeforeDiscount": 397,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 3,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 3
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 3
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 3
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "15-06-2024",
+          "toDate": "15-06-2024",
+          "fromTime": "10:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "15-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "115533",
+          "city": "Москва",
+          "street": "проспект Андропова",
+          "house": "22",
+          "gps": {
+            "latitude": 55.682651,
+            "longitude": 37.661922
+          }
+        },
+        "deliveryServiceId": 1384690,
+        "liftPrice": 0,
+        "outletCode": "33663",
+        "shipments": [
+          {
+            "id": 470439602,
+            "shipmentDate": "14-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 475743765,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "14-06-2024 11:17:49",
+      "currency": "RUR",
+      "itemsTotal": 400,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 400,
+      "buyerTotal": 400,
+      "buyerItemsTotalBeforeDiscount": 400,
+      "buyerTotalBeforeDiscount": 400,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 619684165,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 400,
+          "buyerPrice": 400,
+          "buyerPriceBeforeDiscount": 400,
+          "priceBeforeDiscount": 400,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 0,
+          "partnerWarehouseId": "302"
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "16-06-2024",
+          "toDate": "16-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "16-06-2024"
+        },
+        "region": {
+          "id": 11101,
+          "name": "Кузнецк",
+          "type": "CITY",
+          "parent": {
+            "id": 120964,
+            "name": "Городской округ Кузнецк",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 11095,
+              "name": "Пензенская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 40,
+                "name": "Приволжский федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "442537",
+          "city": "Кузнецк",
+          "street": "улица Леваневского",
+          "house": "48",
+          "gps": {
+            "latitude": 53.106346,
+            "longitude": 46.577656
+          }
+        },
+        "deliveryServiceId": 617115,
+        "liftPrice": 0,
+        "outletCode": "27259",
+        "shipments": [
+          {
+            "id": 470432675,
+            "shipmentDate": "15-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 475371876,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "13-06-2024 16:58:42",
+      "currency": "RUR",
+      "itemsTotal": 355,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 355,
+      "buyerTotal": 355,
+      "buyerItemsTotalBeforeDiscount": 380,
+      "buyerTotalBeforeDiscount": 380,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 619267330,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 355,
+          "buyerPrice": 355,
+          "buyerPriceBeforeDiscount": 380,
+          "priceBeforeDiscount": 380,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 25,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 7
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 17
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 25
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 25
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "14-06-2024",
+          "toDate": "14-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "14-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "196641",
+          "city": "посёлок Металлострой",
+          "street": "Полевая улица",
+          "house": "12",
+          "gps": {
+            "latitude": 59.813984,
+            "longitude": 30.564683
+          }
+        },
+        "deliveryServiceId": 57910,
+        "liftPrice": 0,
+        "outletCode": "1749",
+        "shipments": [
+          {
+            "id": 470060792,
+            "shipmentDate": "13-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 475349142,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "13-06-2024 16:16:55",
+      "currency": "RUR",
+      "itemsTotal": 362,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 362,
+      "buyerTotal": 362,
+      "buyerItemsTotalBeforeDiscount": 381,
+      "buyerTotalBeforeDiscount": 381,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 619241699,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 362,
+          "buyerPrice": 362,
+          "buyerPriceBeforeDiscount": 381,
+          "priceBeforeDiscount": 381,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 19,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 19
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 19
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 19
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "14-06-2024",
+          "toDate": "14-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "14-06-2024"
+        },
+        "region": {
+          "id": 10875,
+          "name": "Ломоносов",
+          "type": "CITY",
+          "parent": {
+            "id": 20295,
+            "name": "Петродворцовый район",
+            "type": "CITY_DISTRICT",
+            "parent": {
+              "id": 2,
+              "name": "Санкт-Петербург",
+              "type": "CITY",
+              "parent": {
+                "id": 10174,
+                "name": "Санкт-Петербург и Ленинградская область",
+                "type": "REPUBLIC",
+                "parent": {
+                  "id": 17,
+                  "name": "Северо-Западный федеральный округ",
+                  "type": "COUNTRY_DISTRICT",
+                  "parent": {
+                    "id": 225,
+                    "name": "Россия",
+                    "type": "COUNTRY"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "198412",
+          "city": "Ломоносов",
+          "street": "Ораниенбаумский проспект",
+          "house": "39Б",
+          "gps": {
+            "latitude": 59.896364,
+            "longitude": 29.773896
+          }
+        },
+        "deliveryServiceId": 1006368,
+        "liftPrice": 0,
+        "outletCode": "25955",
+        "shipments": [
+          {
+            "id": 470038058,
+            "shipmentDate": "13-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 475253523,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "13-06-2024 13:31:16",
+      "currency": "RUR",
+      "itemsTotal": 319,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 366,
+      "buyerTotal": 366,
+      "buyerItemsTotalBeforeDiscount": 383,
+      "buyerTotalBeforeDiscount": 383,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 619134475,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 319,
+          "buyerPrice": 319,
+          "buyerPriceBeforeDiscount": 383,
+          "priceBeforeDiscount": 383,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 64,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 17
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "YANDEX_CASHBACK",
+              "amount": 47
+            },
+            {
+              "type": "SUBSIDY",
+              "amount": 17
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "YANDEX_CASHBACK",
+          "amount": 47
+        },
+        {
+          "type": "SUBSIDY",
+          "amount": 17
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "14-06-2024",
+          "toDate": "14-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "14-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "194295",
+          "city": "Санкт-Петербург",
+          "street": "проспект Просвещения",
+          "house": "33",
+          "block": "2",
+          "gps": {
+            "latitude": 60.049491,
+            "longitude": 30.342521
+          }
+        },
+        "deliveryServiceId": 1005798,
+        "liftPrice": 0,
+        "outletCode": "640",
+        "shipments": [
+          {
+            "id": 469942440,
+            "shipmentDate": "13-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 475134197,
+      "status": "CANCELLED",
+      "substatus": "DELIVERY_SERVICE_UNDELIVERED",
+      "creationDate": "13-06-2024 10:02:01",
+      "currency": "RUR",
+      "itemsTotal": 255,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 260,
+      "buyerTotal": 260,
+      "buyerItemsTotalBeforeDiscount": 367,
+      "buyerTotalBeforeDiscount": 367,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 619000482,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 255,
+          "buyerPrice": 255,
+          "buyerPriceBeforeDiscount": 367,
+          "priceBeforeDiscount": 367,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 112,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 68
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 7
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 31
+            }
+          ],
+          "details": [
+            {
+              "itemCount": 1,
+              "itemStatus": "REJECTED",
+              "updateDate": "17-06-2024"
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "YANDEX_CASHBACK",
+              "amount": 5
+            },
+            {
+              "type": "SUBSIDY",
+              "amount": 107
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "YANDEX_CASHBACK",
+          "amount": 5
+        },
+        {
+          "type": "SUBSIDY",
+          "amount": 107
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "17-06-2024",
+          "toDate": "17-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00"
+        },
+        "region": {
+          "id": 10758,
+          "name": "Химки",
+          "type": "CITY",
+          "parent": {
+            "id": 120988,
+            "name": "Городской округ Химки",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 1,
+              "name": "Москва и Московская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "141407",
+          "city": "Химки",
+          "street": "Молодёжная улица",
+          "house": "64",
+          "gps": {
+            "latitude": 55.905426,
+            "longitude": 37.391488
+          }
+        },
+        "deliveryServiceId": 529025,
+        "liftPrice": 0,
+        "outletCode": "20159",
+        "shipments": [
+          {
+            "id": 469823117,
+            "shipmentDate": "13-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 475034603,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "13-06-2024 00:55:37",
+      "currency": "RUR",
+      "itemsTotal": 366,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 366,
+      "buyerTotal": 366,
+      "buyerItemsTotalBeforeDiscount": 383,
+      "buyerTotalBeforeDiscount": 383,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 618888236,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 366,
+          "buyerPrice": 366,
+          "buyerPriceBeforeDiscount": 383,
+          "priceBeforeDiscount": 383,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 17,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 17
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 17
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 17
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "14-06-2024",
+          "toDate": "14-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "14-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "197350",
+          "city": "Санкт-Петербург",
+          "street": "проспект Королёва",
+          "house": "65",
+          "gps": {
+            "latitude": 60.033304,
+            "longitude": 30.241843
+          }
+        },
+        "deliveryServiceId": 57839,
+        "liftPrice": 0,
+        "outletCode": "4879",
+        "shipments": [
+          {
+            "id": 469723524,
+            "shipmentDate": "13-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 474886216,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "12-06-2024 19:46:33",
+      "currency": "RUR",
+      "itemsTotal": 344,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 344,
+      "buyerTotal": 344,
+      "buyerItemsTotalBeforeDiscount": 381,
+      "buyerTotalBeforeDiscount": 381,
+      "paymentType": "PREPAID",
+      "paymentMethod": "SBP",
+      "fake": false,
+      "items": [
+        {
+          "id": 618720886,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 344,
+          "buyerPrice": 344,
+          "buyerPriceBeforeDiscount": 381,
+          "priceBeforeDiscount": 381,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 37,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 19
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 18
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 37
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 37
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "13-06-2024",
+          "toDate": "13-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "13-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "194363",
+          "city": "посёлок Парголово",
+          "street": "улица Фёдора Абрамова",
+          "house": "23",
+          "block": "1",
+          "gps": {
+            "latitude": 60.081511,
+            "longitude": 30.345477
+          }
+        },
+        "deliveryServiceId": 1005726,
+        "liftPrice": 0,
+        "outletCode": "690",
+        "shipments": [
+          {
+            "id": 469575139,
+            "shipmentDate": "12-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 474579059,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "12-06-2024 11:23:54",
+      "currency": "RUR",
+      "itemsTotal": 400,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 400,
+      "buyerTotal": 400,
+      "buyerItemsTotalBeforeDiscount": 400,
+      "buyerTotalBeforeDiscount": 400,
+      "paymentType": "POSTPAID",
+      "paymentMethod": "CARD_ON_DELIVERY",
+      "fake": false,
+      "items": [
+        {
+          "id": 618375318,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 400,
+          "buyerPrice": 400,
+          "buyerPriceBeforeDiscount": 400,
+          "priceBeforeDiscount": 400,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 0,
+          "partnerWarehouseId": "308"
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "13-06-2024",
+          "toDate": "13-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "13-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "125008",
+          "city": "Москва",
+          "street": "бульвар Матроса Железняка",
+          "house": "14",
+          "block": "1",
+          "gps": {
+            "latitude": 55.829654,
+            "longitude": 37.526249
+          }
+        },
+        "deliveryServiceId": 184037,
+        "liftPrice": 0,
+        "outletCode": "19791",
+        "shipments": [
+          {
+            "id": 469268002,
+            "shipmentDate": "12-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 473864363,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "11-06-2024 06:55:33",
+      "currency": "RUR",
+      "itemsTotal": 732,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 732,
+      "buyerTotal": 732,
+      "buyerItemsTotalBeforeDiscount": 766,
+      "buyerTotalBeforeDiscount": 766,
+      "paymentType": "PREPAID",
+      "paymentMethod": "SBP",
+      "fake": false,
+      "items": [
+        {
+          "id": 617568580,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 366,
+          "buyerPrice": 366,
+          "buyerPriceBeforeDiscount": 383,
+          "priceBeforeDiscount": 383,
+          "count": 2,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 17,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 17
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 17
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 34
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "12-06-2024",
+          "toDate": "12-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "12-06-2024"
+        },
+        "region": {
+          "id": 10762,
+          "name": "Шатура",
+          "type": "CITY",
+          "parent": {
+            "id": 98615,
+            "name": "Городской округ Шатура",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 1,
+              "name": "Москва и Московская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "140700",
+          "city": "Шатура",
+          "street": "Академическая улица",
+          "house": "10",
+          "apartment": "Помещение 4",
+          "gps": {
+            "latitude": 55.577507,
+            "longitude": 39.514892
+          }
+        },
+        "deliveryServiceId": 124163,
+        "liftPrice": 0,
+        "outletCode": "15719",
+        "shipments": [
+          {
+            "id": 468553311,
+            "shipmentDate": "11-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 473584179,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "10-06-2024 17:40:35",
+      "currency": "RUR",
+      "itemsTotal": 390,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 390,
+      "buyerTotal": 390,
+      "buyerItemsTotalBeforeDiscount": 395,
+      "buyerTotalBeforeDiscount": 395,
+      "paymentType": "POSTPAID",
+      "paymentMethod": "CARD_ON_DELIVERY",
+      "fake": false,
+      "items": [
+        {
+          "id": 617250858,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 390,
+          "buyerPrice": 390,
+          "buyerPriceBeforeDiscount": 395,
+          "priceBeforeDiscount": 395,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 5,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 5
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 5
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 5
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "11-06-2024",
+          "toDate": "11-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "11-06-2024"
+        },
+        "region": {
+          "id": 10738,
+          "name": "Люберцы",
+          "type": "CITY",
+          "parent": {
+            "id": 98594,
+            "name": "Городской округ Люберцы",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 1,
+              "name": "Москва и Московская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "140003",
+          "city": "Люберцы",
+          "street": "улица Лётчика Ларюшина",
+          "house": "4",
+          "block": "1",
+          "gps": {
+            "latitude": 55.678012,
+            "longitude": 37.867834
+          }
+        },
+        "deliveryServiceId": 63587,
+        "liftPrice": 0,
+        "outletCode": "15338",
+        "shipments": [
+          {
+            "id": 468273130,
+            "shipmentDate": "10-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 473572974,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "10-06-2024 17:21:08",
+      "currency": "RUR",
+      "itemsTotal": 348,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 348,
+      "buyerTotal": 348,
+      "buyerItemsTotalBeforeDiscount": 374,
+      "buyerTotalBeforeDiscount": 374,
+      "paymentType": "PREPAID",
+      "paymentMethod": "SBP",
+      "fake": false,
+      "items": [
+        {
+          "id": 617238384,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 348,
+          "buyerPrice": 348,
+          "buyerPriceBeforeDiscount": 374,
+          "priceBeforeDiscount": 374,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 26,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 26
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 26
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 26
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "12-06-2024",
+          "toDate": "12-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "12-06-2024"
+        },
+        "region": {
+          "id": 14,
+          "name": "Тверь",
+          "type": "CITY",
+          "parent": {
+            "id": 120922,
+            "name": "Городской округ Тверь",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 10819,
+              "name": "Тверская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "170003",
+          "city": "Тверь",
+          "street": "Петербургское шоссе",
+          "house": "34",
+          "gps": {
+            "latitude": 56.8732,
+            "longitude": 35.859246
+          }
+        },
+        "deliveryServiceId": 560010,
+        "liftPrice": 0,
+        "outletCode": "27733",
+        "shipments": [
+          {
+            "id": 468261925,
+            "shipmentDate": "10-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 472825407,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "09-06-2024 15:47:02",
+      "currency": "RUR",
+      "itemsTotal": 342,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 342,
+      "buyerTotal": 342,
+      "buyerItemsTotalBeforeDiscount": 371,
+      "buyerTotalBeforeDiscount": 371,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 616374521,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 342,
+          "buyerPrice": 342,
+          "buyerPriceBeforeDiscount": 371,
+          "priceBeforeDiscount": 371,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 29,
+          "partnerWarehouseId": "302",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 29
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 29
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 29
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "11-06-2024",
+          "toDate": "11-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "11-06-2024"
+        },
+        "region": {
+          "id": 43,
+          "name": "Казань",
+          "type": "CITY",
+          "parent": {
+            "id": 120894,
+            "name": "Городской округ Казань",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 11119,
+              "name": "Республика Татарстан",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 40,
+                "name": "Приволжский федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "420140",
+          "city": "Казань",
+          "street": "улица Ноксинский Спуск",
+          "house": "39",
+          "gps": {
+            "latitude": 55.769636,
+            "longitude": 49.242042
+          }
+        },
+        "deliveryServiceId": 1006533,
+        "liftPrice": 0,
+        "outletCode": "1277",
+        "shipments": [
+          {
+            "id": 467514358,
+            "shipmentDate": "10-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 472375838,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "08-06-2024 18:11:32",
+      "currency": "RUR",
+      "itemsTotal": 360,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 360,
+      "buyerTotal": 360,
+      "buyerItemsTotalBeforeDiscount": 365,
+      "buyerTotalBeforeDiscount": 365,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 615866220,
+          "offerId": "0000029",
+          "offerName": "Крючки держатели пластиковые для ванной комнаты, кухни самоклеющиеся настенные, для одежды в прихожую, полотенец в ванную, 4 шт",
+          "price": 360,
+          "buyerPrice": 360,
+          "buyerPriceBeforeDiscount": 365,
+          "priceBeforeDiscount": 365,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000029",
+          "subsidy": 5,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 4
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 5
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 5
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "10-06-2024",
+          "toDate": "10-06-2024",
+          "fromTime": "10:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "10-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "197350",
+          "city": "Санкт-Петербург",
+          "street": "Плесецкая улица",
+          "house": "20",
+          "block": "1",
+          "gps": {
+            "latitude": 60.037655,
+            "longitude": 30.227265
+          }
+        },
+        "deliveryServiceId": 55656,
+        "liftPrice": 0,
+        "outletCode": "21728",
+        "shipments": [
+          {
+            "id": 467064793,
+            "shipmentDate": "08-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 472317294,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "08-06-2024 16:14:45",
+      "currency": "RUR",
+      "itemsTotal": 368,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 368,
+      "buyerTotal": 368,
+      "buyerItemsTotalBeforeDiscount": 368,
+      "buyerTotalBeforeDiscount": 368,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 615800430,
+          "offerId": "0000029",
+          "offerName": "Крючки держатели пластиковые для ванной комнаты, кухни самоклеющиеся настенные, для одежды в прихожую, полотенец в ванную, 4 шт",
+          "price": 368,
+          "buyerPrice": 368,
+          "buyerPriceBeforeDiscount": 368,
+          "priceBeforeDiscount": 368,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000029",
+          "subsidy": 0,
+          "partnerWarehouseId": "308"
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "09-06-2024",
+          "toDate": "09-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "09-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "117321",
+          "city": "Москва",
+          "street": "Профсоюзная улица",
+          "house": "144",
+          "gps": {
+            "latitude": 55.624352,
+            "longitude": 37.508292
+          }
+        },
+        "deliveryServiceId": 750917,
+        "liftPrice": 0,
+        "outletCode": "32533",
+        "shipments": [
+          {
+            "id": 467006250,
+            "shipmentDate": "08-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 472199805,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "08-06-2024 12:32:47",
+      "currency": "RUR",
+      "itemsTotal": 360,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 360,
+      "buyerTotal": 360,
+      "buyerItemsTotalBeforeDiscount": 365,
+      "buyerTotalBeforeDiscount": 365,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 615667791,
+          "offerId": "0000029",
+          "offerName": "Крючки держатели пластиковые для ванной комнаты, кухни самоклеющиеся настенные, для одежды в прихожую, полотенец в ванную, 4 шт",
+          "price": 360,
+          "buyerPrice": 360,
+          "buyerPriceBeforeDiscount": 365,
+          "priceBeforeDiscount": 365,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000029",
+          "subsidy": 5,
+          "partnerWarehouseId": "305",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 4
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 5
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 5
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "09-06-2024",
+          "toDate": "09-06-2024",
+          "fromTime": "10:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "09-06-2024"
+        },
+        "region": {
+          "id": 35,
+          "name": "Краснодар",
+          "type": "CITY",
+          "parent": {
+            "id": 121158,
+            "name": "Городской округ Краснодар",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 10995,
+              "name": "Краснодарский край",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 26,
+                "name": "Южный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "350073",
+          "city": "Краснодар",
+          "street": "улица Адмирала Крузенштерна",
+          "house": "5",
+          "gps": {
+            "latitude": 45.093085,
+            "longitude": 39.041204
+          }
+        },
+        "deliveryServiceId": 1274027,
+        "liftPrice": 0,
+        "outletCode": "31979",
+        "shipments": [
+          {
+            "id": 466888764,
+            "shipmentDate": "08-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 472187328,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "08-06-2024 12:09:38",
+      "currency": "RUR",
+      "itemsTotal": 970,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 970,
+      "buyerTotal": 970,
+      "buyerItemsTotalBeforeDiscount": 983,
+      "buyerTotalBeforeDiscount": 983,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 615653631,
+          "offerId": "0000028",
+          "offerName": "Вешалка для одежды, набор плечиков с нескользящим покрытием и вырезом под ворот, 10 штук, оранжевыезом",
+          "price": 970,
+          "buyerPrice": 970,
+          "buyerPriceBeforeDiscount": 983,
+          "priceBeforeDiscount": 983,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000028",
+          "subsidy": 13,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 3
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 10
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 13
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 13
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "10-06-2024",
+          "toDate": "10-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "10-06-2024"
+        },
+        "region": {
+          "id": 38,
+          "name": "Волгоград",
+          "type": "CITY",
+          "parent": {
+            "id": 121159,
+            "name": "Городской округ Волгоград",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 10950,
+              "name": "Волгоградская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 26,
+                "name": "Южный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "400074",
+          "city": "Волгоград",
+          "street": "улица Лавочкина",
+          "house": "3",
+          "block": "1",
+          "gps": {
+            "latitude": 48.686409,
+            "longitude": 44.48981
+          }
+        },
+        "deliveryServiceId": 1329246,
+        "liftPrice": 0,
+        "outletCode": "32672",
+        "shipments": [
+          {
+            "id": 466876287,
+            "shipmentDate": "08-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 470581303,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "05-06-2024 16:55:13",
+      "currency": "RUR",
+      "itemsTotal": 371,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 396,
+      "buyerTotal": 396,
+      "buyerItemsTotalBeforeDiscount": 398,
+      "buyerTotalBeforeDiscount": 398,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 613732804,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 371,
+          "buyerPrice": 371,
+          "buyerPriceBeforeDiscount": 398,
+          "priceBeforeDiscount": 398,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 27,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 2
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "YANDEX_CASHBACK",
+              "amount": 25
+            },
+            {
+              "type": "SUBSIDY",
+              "amount": 2
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "YANDEX_CASHBACK",
+          "amount": 25
+        },
+        {
+          "type": "SUBSIDY",
+          "amount": 2
+        }
+      ],
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "Доставка",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "06-06-2024",
+          "toDate": "06-06-2024",
+          "fromTime": "00:00:00",
+          "toTime": "00:00:00",
+          "realDeliveryDate": "07-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "129090",
+          "city": "Москва",
+          "street": "Грохольский переулок",
+          "house": "10/5",
+          "entrance": "3",
+          "entryphone": "3#80",
+          "floor": "4",
+          "apartment": "80",
+          "gps": {
+            "latitude": 55.77662,
+            "longitude": 37.63568
+          }
+        },
+        "deliveryServiceId": 18881,
+        "liftPrice": 0,
+        "shipments": [
+          {
+            "id": 465270285,
+            "shipmentDate": "05-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "notes": "Домофон в подъезде 80,4 этаж",
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 470271143,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "05-06-2024 10:49:32",
+      "currency": "RUR",
+      "itemsTotal": 280,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 280,
+      "buyerTotal": 280,
+      "buyerItemsTotalBeforeDiscount": 396,
+      "buyerTotalBeforeDiscount": 396,
+      "paymentType": "PREPAID",
+      "paymentMethod": "SBP",
+      "fake": false,
+      "items": [
+        {
+          "id": 613253471,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 280,
+          "buyerPrice": 280,
+          "buyerPriceBeforeDiscount": 396,
+          "priceBeforeDiscount": 396,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 116,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 112
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 4
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 116
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 116
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "06-06-2024",
+          "toDate": "06-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "06-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "192242",
+          "city": "Санкт-Петербург",
+          "street": "Будапештская улица",
+          "house": "14",
+          "block": "1",
+          "gps": {
+            "latitude": 59.868943,
+            "longitude": 30.37058
+          }
+        },
+        "deliveryServiceId": 687204,
+        "liftPrice": 0,
+        "outletCode": "31956",
+        "shipments": [
+          {
+            "id": 464960131,
+            "shipmentDate": "05-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 469821269,
+      "status": "CANCELLED",
+      "substatus": "USER_CHANGED_MIND",
+      "creationDate": "04-06-2024 14:18:04",
+      "currency": "RUR",
+      "itemsTotal": 1102,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 1102,
+      "buyerTotal": 1102,
+      "buyerItemsTotalBeforeDiscount": 1292,
+      "buyerTotalBeforeDiscount": 1292,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 612745961,
+          "offerId": "000011",
+          "offerName": "Швабра для мытья полов, плинтусов, потолков / Швабра для сухой и влажной уборки / с насадками из микрофибры в комплекте 2 шт",
+          "price": 1102,
+          "buyerPrice": 1102,
+          "buyerPriceBeforeDiscount": 1292,
+          "priceBeforeDiscount": 1292,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "000011",
+          "subsidy": 190,
+          "partnerWarehouseId": "304",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 23
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 3
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 164
+            }
+          ],
+          "details": [
+            {
+              "itemCount": 1,
+              "itemStatus": "REJECTED",
+              "updateDate": "10-06-2024"
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 190
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 190
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "05-06-2024",
+          "toDate": "05-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "05-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "117216",
+          "city": "Москва",
+          "street": "улица Грина",
+          "house": "1",
+          "block": "1",
+          "gps": {
+            "latitude": 55.562687,
+            "longitude": 37.582666
+          }
+        },
+        "deliveryServiceId": 301469,
+        "liftPrice": 0,
+        "outletCode": "16322",
+        "shipments": [
+          {
+            "id": 464510261,
+            "shipmentDate": "04-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": true
+    },
+    {
+      "id": 469488472,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "03-06-2024 21:45:17",
+      "currency": "RUR",
+      "itemsTotal": 358,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 358,
+      "buyerTotal": 358,
+      "buyerItemsTotalBeforeDiscount": 379,
+      "buyerTotalBeforeDiscount": 379,
+      "paymentType": "POSTPAID",
+      "paymentMethod": "CARD_ON_DELIVERY",
+      "fake": false,
+      "items": [
+        {
+          "id": 612368677,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 358,
+          "buyerPrice": 358,
+          "buyerPriceBeforeDiscount": 379,
+          "priceBeforeDiscount": 379,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 21,
+          "partnerWarehouseId": "305",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 21
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 21
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 21
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "05-06-2024",
+          "toDate": "05-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "05-06-2024"
+        },
+        "region": {
+          "id": 39,
+          "name": "Ростов-на-Дону",
+          "type": "CITY",
+          "parent": {
+            "id": 121146,
+            "name": "Городской округ Ростов-на-Дону",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 11029,
+              "name": "Ростовская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 26,
+                "name": "Южный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "344068",
+          "city": "Ростов-на-Дону",
+          "street": "Измаильский переулок",
+          "house": "41",
+          "gps": {
+            "latitude": 47.267328,
+            "longitude": 39.733779
+          }
+        },
+        "deliveryServiceId": 654365,
+        "liftPrice": 0,
+        "outletCode": "28418",
+        "shipments": [
+          {
+            "id": 464177468,
+            "shipmentDate": "04-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 469432531,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "03-06-2024 20:15:28",
+      "currency": "RUR",
+      "itemsTotal": 690,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 690,
+      "buyerTotal": 690,
+      "buyerItemsTotalBeforeDiscount": 782,
+      "buyerTotalBeforeDiscount": 782,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 612305166,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 345,
+          "buyerPrice": 345,
+          "buyerPriceBeforeDiscount": 391,
+          "priceBeforeDiscount": 391,
+          "count": 2,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 46,
+          "partnerWarehouseId": "305",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 39
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 6
+            }
+          ],
+          "details": [
+            {
+              "itemCount": 1,
+              "itemStatus": "RETURNED",
+              "updateDate": "05-06-2024"
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 46
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 92
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "05-06-2024",
+          "toDate": "05-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "05-06-2024"
+        },
+        "region": {
+          "id": 35,
+          "name": "Краснодар",
+          "type": "CITY",
+          "parent": {
+            "id": 121158,
+            "name": "Городской округ Краснодар",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 10995,
+              "name": "Краснодарский край",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 26,
+                "name": "Южный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "350065",
+          "city": "Краснодар",
+          "street": "улица Невкипелого",
+          "house": "10",
+          "gps": {
+            "latitude": 44.998375,
+            "longitude": 39.076265
+          }
+        },
+        "deliveryServiceId": 77481,
+        "liftPrice": 0,
+        "outletCode": "29868",
+        "shipments": [
+          {
+            "id": 464121528,
+            "shipmentDate": "04-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 469182365,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "03-06-2024 12:59:54",
+      "currency": "RUR",
+      "itemsTotal": 390,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 390,
+      "buyerTotal": 390,
+      "buyerItemsTotalBeforeDiscount": 390,
+      "buyerTotalBeforeDiscount": 390,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 612022172,
+          "offerId": "0000029",
+          "offerName": "Крючки держатели пластиковые для ванной комнаты, кухни самоклеющиеся настенные, для одежды в прихожую, полотенец в ванную, 4 шт",
+          "price": 390,
+          "buyerPrice": 390,
+          "buyerPriceBeforeDiscount": 390,
+          "priceBeforeDiscount": 390,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000029",
+          "subsidy": 0,
+          "partnerWarehouseId": "305"
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "05-06-2024",
+          "toDate": "05-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "05-06-2024"
+        },
+        "region": {
+          "id": 8,
+          "name": "Курск",
+          "type": "CITY",
+          "parent": {
+            "id": 120929,
+            "name": "Городской округ Курск",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 10705,
+              "name": "Курская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "305021",
+          "city": "Курск",
+          "street": "проспект Победы",
+          "house": "22",
+          "gps": {
+            "latitude": 51.777857,
+            "longitude": 36.174806
+          }
+        },
+        "deliveryServiceId": 510685,
+        "liftPrice": 0,
+        "outletCode": "30116",
+        "shipments": [
+          {
+            "id": 463871367,
+            "shipmentDate": "03-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 469068186,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "03-06-2024 12:03:42",
+      "currency": "RUR",
+      "itemsTotal": 320,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 320,
+      "buyerTotal": 320,
+      "buyerItemsTotalBeforeDiscount": 394,
+      "buyerTotalBeforeDiscount": 394,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 611875890,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 320,
+          "buyerPrice": 320,
+          "buyerPriceBeforeDiscount": 394,
+          "priceBeforeDiscount": 394,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 74,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 6
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 68
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 74
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 74
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "04-06-2024",
+          "toDate": "04-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "04-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "195257",
+          "city": "Санкт-Петербург",
+          "street": "Гражданский проспект",
+          "house": "68",
+          "gps": {
+            "latitude": 60.013767,
+            "longitude": 30.39704
+          }
+        },
+        "deliveryServiceId": 1005726,
+        "liftPrice": 0,
+        "outletCode": "14815",
+        "shipments": [
+          {
+            "id": 463757189,
+            "shipmentDate": "03-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 469018491,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "03-06-2024 11:20:13",
+      "currency": "RUR",
+      "itemsTotal": 374,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 374,
+      "buyerTotal": 374,
+      "buyerItemsTotalBeforeDiscount": 392,
+      "buyerTotalBeforeDiscount": 392,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 611814200,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 374,
+          "buyerPrice": 374,
+          "buyerPriceBeforeDiscount": 392,
+          "priceBeforeDiscount": 392,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 18,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 12
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 5
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 18
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 18
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "04-06-2024",
+          "toDate": "04-06-2024",
+          "fromTime": "10:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "04-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "125080",
+          "city": "Москва",
+          "street": "улица Панфилова",
+          "house": "4",
+          "block": "3",
+          "gps": {
+            "latitude": 55.801445,
+            "longitude": 37.498105
+          }
+        },
+        "deliveryServiceId": 666777,
+        "liftPrice": 0,
+        "outletCode": "27978",
+        "shipments": [
+          {
+            "id": 463707494,
+            "shipmentDate": "03-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 468965534,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "03-06-2024 09:43:43",
+      "currency": "RUR",
+      "itemsTotal": 388,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 388,
+      "buyerTotal": 388,
+      "buyerItemsTotalBeforeDiscount": 394,
+      "buyerTotalBeforeDiscount": 394,
+      "paymentType": "PREPAID",
+      "paymentMethod": "SBP",
+      "fake": false,
+      "items": [
+        {
+          "id": 611754115,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 388,
+          "buyerPrice": 388,
+          "buyerPriceBeforeDiscount": 394,
+          "priceBeforeDiscount": 394,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 6,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 6
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 6
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 6
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "04-06-2024",
+          "toDate": "04-06-2024",
+          "fromTime": "10:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "04-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "123181",
+          "city": "Москва",
+          "street": "улица Маршала Катукова",
+          "house": "25",
+          "gps": {
+            "latitude": 55.805439,
+            "longitude": 37.414507
+          }
+        },
+        "deliveryServiceId": 512863,
+        "liftPrice": 0,
+        "outletCode": "19618",
+        "shipments": [
+          {
+            "id": 463654538,
+            "shipmentDate": "03-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 468462740,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "02-06-2024 11:51:35",
+      "currency": "RUR",
+      "itemsTotal": 333,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 333,
+      "buyerTotal": 333,
+      "buyerItemsTotalBeforeDiscount": 366,
+      "buyerTotalBeforeDiscount": 366,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 611183926,
+          "offerId": "0000029",
+          "offerName": "Крючки держатели пластиковые для ванной комнаты, кухни самоклеющиеся настенные, для одежды в прихожую, полотенец в ванную, 4 шт",
+          "price": 333,
+          "buyerPrice": 333,
+          "buyerPriceBeforeDiscount": 366,
+          "priceBeforeDiscount": 366,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000029",
+          "subsidy": 33,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 10
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 22
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 33
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 33
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "03-06-2024",
+          "toDate": "03-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "03-06-2024"
+        },
+        "region": {
+          "id": 2,
+          "name": "Санкт-Петербург",
+          "type": "CITY",
+          "parent": {
+            "id": 10174,
+            "name": "Санкт-Петербург и Ленинградская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 17,
+              "name": "Северо-Западный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "198216",
+          "city": "Санкт-Петербург",
+          "street": "проспект Народного Ополчения",
+          "house": "6",
+          "gps": {
+            "latitude": 59.852465,
+            "longitude": 30.281826
+          }
+        },
+        "deliveryServiceId": 631713,
+        "liftPrice": 0,
+        "outletCode": "28461",
+        "shipments": [
+          {
+            "id": 463151750,
+            "shipmentDate": "02-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 468315623,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "02-06-2024 00:37:40",
+      "currency": "RUR",
+      "itemsTotal": 388,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 388,
+      "buyerTotal": 388,
+      "buyerItemsTotalBeforeDiscount": 394,
+      "buyerTotalBeforeDiscount": 394,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 611017435,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 388,
+          "buyerPrice": 388,
+          "buyerPriceBeforeDiscount": 394,
+          "priceBeforeDiscount": 394,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 6,
+          "partnerWarehouseId": "305",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 6
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 6
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 6
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "03-06-2024",
+          "toDate": "03-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "03-06-2024"
+        },
+        "region": {
+          "id": 35,
+          "name": "Краснодар",
+          "type": "CITY",
+          "parent": {
+            "id": 121158,
+            "name": "Городской округ Краснодар",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 10995,
+              "name": "Краснодарский край",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 26,
+                "name": "Южный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "350087",
+          "city": "Краснодар",
+          "street": "улица Петра Метальникова",
+          "house": "5",
+          "block": "3",
+          "gps": {
+            "latitude": 45.093074,
+            "longitude": 39.009483
+          }
+        },
+        "deliveryServiceId": 77481,
+        "liftPrice": 0,
+        "outletCode": "29743",
+        "shipments": [
+          {
+            "id": 463004636,
+            "shipmentDate": "02-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 468172226,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "01-06-2024 18:45:16",
+      "currency": "RUR",
+      "itemsTotal": 342,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 342,
+      "buyerTotal": 342,
+      "buyerItemsTotalBeforeDiscount": 356,
+      "buyerTotalBeforeDiscount": 356,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 610854356,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 342,
+          "buyerPrice": 342,
+          "buyerPriceBeforeDiscount": 356,
+          "priceBeforeDiscount": 356,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 14,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 1
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 11
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 2
+            }
+          ],
+          "details": [
+            {
+              "itemCount": 1,
+              "itemStatus": "RETURNED",
+              "updateDate": "03-06-2024"
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 14
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 14
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "02-06-2024",
+          "toDate": "02-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "02-06-2024"
+        },
+        "region": {
+          "id": 10716,
+          "name": "Балашиха",
+          "type": "CITY",
+          "parent": {
+            "id": 116705,
+            "name": "Городской округ Балашиха",
+            "type": "REPUBLIC_AREA",
+            "parent": {
+              "id": 1,
+              "name": "Москва и Московская область",
+              "type": "REPUBLIC",
+              "parent": {
+                "id": 3,
+                "name": "Центральный федеральный округ",
+                "type": "COUNTRY_DISTRICT",
+                "parent": {
+                  "id": 225,
+                  "name": "Россия",
+                  "type": "COUNTRY"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "143913",
+          "city": "Балашиха",
+          "street": "Лётная улица",
+          "house": "5/5",
+          "gps": {
+            "latitude": 55.823889,
+            "longitude": 37.94491
+          }
+        },
+        "deliveryServiceId": 56238,
+        "liftPrice": 0,
+        "outletCode": "20375",
+        "shipments": [
+          {
+            "id": 462861239,
+            "shipmentDate": "01-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 468138827,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "01-06-2024 17:34:23",
+      "currency": "RUR",
+      "itemsTotal": 347,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 347,
+      "buyerTotal": 347,
+      "buyerItemsTotalBeforeDiscount": 374,
+      "buyerTotalBeforeDiscount": 374,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 610816544,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 347,
+          "buyerPrice": 347,
+          "buyerPriceBeforeDiscount": 374,
+          "priceBeforeDiscount": 374,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 27,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 27
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 27
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 27
+        }
+      ],
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "Доставка",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "02-06-2024",
+          "toDate": "02-06-2024",
+          "fromTime": "00:00:00",
+          "toTime": "00:00:00",
+          "realDeliveryDate": "04-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "121467",
+          "city": "Москва",
+          "street": "Молодогвардейская улица",
+          "house": "3",
+          "entrance": "1",
+          "entryphone": "10К4661",
+          "floor": "3",
+          "apartment": "10",
+          "gps": {
+            "latitude": 55.73326,
+            "longitude": 37.43957
+          }
+        },
+        "deliveryServiceId": 18881,
+        "liftPrice": 0,
+        "shipments": [
+          {
+            "id": 462827840,
+            "shipmentDate": "01-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 467987727,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "01-06-2024 12:31:02",
+      "currency": "RUR",
+      "itemsTotal": 365,
+      "deliveryTotal": 99,
+      "buyerItemsTotal": 365,
+      "buyerTotal": 464,
+      "buyerItemsTotalBeforeDiscount": 394,
+      "buyerTotalBeforeDiscount": 493,
+      "paymentType": "PREPAID",
+      "paymentMethod": "SBP",
+      "fake": false,
+      "items": [
+        {
+          "id": 610645476,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 365,
+          "buyerPrice": 365,
+          "buyerPriceBeforeDiscount": 394,
+          "priceBeforeDiscount": 394,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 29,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "PERCENT_DISCOUNT",
+              "subsidy": 23
+            },
+            {
+              "type": "DCO_EXTRA_DISCOUNT",
+              "subsidy": 6
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 29
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 29
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 99,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "02-06-2024",
+          "toDate": "02-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "02-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "109144",
+          "city": "Москва",
+          "street": "Батайский проезд",
+          "house": "63",
+          "gps": {
+            "latitude": 55.64348,
+            "longitude": 37.74136
+          }
+        },
+        "vat": "VAT_20_120",
+        "deliveryServiceId": 1005561,
+        "liftPrice": 0,
+        "outletCode": "485",
+        "shipments": [
+          {
+            "id": 462676743,
+            "shipmentDate": "01-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 467949465,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "01-06-2024 11:17:33",
+      "currency": "RUR",
+      "itemsTotal": 1844,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 1844,
+      "buyerTotal": 1844,
+      "buyerItemsTotalBeforeDiscount": 1888,
+      "buyerTotalBeforeDiscount": 1888,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 610602037,
+          "offerId": "0000030",
+          "offerName": "Органайзер для хранения одежды и белья, коробка для хранения вещей, ящик для хранения, бежевый 40х50х20см",
+          "price": 922,
+          "buyerPrice": 922,
+          "buyerPriceBeforeDiscount": 944,
+          "priceBeforeDiscount": 944,
+          "count": 2,
+          "vat": "NO_VAT",
+          "shopSku": "0000030",
+          "subsidy": 22,
+          "partnerWarehouseId": "308",
+          "promos": [
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 19
+            },
+            {
+              "type": "DISCOUNT_BY_PAYMENT_TYPE",
+              "subsidy": 3
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 22
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 44
+        }
+      ],
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "Доставка",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "05-06-2024",
+          "toDate": "05-06-2024",
+          "fromTime": "00:00:00",
+          "toTime": "00:00:00",
+          "realDeliveryDate": "06-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "107589",
+          "city": "Москва",
+          "street": "Хабаровская улица",
+          "house": "14к2",
+          "entrance": "7",
+          "entryphone": "356#085",
+          "floor": "8",
+          "apartment": "356",
+          "gps": {
+            "latitude": 55.82315,
+            "longitude": 37.82854
+          }
+        },
+        "deliveryServiceId": 18881,
+        "liftPrice": 0,
+        "shipments": [
+          {
+            "id": 462638482,
+            "shipmentDate": "04-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "notes": "Оставить у двери.",
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 467904565,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "01-06-2024 09:44:54",
+      "currency": "RUR",
+      "itemsTotal": 396,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 396,
+      "buyerTotal": 396,
+      "buyerItemsTotalBeforeDiscount": 400,
+      "buyerTotalBeforeDiscount": 400,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 610551207,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 396,
+          "buyerPrice": 396,
+          "buyerPriceBeforeDiscount": 400,
+          "priceBeforeDiscount": 400,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 4,
+          "partnerWarehouseId": "301",
+          "promos": [
+            {
+              "type": "PERCENT_DISCOUNT",
+              "subsidy": 4
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "SUBSIDY",
+              "amount": 4
+            }
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "SUBSIDY",
+          "amount": 4
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "02-06-2024",
+          "toDate": "02-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "02-06-2024"
+        },
+        "region": {
+          "id": 10870,
+          "name": "Кингисепп",
+          "type": "CITY",
+          "parent": {
+            "id": 166156,
+            "name": "Городское поселение Кингисеппское",
+            "type": "OTHER",
+            "parent": {
+              "id": 98624,
+              "name": "Кингисеппский район",
+              "type": "REPUBLIC_AREA",
+              "parent": {
+                "id": 10174,
+                "name": "Санкт-Петербург и Ленинградская область",
+                "type": "REPUBLIC",
+                "parent": {
+                  "id": 17,
+                  "name": "Северо-Западный федеральный округ",
+                  "type": "COUNTRY_DISTRICT",
+                  "parent": {
+                    "id": 225,
+                    "name": "Россия",
+                    "type": "COUNTRY"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "188480",
+          "city": "Кингисепп",
+          "street": "Восточная улица",
+          "house": "6А",
+          "gps": {
+            "latitude": 59.386276,
+            "longitude": 28.617953
+          }
+        },
+        "deliveryServiceId": 57027,
+        "liftPrice": 0,
+        "outletCode": "19518",
+        "shipments": [
+          {
+            "id": 462593582,
+            "shipmentDate": "01-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    },
+    {
+      "id": 467882788,
+      "status": "DELIVERED",
+      "substatus": "DELIVERY_SERVICE_DELIVERED",
+      "creationDate": "01-06-2024 08:50:20",
+      "currency": "RUR",
+      "itemsTotal": 400,
+      "deliveryTotal": 0,
+      "buyerItemsTotal": 400,
+      "buyerTotal": 400,
+      "buyerItemsTotalBeforeDiscount": 400,
+      "buyerTotalBeforeDiscount": 400,
+      "paymentType": "PREPAID",
+      "paymentMethod": "YANDEX",
+      "fake": false,
+      "items": [
+        {
+          "id": 610526519,
+          "offerId": "0000005",
+          "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+          "price": 400,
+          "buyerPrice": 400,
+          "buyerPriceBeforeDiscount": 400,
+          "priceBeforeDiscount": 400,
+          "count": 1,
+          "vat": "NO_VAT",
+          "shopSku": "0000005",
+          "subsidy": 0,
+          "partnerWarehouseId": "308"
+        }
+      ],
+      "delivery": {
+        "type": "PICKUP",
+        "serviceName": "Самовывоз",
+        "price": 0,
+        "deliveryPartnerType": "YANDEX_MARKET",
+        "dates": {
+          "fromDate": "02-06-2024",
+          "toDate": "02-06-2024",
+          "fromTime": "09:00:00",
+          "toTime": "18:00:00",
+          "realDeliveryDate": "02-06-2024"
+        },
+        "region": {
+          "id": 213,
+          "name": "Москва",
+          "type": "CITY",
+          "parent": {
+            "id": 1,
+            "name": "Москва и Московская область",
+            "type": "REPUBLIC",
+            "parent": {
+              "id": 3,
+              "name": "Центральный федеральный округ",
+              "type": "COUNTRY_DISTRICT",
+              "parent": {
+                "id": 225,
+                "name": "Россия",
+                "type": "COUNTRY"
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "Россия",
+          "postcode": "107014",
+          "city": "Москва",
+          "street": "улица Короленко",
+          "house": "4/14",
+          "gps": {
+            "latitude": 55.796426,
+            "longitude": 37.690476
+          }
+        },
+        "deliveryServiceId": 1006011,
+        "liftPrice": 0,
+        "outletCode": "24090",
+        "shipments": [
+          {
+            "id": 462571805,
+            "shipmentDate": "01-06-2024"
+          }
+        ]
+      },
+      "buyer": {
+        "type": "PERSON"
+      },
+      "taxSystem": "OSN",
+      "cancelRequested": false
+    }
+  ]
+}

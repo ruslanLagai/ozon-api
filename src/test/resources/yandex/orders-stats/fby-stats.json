@@ -1,0 +1,373 @@
+{
+  "status": "OK",
+  "result": {
+    "orders": [
+      {
+        "id": 485228188,
+        "creationDate": "2024-06-29",
+        "statusUpdateDate": "2024-07-02T15:01:03.252+03:00",
+        "status": "DELIVERED",
+        "partnerOrderId": "485228188",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 213,
+          "name": "Москва"
+        },
+        "items": [
+          {
+            "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+            "marketSku": 102085703934,
+            "shopSku": "0000005",
+            "count": 1,
+            "prices": [
+              {
+                "type": "BUYER",
+                "costPerItem": 400,
+                "total": 400
+              }
+            ],
+            "warehouse": {
+              "id": 172,
+              "name": "Яндекс.Маркет (Софьино)"
+            },
+            "details": [],
+            "cisList": [],
+            "bidFee": 0,
+            "cofinanceThreshold": 340
+          }
+        ],
+        "payments": [
+          {
+            "id": "574206138",
+            "date": "2024-07-01",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 400
+          }
+        ],
+        "commissions": [
+          {
+            "type": "FEE",
+            "actual": 68
+          },
+          {
+            "type": "DELIVERY_TO_CUSTOMER",
+            "actual": 47
+          },
+          {
+            "type": "AGENCY",
+            "actual": 0.12
+          },
+          {
+            "type": "LOYALTY_PARTICIPATION_FEE",
+            "actual": 14.8
+          }
+        ],
+        "buyerType": "PERSON"
+      },
+      {
+        "id": 485177867,
+        "creationDate": "2024-06-29",
+        "statusUpdateDate": "2024-06-30T22:37:47.059+03:00",
+        "status": "DELIVERED",
+        "partnerOrderId": "485177867",
+        "paymentType": "POSTPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 2,
+          "name": "Санкт-Петербург"
+        },
+        "items": [
+          {
+            "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+            "marketSku": 102085703934,
+            "shopSku": "0000005",
+            "count": 1,
+            "prices": [
+              {
+                "type": "BUYER",
+                "costPerItem": 400,
+                "total": 400
+              }
+            ],
+            "warehouse": {
+              "id": 301,
+              "name": "Яндекс.Маркет (Санкт-Петербург)"
+            },
+            "details": [],
+            "cisList": [],
+            "bidFee": 470,
+            "cofinanceThreshold": 340
+          }
+        ],
+        "payments": [
+          {
+            "id": "573728155",
+            "date": "2024-06-30",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 400
+          }
+        ],
+        "commissions": [
+          {
+            "type": "DELIVERY_TO_CUSTOMER",
+            "actual": 47
+          },
+          {
+            "type": "FEE",
+            "actual": 68
+          },
+          {
+            "type": "PAYMENT_TRANSFER",
+            "actual": 5.2
+          },
+          {
+            "type": "AGENCY",
+            "actual": 0.12
+          },
+          {
+            "type": "AUCTION_PROMOTION",
+            "actual": 18.8
+          }
+        ],
+        "buyerType": "PERSON"
+      },
+      {
+        "id": 484996922,
+        "creationDate": "2024-06-29",
+        "statusUpdateDate": "2024-07-02T22:57:00.402+03:00",
+        "status": "DELIVERED",
+        "partnerOrderId": "484996922",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 10757,
+          "name": "Талдом"
+        },
+        "items": [
+          {
+            "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+            "marketSku": 102085703934,
+            "shopSku": "0000005",
+            "count": 1,
+            "prices": [
+              {
+                "type": "MARKETPLACE",
+                "costPerItem": 33,
+                "total": 33
+              },
+              {
+                "type": "BUYER",
+                "costPerItem": 340,
+                "total": 340
+              }
+            ],
+            "warehouse": {
+              "id": 172,
+              "name": "Яндекс.Маркет (Софьино)"
+            },
+            "details": [],
+            "cisList": [],
+            "bidFee": 724,
+            "cofinanceThreshold": 340,
+            "cofinanceValue": 24
+          }
+        ],
+        "payments": [
+          {
+            "id": "574167426",
+            "date": "2024-07-01",
+            "type": "PAYMENT",
+            "source": "MARKETPLACE",
+            "total": 33
+          },
+          {
+            "id": "574166751",
+            "date": "2024-07-01",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 340
+          }
+        ],
+        "commissions": [
+          {
+            "type": "AGENCY",
+            "actual": 0.12
+          },
+          {
+            "type": "DELIVERY_TO_CUSTOMER",
+            "actual": 45.52
+          },
+          {
+            "type": "FEE",
+            "actual": 63.41
+          },
+          {
+            "type": "AUCTION_PROMOTION",
+            "actual": 27.01
+          }
+        ],
+        "buyerType": "PERSON"
+      },
+      {
+        "id": 484352255,
+        "creationDate": "2024-06-28",
+        "statusUpdateDate": "2024-06-28T13:00:53.207+03:00",
+        "status": "CANCELLED_IN_PROCESSING",
+        "partnerOrderId": "484352255",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 20728,
+          "name": "Королёв"
+        },
+        "items": [
+          {
+            "offerName": "Органайзер для хранения одежды и белья, коробка для хранения вещей, ящик для хранения, бежевый 40х50х20см",
+            "marketSku": 102961785331,
+            "shopSku": "0000030",
+            "count": 1,
+            "prices": [
+              {
+                "type": "MARKETPLACE",
+                "costPerItem": 34,
+                "total": 34
+              },
+              {
+                "type": "BUYER",
+                "costPerItem": 760,
+                "total": 760
+              }
+            ],
+            "warehouse": {
+              "id": 308,
+              "name": "Яндекс.Маркет (Софьино Суперсклад)"
+            },
+            "details": [
+              {
+                "itemStatus": "REJECTED",
+                "itemCount": 1
+              }
+            ],
+            "cisList": [],
+            "bidFee": 0,
+            "cofinanceThreshold": 794,
+            "cofinanceValue": 6
+          }
+        ],
+        "payments": [],
+        "commissions": [],
+        "buyerType": "PERSON"
+      },
+      {
+        "id": 484221872,
+        "creationDate": "2024-06-28",
+        "statusUpdateDate": "2024-06-30T18:02:20.963+03:00",
+        "status": "RETURNED",
+        "partnerOrderId": "484221872",
+        "paymentType": "PREPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 213,
+          "name": "Москва"
+        },
+        "items": [
+          {
+            "offerName": "Держатель для губки на кухне, держатель для мыла, органайзер на кран для губки и моющего средства, мыльница на кран",
+            "marketSku": 102085703934,
+            "shopSku": "0000005",
+            "count": 1,
+            "prices": [
+              {
+                "type": "MARKETPLACE",
+                "costPerItem": 8,
+                "total": 8
+              },
+              {
+                "type": "BUYER",
+                "costPerItem": 384,
+                "total": 384
+              }
+            ],
+            "warehouse": {
+              "id": 172,
+              "name": "Яндекс.Маркет (Софьино)"
+            },
+            "details": [
+              {
+                "itemStatus": "RETURNED",
+                "itemCount": 1
+              }
+            ],
+            "cisList": [],
+            "bidFee": 883,
+            "cofinanceThreshold": 340,
+            "cofinanceValue": 8
+          }
+        ],
+        "payments": [
+          {
+            "id": "572360373",
+            "date": "2024-06-29",
+            "type": "PAYMENT",
+            "source": "MARKETPLACE",
+            "total": 8
+          },
+          {
+            "id": "571747260",
+            "date": "2024-06-29",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 384
+          },
+          {
+            "id": "573599200",
+            "date": "2024-06-30",
+            "type": "REFUND",
+            "source": "MARKETPLACE",
+            "total": 8
+          },
+          {
+            "id": "573604138",
+            "date": "2024-06-30",
+            "type": "REFUND",
+            "source": "BUYER",
+            "total": 384
+          }
+        ],
+        "commissions": [
+            {
+              "type": "DELIVERY_TO_CUSTOMER",
+              "actual": 76.56
+            },
+            {
+              "type": "AUCTION_PROMOTION",
+              "actual": 34.61
+            },
+            {
+              "type": "FEE",
+              "actual": 0
+            },
+            {
+              "type": "RETURN_PROCESSING",
+              "actual": 50
+            },
+            {
+              "type": "PAYMENT_TRANSFER",
+              "actual": 4.99
+            },
+            {
+              "type": "AGENCY",
+              "actual": 0.12
+            }
+        ],
+        "buyerType": "PERSON"
+      }
+    ],
+    "paging": {
+      "nextPageToken": "eyJvcCI6Ij4iLCJrZXkiOnsib3JkZXJJZCI6NDg0MjIxODcyfSwic2tpcCI6MH0"
+    }
+  }
+}

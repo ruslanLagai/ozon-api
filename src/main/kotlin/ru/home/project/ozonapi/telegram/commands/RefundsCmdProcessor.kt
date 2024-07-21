@@ -33,7 +33,7 @@ class RefundsCmdProcessor(
 
         val replyKeyboardMarkup = ReplyKeyboardMarkup()
         replyKeyboardMarkup.apply {
-            selective = true
+            selective = false
             resizeKeyboard = true
             oneTimeKeyboard = true
             isPersistent = true
