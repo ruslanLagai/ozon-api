@@ -12,6 +12,7 @@ import java.io.File
 import java.net.URI
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.util.concurrent.CompletableFuture
 import java.util.concurrent.Executors
 
 /**
@@ -32,6 +33,13 @@ class YandexMarketClient(
      */
     fun getCampaigns() : List<Long> {
         return campaignsApi.getCampaigns().campaigns?.map { it.id ?: 0L} ?: listOf()
+    }
+
+    /**
+     * Get campaigns
+     */
+    fun getCampaignList() : List<CampaignDTO>? {
+        return campaignsApi.getCampaigns().campaigns
     }
 
     /**
@@ -70,46 +78,49 @@ class YandexMarketClient(
     /**
      * Get report
      */
-    fun createReport(businessId: Long, from: LocalDate, to: LocalDate, campaigns: List<Long>): String {
+    fun createReport(businessId: Long, from: LocalDate, to: LocalDate, campaigns: List<Long>) : CompletableFuture<String> {
+        var reportId: String
+        var filePath = ""
+        return CompletableFuture.supplyAsync {
+            val request = GenerateUnitedMarketplaceServicesReportRequest(
+                businessId = businessId,
+                dateFrom = from,
+                dateTo = if (to.isAfter(LocalDate.now())) { LocalDate.now() } else { to },
+                placementPrograms = listOf(PlacementType.FBY, PlacementType.FBS),
+                campaignIds = campaigns
+            )
+            val response = reportsApi.generateUnitedMarketplaceServicesReport(request, ReportFormatType.CSV)
+            if (response.status != ApiResponseStatusType.OK || response.result == null) {
+                throw YandexException(msg = "Failed to create report, status: " + response.status!!.name)
+            }
+            reportId = response.result!!.reportId
 
-        val path = executorService.submit {
-            var link: String? = null
-            for (i in 0..2) {
-                link = getReport(businessId, from, to, campaigns)
-                if (link != null) {
-                    break
+            Thread.sleep(2000)
+
+            var report = reportsApi.getReportInfo(reportId)
+            if (report.result!!.status != ReportStatusType.DONE && report.result!!.status != ReportStatusType.FAILED) {
+                for (i in 0..2) {
+                    report = reportsApi.getReportInfo(reportId)
+                    Thread.sleep(1000)
+                    if (report.result!!.status == ReportStatusType.DONE) {
+                        break
+                    }
                 }
-                Thread.sleep(1000)
             }
-            if (link != null) {
-                val date = LocalDateTime.now()
-                FileUtils.copyURLToFile(URI.create(link).toURL(), File("/tmp/yandex-report-$date.csv"))
-            }
-            return@submit
-        }.get()
-        return ""
-    }
 
-    /**
-     * Get report
-     */
-    fun getReport(businessId: Long, from: LocalDate, to: LocalDate, campaigns: List<Long>) : String? {
-        val request = GenerateUnitedMarketplaceServicesReportRequest(
-            businessId = businessId,
-            dateFrom = from,
-            dateTo = to,
-            placementPrograms = listOf(PlacementType.FBY, PlacementType.FBS),
-            campaignIds = campaigns
-        )
-        val response = reportsApi.generateUnitedMarketplaceServicesReport(request, ReportFormatType.CSV)
-        if (response.status != ApiResponseStatusType.OK || response.result == null) {
-            throw YandexException(msg = "Failed to create report, status: " + response.status!!.name)
+            val status = report.result!!.status
+            if (report.status != ApiResponseStatusType.OK || report.result == null) {
+                throw YandexException(msg = "Failed to create report, status: " + report.status!!.name)
+            }
+
+            val file = if (status == ReportStatusType.DONE || status == ReportStatusType.FAILED) { report.result!!.file } else { null }
+
+            if (file != null) {
+                val date = LocalDateTime.now()
+                filePath = "/tmp/ozon/yandex-report-$date.zip"
+                FileUtils.copyURLToFile(URI.create(file).toURL(), File(filePath))
+            }
+            filePath
         }
-        val report = reportsApi.getReportInfo(response.result!!.reportId)
-        if (report.status != ApiResponseStatusType.OK || report.result == null) {
-            throw YandexException(msg = "Failed to create report, status: " + response.status!!.name)
-        }
-        val status = report.result!!.status
-        return if (status == ReportStatusType.DONE || status == ReportStatusType.FAILED) { report.result!!.file } else { null }
     }
 }

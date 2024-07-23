@@ -4,13 +4,10 @@ import org.apache.commons.lang3.StringUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
-import ru.home.project.ozonapi.dto.finance.response.OperationType
-import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.request.RevenueRequest
 import ru.home.project.ozonapi.dto.response.RevenueResponse
 import ru.home.project.ozonapi.entity.MarketType
 import ru.home.project.ozonapi.repository.PositionRepository
-import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.service.RevenueCalculationService
 import ru.home.project.ozonapi.service.TotalRevenueCalculationService
 import ru.home.project.ozonapi.service.YandexService
@@ -45,6 +42,9 @@ class YandexTotalRevenueCalculationServiceImpl(
 
         val positions = positionRepository.findAll().filter { StringUtils.isNotBlank(it.yandexArtikul) }
 
+        val reportProcessingResult = yandexService.getReport(request.from.toLocalDate(), request.to.toLocalDate())
+        val reportResult = reportProcessingResult.first
+
         val cacheKey = "from_" + request.from.format(formatter) + "_to_" + request.to.format(formatter)
         val transactions = yandexService.getTransaction(request.from.toLocalDate(), request.to.toLocalDate(), cacheKey)
 
@@ -60,44 +60,28 @@ class YandexTotalRevenueCalculationServiceImpl(
         }
         log.info("Calculated revenue for '${revenueList.size}'")
 
+        reportProcessingResult.second.get()
+
         // Расходы на рекламу
         val marketing = revenueList.sumOf { it.marketing }
 
         // Количество проданных товаров за период
         val soldItems = revenueList.sumOf { it.soldItemsCount }
 
-        // Расходы на отзывы
-        val feedback = 0.0
-
-        // Начисление по претензиям
-        val otherIncome = 0.0
-        val pinFeedback = 0.0
-        val feedBackTotal = feedback + pinFeedback
-
         // Расходы на утилизацию
-        val destroyFee = 0.0
+        val destroyFee = reportResult.utilization
 
         // Расходы на кросс док
-        val crossDoc = 0.0
+        val crossDoc = reportResult.crossDoc
 
         // Расходы на размещение товара
-        val storage = 0.0
+        val storage = reportResult.paidStorage
 
-        // Корректировка
-        val correction = 0.0
-
-        // Обработка брака с приемки
-        val spoilageSurplus = 0.0
-
-        val compensationIncome = 0.0
-
-        val courierReturnDelivery = 0.0
+        val shelf = reportResult.shelf
 
         // Чистая прибыль
-        var totalRevenue = revenueList
-            .map(RevenueResponse::totalRevenue)
-            .sum()
-        totalRevenue += feedback + pinFeedback + destroyFee + marketing + compensationIncome + crossDoc + correction + spoilageSurplus + courierReturnDelivery + storage + otherIncome
+        var totalRevenue = revenueList.map(RevenueResponse::totalRevenue).sum()
+        totalRevenue -= destroyFee - shelf - crossDoc - storage
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено
@@ -128,6 +112,10 @@ class YandexTotalRevenueCalculationServiceImpl(
                 marketingCosts = BigDecimal(marketing).setScale(2, RoundingMode.HALF_UP).toDouble()
                 totalRefund = BigDecimal(totalRefundCosts).setScale(2, RoundingMode.HALF_UP).toDouble()
                 totalCostPrice = BigDecimal(costPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
+                destroyCosts = destroyFee
+                storageCosts = storage
+                xDoc = crossDoc
+                this.shelf = shelf
             }
         }
 

@@ -1,5 +1,6 @@
 package ru.home.project.ozonapi.service.impl
 
+import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import org.openapitools.client.infrastructure.ClientException
 import org.openapitools.client.infrastructure.ServerException
 import org.openapitools.client.models.OrderStatusType
@@ -9,9 +10,13 @@ import org.slf4j.LoggerFactory
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 import ru.home.project.ozonapi.client.YandexMarketClient
+import ru.home.project.ozonapi.dto.YandexReportResult
 import ru.home.project.ozonapi.service.YandexService
+import java.io.File
 import java.time.LocalDate
 import java.time.Period
+import java.util.concurrent.CompletableFuture
+import java.util.function.Consumer
 
 /**
  * @author rlagay
@@ -26,6 +31,36 @@ class YandexServiceImpl(
         OrderStatusType.DELIVERED,
         OrderStatusType.CANCELLED,
         OrderStatusType.RETURNED
+    )
+
+    private val filesToProcess = mapOf(
+//        "banners.csv",//баннеры
+//        "cpm-boost.csv",//буст продаж с оплатой запоказы
+        Pair(ReportType.CrossDoc, "delivery_via_transit_warehouse.csv"),//кросс док
+//        "export_from_warehouse.csv", пока нет
+//        "express_delivery.csv", //
+//        "expropriation.csv", пока нет
+//        "extended_service_access.csv",
+//        "installment_plan.csv",
+        Pair(ReportType.PaidStorage, "paid_storage_after_01-06-22.csv"),
+//        "reception_of_surplus.csv",
+        Pair(ReportType.Shelf, "shelf.csv"),//Полки
+        Pair(ReportType.Utilization, "utilization.csv")
+    )
+
+    private val reportProcessor = mapOf(
+        Pair(ReportType.CrossDoc) { file: String, response: YandexReportResult ->
+            processReport(file, "SERVICE_PRICE_IN_ROUBLES") { value: Double -> response.crossDoc = value }
+        },
+        Pair(ReportType.PaidStorage) { file: String, response: YandexReportResult ->
+            processReport(file, "PAID_STORAGE_IN_ROUBLES") { value: Double -> response.paidStorage = value }
+        },
+        Pair(ReportType.Shelf) { file: String, response: YandexReportResult ->
+            processReport(file, "SERVICE_PRICE_IN_ROUBLES") { value: Double -> response.shelf = value }
+        },
+        Pair(ReportType.Utilization) { file: String, response: YandexReportResult ->
+            processReport(file, "SERVICE_PRICE_IN_ROUBLES") { value: Double -> response.utilization = value }
+        }
     )
 
     @Cacheable(cacheNames = ["yandex-transactions"], key = "#key")
@@ -67,5 +102,49 @@ class YandexServiceImpl(
         }.getOrThrow()
     }
 
+    override fun getReport(from: LocalDate, to: LocalDate) : Pair<YandexReportResult, CompletableFuture<*>> {
+        val campaigns = yandexMarketClient.getCampaignList()
+        val businessId = campaigns?.map { it.business?.id ?: 0L}?.first() ?: 0L
+        val campaignIds = campaigns?.map { it.id ?: 0L } ?: listOf()
 
+        val response = YandexReportResult()
+        val future = yandexMarketClient.createReport(businessId, from, to, campaignIds).whenComplete { filePath, ex ->
+            if (ex != null) {
+               throw ex
+            }
+            ProcessBuilder()
+               .command("mkdir", "/tmp/ozon/")
+               .redirectError(ProcessBuilder.Redirect.INHERIT)
+               .redirectOutput(ProcessBuilder.Redirect.INHERIT)
+               .start()
+               .waitFor()
+
+            ProcessBuilder()
+               .command("unzip", filePath, "-d", "/tmp/ozon/")
+               .redirectError(ProcessBuilder.Redirect.INHERIT)
+               .redirectOutput(ProcessBuilder.Redirect.INHERIT)
+               .start()
+               .waitFor()
+
+            filesToProcess.forEach { (k, v) -> reportProcessor[k]!!.invoke("/tmp/ozon/" + v, response) }
+
+            ProcessBuilder()
+               .command("rm", "-r", "/tmp/ozon")
+               .start()
+               .waitFor()
+        }
+        return Pair(response, future)
+    }
+
+    private fun processReport(file: String, header: String, consumer: Consumer<Double>) {
+        val sum = csvReader().readAllWithHeader(File(file))
+            .map { it[header] }
+            .filter { !it.isNullOrEmpty() }
+            .sumOf { it!!.toDouble() }
+        consumer.accept(sum)
+    }
+
+    enum class ReportType {
+        CrossDoc, PaidStorage, Shelf, Utilization
+    }
 }

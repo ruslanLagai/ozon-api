@@ -32,6 +32,7 @@ data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: 
     var pinFeedback: Double = 0.0
     var totalFeedBackCost: Double = 0.0
     var stencil: Double = 0.0
+    var shelf: Double = 0.0
     var feedbackCosts: Double = 0.0
     var destroyCosts: Double = 0.0
     var soldItemsCount: Int = 0

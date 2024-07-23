@@ -73,9 +73,13 @@ fun produceYandexAllItemsMessage(result: List<RevenueResponse>): String {
                 "Чистая прибыль                 $totalRevenueForAllDeliveredItems\n" +
                 "Себестоимость                   $totalCostPrice\n" +
                 " - Логистика                        $totalLogisticCosts\n" +
-                " - Комиссия яндекс                $totalCommissionCosts\n" +
+                " - Комиссия яндекс            $totalCommissionCosts\n" +
                 " - Реклама                            $marketingCosts\n" +
                 " - Возвраты                          $totalRefund\n" +
+                " - Кросс-док                        $xDoc\n" +
+                " - Утилизация                      $destroyCosts\n" +
+                " - Хранение                          $storageCosts\n" +
+                " - Полки                                $shelf\n" +
                 "Доставки                              $totalDeliveryItemCount\n" +
                 "Возвраты                             $totalRefundsCount\n" +
                 "Количество продаж          $soldItemsCount\n" +
@@ -92,9 +96,9 @@ fun produceYandexAllItemsMessage(result: List<RevenueResponse>): String {
                 val message = "\uD83D\uDCDD ${it.name}\n" +
                         "Чистая прибыль        $totalRevenue\n" +
                         "Себестоимость         $costPrice\n" +
-                        " - Комиссия яндекс        $saleCommission\n" +
+                        " - Комиссия яндекс     $saleCommission\n" +
                         " - Логистика                $logistic\n" +
-                        " - Реклама                  $refund\n" +
+                        " - Реклама                  $marketing\n" +
                         " - Возвраты                 $refund\n" +
                         "Средняя прибыль      $averageRevenue\n" +
                         "Доставки                       $deliveryItemCount\n" +

@@ -32,6 +32,7 @@ dependencies {
     implementation("org.flywaydb:flyway-mysql")
     implementation("org.hibernate.validator:hibernate-validator")
     implementation ("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.9.3")
     implementation(project(":yandex-market"))
 
 //    developmentOnly("org.springframework.boot:spring-boot-devtools")
