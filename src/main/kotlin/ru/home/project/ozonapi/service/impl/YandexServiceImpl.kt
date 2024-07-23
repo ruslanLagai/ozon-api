@@ -11,6 +11,7 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 import ru.home.project.ozonapi.client.YandexMarketClient
 import ru.home.project.ozonapi.dto.YandexReportResult
+import ru.home.project.ozonapi.exception.YandexException
 import ru.home.project.ozonapi.service.YandexService
 import java.io.File
 import java.time.LocalDate
@@ -111,6 +112,9 @@ class YandexServiceImpl(
         val future = yandexMarketClient.createReport(businessId, from, to, campaignIds).whenComplete { filePath, ex ->
             if (ex != null) {
                throw ex
+            }
+            if (filePath.isNullOrEmpty()) {
+                throw YandexException("Empty filepath")
             }
             ProcessBuilder()
                .command("mkdir", "/tmp/ozon/")

@@ -6,6 +6,8 @@ import org.openapitools.client.apis.OrdersApi
 import org.openapitools.client.apis.OrdersStatsApi
 import org.openapitools.client.apis.ReportsApi
 import org.openapitools.client.models.*
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import ru.home.project.ozonapi.exception.YandexException
 import java.io.File
@@ -13,7 +15,6 @@ import java.net.URI
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.concurrent.CompletableFuture
-import java.util.concurrent.Executors
 
 /**
  * @author rlagay
@@ -26,7 +27,7 @@ class YandexMarketClient(
     val reportsApi: ReportsApi
 ) {
 
-    private val executorService = Executors.newFixedThreadPool(2)
+    val log: Logger = LoggerFactory.getLogger(YandexMarketClient::class.java)
 
     /**
      * Get campaigns
@@ -95,11 +96,12 @@ class YandexMarketClient(
             }
             reportId = response.result!!.reportId
 
-            Thread.sleep(2000)
+            Thread.sleep(1000)
 
             var report = reportsApi.getReportInfo(reportId)
             if (report.result!!.status != ReportStatusType.DONE && report.result!!.status != ReportStatusType.FAILED) {
                 for (i in 0..2) {
+                    log.info("Retrying to get report, current status is {}", report.result!!.status)
                     report = reportsApi.getReportInfo(reportId)
                     Thread.sleep(1000)
                     if (report.result!!.status == ReportStatusType.DONE) {
@@ -109,16 +111,20 @@ class YandexMarketClient(
             }
 
             val status = report.result!!.status
-            if (report.status != ApiResponseStatusType.OK || report.result == null) {
+            if (report.status != ApiResponseStatusType.OK) {
                 throw YandexException(msg = "Failed to create report, status: " + report.status!!.name)
             }
 
-            val file = if (status == ReportStatusType.DONE || status == ReportStatusType.FAILED) { report.result!!.file } else { null }
+            if (status != ReportStatusType.DONE) {
+                throw YandexException(msg = "Failed to create report, status is not DONE: " + report.result!!.status)
+            }
+            val file = report.result!!.file
 
             if (file != null) {
                 val date = LocalDateTime.now()
                 filePath = "/tmp/ozon/yandex-report-$date.zip"
                 FileUtils.copyURLToFile(URI.create(file).toURL(), File(filePath))
+                Thread.sleep(1000)
             }
             filePath
         }

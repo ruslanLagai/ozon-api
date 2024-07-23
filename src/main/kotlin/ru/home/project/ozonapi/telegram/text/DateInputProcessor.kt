@@ -7,9 +7,12 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
 import ru.home.project.ozonapi.dto.request.RevenueRequest
+import ru.home.project.ozonapi.dto.response.RevenueResponse
 import ru.home.project.ozonapi.entity.ActionType
 import ru.home.project.ozonapi.entity.MarketType
 import ru.home.project.ozonapi.entity.TelegramChatEntity
+import ru.home.project.ozonapi.exception.OzonException
+import ru.home.project.ozonapi.exception.YandexException
 import ru.home.project.ozonapi.repository.TelegramChatRepository
 import ru.home.project.ozonapi.service.RevenueCalculationService
 import ru.home.project.ozonapi.service.TotalRefundsService
@@ -147,24 +150,43 @@ class DateInputProcessor(
 
     private fun calculateAllItems(request: RevenueRequest): String {
         val allItemsRequest = RevenueRequest(to = request.to, from = request.from, name = null)
-        val result = ozonTotalRevenueCalculationServiceImpl.calculateRevenue(allItemsRequest)
-
-        if (result.isEmpty()) {
-            log.warn("Revenue calculation is null, request '${allItemsRequest}'")
-            return "Не удалось рассчитать маржинальность"
+        var result: List<RevenueResponse>
+        var text = ""
+        kotlin.runCatching {
+            result = ozonTotalRevenueCalculationServiceImpl.calculateRevenue(allItemsRequest)
+            if (result.isEmpty()) {
+                log.warn("Revenue calculation is null, request '${allItemsRequest}'")
+                text = "Не удалось рассчитать маржинальность"
+            }
+            text = produceOzonAllItemsMessage(result)
+        }.onFailure {
+            text = when (it) {
+                is OzonException -> "Ошибка от апи Озон, попробуйте позже"
+                else -> "Не удалось рассчитать маржинальность, попробуйте еще раз"
+            }
         }
-        return produceOzonAllItemsMessage(result)
+        return text
     }
 
     private fun calculateAllItemsYandex(request: RevenueRequest): String {
         val allItemsRequest = RevenueRequest(to = request.to, from = request.from, name = null)
-        val result = yandexTotalRevenueCalculationServiceImpl.calculateRevenue(allItemsRequest)
+        var result: List<RevenueResponse>
+        var text = ""
+        kotlin.runCatching {
+            result = yandexTotalRevenueCalculationServiceImpl.calculateRevenue(allItemsRequest)
 
-        if (result.isEmpty()) {
-            log.warn("Revenue calculation is null, request '${allItemsRequest}'")
-            return "Не удалось рассчитать маржинальность"
+            if (result.isEmpty()) {
+                log.warn("Revenue calculation is null, request '${allItemsRequest}'")
+                text = "Не удалось рассчитать маржинальность"
+            }
+            text = produceYandexAllItemsMessage(result)
+        }.onFailure {
+            text = when (it) {
+                is YandexException -> "Ошибка от апи Яндекс маркета, попробуйте позже"
+                else -> "Не удалось рассчитать маржинальность, попробуйте еще раз"
+            }
         }
-        return produceYandexAllItemsMessage(result)
+        return text
     }
 
     private fun calculateItemYandex(request: RevenueRequest): String {

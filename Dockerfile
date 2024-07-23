@@ -32,6 +32,9 @@ ENV app_user=appuser
 
 RUN addgroup ${app_user} && adduser --ingroup ${app_user} ${app_user}
 
+RUN apt update
+RUN apt install unzip
+
 RUN mkdir -p /opt/logs \
     && chown ${app_user}:${app_user} /opt/logs -R \
     && mkdir -p /opt/software/${app_name} \
