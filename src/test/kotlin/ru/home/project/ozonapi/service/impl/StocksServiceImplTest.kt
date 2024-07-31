@@ -13,6 +13,7 @@ import ru.home.project.ozonapi.dto.stocks.response.GetStocksResponse
 import ru.home.project.ozonapi.dto.supply.response.SupplyItemsResp
 import ru.home.project.ozonapi.dto.supply.response.SupplyOrdersResp
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
+import ru.home.project.ozonapi.entity.OzonSupplyEntity
 import ru.home.project.ozonapi.entity.PositionEntity
 import ru.home.project.ozonapi.entity.StockEntity
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
@@ -43,28 +44,39 @@ class StocksServiceImplTest {
     private val umbrella4 = PositionEntity(4, "Мини зонт бежевый", 448.92, 11.69, "1134715033", "0000010")
     private val umbrella5 = PositionEntity(5, "Мини зонт розовый", 448.92, 11.69, "1134731178", "0000011")
     private val umbrella6 = PositionEntity(6, "Мини зонт серый", 448.92, 11.69, "1134733705", "0000012")
-    private val stock1 = StockEntity(1, "Мини зонт черный", 4, "1135684591", "0000015")
-    private val stock2 = StockEntity(2, "Мини зонт лавандовый", 0, "1134671293", "0000009")
-    private val stock3 = StockEntity(3, "Мини зонт голубой", 0, "1134740183", "0000013")
-    private val stock4 = StockEntity(4, "Мини зонт бежевый", 2, "1134715033", "0000010")
+    private val stock1 = StockEntity(1, "Мини зонт черный", 4, "1135684591", "0000015", yandexArtikul = "")
+    private val stock2 = StockEntity(2, "Мини зонт лавандовый", 0, "1134671293", "0000009", yandexArtikul = "")
+    private val stock3 = StockEntity(3, "Мини зонт голубой", 0, "1134740183", "0000013", yandexArtikul = "")
+    private val stock4 = StockEntity(4, "Мини зонт бежевый", 2, "1134715033", "0000010", yandexArtikul = "")
     private val orderEntity1 = ChinaOrderEntity(1, "supplier", mass = 34.0, stockCost = 10000.0, products = listOf(), orderDate = LocalDate.now())
     private val orderEntity2 = ChinaOrderEntity(2, "supplier", mass = 34.0, stockCost = 20000.0, products = listOf(), orderDate = LocalDate.now())
 
     @Test
     fun `test worth calculation - ozon + stock + order + deliveries - remove ozon supply goods from stock`() {
-        val stock1 = StockEntity(1, "Мини зонт черный", 40, "1135684591", "0000015")
-        val stock2 = StockEntity(2, "Мини зонт лавандовый", 40, "1134671293", "0000009")
-        val stock3 = StockEntity(3, "Мини зонт голубой", 0, "1134740183", "0000013")
-        val stock4 = StockEntity(4, "Мини зонт бежевый", 42, "1134715033", "0000010")
+        val stock1 = StockEntity(1, "Мини зонт черный", 40, "1135684591", "0000015", yandexArtikul = "")
+        val stock2 = StockEntity(2, "Мини зонт лавандовый", 40, "1134671293", "0000009", yandexArtikul = "")
+        val stock3 = StockEntity(3, "Мини зонт голубой", 0, "1134740183", "0000013", yandexArtikul = "")
+        val stock4 = StockEntity(4, "Мини зонт бежевый", 42, "1134715033", "0000010", yandexArtikul = "")
 
         val positions = listOf(umbrella1, umbrella2, umbrella3, umbrella4, umbrella5, umbrella6)
         val stocks = listOf(stock1, stock2, stock3, stock4)
         val stocksResp = readResource("stocks/stocks-response.json", GetStocksResponse::class.java)
         val deliveriesResp = readResource("deliveries/deliveries-response.json", DeliveryResponse::class.java)
+        val supplyOrders = readResource("supply/supply-list.json", SupplyOrdersResp::class.java)
+        val supplyOrderItems1 = readResource("supply/supply-order-1.json", SupplyItemsResp::class.java)
+        val supplyOrderItems2 = readResource("supply/supply-order-2.json", SupplyItemsResp::class.java)
+        val supplyOrderItems3 = readResource("supply/supply-order-3.json", SupplyItemsResp::class.java)
+        val supplyOrderItems4 = readResource("supply/supply-order-4.json", SupplyItemsResp::class.java)
+
         val orders = setOf(orderEntity1, orderEntity2)
 
         `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.result.items)
-        `when`(ozonApiClient.getSupplyOrders()).thenReturn(listOf())
+        `when`(ozonApiClient.getSupplyOrders()).thenReturn(supplyOrders.result)
+        `when`(ozonApiClient.getSupplyItems(28439982)).thenReturn(supplyOrderItems1.items)
+        `when`(ozonApiClient.getSupplyItems(28439770)).thenReturn(supplyOrderItems2.items)
+        `when`(ozonApiClient.getSupplyItems(28439655)).thenReturn(supplyOrderItems3.items)
+        `when`(ozonApiClient.getSupplyItems(28130822)).thenReturn(supplyOrderItems4.items)
+
         `when`(positionRepository.findAll()).thenReturn(positions)
         `when`(stockRepository.findAll()).thenReturn(stocks)
         `when`(stockRepository.getByOzonId("1135684591")).thenReturn(stock1)
@@ -72,6 +84,10 @@ class StocksServiceImplTest {
         `when`(stockRepository.getByOzonId("1134740183")).thenReturn(stock3)
         `when`(stockRepository.getByOzonId("1134715033")).thenReturn(stock4)
 
+        `when`(ozonSupplyRepository.getOzonSupplyEntityByOrderId(28439982)).thenReturn(null)
+        `when`(ozonSupplyRepository.getOzonSupplyEntityByOrderId(28439770)).thenReturn(OzonSupplyEntity(orderId = 28439770, subtracted = false))
+        `when`(ozonSupplyRepository.getOzonSupplyEntityByOrderId(28439655)).thenReturn(OzonSupplyEntity(orderId = 28439655, subtracted = true))
+        `when`(ozonSupplyRepository.getOzonSupplyEntityByOrderId(28130822)).thenReturn(OzonSupplyEntity(orderId = 28130822, subtracted = true))
         `when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false)).thenReturn(orders)
         `when`(ozonApiClient.getDeliveriesByStatus(DeliveryStatus.delivering)).thenReturn(deliveriesResp.result)
 
@@ -79,12 +95,27 @@ class StocksServiceImplTest {
 
         assertEquals(2, result.orders.size)
         assertEquals(30000.0, result.stocksOnWayWorth)
-        assertEquals(142328.49, result.stocksWorth)
+        assertEquals(153843.74, result.stocksWorth)
         assertEquals(8751.59, result.deliveryWorth)
         assertEquals(13, result.products.size)
-        verify(stockRepository).updateQuantityByOzonId("1135684591", 3)
-        verify(stockRepository).updateQuantityByOzonId("1134671293", 9)
-        verify(stockRepository).updateQuantityByOzonId("1134715033", 32)
+        assertEquals(100, result.products["0000009"]!!.totalStock)
+        assertEquals(80, result.products["0000010"]!!.totalStock)
+        assertEquals(48, result.products["0000012"]!!.totalStock)
+        assertEquals(13, result.products.size)
+        assertEquals(2, result.orders.size)
+        assertEquals(4, result.deliveries.size)
+        assertEquals(7, result.deliveries["0000009"]!!.totalStock)
+        assertEquals(5, result.deliveries["0000010"]!!.totalStock)
+        assertEquals(2, result.deliveries["0000015"]!!.totalStock)
+        assertEquals(5, result.deliveries["0000012"]!!.totalStock)
+
+        verify(stockRepository, times(2)).updateQuantityByOzonId("1135684591", 31)
+        verify(stockRepository, times(2)).updateQuantityByOzonId("1134671293", 31)
+        verify(stockRepository, times(2)).updateQuantityByOzonId("1134715033", 35)
+        verify(ozonSupplyRepository).save(OzonSupplyEntity(orderId = 28439982, subtracted = true))
+        verify(ozonSupplyRepository).updateByOrderId(28439770)
+        verify(ozonSupplyRepository, never()).updateByOrderId(28439655)
+        verify(ozonSupplyRepository, never()).updateByOrderId(28130822)
     }
 
     @Test
@@ -106,10 +137,10 @@ class StocksServiceImplTest {
 
         assertEquals(0, result.orders.size)
         assertEquals(0.0, result.stocksOnWayWorth)
-        assertEquals(88897.73, result.stocksWorth)
+        assertEquals(43757.95, result.stocksWorth)
         assertEquals(13, result.products.size)
         assertEquals(8751.59, result.deliveryWorth)
-        assertEquals(10, result.deliveries.size)
+        assertEquals(4, result.deliveries.size)
 
     }
 
@@ -133,7 +164,7 @@ class StocksServiceImplTest {
 
         assertEquals(2, result.orders.size)
         assertEquals(30000.0, result.stocksOnWayWorth)
-        assertEquals(88897.73, result.stocksWorth)
+        assertEquals(43757.95, result.stocksWorth)
         assertEquals(13, result.products.size)
         verify(stockRepository, times(0)).updateQuantityByOzonId(anyString(), anyInt())
     }

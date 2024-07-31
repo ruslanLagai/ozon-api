@@ -13,6 +13,8 @@ interface StockRepository: JpaRepository<StockEntity, Long> {
 
     fun getByOzonId(ozonId: String): StockEntity?
 
+    fun getByArtikul(artikul: String): StockEntity?
+
     @Transactional
     @Modifying
     @Query("update StockEntity entity set entity.quantity = ?2 where entity.ozonId = ?1")

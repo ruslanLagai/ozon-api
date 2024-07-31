@@ -4,6 +4,8 @@ service:
       api-key: ${API_KEY}
       client-id: ${CLIENT_ID}
       url: ${OZON_API_URL}
+    supply:
+      cron: ${OZON_SUPPLY_CRON}
 server:
   shutdown: graceful
 spring:

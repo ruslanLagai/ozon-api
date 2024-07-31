@@ -49,5 +49,6 @@ enum class OperationType(val description: String) {
     OperationElectronicServiceStencil("Трафареты"),
     OperationElectronicServicesPromotionInSearch("Продвижение в поиске"),
     MarketplaceServiceItemCrossdocking("Кросс-докинг"),
-    AccrualInternalClaim("Начисления по претензиям")
+    AccrualInternalClaim("Начисления по претензиям"),
+    MarketplaceCorrectionPointOperation("Корректировка суммы акта о премии")
 }

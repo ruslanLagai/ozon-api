@@ -96,7 +96,7 @@ class PositionRevenueCalculationServiceImplTest {
         Assertions.assertEquals(expected, result)
         Assertions.assertEquals(551.87, result!!.averageRevenue)
         Assertions.assertEquals(1103.73, result.totalRevenue)
-        Assertions.assertEquals(207.0, result.taxes)
+        Assertions.assertEquals(241.5, result.taxes)
 
     //        Assertions.assertEquals(-686.0, result.marketingCosts)
 //        Assertions.assertEquals(-144.0, result.feedbackCosts)
@@ -119,7 +119,7 @@ class PositionRevenueCalculationServiceImplTest {
         Assertions.assertEquals(expected, result)
         Assertions.assertEquals(558.8, result!!.averageRevenue)
         Assertions.assertEquals(1117.59, result.totalRevenue)
-        Assertions.assertEquals(207.0, result.taxes)
+        Assertions.assertEquals(241.5, result.taxes)
 
 //        Assertions.assertEquals(-686.0, result.marketingCosts)
 //        Assertions.assertEquals(-144.0, result.feedbackCosts)

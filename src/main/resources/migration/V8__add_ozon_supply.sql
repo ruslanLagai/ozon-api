@@ -1,0 +1,11 @@
+insert into ozon_supply_entity (id, subtracted, order_id) values (1, true, 28964317);
+insert into ozon_supply_entity (id, subtracted, order_id) values (2, true, 28964274);
+insert into ozon_supply_entity (id, subtracted, order_id) values (3, true, 28964263);
+insert into ozon_supply_entity (id, subtracted, order_id) values (4, true, 28964239);
+insert into ozon_supply_entity (id, subtracted, order_id) values (5, true, 28936118);
+insert into ozon_supply_entity (id, subtracted, order_id) values (6, true, 28936019);
+insert into ozon_supply_entity (id, subtracted, order_id) values (7, true, 28936000);
+insert into ozon_supply_entity (id, subtracted, order_id) values (8, true, 28935960);
+insert into ozon_supply_entity (id, subtracted, order_id) values (9, true, 28439982);
+insert into ozon_supply_entity (id, subtracted, order_id) values (10, true, 28439770);
+insert into ozon_supply_entity (id, subtracted, order_id) values (11, true, 28130822);

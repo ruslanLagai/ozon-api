@@ -128,7 +128,9 @@ class OzonTotalRevenueCalculationServiceImpl(
 
         // Корректировка
         val correction = transactions
-            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSellerCorrectionOperation }
+            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSellerCorrectionOperation
+                    || transaction.operationType == OperationType.MarketplaceCorrectionPointOperation
+            }
             .sumOf { transaction -> transaction.income }
 
         // Обработка брака с приемки

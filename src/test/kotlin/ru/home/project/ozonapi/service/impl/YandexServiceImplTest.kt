@@ -39,7 +39,7 @@ class YandexServiceImplTest {
 
     @Test
     fun `test get yandex orders`() {
-        val from = LocalDate.now().minusDays(30)
+        val from = LocalDate.now().minusDays(25)
         val to = LocalDate.now()
 
         val campaigns = readResourceMoshi("yandex/campaigns/campaigns.json", GetCampaignsResponse::class.java)
@@ -49,6 +49,7 @@ class YandexServiceImplTest {
         val ordersFbs = readResourceMoshi("yandex/orders/orders-fbs.json", GetOrdersResponse::class.java)
         val fbyOrdersStats = readResourceMoshi("yandex/orders-stats/fby-stats.json", GetOrdersStatsResponse::class.java)
         val fbsOrdersStats = readResourceMoshi("yandex/orders-stats/fbs-stats.json", GetOrdersStatsResponse::class.java)
+        val nextPageStats = readResourceMoshi("yandex/orders-stats/fby-next-page-stats.json", GetOrdersStatsResponse::class.java)
 
         `when`(campaignsApi.getCampaigns()).thenReturn(campaigns)
         `when`(ordersApi.getOrders(campaignId = 66071470L, status = statuses, fromDate = from, toDate = to))
@@ -61,6 +62,8 @@ class YandexServiceImplTest {
             .thenReturn(ordersFbs)
         `when`(ordersStatsApi.getOrdersStats(campaignId = eq(66071470L), pageToken = isNull(), limit = any(), getOrdersStatsRequest = any()))
             .thenReturn(fbyOrdersStats)
+        `when`(ordersStatsApi.getOrdersStats(campaignId = any(), pageToken = any(), limit = any(), getOrdersStatsRequest = any()))
+            .thenReturn(nextPageStats)
         `when`(ordersStatsApi.getOrdersStats(campaignId = eq(93726650L), pageToken = isNull(), limit = any(), getOrdersStatsRequest = any()))
             .thenReturn(fbsOrdersStats)
 

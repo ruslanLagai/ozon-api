@@ -48,4 +48,9 @@ interface TelegramChatRepository: JpaRepository<TelegramChatEntity, Long> {
     @Modifying
     @Query("update TelegramChatEntity entity set entity.to = ?3, entity.from = ?2 where entity.chatId = ?1")
     fun updateDateByChatId(chatId: Long, from: OffsetDateTime, to: OffsetDateTime)
+
+    @Transactional
+    @Modifying
+    @Query("update TelegramChatEntity entity set entity.state = false where entity.chatId = ?1")
+    fun updateStateByChatId(id: Long)
 }

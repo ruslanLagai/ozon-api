@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
+import ru.home.project.ozonapi.exception.InvalidStocksException
 import ru.home.project.ozonapi.service.StocksService
 
 /**
@@ -24,27 +25,55 @@ class StockWorthCmdProcessor(
             msg.chatId = update.message?.chatId.toString()
             val builder = StringBuilder()
             builder.append("Стоимость товара:\n")
-            builder.append("- товар на складе            '${stocks.stocksWorth}'\n")
+            builder.append("- товар на складе            ${stocks.stocksWorth}\n")
             if (stocks.products.isNotEmpty()) {
                 stocks.products.forEach{
-                    builder.append("  • '${it.value.name}'           '${it.value.totalStock}'")
+                    val number = when (it.value.totalStock.toString().length) {
+                        1 -> "   ${it.value.totalStock}"
+                        2 -> "  ${it.value.totalStock}"
+                        3 -> " ${it.value.totalStock}"
+                        4 -> it.value.totalStock
+                        else -> it.value.totalStock
+                    }
+                    builder.append("  • $number - ${it.value.name}").append("\n")
                 }
             }
+            builder.append("\n")
 
-            builder.append("- товар в доставке           '${stocks.deliveryWorth}\n")
+            builder.append("- товар в доставке           ${stocks.deliveryWorth}\n")
             if (stocks.deliveries.isNotEmpty()) {
                 stocks.deliveries.forEach{
-                    builder.append("  • '${it.value.name}'           '${it.value.totalStock}'")
+                    val number = when (it.value.totalStock.toString().length) {
+                        1 -> "   ${it.value.totalStock}"
+                        2 -> "  ${it.value.totalStock}"
+                        3 -> " ${it.value.totalStock}"
+                        4 -> it.value.totalStock
+                        else -> it.value.totalStock
+                    }
+                    builder.append("  • $number - ${it.value.name}").append("\n")
                 }
             }
+            builder.append("\n")
 
-            builder.append("- заказы из Китая            '${stocks.stocksOnWayWorth}'")
+            builder.append("- заказы из Китая            ${stocks.stocksOnWayWorth}")
             if (stocks.orders.isNotEmpty()) {
                 stocks.orders.forEach {
-                    builder.append("  • '${it.number ?: it.supplier}'           '${it.stockCost}'")
+
+                    builder.append("  • ${it.stockCost} - ").append(it.supplier)
+                    if (!it.number.isNullOrEmpty()) {
+                        builder.append(" №${it.number}")
+                    }
+                    builder.append(" от " + it.orderDate).append("\n")
                 }
             }
+            builder.append("\n")
             msg.text = builder.toString()
+            return msg
+        } catch (e: InvalidStocksException) {
+            log.error("Failed to calculate stock worth", e)
+            val msg = SendMessage()
+            msg.chatId = update.message?.chatId.toString()
+            msg.text = "Ошибка при расчете остатков, необходимо проверить/исправить остатки"
             return msg
         } catch (e: Exception) {
             log.error("Failed to calculate stock worth", e)

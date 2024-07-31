@@ -7,6 +7,7 @@ import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.response.StocksResponse
 import ru.home.project.ozonapi.dto.supply.response.SupplyItem
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
+import ru.home.project.ozonapi.entity.OzonSupplyEntity
 import ru.home.project.ozonapi.entity.PositionEntity
 import ru.home.project.ozonapi.exception.InvalidStocksException
 import ru.home.project.ozonapi.exception.NoPositionsException
@@ -41,12 +42,6 @@ class StocksServiceImpl(
             throw NoPositionsException()
         }
 
-        val supply = ozonService.getSupplyOrders()
-        if (supply.isNotEmpty()) {
-            return StocksResponse(error = "В настоящее время нет возможности рассчитать стоимость товаров. " +
-                    "Дождитесь, когда все поставки будут приняты")
-        }
-
         val stocks = getProductStocks(positions)
         var stocksWorth = stocks.values.sumOf { it.totalStock * (it.costPrice + it.addCost) }
         stocksWorth = BigDecimal(stocksWorth).setScale(2, RoundingMode.HALF_UP).toDouble()
@@ -76,11 +71,15 @@ class StocksServiceImpl(
         deliveries.forEach {
             it.products.forEach { deliveryProduct ->
                 val position = positions.firstOrNull { position -> position.ozonId == deliveryProduct.sku }
-                val costPrice = position?.costPrice ?: 0.0
-                val addCosts = position?.additionalCost ?: 0.0
-                val product = Product(costPrice = costPrice, addCost = addCosts, totalStock = deliveryProduct.quantity, name = deliveryProduct.name,
-                    artikul = deliveryProduct.artikul, sku = deliveryProduct.sku)
-                products.add(product)
+                if (position == null) {
+                    log.warn("Position is not found for delivery, sku {}", deliveryProduct.sku)
+                } else {
+                    val costPrice = position.costPrice
+                    val addCosts = position.additionalCost
+                    val product = Product(costPrice = costPrice, addCost = addCosts, totalStock = deliveryProduct.quantity, name = deliveryProduct.name,
+                        artikul = deliveryProduct.artikul, sku = deliveryProduct.sku)
+                    products.add(product)
+                }
             }
         }
         return products
@@ -105,7 +104,7 @@ class StocksServiceImpl(
     }
 
     /**
-     * Получение остатков товаров
+     * Получение остатков товаров, включая товары в пути на склад озон (кросс док)
      */
     private fun getProductStocks(positions: List<PositionEntity>): Map<String, Product> {
         val stocks = ArrayList<Product>()
@@ -115,27 +114,37 @@ class StocksServiceImpl(
             .filter { it.totalStock != 0 }
             .forEach { stocks.add(it) }
 
-        // Если поставка в пути, то посчитать не получится, так как озон не разделяет список товаров в поставке:
-        // непонятно какую часть приняли, а какая еще в пути
-//        var existInDB = false
-//        ozonService.getSupplyOrders()
-//            .map {
-//                val supply = ozonSupplyRepository.getOzonSupplyEntityByOrderId(it.orderId)
-//                if (supply != null) {
-//                    existInDB = true
-//                }
-//                ozonService.getSupplyItemsInOrder(it.orderId)
-//            }
-//            .stream()
-//            .flatMap { it.stream() }
-//            .map {
-//                if (!existInDB) {
-//                    subtractFromStock(it)
-//                }
-//                Product(name = it.name, sku = it.sku.toString(), artikul = it.artikul, totalStock = it.quantity)
-//            }
-//            .filter { it.totalStock != 0 }
-//            .forEach { stocks.add(it) }
+        // Ограничение!! в поставке должны быть одна поставка (через ВРЦ не создавать!)
+        var subtracted = false
+        var orderId = 0
+        ozonService.getSupplyOrders()
+            .asSequence()
+            .map {
+                val supply = ozonSupplyRepository.getOzonSupplyEntityByOrderId(it.orderId)
+                orderId = supply?.orderId ?: it.orderId
+                if (supply != null && supply.subtracted) {
+                    subtracted = true
+                }
+                if (!subtracted) {
+                    // отмечаем поставку как учтенную
+                    val supplyEntity = ozonSupplyRepository.getOzonSupplyEntityByOrderId(orderId)
+                    if (supplyEntity != null) {
+                        ozonSupplyRepository.updateByOrderId(orderId)
+                    } else {
+                        ozonSupplyRepository.save(OzonSupplyEntity(orderId = orderId, subtracted = true))
+                    }
+                }
+                ozonService.getSupplyItemsInOrder(it.orderId)
+            }
+            .flatMap { it.asSequence() }
+            .map {
+                if (!subtracted) {
+                    subtractFromStock(it)
+                }
+                Product(name = it.name, sku = it.sku.toString(), artikul = it.artikul, totalStock = it.quantity)
+            }
+            .filter { it.totalStock != 0 }
+            .forEach { stocks.add(it) }
 
         // Остатки
         stockRepository.findAll()
@@ -146,16 +155,16 @@ class StocksServiceImpl(
         return mergeProducts(stocks, positions)
     }
 
-    private fun subtractFromStock(it: SupplyItem) {
-        val entity = stockRepository.getByOzonId(it.sku.toString())
+    private fun subtractFromStock(supplyItem: SupplyItem) {
+        val entity = stockRepository.getByOzonId(supplyItem.sku.toString())
         if (entity == null) {
-            log.warn("Product in ozon supply is absent in own stock. TO BE CHECKED, {}!", it.name)
+            log.warn("Product in ozon supply is absent in own stock. TO BE CHECKED, {}!", supplyItem.name)
         } else {
-            val quantity = entity.quantity - it.quantity
+            val quantity = entity.quantity - supplyItem.quantity
             if (quantity < 0) {
                 throw InvalidStocksException("Quantity in own stock will be < 0")
             }
-            stockRepository.updateQuantityByOzonId(it.sku.toString(), quantity)
+            stockRepository.updateQuantityByOzonId(supplyItem.sku.toString(), quantity)
         }
     }
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component
 import ru.home.project.ozonapi.exception.YandexException
 import java.io.File
 import java.net.URI
+import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.concurrent.CompletableFuture
@@ -103,7 +104,7 @@ class YandexMarketClient(
                 for (i in 0..2) {
                     log.info("Retrying to get report, current status is {}", report.result!!.status)
                     report = reportsApi.getReportInfo(reportId)
-                    Thread.sleep(1000)
+                    Thread.sleep(Duration.ofSeconds(1 + i.toLong()))
                     if (report.result!!.status == ReportStatusType.DONE) {
                         break
                     }

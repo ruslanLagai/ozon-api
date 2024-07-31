@@ -16,6 +16,7 @@ import org.springframework.test.util.ReflectionTestUtils
 import org.telegram.telegrambots.meta.api.objects.Message
 import org.telegram.telegrambots.meta.api.objects.Update
 import ru.home.project.ozonapi.dto.request.ProductRequest
+import ru.home.project.ozonapi.dto.response.StocksResponse
 import ru.home.project.ozonapi.entity.*
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
 import ru.home.project.ozonapi.repository.PositionRepository
@@ -237,7 +238,7 @@ class TextInputProcessorTest {
             val result = inputProcessors.map { it.processInput(period, getUpdate()) }
                 .firstOrNull { it != null }
             verify(totalRevenueCalculationService).calculateRevenue(any())
-            assertEquals("Не удалось рассчитать маржинальность", result?.text ?: "")
+            assertEquals("Не удалось рассчитать маржинальность, попробуйте еще раз", result?.text ?: "")
         }
 
         @ParameterizedTest
@@ -458,9 +459,9 @@ class TextInputProcessorTest {
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
                 .thenReturn(telegramChatEntity)
             Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(false))
-                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.now())))
+                .thenReturn(setOf(ChinaOrderEntity(id = 1, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.of(2024, 7, 29))))
 
-            val result = inputProcessors.map { it.processInput("gomarkt 100", getUpdate()) }
+            val result = inputProcessors.map { it.processInput("gomarkt №1234 от 2024-07-29 на сумму 100.0", getUpdate()) }
                 .first { it != null }
 
             assertEquals(msg, result?.text ?: "")
@@ -576,6 +577,35 @@ class TextInputProcessorTest {
             assertEquals(errorMsg, result?.text ?: "")
             verify(ordersService, times(0)).addDelivery(1, 21232.0, 32.2, 0.0)
         }
+    }
+
+
+    @Nested
+    inner class TestStockWorthInput {
+
+        private val errorMsg = "Добавьте данные по поставке в формате: \n" +
+                "<стоимость доставки>,<масса груза>,<вес груза>"
+
+        private val telegramChatEntity = TelegramChatEntity(id = 1, chatId = 2, positionName = "",
+            state = true, action =  ActionType.AddDelivery, deliveryId = 1)
+
+        @Test
+        fun `test add delivery data`() {
+            Mockito.`when`(message.chatId).thenReturn(1)
+            Mockito.`when`(message.text).thenReturn("/stock_worth")
+            Mockito.`when`(message.isCommand).thenReturn(true)
+            Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddDelivery))
+                .thenReturn(telegramChatEntity)
+            Mockito.`when`(stockService.getStocks()).thenReturn(StocksResponse())
+            val result = inputProcessors.map { it.processInput("/stock_worth", getUpdate()) }
+                .first { it != null }
+
+            assertEquals("Стоимость товара:\n" +
+                    "- товар на складе            '0.0'\n" +
+                    "- товар в доставке           '0.0\n" +
+                    "- заказы из Китая            '0.0'", result?.text ?: "")
+        }
+
     }
 
     private fun getUpdate(): Update {

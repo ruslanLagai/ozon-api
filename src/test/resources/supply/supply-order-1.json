@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-k/6728872772.jpg",
+            "sku": 1134671293,
+            "offer_id": "0000009",
+            "name": "зонт мини карманный, механический, складной маленький, лавандовый",
+            "quantity": 9
+        },
+        {
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-h/6728891489.jpg",
+            "sku": 1135684591,
+            "offer_id": "0000015",
+            "name": "зонт мини карманный, механический, складной маленький, черный",
+            "quantity": 9
+        },
+        {
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-n/6728875871.jpg",
+            "sku": 1134715033,
+            "offer_id": "0000010",
+            "name": "зонт мини карманный, механический, складной маленький, бежевый",
+            "quantity": 7
+        },
+        {
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-v/6729311371.jpg",
+            "sku": 1134733705,
+            "offer_id": "0000012",
+            "name": "зонт мини карманный, механический, складной маленький, серый",
+            "quantity": 7
+        }
+    ],
+    "total_items_count": 4,
+    "has_next": false
+}

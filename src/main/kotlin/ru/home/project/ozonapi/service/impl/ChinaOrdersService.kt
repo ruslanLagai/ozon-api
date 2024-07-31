@@ -69,7 +69,7 @@ class ChinaOrdersService(
                 log.warn("No position found for {}", it.artikul)
                 throw NoPositionsException()
             }
-            StockEntity(name = position.name, artikul = position.artikul, ozonId = position.ozonId, quantity = it.quantity)
+            StockEntity(name = position.name, artikul = position.artikul, ozonId = position.ozonId, quantity = it.quantity, yandexArtikul = position.yandexArtikul)
         }.forEach {
             val existed = stockRepository.getByOzonId(it.ozonId)
             if (existed == null) {

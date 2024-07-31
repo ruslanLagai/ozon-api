@@ -27,7 +27,7 @@ class CommandProcessor(
         Pair("/add_position") { command: String, update: Update -> addPositionCmdProcessor.processCmd(command, update) },
         Pair("/edit_position") { command: String, update: Update -> editPositionCmdProcessor.processCmd(command, update) },
         Pair("/refunds") { command: String, update: Update -> refundsCmdProcessor.processCmd(command, update) },
-//        Pair("/stock_worth") { command: String, update: Update -> stockWorthCmdProcessor.processCmd(command, update) },
+        Pair("/stock_worth") { command: String, update: Update -> stockWorthCmdProcessor.processCmd(command, update) },
         Pair("/add_order") { command: String, update: Update -> orderCmdProcessor.processCmd(command, update) },
         Pair("/add_delivery") { command: String, update: Update -> deliveryDataCmdProcessor.processCmd(command, update) },
         Pair("/deliveries") { command: String, update: Update -> deliveriesCmdProcessor.processCmd(command, update) }

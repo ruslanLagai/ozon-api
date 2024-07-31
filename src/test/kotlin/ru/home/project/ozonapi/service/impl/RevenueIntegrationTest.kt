@@ -86,7 +86,7 @@ class RevenueIntegrationTest {
         assertEquals("Мини зонт", result?.name)
         assertEquals(505.34, result?.averageRevenue)
         assertEquals(505.34, result?.totalRevenue)
-        assertEquals(84.0, result?.taxes)
+        assertEquals(98.0, result?.taxes)
         assertEquals(0, result?.refundCount)
         assertEquals(1, result?.deliveryItemCount)
     }

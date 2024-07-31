@@ -26,6 +26,7 @@ import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.util.readResourceMoshi
 import java.time.LocalDate
 import java.time.OffsetDateTime
+import java.time.ZoneOffset
 
 /**
  * @author rlagay
@@ -49,7 +50,7 @@ class YandexPositionRevenueCalculationServiceImplTest {
         OrderStatusType.CANCELLED,
         OrderStatusType.RETURNED
     )
-    val from: LocalDate = LocalDate.now().minusDays(30)
+    val from: LocalDate = LocalDate.now().minusDays(25)
     val to: LocalDate = LocalDate.now()
 
     @BeforeEach
@@ -87,8 +88,8 @@ class YandexPositionRevenueCalculationServiceImplTest {
         Mockito.`when`(repository.getPositionEntityByName("Держатель для губок")).thenReturn(positionEntity)
 
 
-        val request = RevenueRequest(name = "Держатель для губок", from = OffsetDateTime.now().minusMonths(1),
-            to = OffsetDateTime.now(), type = MarketType.Yandex)
+        val request = RevenueRequest(name = "Держатель для губок", from = OffsetDateTime.of(from.atStartOfDay(), ZoneOffset.UTC),
+            to = OffsetDateTime.of(to.atStartOfDay(), ZoneOffset.UTC), type = MarketType.Yandex)
         val response = yandexPostRevenueCalculationService.calculateRevenue(request)
 
         assertEquals("Держатель для губок", response!!.name)

@@ -16,5 +16,7 @@ data class StockEntity(
 
     @Column(name = "ozon_id", nullable = false, unique = true) val ozonId: String,
 
-    @Column(name = "artikul", nullable = false, unique = true) val artikul: String
+    @Column(name = "artikul", nullable = false, unique = true) val artikul: String,
+
+    @Column(name = "yandex_artikul", nullable = true, unique = false) val yandexArtikul: String?,
 )

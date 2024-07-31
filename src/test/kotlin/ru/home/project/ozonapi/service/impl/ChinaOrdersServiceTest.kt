@@ -40,11 +40,11 @@ class ChinaOrdersServiceTest {
             PositionEntity(name = "Зонт 1", artikul = "000001", ozonId = "1", additionalCost = 0.0, costPrice = 1.0))
         `when`(positionRepository.getPositionEntityByArtikul("000002")).thenReturn(
             PositionEntity(name = "Зонт 2", artikul = "000002", ozonId = "2", additionalCost = 0.0, costPrice = 1.0))
-        `when`(stockRepository.getByOzonId("1")).thenReturn(StockEntity(name = "Зонт 1", artikul = "000001", quantity = 20, ozonId = "1"))
+        `when`(stockRepository.getByOzonId("1")).thenReturn(StockEntity(name = "Зонт 1", artikul = "000001", quantity = 20, ozonId = "1", yandexArtikul = ""))
 
         chinaOrdersService.addDelivery(1, 100.0, 20.0, 0.0)
         verify(chinaOrdersRepository).save(saved)
-        verify(stockRepository).save(StockEntity(name = "Зонт 2", artikul = "000002", quantity = 40, ozonId = "2"))
+        verify(stockRepository).save(StockEntity(name = "Зонт 2", artikul = "000002", quantity = 40, ozonId = "2", yandexArtikul = ""))
         verify(stockRepository).updateQuantityByOzonId("1", 20 + 50)
     }
 }
