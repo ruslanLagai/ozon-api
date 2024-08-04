@@ -11,6 +11,7 @@ import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.service.RevenueCalculationService
 import ru.home.project.ozonapi.service.TotalRevenueCalculationService
 import ru.home.project.ozonapi.service.YandexService
+import ru.home.project.ozonapi.util.yandexFinalStatuses
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.time.format.DateTimeFormatter
@@ -45,8 +46,8 @@ class YandexTotalRevenueCalculationServiceImpl(
         val reportProcessingResult = yandexService.getReport(request.from.toLocalDate(), request.to.toLocalDate())
         val reportResult = reportProcessingResult.first
 
-        val cacheKey = "from_" + request.from.format(formatter) + "_to_" + request.to.format(formatter)
-        val transactions = yandexService.getTransaction(request.from.toLocalDate(), request.to.toLocalDate(), cacheKey)
+        val cacheKey = "from_" + request.from.format(formatter) + "_to_" + request.to.format(formatter) + yandexFinalStatuses
+        val transactions = yandexService.getTransaction(request.from.toLocalDate(), request.to.toLocalDate(), cacheKey, yandexFinalStatuses)
 
         positions.chunked(3)
             .parallelStream()

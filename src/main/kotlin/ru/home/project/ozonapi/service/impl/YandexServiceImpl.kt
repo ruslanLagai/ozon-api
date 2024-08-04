@@ -28,11 +28,7 @@ class YandexServiceImpl(
 ) : YandexService {
 
     private val log: Logger = LoggerFactory.getLogger(YandexServiceImpl::class.java)
-    private val statuses = setOf(
-        OrderStatusType.DELIVERED,
-        OrderStatusType.CANCELLED,
-        OrderStatusType.RETURNED
-    )
+
 
     private val filesToProcess = mapOf(
 //        "banners.csv",//баннеры
@@ -65,7 +61,7 @@ class YandexServiceImpl(
     )
 
     @Cacheable(cacheNames = ["yandex-transactions"], key = "#key")
-    override fun getTransaction(from: LocalDate, to: LocalDate, key: String): List<OrdersStatsOrderDTO> {
+    override fun getTransaction(from: LocalDate, to: LocalDate, key: String, statuses: Set<OrderStatusType>): List<OrdersStatsOrderDTO> {
         kotlin.runCatching {
             val orders = ArrayList<OrdersStatsOrderDTO>()
             val campaigns = yandexMarketClient.getCampaigns().filter { it != 0L }

@@ -17,6 +17,7 @@ import org.openapitools.client.models.GetOrdersStatsResponse
 import org.openapitools.client.models.OrderStatusType
 import ru.home.project.ozonapi.client.YandexMarketClient
 import ru.home.project.ozonapi.util.readResourceMoshi
+import ru.home.project.ozonapi.util.yandexFinalStatuses
 import java.time.LocalDate
 
 /**
@@ -67,7 +68,7 @@ class YandexServiceImplTest {
         `when`(ordersStatsApi.getOrdersStats(campaignId = eq(93726650L), pageToken = isNull(), limit = any(), getOrdersStatsRequest = any()))
             .thenReturn(fbsOrdersStats)
 
-        val orders = yandexService.getTransaction(from = from, to = to, key = "")
+        val orders = yandexService.getTransaction(from = from, to = to, key = "", yandexFinalStatuses)
 
         assertEquals(10, orders.size)
     }

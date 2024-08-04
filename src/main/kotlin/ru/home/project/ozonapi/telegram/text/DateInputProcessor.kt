@@ -164,6 +164,7 @@ class DateInputProcessor(
                 is OzonException -> "Ошибка от апи Озон, попробуйте позже"
                 else -> "Не удалось рассчитать маржинальность, попробуйте еще раз"
             }
+            log.error("Error is: {}", it.message, it)
         }
         return text
     }

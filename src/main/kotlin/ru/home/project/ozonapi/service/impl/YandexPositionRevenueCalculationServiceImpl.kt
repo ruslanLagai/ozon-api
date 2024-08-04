@@ -15,6 +15,7 @@ import ru.home.project.ozonapi.model.PositionFinanceData
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.service.RevenueCalculationService
 import ru.home.project.ozonapi.service.YandexService
+import ru.home.project.ozonapi.util.yandexFinalStatuses
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.time.format.DateTimeFormatter
@@ -59,8 +60,9 @@ class YandexPositionRevenueCalculationServiceImpl(
                 return response
             }
 
-            val cacheKey = "from_" + request.from.format(formatter) + "_to_" + request.to.format(formatter)
-            val allTransactions = request.yandexOrders ?: yandexService.getTransaction(request.from.toLocalDate(), request.to.toLocalDate(), cacheKey)
+            val cacheKey = "from_" + request.from.format(formatter) + "_to_" + request.to.format(formatter) + yandexFinalStatuses
+            val allTransactions = request.yandexOrders ?: yandexService.getTransaction(request.from.toLocalDate(),
+                request.to.toLocalDate(), cacheKey, yandexFinalStatuses)
 
             val sold = 0
 

@@ -55,7 +55,7 @@ class StockWorthCmdProcessor(
             }
             builder.append("\n")
 
-            builder.append("- заказы из Китая            ${stocks.stocksOnWayWorth}")
+            builder.append("- заказы из Китая            ${stocks.stocksOnWayWorth}\n")
             if (stocks.orders.isNotEmpty()) {
                 stocks.orders.forEach {
 

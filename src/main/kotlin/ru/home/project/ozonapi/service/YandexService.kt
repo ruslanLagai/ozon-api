@@ -1,5 +1,6 @@
 package ru.home.project.ozonapi.service
 
+import org.openapitools.client.models.OrderStatusType
 import org.openapitools.client.models.OrdersStatsOrderDTO
 import ru.home.project.ozonapi.dto.YandexReportResult
 import java.time.LocalDate
@@ -13,7 +14,7 @@ interface YandexService {
     /**
      * Получение транзакций за период
      */
-    fun getTransaction(from : LocalDate, to : LocalDate, key: String): List<OrdersStatsOrderDTO>
+    fun getTransaction(from : LocalDate, to : LocalDate, key: String, statuses: Set<OrderStatusType>): List<OrdersStatsOrderDTO>
 
     /**
      * Получение отчета по услугам

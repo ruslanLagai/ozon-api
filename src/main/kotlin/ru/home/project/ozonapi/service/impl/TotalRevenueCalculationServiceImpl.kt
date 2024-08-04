@@ -75,7 +75,8 @@ class TotalRevenueCalculationServiceImpl(
 
         // Расходы на подписку
         val premiumSubscription = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplacePremiumSubscribtion }
+            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplacePremiumSubscribtion
+                    || transaction.operationType == OperationType.OperationSubscriptionPremium }
             .sumOf { transaction -> transaction.income }
 
         // Количество проданных товаров за период

@@ -50,5 +50,6 @@ enum class OperationType(val description: String) {
     OperationElectronicServicesPromotionInSearch("Продвижение в поиске"),
     MarketplaceServiceItemCrossdocking("Кросс-докинг"),
     AccrualInternalClaim("Начисления по претензиям"),
-    MarketplaceCorrectionPointOperation("Корректировка суммы акта о премии")
+    MarketplaceCorrectionPointOperation("Корректировка суммы акта о премии"),
+    OperationSubscriptionPremium("Подписка Premium")
 }
