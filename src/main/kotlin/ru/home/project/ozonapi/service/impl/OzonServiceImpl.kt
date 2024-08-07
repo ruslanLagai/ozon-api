@@ -101,9 +101,9 @@ class OzonServiceImpl(
         return stocks
             .map {
                 val fbo = it.stocks.firstOrNull { item -> item.type == "fbo" }
-                val fboStock = fbo?.let { item -> item.present + item.reserved } ?: 0
+                val fboStock = fbo?.present ?: 0
                 val fbs = it.stocks.firstOrNull { item -> item.type == "fbs" }
-                val fbsStock = fbs?.let { item -> item.present + item.reserved } ?: 0
+                val fbsStock = fbs?.present ?: 0
                 val discounted = it.stocks.firstOrNull { item -> item.type == "discounted" }?.present ?: 0
                 Product(sku = "", artikul = it.offerId, fboStock = fboStock, fbsStock = fbsStock, totalStock = fbsStock + fboStock + discounted)
             }

@@ -3,6 +3,7 @@ package ru.home.project.ozonapi.service.impl
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import ru.home.project.ozonapi.dto.delivery.Delivery
 import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.response.StocksResponse
 import ru.home.project.ozonapi.dto.supply.response.SupplyItem
@@ -35,6 +36,8 @@ class StocksServiceImpl(
 
     private val log: Logger = LoggerFactory.getLogger(StocksServiceImpl::class.java)
 
+    private val statuses = setOf(DeliveryStatus.delivering, DeliveryStatus.awaiting_deliver, DeliveryStatus.awaiting_packaging)
+
     override fun getStocks(): StocksResponse {
         val positions = positionRepository.findAll()
         if (positions.isNullOrEmpty()) {
@@ -63,7 +66,11 @@ class StocksServiceImpl(
      * Получение товаров в доставке
      */
     private fun getOrdersInOzonDelivery(positions: List<PositionEntity>): List<Product> {
-        val deliveries = ozonService.getDeliveryByStatus(DeliveryStatus.delivering)
+        val deliveries = ArrayList<Delivery>()
+        statuses.forEach {
+            deliveries.addAll(ozonService.getDeliveryByStatus(it))
+        }
+
         if (deliveries.isEmpty()) {
             return listOf()
         }

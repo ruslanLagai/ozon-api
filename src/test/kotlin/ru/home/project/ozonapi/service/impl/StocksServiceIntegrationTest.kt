@@ -15,7 +15,9 @@ import org.testcontainers.junit.jupiter.Testcontainers
 import org.testcontainers.utility.DockerImageName
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.ChinaStockEntity
+import ru.home.project.ozonapi.entity.StockEntity
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
+import ru.home.project.ozonapi.repository.StockRepository
 import ru.home.project.ozonapi.service.StocksService
 import java.time.LocalDate
 
@@ -53,6 +55,12 @@ class StocksServiceIntegrationTest {
     @Autowired
     private lateinit var stockService: StocksService
 
+    @Autowired
+    private lateinit var stockRepository: StockRepository
+
+    @Autowired
+    private lateinit var posiRepository: StockRepository
+
     @PostConstruct
     fun init() {
         val umbrellas = listOf(
@@ -69,6 +77,22 @@ class StocksServiceIntegrationTest {
 
         chinaOrdersRepository.save(umbrellaOrder)
         chinaOrdersRepository.save(hangerOrder)
+        posiRepository.findAll().forEach {
+            val stock = stockRepository.getByOzonId(it.ozonId)
+            if (stock == null) {
+                stockRepository.save(
+                    StockEntity(
+                        artikul = it.artikul,
+                        name = it.name,
+                        ozonId = it.ozonId,
+                        quantity = 1000,
+                        yandexArtikul = it.yandexArtikul
+                    )
+                )
+            } else {
+                stockRepository.updateQuantityByOzonId(it.ozonId, stock.quantity + 1000)
+            }
+        }
     }
 
     @Test

@@ -1,5 +1,6 @@
 package ru.home.project.ozonapi.util
 
+import org.openapitools.client.models.OrderStatusType
 import ru.home.project.ozonapi.model.Cluster
 
 /**
@@ -50,3 +51,14 @@ val clustersMap = mapOf(
     Pair(Cluster.BU, belarusStocks)
 )
 
+val yandexFinalStatuses = setOf(
+    OrderStatusType.DELIVERED,
+    OrderStatusType.CANCELLED,
+    OrderStatusType.RETURNED,
+    OrderStatusType.PARTIALLY_RETURNED
+)
+
+val yandexInDeliveryStatuses = setOf(
+    OrderStatusType.DELIVERY,
+    OrderStatusType.PICKUP
+)

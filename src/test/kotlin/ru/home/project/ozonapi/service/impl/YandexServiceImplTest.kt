@@ -35,7 +35,8 @@ class YandexServiceImplTest {
     private val statuses = setOf(
         OrderStatusType.DELIVERED,
         OrderStatusType.CANCELLED,
-        OrderStatusType.RETURNED
+        OrderStatusType.RETURNED,
+        OrderStatusType.PARTIALLY_RETURNED
     )
 
     @Test
