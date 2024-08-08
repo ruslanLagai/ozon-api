@@ -54,8 +54,7 @@ val clustersMap = mapOf(
 val yandexFinalStatuses = setOf(
     OrderStatusType.DELIVERED,
     OrderStatusType.CANCELLED,
-    OrderStatusType.RETURNED,
-    OrderStatusType.PARTIALLY_RETURNED
+    OrderStatusType.RETURNED
 )
 
 val yandexInDeliveryStatuses = setOf(

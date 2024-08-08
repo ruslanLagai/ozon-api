@@ -48,8 +48,7 @@ class YandexPositionRevenueCalculationServiceImplTest {
     private val statuses = setOf(
         OrderStatusType.DELIVERED,
         OrderStatusType.CANCELLED,
-        OrderStatusType.RETURNED,
-        OrderStatusType.PARTIALLY_RETURNED
+        OrderStatusType.RETURNED
     )
     val from: LocalDate = LocalDate.now().minusDays(25)
     val to: LocalDate = LocalDate.now()

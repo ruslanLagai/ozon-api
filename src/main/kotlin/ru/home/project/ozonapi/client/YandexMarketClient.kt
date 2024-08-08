@@ -104,7 +104,7 @@ class YandexMarketClient(
                 for (i in 0..2) {
                     log.info("Retrying to get report, current status is {}", report.result!!.status)
                     report = reportsApi.getReportInfo(reportId)
-                    Thread.sleep(Duration.ofSeconds(1 + i.toLong()))
+                    Thread.sleep(Duration.ofSeconds(1 + i.toLong() * i.toLong()))
                     if (report.result!!.status == ReportStatusType.DONE) {
                         break
                     }
