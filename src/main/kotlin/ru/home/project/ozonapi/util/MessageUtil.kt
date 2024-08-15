@@ -34,6 +34,11 @@ fun produceOzonAllItemsMessage(result: List<RevenueResponse>): String {
                 " - Обработка брака            $spoilageCosts\n" +
                 " - Видеообложка                  $videoCoverCosts\n" +
                 " - Хранение                          $storageCosts\n" +
+                " - Звездные товары            $starMembership\n" +
+                " - Продаж за звезды          $starMembershipCount\n" +
+                " - Рассрочка                        $installment\n" +
+                " - Продаж с рассрочкой    $installmentCount\n" +
+                " - Вывоз со склада            $installmentCount\n" +
                 "Доставки                              $totalDeliveryItemCount\n" +
                 "Возвраты                             $totalRefundsCount\n" +
                 "Количество продаж          $soldItemsCount\n" +

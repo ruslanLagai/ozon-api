@@ -8,7 +8,7 @@ import jakarta.persistence.*
 @Entity
 data class OzonSupplyEntity(
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null,
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) val id: Long? = null,
 
     @Column(name = "orderId", nullable = false, unique = true) val orderId: Int,
 

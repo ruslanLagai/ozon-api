@@ -110,6 +110,11 @@ class OzonTotalRevenueCalculationServiceImpl(
             .filter {transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStockDisposal }
             .sumOf { transaction -> transaction.income }
 
+        // Расходы на вывоз товара со склада озон
+        val returnFromOzonStock = transactions
+            .filter { it.operationType == OperationType.OperationMarketplaceServicePreparingToReturn }
+            .sumOf { it.income }
+
         // Расходы на видеообложку
         val videoCover = transactions
             .filter {transaction -> transaction.operationType == OperationType.MarketplaceServiceItemVideoCover }
@@ -125,6 +130,20 @@ class OzonTotalRevenueCalculationServiceImpl(
         // Расходы на размещение товара
         val storage = transactions
             .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStorage }
+            .sumOf { transaction -> transaction.income }
+
+        var starMembershipCount = 0
+        // Звездные товары
+        val starMembership = transactions
+            .filter { transaction -> transaction.operationType == OperationType.StarsMembership }
+            .onEach { starMembershipCount += it.items.size }
+            .sumOf { transaction -> transaction.income }
+
+        // Звездные товары
+        var installmentCount = 0
+        val installment = transactions
+            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSellerInstallmentOperation }
+            .onEach { installmentCount += it.items.size }
             .sumOf { transaction -> transaction.income }
 
         // Корректировка
@@ -151,7 +170,9 @@ class OzonTotalRevenueCalculationServiceImpl(
         var totalRevenue = revenueList
             .map(RevenueResponse::totalRevenue)
             .sum()
-        totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome + crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage + otherIncome
+        totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome +
+                crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage + otherIncome +
+                starMembership + installment
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено
@@ -196,6 +217,11 @@ class OzonTotalRevenueCalculationServiceImpl(
                 videoCoverCosts = videoCover
                 storageCosts = BigDecimal(storage).setScale(2, RoundingMode.HALF_UP).toDouble()
                 totalCostPrice = BigDecimal(costPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
+                it.starMembership = BigDecimal(starMembership).setScale(2, RoundingMode.HALF_UP).toDouble()
+                it.starMembershipCount = starMembershipCount
+                it.installmentCount = installmentCount
+                it.installment = BigDecimal(installment).setScale(2, RoundingMode.HALF_UP).toDouble()
+                stockReturn = BigDecimal(returnFromOzonStock).setScale(2, RoundingMode.HALF_UP).toDouble()
             }
         }
 
