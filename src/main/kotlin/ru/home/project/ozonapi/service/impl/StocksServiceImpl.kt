@@ -1,5 +1,7 @@
 package ru.home.project.ozonapi.service.impl
 
+import org.openapitools.client.models.OrderDTO
+import org.openapitools.client.models.PlacementType
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
@@ -19,8 +21,12 @@ import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.StockRepository
 import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.service.StocksService
+import ru.home.project.ozonapi.service.YandexService
+import ru.home.project.ozonapi.util.yandexFinalStatuses
+import ru.home.project.ozonapi.util.yandexInDeliveryStatuses
 import java.math.BigDecimal
 import java.math.RoundingMode
+import java.time.LocalDate
 
 /**
  * @author rlagay
@@ -31,7 +37,8 @@ class StocksServiceImpl(
     val stockRepository: StockRepository,
     val positionRepository: PositionRepository,
     val chinaOrdersRepository: ChinaOrdersRepository,
-    val ozonSupplyRepository: OzonSupplyRepository
+    val ozonSupplyRepository: OzonSupplyRepository,
+    val yandexService: YandexService
 ) : StocksService {
 
     private val log: Logger = LoggerFactory.getLogger(StocksServiceImpl::class.java)
@@ -58,8 +65,16 @@ class StocksServiceImpl(
         deliveriesWorth = BigDecimal(deliveriesWorth).setScale(2, RoundingMode.HALF_UP).toDouble()
         val deliveriesByArtikul = mergeProducts(deliveries, positions)
 
+        //yandex
+        val yandexDeliveries = getOrdersInYandexDelivery(positions)
+        var yandexDeliveriesWorth = yandexDeliveries.sumOf { it.totalStock * (it.costPrice + it.addCost) }
+        yandexDeliveriesWorth = BigDecimal(yandexDeliveriesWorth).setScale(2, RoundingMode.HALF_UP).toDouble()
+        val yandexDeliveriesByArtikul = mergeProducts(yandexDeliveries, positions)
+
+
         return StocksResponse(products = stocks, stocksWorth = stocksWorth, stocksOnWayWorth = stocksOnWayWorth,
-            orders = orders.second, error = orders.first, deliveryWorth = deliveriesWorth, deliveries = deliveriesByArtikul)
+            orders = orders.second, error = orders.first, deliveryWorth = deliveriesWorth, deliveries = deliveriesByArtikul,
+            yandexDeliveries = yandexDeliveriesByArtikul, yandexDeliveryWorth =  yandexDeliveriesWorth)
     }
 
     /**
@@ -92,6 +107,37 @@ class StocksServiceImpl(
         return products
     }
 
+    private fun getOrdersInYandexDelivery(positions: List<PositionEntity>) : List<Product> {
+        val from = LocalDate.now().minusDays(30)
+        val to = LocalDate.now()
+        val deliveries = ArrayList<OrderDTO>()
+        yandexService.getCampaigns()?.forEach {
+            if (it.id != null) {
+                val orders = yandexService.getOrders(
+                    from = from, to = to, statuses = yandexInDeliveryStatuses, campaignId = it.id!!
+                )
+                deliveries.addAll(orders)
+            }
+        }
+
+        val products = ArrayList<Product>()
+        deliveries.forEach {
+            it.items?.forEach { item ->
+                val position = positions.firstOrNull { position -> position.yandexArtikul == item.shopSku }
+                if (position == null) {
+                    log.warn("Position is not found for delivery, sku {}", item.shopSku)
+                } else {
+                    val costPrice = position.costPrice
+                    val addCosts = position.additionalCost
+                    val product = Product(costPrice = costPrice, addCost = addCosts, totalStock = item.count ?: 0,
+                        name = position.name, artikul = position.artikul, sku = position.ozonId)
+                    products.add(product)
+                }
+            }
+        }
+        return products
+    }
+
     /**
      * Получение поставок из Китая
      */
@@ -115,6 +161,13 @@ class StocksServiceImpl(
      */
     private fun getProductStocks(positions: List<PositionEntity>): Map<String, Product> {
         val stocks = ArrayList<Product>()
+        val campaigns = yandexService.getCampaigns()
+        val fbyCampaign = campaigns?.find { it.placementType == PlacementType.FBY }?.id
+
+        // Остатки на яндексе
+        yandexService.getStocks(fbyCampaign.toString())
+            .filter { it.totalStock != 0 }
+            .forEach { stocks.add(it) }
 
         // Остатки на озоне
         ozonService.getStockItems("key")
@@ -188,10 +241,11 @@ class StocksServiceImpl(
                 val fbsStock = it.value.sumOf { item -> item.fbsStock }
                 val costPrice = position?.costPrice ?: 0.0
                 val addCosts = position?.additionalCost ?: 0.0
+                val yandexArtikul = position?.yandexArtikul ?: ""
 
                 Product(
                     name = name, sku = sku, artikul = artikul, totalStock = totalStock, fboStock = fboStock,
-                    fbsStock = fbsStock, costPrice = costPrice, addCost = addCosts
+                    fbsStock = fbsStock, costPrice = costPrice, addCost = addCosts, yandexArtikul = yandexArtikul
                 )
             }
 

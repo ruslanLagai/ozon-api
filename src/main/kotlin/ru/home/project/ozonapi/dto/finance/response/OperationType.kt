@@ -53,5 +53,6 @@ enum class OperationType(val description: String) {
     MarketplaceCorrectionPointOperation("Корректировка суммы акта о премии"),
     OperationSubscriptionPremium("Подписка Premium"),
     StarsMembership("Звёздные товары"),
-    OperationMarketplaceServicePreparingToReturn("Подготовка товаров к возврату")
+    OperationMarketplaceServicePreparingToReturn("Подготовка товаров к возврату"),
+    MarketplaceServiceItemServiceFeeRFBS("Сервисный сбор за интеграцию с логистической платформой")
 }

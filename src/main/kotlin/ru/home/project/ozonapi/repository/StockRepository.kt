@@ -15,10 +15,17 @@ interface StockRepository: JpaRepository<StockEntity, Long> {
 
     fun getByArtikul(artikul: String): StockEntity?
 
+    fun getByYandexArtikul(artikul: String): StockEntity?
+
     @Transactional
     @Modifying
     @Query("update StockEntity entity set entity.quantity = ?2 where entity.ozonId = ?1")
     fun updateQuantityByOzonId(ozonId: String, quantity: Int)
+
+    @Transactional
+    @Modifying
+    @Query("update StockEntity entity set entity.quantity = ?2 where entity.artikul = ?1")
+    fun updateQuantityByYandexArtikul(artikul: String, quantity: Int)
 
 
 }

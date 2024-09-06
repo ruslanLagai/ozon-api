@@ -6,6 +6,9 @@ service:
       url: ${OZON_API_URL}
     supply:
       cron: ${OZON_SUPPLY_CRON}
+  fbs:
+    order:
+      cron: ${FBS_ORDER_CRON}
 server:
   shutdown: graceful
 spring:

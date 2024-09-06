@@ -7,6 +7,9 @@ service:
       url: https://api-seller.ozon.ru
     supply:
       cron: 0 0 * * * *
+  fbs:
+    order:
+      cron: 0 0 0 * * *
 server:
   shutdown: graceful
 spring:

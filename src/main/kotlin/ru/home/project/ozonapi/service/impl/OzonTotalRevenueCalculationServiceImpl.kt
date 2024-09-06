@@ -79,6 +79,11 @@ class OzonTotalRevenueCalculationServiceImpl(
                     || transaction.operationType == OperationType.OperationSubscriptionPremium }
             .sumOf { transaction -> transaction.income }
 
+        // Перечисление за доставку от покупателя
+        val deliveryToCustomer = transactions
+            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSellerReexposureDeliveryReturnOperation}
+            .sumOf { transaction -> transaction.income }
+
         // Количество проданных товаров за период
         val transactionsWithRefund = transactions
             .filter { transaction -> transaction.operationType == OperationType.MarketplaceRedistributionOfAcquiringOperation }
@@ -172,7 +177,7 @@ class OzonTotalRevenueCalculationServiceImpl(
             .sum()
         totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome +
                 crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage + otherIncome +
-                starMembership + installment
+                starMembership + installment + deliveryToCustomer
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено
@@ -222,6 +227,7 @@ class OzonTotalRevenueCalculationServiceImpl(
                 it.installmentCount = installmentCount
                 it.installment = BigDecimal(installment).setScale(2, RoundingMode.HALF_UP).toDouble()
                 stockReturn = BigDecimal(returnFromOzonStock).setScale(2, RoundingMode.HALF_UP).toDouble()
+                rfbsDelivery = BigDecimal(deliveryToCustomer).setScale(2, RoundingMode.HALF_UP).toDouble()
             }
         }
 

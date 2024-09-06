@@ -40,9 +40,24 @@ class StockWorthCmdProcessor(
             }
             builder.append("\n")
 
-            builder.append("- товар в доставке           ${stocks.deliveryWorth}\n")
+            builder.append("- товар в доставке Озон           ${stocks.deliveryWorth}\n")
             if (stocks.deliveries.isNotEmpty()) {
                 stocks.deliveries.forEach{
+                    val number = when (it.value.totalStock.toString().length) {
+                        1 -> "   ${it.value.totalStock}"
+                        2 -> "  ${it.value.totalStock}"
+                        3 -> " ${it.value.totalStock}"
+                        4 -> it.value.totalStock
+                        else -> it.value.totalStock
+                    }
+                    builder.append("  • $number - ${it.value.name}").append("\n")
+                }
+            }
+            builder.append("\n")
+
+            builder.append("- товар в доставке Яндекс           ${stocks.yandexDeliveryWorth}\n")
+            if (stocks.yandexDeliveries.isNotEmpty()) {
+                stocks.yandexDeliveries.forEach{
                     val number = when (it.value.totalStock.toString().length) {
                         1 -> "   ${it.value.totalStock}"
                         2 -> "  ${it.value.totalStock}"

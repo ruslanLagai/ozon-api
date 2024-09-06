@@ -231,7 +231,8 @@ class PositionRevenueCalculationServiceImpl(
                         }
                 } else { 0.0 }
                 val logistic = transactionList
-                    .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer }
+                    .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer
+                            || transaction.operationType == OperationType.MarketplaceServiceItemServiceFeeRFBS }
                     .sumOf { transaction ->
                         calculators.sumOf { calculator -> calculator.calculateLogistic(transaction) }
                     }

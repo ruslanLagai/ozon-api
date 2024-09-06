@@ -1,10 +1,7 @@
 package ru.home.project.ozonapi.client
 
 import org.apache.commons.io.FileUtils
-import org.openapitools.client.apis.CampaignsApi
-import org.openapitools.client.apis.OrdersApi
-import org.openapitools.client.apis.OrdersStatsApi
-import org.openapitools.client.apis.ReportsApi
+import org.openapitools.client.apis.*
 import org.openapitools.client.models.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -25,7 +22,8 @@ class YandexMarketClient(
     val ordersApi: OrdersApi,
     val ordersStatsApi: OrdersStatsApi,
     val campaignsApi: CampaignsApi,
-    val reportsApi: ReportsApi
+    val reportsApi: ReportsApi,
+    val stocksApi: StocksApi
 ) {
 
     val log: Logger = LoggerFactory.getLogger(YandexMarketClient::class.java)
@@ -42,6 +40,13 @@ class YandexMarketClient(
      */
     fun getCampaignList() : List<CampaignDTO>? {
         return campaignsApi.getCampaigns().campaigns
+    }
+
+    /**
+     * Get stocks
+     */
+    fun getFbyStocks(campaign: Long): List<WarehouseOffersDTO>? {
+        return stocksApi.getStocks(campaignId = campaign, limit = 200).result?.warehouses
     }
 
     /**
@@ -78,6 +83,24 @@ class YandexMarketClient(
     }
 
     /**
+     * Get Orders
+     */
+    fun getOrdersWithoutStats(campaign: Long, statuses: Set<OrderStatusType>, from: LocalDate, to: LocalDate): List<OrderDTO> {
+        val orders = ArrayList<OrderDTO>()
+        val firstOrdersPage = ordersApi.getOrders(campaignId = campaign, status = statuses, fromDate = from, toDate = to)
+        firstOrdersPage.orders?.forEach { orders.add(it) }
+
+        val pagesCount = firstOrdersPage.pager?.pagesCount ?: 0
+        if (pagesCount > (firstOrdersPage.pager?.currentPage ?: 0)) {
+            for (i: Int in 2..pagesCount) {
+                ordersApi.getOrders(campaignId = campaign, status = statuses, fromDate = from, toDate = to, page = i).orders
+                    ?.forEach { orders.add(it) }
+            }
+        }
+        return orders
+    }
+
+    /**
      * Get report
      */
     fun createReport(businessId: Long, from: LocalDate, to: LocalDate, campaigns: List<Long>) : CompletableFuture<String> {
@@ -97,30 +120,9 @@ class YandexMarketClient(
             }
             reportId = response.result!!.reportId
 
-            Thread.sleep(1000)
+            Thread.sleep(3000)
 
-            var report = reportsApi.getReportInfo(reportId)
-            if (report.result!!.status != ReportStatusType.DONE && report.result!!.status != ReportStatusType.FAILED) {
-                for (i in 0..2) {
-                    log.info("Retrying to get report, current status is {}", report.result!!.status)
-                    report = reportsApi.getReportInfo(reportId)
-                    Thread.sleep(Duration.ofSeconds(1 + i.toLong() * i.toLong()))
-                    if (report.result!!.status == ReportStatusType.DONE) {
-                        break
-                    }
-                }
-            }
-
-            val status = report.result!!.status
-            if (report.status != ApiResponseStatusType.OK) {
-                throw YandexException(msg = "Failed to create report, status: " + report.status!!.name)
-            }
-
-            if (status != ReportStatusType.DONE) {
-                throw YandexException(msg = "Failed to create report, status is not DONE: " + report.result!!.status)
-            }
-            val file = report.result!!.file
-
+            val file = getReport(reportId)
             if (file != null) {
                 val date = LocalDateTime.now()
                 filePath = "/tmp/ozon/yandex-report-$date.zip"
@@ -129,5 +131,54 @@ class YandexMarketClient(
             }
             filePath
         }
+    }
+
+    /**
+     * create Stocks report
+     */
+    fun createStocksReport(campaign: Long, from: LocalDate, to: LocalDate) : String {
+        val request = GenerateGoodsMovementReportRequest(campaignId = campaign, dateFrom = from, dateTo = to)
+        val response = reportsApi.generateGoodsMovementReport(request, ReportFormatType.CSV)
+        if (response.status != ApiResponseStatusType.OK || response.result == null) {
+            throw YandexException(msg = "Failed to create report, status: " + response.status!!.name)
+        }
+
+        val reportId = response.result!!.reportId
+        Thread.sleep(5000)
+        val file = getReport(reportId)
+        if (file == null) {
+            throw YandexException(msg = "Failed to retrieve report, filePath is null, reportId: ${reportId}")
+        }
+        val date = LocalDateTime.now()
+        val filePath = "/tmp/ozon/yandex-goods-movement-report-$date.csv"
+        FileUtils.copyURLToFile(URI.create(file).toURL(), File(filePath))
+        Thread.sleep(1000)
+        return filePath
+    }
+
+
+    private fun getReport(reportId: String): String? {
+        var report = reportsApi.getReportInfo(reportId)
+        if (report.result!!.status != ReportStatusType.DONE && report.result!!.status != ReportStatusType.FAILED) {
+            for (i in 0..2) {
+                log.info("Retrying to get report, current status is {}", report.result!!.status)
+                report = reportsApi.getReportInfo(reportId)
+                Thread.sleep(Duration.ofSeconds(1 + i.toLong() * i.toLong()))
+                if (report.result!!.status == ReportStatusType.DONE) {
+                    break
+                }
+            }
+        }
+
+        val status = report.result!!.status
+        if (report.status != ApiResponseStatusType.OK) {
+            throw YandexException(msg = "Failed to create report, status: " + report.status!!.name)
+        }
+
+        if (status != ReportStatusType.DONE) {
+            throw YandexException(msg = "Failed to create report, status is not DONE: " + report.result!!.status)
+        }
+        val file = report.result!!.file
+        return file
     }
 }

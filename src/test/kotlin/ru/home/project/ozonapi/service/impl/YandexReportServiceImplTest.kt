@@ -7,6 +7,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.openapitools.client.models.GetCampaignsResponse
 import ru.home.project.ozonapi.client.YandexMarketClient
+import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.util.readResourceMoshi
 import java.time.LocalDate
 import java.util.concurrent.CompletableFuture
@@ -17,7 +18,8 @@ import java.util.concurrent.CompletableFuture
 class YandexReportServiceImplTest {
 
     private val yandexMarketClient = mock<YandexMarketClient>()
-    private val yandexService = YandexServiceImpl(yandexMarketClient)
+    private val positionRepository = mock<PositionRepository>()
+    private val yandexService = YandexServiceImpl(yandexMarketClient, positionRepository)
 
     @Test
     fun `test get yandex orders`() {

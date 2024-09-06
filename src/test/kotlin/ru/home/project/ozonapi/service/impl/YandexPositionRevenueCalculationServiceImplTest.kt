@@ -9,10 +9,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.isNotNull
 import org.mockito.kotlin.isNull
 import org.mockito.kotlin.mock
-import org.openapitools.client.apis.CampaignsApi
-import org.openapitools.client.apis.OrdersApi
-import org.openapitools.client.apis.OrdersStatsApi
-import org.openapitools.client.apis.ReportsApi
+import org.openapitools.client.apis.*
 import org.openapitools.client.models.GetCampaignsResponse
 import org.openapitools.client.models.GetOrdersResponse
 import org.openapitools.client.models.GetOrdersStatsResponse
@@ -37,8 +34,10 @@ class YandexPositionRevenueCalculationServiceImplTest {
     private val ordersApi = mock<OrdersApi>()
     private val ordersStatsApi = mock<OrdersStatsApi>()
     private val reportsApi = mock<ReportsApi>()
-    private val yandexMarketClient = YandexMarketClient(ordersApi, ordersStatsApi, campaignsApi, reportsApi)
-    private val yandexService = YandexServiceImpl(yandexMarketClient)
+    private val stocksApi = mock<StocksApi>()
+    private val positionRepository = mock<PositionRepository>()
+    private val yandexMarketClient = YandexMarketClient(ordersApi, ordersStatsApi, campaignsApi, reportsApi, stocksApi)
+    private val yandexService = YandexServiceImpl(yandexMarketClient, positionRepository)
     private val financialAmountCalculator = FinancialAmountCalculator()
     private val repository = Mockito.mock(PositionRepository::class.java)
 

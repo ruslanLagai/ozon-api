@@ -10,5 +10,6 @@ enum class TransactionType(val description: String) {
     services("сервисные сборы"),
     compensation("компенсация"),
     transferDelivery("стоимость доставки"),
-    other("прочее")
+    other("прочее"),
+    transfer_delivery("")
 }

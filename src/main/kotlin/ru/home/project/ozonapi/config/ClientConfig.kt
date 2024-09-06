@@ -2,10 +2,7 @@ package ru.home.project.ozonapi.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import org.openapitools.client.apis.CampaignsApi
-import org.openapitools.client.apis.OrdersApi
-import org.openapitools.client.apis.OrdersStatsApi
-import org.openapitools.client.apis.ReportsApi
+import org.openapitools.client.apis.*
 import org.openapitools.client.infrastructure.ApiClient
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -101,5 +98,15 @@ class ClientConfig {
     @Bean
     fun reportsApi() : ReportsApi {
         return ReportsApi()
+    }
+
+    @Bean
+    fun warehousesApi() : WarehousesApi {
+        return WarehousesApi()
+    }
+
+    @Bean
+    fun stocksApi() : StocksApi {
+        return StocksApi()
     }
 }
