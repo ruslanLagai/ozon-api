@@ -59,5 +59,7 @@ val yandexFinalStatuses = setOf(
 
 val yandexInDeliveryStatuses = setOf(
     OrderStatusType.DELIVERY,
-    OrderStatusType.PICKUP
+    OrderStatusType.PICKUP,
+    OrderStatusType.PROCESSING,
+
 )

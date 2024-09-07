@@ -95,7 +95,7 @@ class YandexServiceImpl(
                 val yandexArtikul = it.key
                 it.value
                     .flatMap { item -> item.stocks ?: listOf() }
-                    .filter { item -> item.type == WarehouseStockType.FIT || item.type == WarehouseStockType.QUARANTINE }
+                    .filter { item -> item.type == WarehouseStockType.FIT }
                     .map { item ->
                         val position = positions.firstOrNull { positionEntity -> positionEntity.yandexArtikul == yandexArtikul }
                         if (position == null) {
