@@ -178,7 +178,6 @@ class YandexMarketClient(
         if (status != ReportStatusType.DONE) {
             throw YandexException(msg = "Failed to create report, status is not DONE: " + report.result!!.status)
         }
-        val file = report.result!!.file
-        return file
+        return report.result!!.file
     }
 }

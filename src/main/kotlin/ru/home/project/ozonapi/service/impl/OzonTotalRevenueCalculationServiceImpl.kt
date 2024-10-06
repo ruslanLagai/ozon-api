@@ -112,7 +112,10 @@ class OzonTotalRevenueCalculationServiceImpl(
 
         // Расходы на утилизацию
         val destroyFee = transactions
-            .filter {transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStockDisposal }
+            .filter {transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStockDisposal
+                    || transaction.operationType == OperationType.DisposalReasonFailedToPickupOnTime
+                    || transaction.operationType == OperationType.DisposalReasonDamagedPackaging
+            }
             .sumOf { transaction -> transaction.income }
 
         // Расходы на вывоз товара со склада озон

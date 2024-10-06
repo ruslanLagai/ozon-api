@@ -54,5 +54,7 @@ enum class OperationType(val description: String) {
     OperationSubscriptionPremium("Подписка Premium"),
     StarsMembership("Звёздные товары"),
     OperationMarketplaceServicePreparingToReturn("Подготовка товаров к возврату"),
-    MarketplaceServiceItemServiceFeeRFBS("Сервисный сбор за интеграцию с логистической платформой")
+    MarketplaceServiceItemServiceFeeRFBS("Сервисный сбор за интеграцию с логистической платформой"),
+    DisposalReasonFailedToPickupOnTime("Утилизация товара: Вы не забрали в срок"),
+    DisposalReasonDamagedPackaging("Утилизация товара: Повреждённые из-за упаковки")
 }

@@ -38,5 +38,6 @@ enum class AdditionalServiceType(val description: String) {
     OperationMarketplaceWithHoldingForUndeliverableGoods("удержание за недовложение товара"),
     MarketplaceServiceItemDirectFlowLogisticVDC("Логистика?"),
     MarketplaceServiceItemRedistributionReturnsPVZ("Обработка возвратов партнёрами"),
-    ItemAgentServiceStarsMembership("Звёздные товары")
+    ItemAgentServiceStarsMembership("Звёздные товары"),
+    MarketplaceServiceItemDisposalDetailed("Утилизация товара: Вы не забрали в срок")
 }
