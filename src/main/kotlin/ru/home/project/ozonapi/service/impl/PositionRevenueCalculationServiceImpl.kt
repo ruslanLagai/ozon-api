@@ -42,7 +42,7 @@ class PositionRevenueCalculationServiceImpl(
                 || it.operationType == OperationType.OperationAgentDeliveredToCustomerCanceled
                 || it.operationType == OperationType.ClientReturnAgentOperation
                 || it.operationType == OperationType.OperationItemReturn
-                || it.operationType == OperationType.DisposalReasonDamagedReturn
+                || it.operationType == OperationType.DefectRateShipmentDelayNonInt
     }
 
     companion object {

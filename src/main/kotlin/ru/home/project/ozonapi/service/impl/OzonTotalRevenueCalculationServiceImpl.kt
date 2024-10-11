@@ -115,6 +115,7 @@ class OzonTotalRevenueCalculationServiceImpl(
             .filter {transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStockDisposal
                     || transaction.operationType == OperationType.DisposalReasonFailedToPickupOnTime
                     || transaction.operationType == OperationType.DisposalReasonDamagedPackaging
+                    || transaction.operationType == OperationType.DisposalReasonDamagedReturn
             }
             .sumOf { transaction -> transaction.income }
 
