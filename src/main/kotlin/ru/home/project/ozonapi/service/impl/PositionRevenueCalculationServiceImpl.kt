@@ -42,6 +42,7 @@ class PositionRevenueCalculationServiceImpl(
                 || it.operationType == OperationType.OperationAgentDeliveredToCustomerCanceled
                 || it.operationType == OperationType.ClientReturnAgentOperation
                 || it.operationType == OperationType.OperationItemReturn
+                || it.operationType == OperationType.DisposalReasonDamagedReturn
     }
 
     companion object {
@@ -225,7 +226,8 @@ class PositionRevenueCalculationServiceImpl(
                     }
                 val commission = if (!isRefund) {
                     transactionList
-                        .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer }
+                        .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer
+                        }
                         .sumOf { transaction ->
                             calculators.sumOf { calculator -> calculator.calculateCommission(transaction) }
                         }

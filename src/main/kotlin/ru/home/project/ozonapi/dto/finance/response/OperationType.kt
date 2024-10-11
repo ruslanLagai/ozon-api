@@ -56,5 +56,7 @@ enum class OperationType(val description: String) {
     OperationMarketplaceServicePreparingToReturn("Подготовка товаров к возврату"),
     MarketplaceServiceItemServiceFeeRFBS("Сервисный сбор за интеграцию с логистической платформой"),
     DisposalReasonFailedToPickupOnTime("Утилизация товара: Вы не забрали в срок"),
-    DisposalReasonDamagedPackaging("Утилизация товара: Повреждённые из-за упаковки")
+    DisposalReasonDamagedPackaging("Утилизация товара: Повреждённые из-за упаковки"),
+    DisposalReasonDamagedReturn("Утилизация товара: Повреждённые, были у покупателя"),
+
 }
