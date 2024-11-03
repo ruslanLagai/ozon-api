@@ -116,6 +116,7 @@ class OzonTotalRevenueCalculationServiceImpl(
                     || transaction.operationType == OperationType.DisposalReasonFailedToPickupOnTime
                     || transaction.operationType == OperationType.DisposalReasonDamagedPackaging
                     || transaction.operationType == OperationType.DisposalReasonDamagedReturn
+                    || transaction.operationType == OperationType.DisposalReasonRezon
             }
             .sumOf { transaction -> transaction.income }
 

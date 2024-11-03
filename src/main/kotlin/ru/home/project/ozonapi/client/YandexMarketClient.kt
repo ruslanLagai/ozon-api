@@ -65,6 +65,9 @@ class YandexMarketClient(
             }
         }
 
+        if (orderIds.isEmpty()) {
+            return listOf()
+        }
         val request = GetOrdersStatsRequest(orders = orderIds.toList())
         val orderStats = HashSet<OrdersStatsOrderDTO>()
         val ordersStatsResponse = ordersStatsApi.getOrdersStats(campaignId = campaign, limit = 100, getOrdersStatsRequest = request)
