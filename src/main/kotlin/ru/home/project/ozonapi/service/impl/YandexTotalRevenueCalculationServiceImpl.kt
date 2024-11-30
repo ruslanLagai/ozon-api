@@ -82,7 +82,7 @@ class YandexTotalRevenueCalculationServiceImpl(
 
         // Чистая прибыль
         var totalRevenue = revenueList.map(RevenueResponse::totalRevenue).sum()
-        totalRevenue -= destroyFee - shelf - crossDoc - storage
+        totalRevenue = totalRevenue - destroyFee - shelf - crossDoc - storage
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено

@@ -43,14 +43,14 @@ class YandexServiceImpl(
 //        "extended_service_access.csv",
 //        "installment_plan.csv",
         Pair(ReportType.PaidStorage, "paid_storage_after_01-06-22.csv"),
-//        "reception_of_surplus.csv",
+        Pair(ReportType.ReceptionSurplus, "reception_of_surplus.csv"),
         Pair(ReportType.Shelf, "shelf.csv"),//Полки
         Pair(ReportType.Utilization, "utilization.csv")
     )
 
     private val reportProcessor = mapOf(
         Pair(ReportType.CrossDoc) { file: String, response: YandexReportResult ->
-            processReport(file, "SERVICE_PRICE_IN_ROUBLES") { value: Double -> response.crossDoc = value }
+            processReport(file, "SERVICE_PRICE") { value: Double -> response.crossDoc += value }
         },
         Pair(ReportType.PaidStorage) { file: String, response: YandexReportResult ->
             processReport(file, "PAID_STORAGE_IN_ROUBLES") { value: Double -> response.paidStorage = value }
@@ -60,6 +60,9 @@ class YandexServiceImpl(
         },
         Pair(ReportType.Utilization) { file: String, response: YandexReportResult ->
             processReport(file, "SERVICE_PRICE_IN_ROUBLES") { value: Double -> response.utilization = value }
+        },
+        Pair(ReportType.ReceptionSurplus) { file: String, response: YandexReportResult ->
+            processReport(file, "SERVICE_PRICE") { value: Double -> response.crossDoc += value }
         }
     )
 
@@ -281,6 +284,6 @@ class YandexServiceImpl(
     }
 
     enum class ReportType {
-        CrossDoc, PaidStorage, Shelf, Utilization
+        CrossDoc, PaidStorage, Shelf, Utilization, ReceptionSurplus
     }
 }

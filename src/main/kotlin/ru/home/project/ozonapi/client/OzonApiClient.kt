@@ -22,9 +22,7 @@ import ru.home.project.ozonapi.dto.stocks.request.GetStocksRequest
 import ru.home.project.ozonapi.dto.stocks.request.StocksFilter
 import ru.home.project.ozonapi.dto.stocks.response.GetStocksResponse
 import ru.home.project.ozonapi.dto.stocks.response.StocksResultItem
-import ru.home.project.ozonapi.dto.supply.request.SupplyItemsRequest
-import ru.home.project.ozonapi.dto.supply.request.SupplyOrdersRequest
-import ru.home.project.ozonapi.dto.supply.request.SupplyState
+import ru.home.project.ozonapi.dto.supply.request.*
 import ru.home.project.ozonapi.dto.supply.response.SupplyItem
 import ru.home.project.ozonapi.dto.supply.response.SupplyItemsResp
 import ru.home.project.ozonapi.dto.supply.response.SupplyOrderItem
@@ -105,15 +103,17 @@ class OzonApiClient(
     }
 
     fun getSupplyOrders(): List<SupplyOrderItem>? {
-        val request = SupplyOrdersRequest(page = 1, size = 100, states = listOf(
-            SupplyState.ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.IN_TRANSIT,
-            SupplyState.ACCEPTANCE_AT_STORAGE_WAREHOUSE, SupplyState.REPORTS_CONFIRMATION_AWAITING,
-            SupplyState.REPORT_REJECTED, SupplyState.REJECTED_AT_SUPPLY_WAREHOUSE
-        ))
+        val request = SupplyOrdersRequest(filter = SupplyOrdersFilter(
+            states =  listOf(
+                SupplyState.ORDER_STATE_ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.ORDER_STATE_IN_TRANSIT,
+                SupplyState.ORDER_STATE_ACCEPTANCE_AT_STORAGE_WAREHOUSE, SupplyState.ORDER_STATE_REPORTS_CONFIRMATION_AWAITING,
+                SupplyState.ORDER_STATE_REPORT_REJECTED, SupplyState.ORDER_STATE_REJECTED_AT_SUPPLY_WAREHOUSE)),
+            paging = SupplyOrdersPaging()
+        )
         return ozonClient.post()
             .uri { uriBuilder: UriBuilder ->
                 uriBuilder
-                    .path("/v1/supply-order/list")
+                    .path("/v2/supply-order/list")
                     .build()
             }
             .body(BodyInserters.fromValue(request))

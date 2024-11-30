@@ -137,6 +137,11 @@ class OzonTotalRevenueCalculationServiceImpl(
                     || transaction.operationType == OperationType.OperationMarketplaceSupplyAdditional }
             .sumOf { transaction -> transaction.income }
 
+        // Просроченная доставка realFsb
+        val realFbsLateDeliveryFee = transactions
+            .filter { transaction -> transaction.operationType == OperationType.DefectRateDeliveryDelayNonInt }
+            .sumOf { transaction -> transaction.income }
+
         // Расходы на размещение товара
         val storage = transactions
             .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStorage }
@@ -182,7 +187,7 @@ class OzonTotalRevenueCalculationServiceImpl(
             .sum()
         totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome +
                 crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage + otherIncome +
-                starMembership + installment + deliveryToCustomer
+                starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено

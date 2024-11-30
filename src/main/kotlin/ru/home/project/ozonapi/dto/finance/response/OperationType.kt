@@ -59,7 +59,8 @@ enum class OperationType(val description: String) {
     DisposalReasonDamagedPackaging("Утилизация товара: Повреждённые из-за упаковки"),
     DisposalReasonDamagedReturn("Утилизация товара: Повреждённые, были у покупателя"),
     DefectRateShipmentDelayNonInt("Услуга за обработку операционных ошибок продавца: просроченная отгрузка"),
-    DisposalReasonRezon("Утилизация товара: Прочее")
+    DisposalReasonRezon("Утилизация товара: Прочее"),
+    DefectRateDeliveryDelayNonInt("Просроченная доставка realFbs")
 
 
 }
