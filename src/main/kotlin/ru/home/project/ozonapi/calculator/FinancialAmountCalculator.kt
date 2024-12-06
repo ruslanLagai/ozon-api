@@ -6,7 +6,6 @@ import org.openapitools.client.models.OrdersStatsPaymentType
 import org.springframework.stereotype.Component
 import ru.home.project.ozonapi.dto.finance.response.AdditionalServiceType
 import ru.home.project.ozonapi.dto.finance.response.Transaction
-import java.math.BigDecimal
 
 /**
  * @author rlagay
@@ -45,12 +44,16 @@ class FinancialAmountCalculator: FinancialDataCalculator {
 
     override fun calculateYandexRevenue(order: OrdersStatsOrderDTO): Double {
         var payment = 0.0
-        order.payments?.forEach {
+        val processedPayments = ArrayList<String>()
+        order.payments
+            ?.filter { !processedPayments.contains(it.id) }
+            ?.forEach {
             if (OrdersStatsPaymentType.PAYMENT == it.type && it.total != null) {
                 payment += it.total!!.toDouble()
             } else if (OrdersStatsPaymentType.REFUND == it.type && it.total != null) {
                 payment -= it.total!!.toDouble()
             }
+            it.id?.let { item -> processedPayments.add(item) }
         }
         var commission = 0.0
         order.commissions?.forEach {

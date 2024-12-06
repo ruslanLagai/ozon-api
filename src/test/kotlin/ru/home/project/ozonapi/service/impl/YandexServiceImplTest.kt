@@ -85,10 +85,10 @@ class YandexServiceImplTest {
         val result = yandexService.getStocks("66071470")
 
         assertEquals(2, result.size)
-        assertEquals(86, result[0].totalStock)
+        assertEquals(84, result[0].totalStock)
         assertEquals(120.0, result[0].costPrice)
         assertEquals("Держатель для губки", result[0].name)
-        assertEquals(26, result[1].totalStock)
+        assertEquals(24, result[1].totalStock)
         assertEquals(100.0, result[1].costPrice)
         assertEquals("Крючок", result[1].name)
     }

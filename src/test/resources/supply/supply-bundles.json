@@ -1,0 +1,82 @@
+{
+    "items": [
+        {
+            "sku": 1368970968,
+            "quantity": 2,
+            "offer_id": "0000028",
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-1-c/7006839852.jpg",
+            "name": "Вешалки для одежды, набор плечиков с нескользящим покрытием и вырезом под ворот, 10 штук, оранжевые",
+            "volume_in_litres": 5.544,
+            "total_volume_in_litres": 12,
+            "barcode": "OZN1368970968",
+            "product_id": 813067492,
+            "quant": 1,
+            "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_SUPER_FBO",
+            "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_GENERAL",
+            "is_quant_editable": true
+        },
+        {
+            "sku": 1134671293,
+            "quantity": 32,
+            "offer_id": "0000009",
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-1-e/7136001662.jpg",
+            "name": "зонт женский, мини зонт механический, складной, маленький, лавандовый",
+            "volume_in_litres": 1.029,
+            "total_volume_in_litres": 33,
+            "barcode": "OZN1134671293",
+            "product_id": 603086151,
+            "quant": 4,
+            "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_NONE",
+            "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_GENERAL",
+            "is_quant_editable": true
+        },
+        {
+            "sku": 1134715033,
+            "quantity": 26,
+            "offer_id": "0000010",
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-1-e/7136001230.jpg",
+            "name": "зонт мини карманный, механический, складной маленький, бежевый",
+            "volume_in_litres": 1.029,
+            "total_volume_in_litres": 27,
+            "barcode": "OZN1134715033",
+            "product_id": 603093898,
+            "quant": 4,
+            "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_NONE",
+            "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_GENERAL",
+            "is_quant_editable": true
+        },
+        {
+            "sku": 1134733705,
+            "quantity": 32,
+            "offer_id": "0000012",
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-1-8/7135999316.jpg",
+            "name": "зонт мини карманный, механический, складной маленький, серый",
+            "volume_in_litres": 1.029,
+            "total_volume_in_litres": 33,
+            "barcode": "OZN1134733705",
+            "product_id": 603103737,
+            "quant": 4,
+            "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_NONE",
+            "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_GENERAL",
+            "is_quant_editable": true
+        },
+        {
+            "sku": 1135684591,
+            "quantity": 33,
+            "offer_id": "0000015",
+            "icon_path": "https://cdn1.ozone.ru/s3/multimedia-1-r/7135997895.jpg",
+            "name": "зонт мини карманный, механический, складной маленький, черный",
+            "volume_in_litres": 1.029,
+            "total_volume_in_litres": 34,
+            "barcode": "OZN1135684591",
+            "product_id": 603601291,
+            "quant": 4,
+            "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_NONE",
+            "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_GENERAL",
+            "is_quant_editable": true
+        }
+    ],
+    "total_count": 5,
+    "last_id": "1135684591",
+    "has_next": false
+}

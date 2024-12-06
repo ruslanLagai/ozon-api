@@ -11,8 +11,7 @@ import ru.home.project.ozonapi.dto.delivery.Delivery
 import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.finance.response.RefundData
 import ru.home.project.ozonapi.dto.finance.response.Transaction
-import ru.home.project.ozonapi.dto.supply.response.SupplyItem
-import ru.home.project.ozonapi.dto.supply.response.SupplyOrderItem
+import ru.home.project.ozonapi.dto.supply.response.SupplyBundleItem
 import ru.home.project.ozonapi.model.Product
 import ru.home.project.ozonapi.service.OzonService
 import java.time.LocalTime
@@ -72,18 +71,24 @@ class OzonServiceImpl(
         return refund
     }
 
-    @Cacheable(cacheNames = ["ozon-supply"], key = "#orderId")
-    override fun getSupplyItemsInOrder(orderId: Int): List<SupplyItem> {
-        val supplyItems = ozonApiClient.getSupplyItems(orderId)
-        if (supplyItems.isNullOrEmpty()) {
-            log.info("No supply items for {}", orderId)
+    @Cacheable(cacheNames = ["ozon-supply"], key = "#orderIds")
+    override fun getSupplyItemsInOrder(orderIds: List<Int>): List<SupplyBundleItem> {
+        val supplyOrders = ozonApiClient.getSupplyOrders(orderIds)
+        if (supplyOrders == null) {
+            log.info("No supply orders found for {}", orderIds.toTypedArray())
             return listOf()
         }
-        return supplyItems
+        val bundleIds = supplyOrders.flatMap { it.supplies!!.map { item -> item.bundleId } }
+        val supplyBundles = ozonApiClient.getSupplyOrderBundle(bundleIds)
+        if (supplyBundles.isNullOrEmpty()) {
+            log.info("No supply items for {}", orderIds.toTypedArray())
+            return listOf()
+        }
+        return supplyBundles
     }
 
-    override fun getSupplyOrders(): List<SupplyOrderItem> {
-        val supplyOrders = ozonApiClient.getSupplyOrders()
+    override fun getSupplyOrders(): List<Int> {
+        val supplyOrders = ozonApiClient.getSupplyOrderList()
         if (supplyOrders.isNullOrEmpty()) {
             log.info("No supply orders")
             return listOf()

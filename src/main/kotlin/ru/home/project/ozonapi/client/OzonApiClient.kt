@@ -23,10 +23,7 @@ import ru.home.project.ozonapi.dto.stocks.request.StocksFilter
 import ru.home.project.ozonapi.dto.stocks.response.GetStocksResponse
 import ru.home.project.ozonapi.dto.stocks.response.StocksResultItem
 import ru.home.project.ozonapi.dto.supply.request.*
-import ru.home.project.ozonapi.dto.supply.response.SupplyItem
-import ru.home.project.ozonapi.dto.supply.response.SupplyItemsResp
-import ru.home.project.ozonapi.dto.supply.response.SupplyOrderItem
-import ru.home.project.ozonapi.dto.supply.response.SupplyOrdersResp
+import ru.home.project.ozonapi.dto.supply.response.*
 import java.time.Duration
 import java.time.OffsetDateTime
 
@@ -102,7 +99,7 @@ class OzonApiClient(
         return items
     }
 
-    fun getSupplyOrders(): List<SupplyOrderItem>? {
+    fun getSupplyOrderList(): List<Int>? {
         val request = SupplyOrdersRequest(filter = SupplyOrdersFilter(
             states =  listOf(
                 SupplyState.ORDER_STATE_ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.ORDER_STATE_IN_TRANSIT,
@@ -120,22 +117,39 @@ class OzonApiClient(
             .retrieve()
             .bodyToMono<SupplyOrdersResp>()
             .cache(Duration.ofSeconds(5))
-            .mapNotNull { resp -> resp.result.ifEmpty { null } }
+            .mapNotNull { resp -> resp.supplyOrders }
             .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(1)))
             .block()
     }
 
-    fun getSupplyItems(orderId: Int): List<SupplyItem>? {
-        val request = SupplyItemsRequest(page = 1, size = 100, orderId = orderId)
+    fun getSupplyOrders(orderIds: List<Int>): List<SupplyOrderItem>? {
+        val request = SupplyOrderItemsRequest(orderIds = orderIds.map { it.toString() })
         return ozonClient.post()
             .uri { uriBuilder: UriBuilder ->
                 uriBuilder
-                    .path("/v1/supply-order/items")
+                    .path("/v2/supply-order/get")
                     .build()
             }
             .body(BodyInserters.fromValue(request))
             .retrieve()
-            .bodyToMono<SupplyItemsResp>()
+            .bodyToMono<GetSupplyOrdersResp>()
+            .cache(Duration.ofSeconds(5))
+            .mapNotNull { resp -> resp.orders.ifEmpty { null } }
+            .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(1)))
+            .block()
+    }
+
+    fun getSupplyOrderBundle(bundleIds: List<String>): List<SupplyBundleItem>? {
+        val request = SupplyBundleRequest(bundleIds = bundleIds)
+        return ozonClient.post()
+            .uri { uriBuilder: UriBuilder ->
+                uriBuilder
+                    .path("/v1/supply-order/bundle")
+                    .build()
+            }
+            .body(BodyInserters.fromValue(request))
+            .retrieve()
+            .bodyToMono<SupplyBundlesResp>()
             .cache(Duration.ofSeconds(5))
             .mapNotNull { resp -> resp.items.ifEmpty { null } }
             .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(1)))

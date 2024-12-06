@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 import ru.home.project.ozonapi.dto.delivery.Delivery
 import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.response.StocksResponse
-import ru.home.project.ozonapi.dto.supply.response.SupplyItem
+import ru.home.project.ozonapi.dto.supply.response.SupplyBundleItem
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.OzonSupplyEntity
 import ru.home.project.ozonapi.entity.PositionEntity
@@ -22,7 +22,6 @@ import ru.home.project.ozonapi.repository.StockRepository
 import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.service.StocksService
 import ru.home.project.ozonapi.service.YandexService
-import ru.home.project.ozonapi.util.yandexFinalStatuses
 import ru.home.project.ozonapi.util.yandexInDeliveryStatuses
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -175,17 +174,12 @@ class StocksServiceImpl(
             .forEach { stocks.add(it) }
 
         // Ограничение!! в поставке должны быть одна поставка (через ВРЦ не создавать!)
-        var subtracted = false
-        var orderId = 0
+        val ordersToSubtract = ArrayList<Int>()
         ozonService.getSupplyOrders()
-            .asSequence()
-            .map {
-                val supply = ozonSupplyRepository.getOzonSupplyEntityByOrderId(it.orderId)
-                orderId = supply?.orderId ?: it.orderId
-                if (supply != null && supply.subtracted) {
-                    subtracted = true
-                }
-                if (!subtracted) {
+            .onEach {
+                val supply = ozonSupplyRepository.getOzonSupplyEntityByOrderId(it)
+                val orderId = supply?.orderId ?: it
+                if (supply == null || !supply.subtracted) {
                     // отмечаем поставку как учтенную
                     val supplyEntity = ozonSupplyRepository.getOzonSupplyEntityByOrderId(orderId)
                     if (supplyEntity != null) {
@@ -193,14 +187,12 @@ class StocksServiceImpl(
                     } else {
                         ozonSupplyRepository.save(OzonSupplyEntity(orderId = orderId, subtracted = true))
                     }
+                    ordersToSubtract.add(it)
                 }
-                ozonService.getSupplyItemsInOrder(it.orderId)
             }
-            .flatMap { it.asSequence() }
+        ozonService.getSupplyItemsInOrder(ordersToSubtract)
             .map {
-                if (!subtracted) {
-                    subtractFromStock(it)
-                }
+                subtractFromStock(it)
                 Product(name = it.name, sku = it.sku.toString(), artikul = it.artikul, totalStock = it.quantity)
             }
             .filter { it.totalStock != 0 }
@@ -215,16 +207,16 @@ class StocksServiceImpl(
         return mergeProducts(stocks, positions)
     }
 
-    private fun subtractFromStock(supplyItem: SupplyItem) {
-        val entity = stockRepository.getByOzonId(supplyItem.sku.toString())
+    private fun subtractFromStock(supplyBundleItem: SupplyBundleItem) {
+        val entity = stockRepository.getByOzonId(supplyBundleItem.sku.toString())
         if (entity == null) {
-            log.warn("Product in ozon supply is absent in own stock. TO BE CHECKED, {}!", supplyItem.name)
+            log.warn("Product in ozon supply is absent in own stock. TO BE CHECKED, {}!", supplyBundleItem.name)
         } else {
-            val quantity = entity.quantity - supplyItem.quantity
+            val quantity = entity.quantity - supplyBundleItem.quantity
             if (quantity < 0) {
                 throw InvalidStocksException("Quantity in own stock will be < 0")
             }
-            stockRepository.updateQuantityByOzonId(supplyItem.sku.toString(), quantity)
+            stockRepository.updateQuantityByOzonId(supplyBundleItem.sku.toString(), quantity)
         }
     }
 

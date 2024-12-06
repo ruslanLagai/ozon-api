@@ -13,7 +13,8 @@ import ru.home.project.ozonapi.client.YandexMarketClient
 import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.delivery.response.DeliveryResponse
 import ru.home.project.ozonapi.dto.stocks.response.GetStocksResponse
-import ru.home.project.ozonapi.dto.supply.response.SupplyItemsResp
+import ru.home.project.ozonapi.dto.supply.response.GetSupplyOrdersResp
+import ru.home.project.ozonapi.dto.supply.response.SupplyBundlesResp
 import ru.home.project.ozonapi.dto.supply.response.SupplyOrdersResp
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.OzonSupplyEntity
@@ -74,10 +75,8 @@ class StocksServiceImplTest {
         val stocksResp = readResource("stocks/stocks-response.json", GetStocksResponse::class.java)
         val deliveriesResp = readResource("deliveries/deliveries-response.json", DeliveryResponse::class.java)
         val supplyOrders = readResource("supply/supply-list.json", SupplyOrdersResp::class.java)
-        val supplyOrderItems1 = readResource("supply/supply-order-1.json", SupplyItemsResp::class.java)
-        val supplyOrderItems2 = readResource("supply/supply-order-2.json", SupplyItemsResp::class.java)
-        val supplyOrderItems3 = readResource("supply/supply-order-3.json", SupplyItemsResp::class.java)
-        val supplyOrderItems4 = readResource("supply/supply-order-4.json", SupplyItemsResp::class.java)
+        val getSupplyOrders = readResource("supply/get-supply-orders.json", GetSupplyOrdersResp::class.java)
+        val supplyBundles = readResource("supply/supply-bundles.json", SupplyBundlesResp::class.java)
         val yandexFbyStocks = readResourceMoshi("yandex/stocks/fby-stocks.json", GetWarehouseStocksResponse::class.java).result!!.warehouses
         val yandexInDeliveryFbs = readResourceMoshi("yandex/orders/orders-fbs.json", GetOrdersResponse::class.java)
         val yandexInDeliveryFby = readResourceMoshi("yandex/orders/orders-page-2.json", GetOrdersResponse::class.java)
@@ -104,12 +103,10 @@ class StocksServiceImplTest {
         )).thenReturn(yandexInDeliveryFby.orders)
 
         `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.result.items)
-        `when`(ozonApiClient.getSupplyOrders()).thenReturn(supplyOrders.result)
-        `when`(ozonApiClient.getSupplyItems(28439982)).thenReturn(supplyOrderItems1.items)
-        `when`(ozonApiClient.getSupplyItems(28439770)).thenReturn(supplyOrderItems2.items)
-        `when`(ozonApiClient.getSupplyItems(28439655)).thenReturn(supplyOrderItems3.items)
-        `when`(ozonApiClient.getSupplyItems(28130822)).thenReturn(supplyOrderItems4.items)
-
+        `when`(ozonApiClient.getSupplyOrderList()).thenReturn(supplyOrders.supplyOrders)
+        `when`(ozonApiClient.getSupplyOrders(listOf(28439982, 28439770))).thenReturn(getSupplyOrders.orders)
+        `when`(ozonApiClient.getSupplyOrderBundle(listOf("0190c509-5d53-765b-bb12-9e93fe7f2a86", "0190c507-0601-7031-b715-bcaca9670d04")))
+            .thenReturn(supplyBundles.items)
         `when`(positionRepository.findAll()).thenReturn(positions)
         `when`(stockRepository.findAll()).thenReturn(stocks)
         `when`(stockRepository.getByOzonId("1135684591")).thenReturn(stock1)
@@ -128,7 +125,7 @@ class StocksServiceImplTest {
 
         assertEquals(2, result.orders.size)
         assertEquals(30000.0, result.stocksOnWayWorth)
-        assertEquals(174363.74, result.stocksWorth)
+        assertEquals(173923.74, result.stocksWorth)
         assertEquals(8751.59, result.deliveryWorth)
         assertEquals(6680.0, result.yandexDeliveryWorth)
 
@@ -136,8 +133,8 @@ class StocksServiceImplTest {
         assertEquals(100, result.products["0000009"]!!.totalStock)
         assertEquals(80, result.products["0000010"]!!.totalStock)
         assertEquals(48, result.products["0000012"]!!.totalStock)
-        assertEquals(86, result.products["0000005"]!!.totalStock)
-        assertEquals(102, result.products["0000029"]!!.totalStock)
+        assertEquals(84, result.products["0000005"]!!.totalStock)
+        assertEquals(100, result.products["0000029"]!!.totalStock)
         assertEquals(2, result.orders.size)
         assertEquals(4, result.deliveries.size)
         assertEquals(7, result.deliveries["0000009"]!!.totalStock)
@@ -147,9 +144,9 @@ class StocksServiceImplTest {
         assertEquals(47, result.yandexDeliveries["0000005"]!!.totalStock)
         assertEquals(7, result.yandexDeliveries["0000029"]!!.totalStock)
 
-        verify(stockRepository, times(2)).updateQuantityByOzonId("1135684591", 31)
-        verify(stockRepository, times(2)).updateQuantityByOzonId("1134671293", 31)
-        verify(stockRepository, times(2)).updateQuantityByOzonId("1134715033", 35)
+        verify(stockRepository, times(1)).updateQuantityByOzonId("1135684591", 7)
+        verify(stockRepository, times(1)).updateQuantityByOzonId("1134671293", 8)
+        verify(stockRepository, times(1)).updateQuantityByOzonId("1134715033", 16)
         verify(ozonSupplyRepository).save(OzonSupplyEntity(orderId = 28439982, subtracted = true))
         verify(ozonSupplyRepository).updateByOrderId(28439770)
         verify(ozonSupplyRepository, never()).updateByOrderId(28439655)
@@ -164,7 +161,7 @@ class StocksServiceImplTest {
         val deliveriesResp = readResource("deliveries/deliveries-response.json", DeliveryResponse::class.java)
 
         `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.result.items)
-        `when`(ozonApiClient.getSupplyOrders()).thenReturn(listOf())
+        `when`(ozonApiClient.getSupplyOrderList()).thenReturn(listOf())
         `when`(ozonApiClient.getDeliveriesByStatus(DeliveryStatus.delivering)).thenReturn(deliveriesResp.result)
 
         `when`(positionRepository.findAll()).thenReturn(positions)
@@ -191,7 +188,7 @@ class StocksServiceImplTest {
         val orders = setOf(orderEntity1, orderEntity2)
 
         `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.result.items)
-        `when`(ozonApiClient.getSupplyOrders()).thenReturn(listOf())
+        `when`(ozonApiClient.getSupplyOrderList()).thenReturn(listOf())
         `when`(positionRepository.findAll()).thenReturn(positions)
         `when`(stockRepository.findAll()).thenReturn(stocks)
 

@@ -6,7 +6,6 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
-import ru.home.project.ozonapi.dto.supply.response.SupplyOrderItem
 import ru.home.project.ozonapi.entity.FbsOrderEntity
 import ru.home.project.ozonapi.entity.OzonSupplyEntity
 import ru.home.project.ozonapi.exception.YandexException
@@ -18,6 +17,7 @@ import ru.home.project.ozonapi.service.YandexService
 import ru.home.project.ozonapi.util.yandexInDeliveryStatuses
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.Arrays
 
 /**
  *
@@ -40,18 +40,23 @@ class OzonSupplyOrderService(
 
     @Scheduled(cron = "\${service.ozon.supply.cron}")
     fun checkOzonSupply() {
-        ozonService.getSupplyOrders().forEach {
-            val supplyEntity = supplyRepository.getOzonSupplyEntityByOrderId(it.orderId)
-            if (supplyEntity == null) {
-                subtractStocks(it)
-                supplyRepository.save(OzonSupplyEntity(orderId = it.orderId, subtracted = true))
-            } else if (!supplyEntity.subtracted) {
-                subtractStocks(it)
-                supplyRepository.updateByOrderId(it.orderId)
-            } else {
-                log.info("Supply order is already subtracted, orderId {}", supplyEntity.orderId)
+        val ordersToSubtract = ArrayList<Int>()
+        ozonService.getSupplyOrders()
+            .onEach {
+                val supplyEntity = supplyRepository.getOzonSupplyEntityByOrderId(it)
+                if (supplyEntity == null) {
+                    ordersToSubtract.add(it)
+                    supplyRepository.save(OzonSupplyEntity(orderId = it, subtracted = true))
+                } else if (!supplyEntity.subtracted) {
+                    supplyRepository.updateByOrderId(it)
+                } else {
+                    log.info("Supply order is already subtracted, orderId {}", supplyEntity.orderId)
+                }
             }
+        if (ordersToSubtract.isEmpty()) {
+            log.info("Supply orders are already subtracted")
         }
+        subtractStocks(ordersToSubtract)
     }
 
     @Scheduled(cron = "\${service.fbs.order.cron}")
@@ -151,8 +156,8 @@ class OzonSupplyOrderService(
         }
     }
 
-    private fun subtractStocks(supply: SupplyOrderItem) {
-        ozonService.getSupplyItemsInOrder(supply.orderId)
+    private fun subtractStocks(orderIds: List<Int>) {
+        ozonService.getSupplyItemsInOrder(orderIds)
             .forEach {
                 stockRepository.getByArtikul(it.artikul)?.let { item ->
                     val quantity = item.quantity - it.quantity
