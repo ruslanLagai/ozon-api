@@ -73,6 +73,9 @@ class OzonServiceImpl(
 
     @Cacheable(cacheNames = ["ozon-supply"], key = "#orderIds")
     override fun getSupplyItemsInOrder(orderIds: List<Int>): List<SupplyBundleItem> {
+        if (orderIds.isEmpty()) {
+            return listOf()
+        }
         val supplyOrders = ozonApiClient.getSupplyOrders(orderIds)
         if (supplyOrders == null) {
             log.info("No supply orders found for {}", orderIds.toTypedArray())

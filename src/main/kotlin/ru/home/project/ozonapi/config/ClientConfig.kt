@@ -67,7 +67,6 @@ class ClientConfig {
             .defaultHeader("Api-Key", properties.apiKey)
             .defaultStatusHandler({ status: HttpStatusCode -> status.isError },
                 { resp: ClientResponse ->
-                    log.info(resp.toString())
                     log.info(ObjectMapper().writeValueAsString(resp.bodyToMono<String>()))
                     Mono.error(
                         OzonException(
