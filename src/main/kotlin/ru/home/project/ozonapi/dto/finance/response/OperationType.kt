@@ -49,7 +49,7 @@ enum class OperationType(val description: String) {
     OperationElectronicServiceStencil("Трафареты"),
     OperationElectronicServicesPromotionInSearch("Продвижение в поиске"),
     MarketplaceServiceItemCrossdocking("Кросс-докинг"),
-    AccrualInternalClaim("Начисления по претензиям"),
+    AccrualInternalClaim("Потеря по вине Ozon в логистике"),
     MarketplaceCorrectionPointOperation("Корректировка суммы акта о премии"),
     OperationSubscriptionPremium("Подписка Premium"),
     StarsMembership("Звёздные товары"),
@@ -60,7 +60,10 @@ enum class OperationType(val description: String) {
     DisposalReasonDamagedReturn("Утилизация товара: Повреждённые, были у покупателя"),
     DefectRateShipmentDelayNonInt("Услуга за обработку операционных ошибок продавца: просроченная отгрузка"),
     DisposalReasonRezon("Утилизация товара: Прочее"),
-    DefectRateDeliveryDelayNonInt("Просроченная доставка realFbs")
+    DefectRateDeliveryDelayNonInt("Просроченная доставка realFbs"),
+    AccrualConsigWriteOff("Потеря по вине Ozon на складе"),
+    MarketplaceSellerDecompensationItemByTypeDocOperation("Декомпенсации и возвращение товаров на сток"),
+    OperationMarketplaceServiceSupplyInboundCrossZoneAcceptance("Сортировка товара по зонам размещения")
 
 
 }

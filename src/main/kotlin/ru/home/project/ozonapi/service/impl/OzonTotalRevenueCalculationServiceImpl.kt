@@ -101,10 +101,7 @@ class OzonTotalRevenueCalculationServiceImpl(
         val feedback = transactions
             .filter { transaction -> transaction.operationType == OperationType.MarketplaceSaleReviewsOperation }
             .sumOf { transaction -> transaction.income }
-        // Начисление по претензиям
-        val otherIncome = transactions
-            .filter { transaction -> transaction.operationType == OperationType.AccrualInternalClaim }
-            .sumOf { transaction -> transaction.income }
+
         val pinFeedback = transactions
             .filter { transaction -> transaction.operationType == OperationType.OperationMarketPlaceItemPinReview }
             .sumOf { transaction -> transaction.income }
@@ -168,13 +165,22 @@ class OzonTotalRevenueCalculationServiceImpl(
             }
             .sumOf { transaction -> transaction.income }
 
+        // Сортировка по зонам размещения
+        val sorting = transactions
+            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceSupplyInboundCrossZoneAcceptance }
+            .sumOf { transaction -> transaction.income }
+
         // Обработка брака с приемки
         val spoilageSurplus = transactions
             .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceProcessingSpoilageSurplus }
             .sumOf { transaction -> transaction.income }
 
         val compensationIncome = transactions.filter {
-            it.operationType == OperationType.OperationDefectiveWriteOff || it.operationType == OperationType.AccrualConsigDefectiveWriteOff
+            it.operationType == OperationType.OperationDefectiveWriteOff
+                    || it.operationType == OperationType.AccrualConsigDefectiveWriteOff
+                    || it.operationType == OperationType.AccrualInternalClaim
+                    || it.operationType == OperationType.AccrualConsigWriteOff
+                    || it.operationType == OperationType.MarketplaceSellerDecompensationItemByTypeDocOperation
         }.sumOf { it.income }
 
         val courierReturnDelivery = transactions.filter {
@@ -186,8 +192,8 @@ class OzonTotalRevenueCalculationServiceImpl(
             .map(RevenueResponse::totalRevenue)
             .sum()
         totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome +
-                crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage + otherIncome +
-                starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee
+                crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage +
+                starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee + sorting
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено
@@ -238,6 +244,7 @@ class OzonTotalRevenueCalculationServiceImpl(
                 it.installment = BigDecimal(installment).setScale(2, RoundingMode.HALF_UP).toDouble()
                 stockReturn = BigDecimal(returnFromOzonStock).setScale(2, RoundingMode.HALF_UP).toDouble()
                 rfbsDelivery = BigDecimal(deliveryToCustomer).setScale(2, RoundingMode.HALF_UP).toDouble()
+                it.sorting = sorting
             }
         }
 

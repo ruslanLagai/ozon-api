@@ -51,4 +51,5 @@ data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: 
     var installment: Double = 0.0
     var stockReturn: Double = 0.0
     var rfbsDelivery: Double = 0.0
+    var sorting: Double = 0.0
 }
