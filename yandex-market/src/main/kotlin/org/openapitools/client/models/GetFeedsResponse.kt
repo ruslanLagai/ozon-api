@@ -31,7 +31,7 @@ data class GetFeedsResponse (
 
     /* Список прайс-листов. */
     @Json(name = "feeds")
-    val feeds: kotlin.collections.List<FeedDTO>? = null
+    val feeds: kotlin.collections.List<FeedDTO>
 
 )
 

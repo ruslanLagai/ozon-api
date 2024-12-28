@@ -34,7 +34,7 @@ data class OrderDeliveryDatesDTO (
 
     /* Формат даты: `ДД-ММ-ГГГГ`.  */
     @Json(name = "fromDate")
-    val fromDate: kotlin.String? = null,
+    val fromDate: kotlin.String,
 
     /* Формат даты: `ДД-ММ-ГГГГ`.  */
     @Json(name = "toDate")

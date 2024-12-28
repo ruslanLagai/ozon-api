@@ -23,15 +23,18 @@ import com.squareup.moshi.JsonClass
 /**
  * Информация о покупателе с базовыми полями.
  *
+ * @param type 
  * @param id Идентификатор покупателя.
  * @param lastName Фамилия покупателя.
  * @param firstName Имя покупателя.
  * @param middleName Отчество покупателя.
- * @param type 
  */
 
 
 data class OrderBuyerBasicInfoDTO (
+
+    @Json(name = "type")
+    val type: OrderBuyerType,
 
     /* Идентификатор покупателя. */
     @Json(name = "id")
@@ -47,10 +50,7 @@ data class OrderBuyerBasicInfoDTO (
 
     /* Отчество покупателя. */
     @Json(name = "middleName")
-    val middleName: kotlin.String? = null,
-
-    @Json(name = "type")
-    val type: OrderBuyerType? = null
+    val middleName: kotlin.String? = null
 
 )
 

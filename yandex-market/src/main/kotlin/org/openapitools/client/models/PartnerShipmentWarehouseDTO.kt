@@ -32,7 +32,7 @@ data class PartnerShipmentWarehouseDTO (
 
     /* Идентификатор склада отправления. */
     @Json(name = "id")
-    val id: kotlin.Long? = null,
+    val id: kotlin.Long,
 
     /* Наименование склада отправления. */
     @Json(name = "name")

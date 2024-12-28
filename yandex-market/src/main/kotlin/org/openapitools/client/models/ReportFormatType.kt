@@ -20,7 +20,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Формат отчета:  * `FILE` — файл с электронной таблицей. * `CSV` — ZIP-архив с CSV-файлами на каждый лист отчета. 
+ * Формат отчета:  * `FILE` — файл с электронной таблицей (XLSX). * `CSV` — ZIP-архив с CSV-файлами на каждый лист отчета. 
  *
  * Values: FILE,CSV
  */

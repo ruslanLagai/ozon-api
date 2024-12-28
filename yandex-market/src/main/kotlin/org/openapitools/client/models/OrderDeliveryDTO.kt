@@ -34,17 +34,17 @@ import com.squareup.moshi.JsonClass
 /**
  * Информация о доставке.
  *
- * @param id Идентификатор доставки, присвоенный магазином.  Указывается, только если магазин передал данный идентификатор в ответе на запрос методом [POST cart](../../pushapi/reference/cart.md). 
  * @param type 
  * @param serviceName Наименование службы доставки.
- * @param price {% note warning \"\" %}  Этот параметр устарел. Стоимость доставки смотрите в параметре `deliveryTotal`.  {% endnote %}  Стоимость доставки в валюте заказа. 
  * @param deliveryPartnerType 
- * @param courier 
  * @param dates 
+ * @param deliveryServiceId Идентификатор службы доставки.
+ * @param id {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Идентификатор доставки, присвоенный магазином.  Указывается, только если магазин передал данный идентификатор в ответе на запрос методом `POST cart`. 
+ * @param price {% note warning \"Этот параметр устарел\" %}  Стоимость доставки смотрите в параметре `deliveryTotal`.  {% endnote %}  Стоимость доставки в валюте заказа. 
+ * @param courier 
  * @param region 
  * @param address 
  * @param vat 
- * @param deliveryServiceId Идентификатор службы доставки.
  * @param liftType 
  * @param liftPrice Стоимость подъема на этаж.
  * @param outletCode Идентификатор пункта самовывоза, присвоенный магазином.
@@ -60,30 +60,35 @@ import com.squareup.moshi.JsonClass
 
 data class OrderDeliveryDTO (
 
-    /* Идентификатор доставки, присвоенный магазином.  Указывается, только если магазин передал данный идентификатор в ответе на запрос методом [POST cart](../../pushapi/reference/cart.md).  */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
     @Json(name = "type")
-    val type: OrderDeliveryType? = null,
+    val type: OrderDeliveryType,
 
     /* Наименование службы доставки. */
     @Json(name = "serviceName")
-    val serviceName: kotlin.String? = null,
+    val serviceName: kotlin.String,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Стоимость доставки смотрите в параметре `deliveryTotal`.  {% endnote %}  Стоимость доставки в валюте заказа.  */
+    @Json(name = "deliveryPartnerType")
+    val deliveryPartnerType: OrderDeliveryPartnerType,
+
+    @Json(name = "dates")
+    val dates: OrderDeliveryDatesDTO,
+
+    /* Идентификатор службы доставки. */
+    @Json(name = "deliveryServiceId")
+    val deliveryServiceId: kotlin.Long,
+
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Идентификатор доставки, присвоенный магазином.  Указывается, только если магазин передал данный идентификатор в ответе на запрос методом `POST cart`.  */
+    @Json(name = "id")
+    @Deprecated(message = "This property is deprecated.")
+    val id: kotlin.String? = null,
+
+    /* {% note warning \"Этот параметр устарел\" %}  Стоимость доставки смотрите в параметре `deliveryTotal`.  {% endnote %}  Стоимость доставки в валюте заказа.  */
     @Json(name = "price")
     @Deprecated(message = "This property is deprecated.")
     val price: java.math.BigDecimal? = null,
 
-    @Json(name = "deliveryPartnerType")
-    val deliveryPartnerType: OrderDeliveryPartnerType? = null,
-
     @Json(name = "courier")
     val courier: OrderCourierDTO? = null,
-
-    @Json(name = "dates")
-    val dates: OrderDeliveryDatesDTO? = null,
 
     @Json(name = "region")
     val region: RegionDTO? = null,
@@ -93,10 +98,6 @@ data class OrderDeliveryDTO (
 
     @Json(name = "vat")
     val vat: OrderVatType? = null,
-
-    /* Идентификатор службы доставки. */
-    @Json(name = "deliveryServiceId")
-    val deliveryServiceId: kotlin.Long? = null,
 
     @Json(name = "liftType")
     val liftType: OrderLiftType? = null,

@@ -23,13 +23,17 @@ import com.squareup.moshi.JsonClass
 /**
  * Информация о складе.
  *
+ * @param stocks Информация об остатках товаров на складе.
  * @param id Идентификатор склада.
  * @param name Название склада.
- * @param stocks Информация об остатках товаров на складе.
  */
 
 
 data class GoodsStatsWarehouseDTO (
+
+    /* Информация об остатках товаров на складе. */
+    @Json(name = "stocks")
+    val stocks: kotlin.collections.List<WarehouseStockDTO>,
 
     /* Идентификатор склада. */
     @Json(name = "id")
@@ -37,11 +41,7 @@ data class GoodsStatsWarehouseDTO (
 
     /* Название склада. */
     @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    /* Информация об остатках товаров на складе. */
-    @Json(name = "stocks")
-    val stocks: kotlin.collections.List<WarehouseStockDTO>? = null
+    val name: kotlin.String? = null
 
 )
 

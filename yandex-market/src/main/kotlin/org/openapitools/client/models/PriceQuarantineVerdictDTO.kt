@@ -24,19 +24,19 @@ import com.squareup.moshi.JsonClass
 /**
  * Причина попадания товара в карантин.
  *
- * @param type 
  * @param params Цена, из-за которой товар попал в карантин, и значения для сравнения. Конкретный набор параметров зависит от типа карантина.
+ * @param type 
  */
 
 
 data class PriceQuarantineVerdictDTO (
 
-    @Json(name = "type")
-    val type: PriceQuarantineVerdictType? = null,
-
     /* Цена, из-за которой товар попал в карантин, и значения для сравнения. Конкретный набор параметров зависит от типа карантина. */
     @Json(name = "params")
-    val params: kotlin.collections.List<PriceQuarantineVerdictParameterDTO>? = null
+    val params: kotlin.collections.List<PriceQuarantineVerdictParameterDTO>,
+
+    @Json(name = "type")
+    val type: PriceQuarantineVerdictType? = null
 
 )
 

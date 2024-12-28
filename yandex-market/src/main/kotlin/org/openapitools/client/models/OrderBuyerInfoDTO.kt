@@ -23,16 +23,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Информация о покупателе и его номере телефона.
  *
+ * @param type 
  * @param id Идентификатор покупателя.
  * @param lastName Фамилия покупателя.
  * @param firstName Имя покупателя.
  * @param middleName Отчество покупателя.
- * @param type 
  * @param phone Подменный номер телефона покупателя. Подробнее о таких номерах читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/orders/dbs/call#fake-number).  Формат номера: `+<код_страны><код_региона><номер_телефона>`. 
+ * @param trusted Проверенный покупатель.  Если параметр `trusted` вернулся со значением `true`, Маркет уже проверил покупателя — не звоните ему. Обработайте заказ как обычно и передайте его курьеру или отвезите в ПВЗ.  При необходимости свяжитесь с покупателем в чате. [Как это сделать](../../step-by-step/chats.md)  Подробнее о звонках покупателю читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/ru/orders/dbs/call). 
  */
 
 
 data class OrderBuyerInfoDTO (
+
+    @Json(name = "type")
+    val type: OrderBuyerType,
 
     /* Идентификатор покупателя. */
     @Json(name = "id")
@@ -50,12 +54,13 @@ data class OrderBuyerInfoDTO (
     @Json(name = "middleName")
     val middleName: kotlin.String? = null,
 
-    @Json(name = "type")
-    val type: OrderBuyerType? = null,
-
     /* Подменный номер телефона покупателя. Подробнее о таких номерах читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/orders/dbs/call#fake-number).  Формат номера: `+<код_страны><код_региона><номер_телефона>`.  */
     @Json(name = "phone")
-    val phone: kotlin.String? = null
+    val phone: kotlin.String? = null,
+
+    /* Проверенный покупатель.  Если параметр `trusted` вернулся со значением `true`, Маркет уже проверил покупателя — не звоните ему. Обработайте заказ как обычно и передайте его курьеру или отвезите в ПВЗ.  При необходимости свяжитесь с покупателем в чате. [Как это сделать](../../step-by-step/chats.md)  Подробнее о звонках покупателю читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/ru/orders/dbs/call).  */
+    @Json(name = "trusted")
+    val trusted: kotlin.Boolean? = null
 
 )
 

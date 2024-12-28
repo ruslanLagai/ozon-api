@@ -34,7 +34,7 @@ data class OfferPriceListResponseDTO (
 
     /* Страница списка. */
     @Json(name = "offers")
-    val offers: kotlin.collections.List<OfferPriceResponseDTO>? = null,
+    val offers: kotlin.collections.List<OfferPriceResponseDTO>,
 
     @Json(name = "paging")
     val paging: ScrollingPagerDTO? = null,

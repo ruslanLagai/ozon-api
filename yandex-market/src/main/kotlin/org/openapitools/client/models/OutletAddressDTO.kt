@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Адрес точки продаж. 
  *
- * @param regionId Идентификатор региона.  Идентификатор можно получить c помощью запроса [GET regions](../../reference/regions/searchRegionsByName.md).  {% note alert %}  При создании и редактировании точек продаж можно указывать только регионы типов `TOWN` (город), `CITY` (крупный город) и `REPUBLIC_AREA` (район субъекта федерации). Тип региона указан в выходных параметрах type запросов [GET regions](../../reference/regions/searchRegionsByName.md) и [GET regions/{regionId}](../../reference/regions/searchRegionsById.md).  {% endnote %} 
+ * @param regionId Идентификатор региона.  Идентификатор можно получить c помощью запроса [GET regions](../../reference/regions/searchRegionsByName.md).  {% note alert \"Типы регионов при создании и редактировании точек продаж\" %}  Указывайте только регионы типов `TOWN` (город), `CITY` (крупный город) и `REPUBLIC_AREA` (район субъекта федерации). Тип региона указан в выходных параметрах `type` запросов [GET regions](../../reference/regions/searchRegionsByName.md) и [GET regions/{regionId}](../../reference/regions/searchRegionsById.md).  {% endnote %} 
  * @param street Улица.
  * @param number Номер дома.
  * @param building Номер строения.
@@ -30,13 +30,13 @@ import com.squareup.moshi.JsonClass
  * @param block Номер корпуса.
  * @param additional Дополнительная информация.
  * @param km Порядковый номер километра дороги, на котором располагается точка продаж, если отсутствует улица.
- * @param city {% note warning \"\" %}  Этот параметр устарел. Не используйте его. Город или населенный пункт возвращается в параметре `regionId`.  {% endnote %} 
+ * @param city {% note warning \"Этот параметр устарел\" %}  Не используйте его.  В ответах города и населенные пункты возвращаются в параметре `regionId`.  {% endnote %} 
  */
 
 
 data class OutletAddressDTO (
 
-    /* Идентификатор региона.  Идентификатор можно получить c помощью запроса [GET regions](../../reference/regions/searchRegionsByName.md).  {% note alert %}  При создании и редактировании точек продаж можно указывать только регионы типов `TOWN` (город), `CITY` (крупный город) и `REPUBLIC_AREA` (район субъекта федерации). Тип региона указан в выходных параметрах type запросов [GET regions](../../reference/regions/searchRegionsByName.md) и [GET regions/{regionId}](../../reference/regions/searchRegionsById.md).  {% endnote %}  */
+    /* Идентификатор региона.  Идентификатор можно получить c помощью запроса [GET regions](../../reference/regions/searchRegionsByName.md).  {% note alert \"Типы регионов при создании и редактировании точек продаж\" %}  Указывайте только регионы типов `TOWN` (город), `CITY` (крупный город) и `REPUBLIC_AREA` (район субъекта федерации). Тип региона указан в выходных параметрах `type` запросов [GET regions](../../reference/regions/searchRegionsByName.md) и [GET regions/{regionId}](../../reference/regions/searchRegionsById.md).  {% endnote %}  */
     @Json(name = "regionId")
     val regionId: kotlin.Long,
 
@@ -68,7 +68,7 @@ data class OutletAddressDTO (
     @Json(name = "km")
     val km: kotlin.Int? = null,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его. Город или населенный пункт возвращается в параметре `regionId`.  {% endnote %}  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  В ответах города и населенные пункты возвращаются в параметре `regionId`.  {% endnote %}  */
     @Json(name = "city")
     val city: kotlin.String? = null
 

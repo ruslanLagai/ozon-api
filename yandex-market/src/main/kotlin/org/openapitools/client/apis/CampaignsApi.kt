@@ -57,7 +57,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Информация о магазине
-     * Возвращает информацию о магазине. |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaign.md) %}  Возвращает информацию о магазине. |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return GetCampaignResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -88,7 +88,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Информация о магазине
-     * Возвращает информацию о магазине. |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaign.md) %}  Возвращает информацию о магазине. |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return ApiResponse<GetCampaignResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -128,7 +128,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Логины, связанные с магазином
-     * Возвращает список логинов, у которых есть доступ к магазину. |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaignLogins.md) %}  {% note warning \&quot;Этот метод устарел\&quot; %}  Не используйте его.  {% endnote %}  **Для Api-Key-токена:** возвращает пустой ответ.  **Для OAuth-токена:** возвращает список логинов, у которых есть доступ к магазину.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return GetCampaignLoginsResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -139,7 +139,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignLogins(campaignId: kotlin.Long) : GetCampaignLoginsResponse {
+        @Suppress("DEPRECATION")
         val localVarResponse = getCampaignLoginsWithHttpInfo(campaignId = campaignId)
 
         return when (localVarResponse.responseType) {
@@ -159,7 +161,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Логины, связанные с магазином
-     * Возвращает список логинов, у которых есть доступ к магазину. |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaignLogins.md) %}  {% note warning \&quot;Этот метод устарел\&quot; %}  Не используйте его.  {% endnote %}  **Для Api-Key-токена:** возвращает пустой ответ.  **Для OAuth-токена:** возвращает список логинов, у которых есть доступ к магазину.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return ApiResponse<GetCampaignLoginsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -167,7 +169,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignLoginsWithHttpInfo(campaignId: kotlin.Long) : ApiResponse<GetCampaignLoginsResponse?> {
+        @Suppress("DEPRECATION")
         val localVariableConfig = getCampaignLoginsRequestConfig(campaignId = campaignId)
 
         return request<Unit, GetCampaignLoginsResponse>(
@@ -181,6 +185,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return RequestConfig
      */
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignLoginsRequestConfig(campaignId: kotlin.Long) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
@@ -199,7 +204,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Регион магазина
-     * Возвращает регион, в котором находится магазин. |**⚙️ Лимит:** 5 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaignRegion.md) %}  {% note warning \&quot;Этот метод устарел\&quot; %}  Вместо него используйте [GET campaigns/{campaignId}/settings](../../reference/campaigns/getCampaignSettings.md).  {% endnote %}  Возвращает регион, в котором находится магазин. |**⚙️ Лимит:** 5 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return GetCampaignRegionResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -210,7 +215,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignRegion(campaignId: kotlin.Long) : GetCampaignRegionResponse {
+        @Suppress("DEPRECATION")
         val localVarResponse = getCampaignRegionWithHttpInfo(campaignId = campaignId)
 
         return when (localVarResponse.responseType) {
@@ -230,7 +237,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Регион магазина
-     * Возвращает регион, в котором находится магазин. |**⚙️ Лимит:** 5 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaignRegion.md) %}  {% note warning \&quot;Этот метод устарел\&quot; %}  Вместо него используйте [GET campaigns/{campaignId}/settings](../../reference/campaigns/getCampaignSettings.md).  {% endnote %}  Возвращает регион, в котором находится магазин. |**⚙️ Лимит:** 5 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return ApiResponse<GetCampaignRegionResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -238,7 +245,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignRegionWithHttpInfo(campaignId: kotlin.Long) : ApiResponse<GetCampaignRegionResponse?> {
+        @Suppress("DEPRECATION")
         val localVariableConfig = getCampaignRegionRequestConfig(campaignId = campaignId)
 
         return request<Unit, GetCampaignRegionResponse>(
@@ -252,6 +261,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return RequestConfig
      */
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignRegionRequestConfig(campaignId: kotlin.Long) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
@@ -270,7 +280,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Настройки магазина
-     * Возвращает информацию о настройках магазина, идентификатор которого указан в запросе. |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaignSettings.md) %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе. |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return GetCampaignSettingsResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -301,7 +311,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Настройки магазина
-     * Возвращает информацию о настройках магазина, идентификатор которого указан в запросе. |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaignSettings.md) %}  Возвращает информацию о настройках магазина, идентификатор которого указан в запросе. |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return ApiResponse<GetCampaignSettingsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -340,9 +350,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
     }
 
     /**
-     * Магазины пользователя
-     * Возвращает список магазинов, к которым имеет доступ пользователь — владелец авторизационного токена, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов. |**⚙️ Лимит:** 1000 запросов в час| |-| 
-     * @param page Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
+     * Список магазинов пользователя
+     * {% include notitle [access](../../_auto/method_scopes/getCampaigns.md) %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец авторизационного токена, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * @param page {% note warning \&quot;Если в методе есть &#x60;page_token&#x60;\&quot; %}  Используйте его вместо параметра &#x60;page&#x60;.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
      * @param pageSize Размер страницы.  Используется вместе с параметром &#x60;page_number&#x60;.  &#x60;page_size&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional)
      * @return GetCampaignsResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -372,9 +382,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
     }
 
     /**
-     * Магазины пользователя
-     * Возвращает список магазинов, к которым имеет доступ пользователь — владелец авторизационного токена, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов. |**⚙️ Лимит:** 1000 запросов в час| |-| 
-     * @param page Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
+     * Список магазинов пользователя
+     * {% include notitle [access](../../_auto/method_scopes/getCampaigns.md) %}  **Для Api-Key-токена:** возвращает список магазинов в кабинете, для которого выдан токен. Нельзя получить список только подагентских магазинов.  **Для OAuth-токена:** возвращает список магазинов, к которым имеет доступ пользователь — владелец авторизационного токена, использованного в запросе. Для агентских пользователей список состоит из подагентских магазинов.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * @param page {% note warning \&quot;Если в методе есть &#x60;page_token&#x60;\&quot; %}  Используйте его вместо параметра &#x60;page&#x60;.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
      * @param pageSize Размер страницы.  Используется вместе с параметром &#x60;page_number&#x60;.  &#x60;page_size&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional)
      * @return ApiResponse<GetCampaignsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -393,7 +403,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
     /**
      * To obtain the request config of the operation getCampaigns
      *
-     * @param page Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
+     * @param page {% note warning \&quot;Если в методе есть &#x60;page_token&#x60;\&quot; %}  Используйте его вместо параметра &#x60;page&#x60;.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
      * @param pageSize Размер страницы.  Используется вместе с параметром &#x60;page_number&#x60;.  &#x60;page_size&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional)
      * @return RequestConfig
      */
@@ -423,9 +433,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Магазины, доступные логину
-     * Возвращает список магазинов, к которым у пользователя с указанным логином есть доступ. |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaignsByLogin.md) %}  {% note warning \&quot;Этот метод устарел\&quot; %}  Не используйте его.  {% endnote %}  **Для Api-Key-токена:** возвращает пустой ответ.  **Для OAuth-токена:** возвращает список магазинов, к которым у пользователя с указанным логином есть доступ.  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param login Логин пользователя.
-     * @param page Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
+     * @param page {% note warning \&quot;Если в методе есть &#x60;page_token&#x60;\&quot; %}  Используйте его вместо параметра &#x60;page&#x60;.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
      * @param pageSize Размер страницы.  Используется вместе с параметром &#x60;page_number&#x60;.  &#x60;page_size&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional)
      * @return GetCampaignsResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -436,7 +446,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignsByLogin(login: kotlin.String, page: kotlin.Int? = 1, pageSize: kotlin.Int? = null) : GetCampaignsResponse {
+        @Suppress("DEPRECATION")
         val localVarResponse = getCampaignsByLoginWithHttpInfo(login = login, page = page, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
@@ -456,9 +468,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Магазины, доступные логину
-     * Возвращает список магазинов, к которым у пользователя с указанным логином есть доступ. |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCampaignsByLogin.md) %}  {% note warning \&quot;Этот метод устарел\&quot; %}  Не используйте его.  {% endnote %}  **Для Api-Key-токена:** возвращает пустой ответ.  **Для OAuth-токена:** возвращает список магазинов, к которым у пользователя с указанным логином есть доступ.  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param login Логин пользователя.
-     * @param page Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
+     * @param page {% note warning \&quot;Если в методе есть &#x60;page_token&#x60;\&quot; %}  Используйте его вместо параметра &#x60;page&#x60;.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
      * @param pageSize Размер страницы.  Используется вместе с параметром &#x60;page_number&#x60;.  &#x60;page_size&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional)
      * @return ApiResponse<GetCampaignsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -466,7 +478,9 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignsByLoginWithHttpInfo(login: kotlin.String, page: kotlin.Int?, pageSize: kotlin.Int?) : ApiResponse<GetCampaignsResponse?> {
+        @Suppress("DEPRECATION")
         val localVariableConfig = getCampaignsByLoginRequestConfig(login = login, page = page, pageSize = pageSize)
 
         return request<Unit, GetCampaignsResponse>(
@@ -478,10 +492,11 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * To obtain the request config of the operation getCampaignsByLogin
      *
      * @param login Логин пользователя.
-     * @param page Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
+     * @param page {% note warning \&quot;Если в методе есть &#x60;page_token&#x60;\&quot; %}  Используйте его вместо параметра &#x60;page&#x60;.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром &#x60;page_size&#x60;.  &#x60;page_number&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional, default to 1)
      * @param pageSize Размер страницы.  Используется вместе с параметром &#x60;page_number&#x60;.  &#x60;page_size&#x60; игнорируется, если задан &#x60;page_token&#x60;, &#x60;limit&#x60; или &#x60;offset&#x60;.  (optional)
      * @return RequestConfig
      */
+    @Deprecated(message = "This operation is deprecated.")
     fun getCampaignsByLoginRequestConfig(login: kotlin.String, page: kotlin.Int?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()

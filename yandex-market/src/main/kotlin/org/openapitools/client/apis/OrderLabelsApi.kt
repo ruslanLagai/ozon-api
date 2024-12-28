@@ -53,13 +53,13 @@ class OrderLabelsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     }
 
     /**
-     * Ярлык‑наклейка для коробки в заказе
-     * Формирует ярлык‑наклейку для коробки в заказе и возвращает ярлык в PDF‑файле.  |**⚙️ Лимит:** 1 000 000 запросов в час| |-| 
+     * Готовый ярлык‑наклейка для коробки в заказе
+     * {% include notitle [access](../../_auto/method_scopes/generateOrderLabel.md) %}  Формирует ярлык‑наклейку для коробки в заказе и возвращает ярлык в PDF‑файле.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param shipmentId Идентификатор грузоместа.
      * @param boxId Идентификатор коробки.
-     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A6. (optional)
+     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7. (optional)
      * @return java.io.File
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -88,13 +88,13 @@ class OrderLabelsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     }
 
     /**
-     * Ярлык‑наклейка для коробки в заказе
-     * Формирует ярлык‑наклейку для коробки в заказе и возвращает ярлык в PDF‑файле.  |**⚙️ Лимит:** 1 000 000 запросов в час| |-| 
+     * Готовый ярлык‑наклейка для коробки в заказе
+     * {% include notitle [access](../../_auto/method_scopes/generateOrderLabel.md) %}  Формирует ярлык‑наклейку для коробки в заказе и возвращает ярлык в PDF‑файле.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param shipmentId Идентификатор грузоместа.
      * @param boxId Идентификатор коробки.
-     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A6. (optional)
+     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7. (optional)
      * @return ApiResponse<java.io.File?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -116,7 +116,7 @@ class OrderLabelsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * @param orderId Идентификатор заказа.
      * @param shipmentId Идентификатор грузоместа.
      * @param boxId Идентификатор коробки.
-     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A6. (optional)
+     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7. (optional)
      * @return RequestConfig
      */
     fun generateOrderLabelRequestConfig(campaignId: kotlin.Long, orderId: kotlin.Long, shipmentId: kotlin.Long, boxId: kotlin.Long, format: PageFormatType?) : RequestConfig<Unit> {
@@ -141,11 +141,11 @@ class OrderLabelsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     }
 
     /**
-     * Ярлыки‑наклейки на все коробки в одном заказе
-     * Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  |**⚙️ Лимит:** 1 000 000 запросов в час| |-| 
+     * Готовые ярлыки‑наклейки на все коробки в одном заказе
+     * {% include notitle [access](../../_auto/method_scopes/generateOrderLabels.md) %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
-     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A6. (optional)
+     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7. (optional)
      * @return java.io.File
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -174,11 +174,11 @@ class OrderLabelsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     }
 
     /**
-     * Ярлыки‑наклейки на все коробки в одном заказе
-     * Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  |**⚙️ Лимит:** 1 000 000 запросов в час| |-| 
+     * Готовые ярлыки‑наклейки на все коробки в одном заказе
+     * {% include notitle [access](../../_auto/method_scopes/generateOrderLabels.md) %}  Возвращает PDF-файл с ярлыками, которые нужно наклеить на коробки перед отгрузкой. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  На вход нужно передать идентификатор заказа и один необязательный параметр, который управляет версткой PDF-файла.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
-     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A6. (optional)
+     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7. (optional)
      * @return ApiResponse<java.io.File?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -198,7 +198,7 @@ class OrderLabelsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      *
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
-     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A6. (optional)
+     * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7. (optional)
      * @return RequestConfig
      */
     fun generateOrderLabelsRequestConfig(campaignId: kotlin.Long, orderId: kotlin.Long, format: PageFormatType?) : RequestConfig<Unit> {
@@ -223,8 +223,8 @@ class OrderLabelsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     }
 
     /**
-     * Информация на ярлыках‑наклейках
-     * Возвращает информацию на ярлыках, которые клеятся на коробки в заказе.  |**⚙️ Лимит:** 1 000 000 запросов в час| |-| 
+     * Данные для самостоятельного изготовления ярлыков
+     * {% include notitle [access](../../_auto/method_scopes/getOrderLabelsData.md) %}  Возвращает информацию на ярлыках, которые клеятся на коробки в заказе.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @return GetOrderLabelsDataResponse
@@ -255,8 +255,8 @@ class OrderLabelsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     }
 
     /**
-     * Информация на ярлыках‑наклейках
-     * Возвращает информацию на ярлыках, которые клеятся на коробки в заказе.  |**⚙️ Лимит:** 1 000 000 запросов в час| |-| 
+     * Данные для самостоятельного изготовления ярлыков
+     * {% include notitle [access](../../_auto/method_scopes/getOrderLabelsData.md) %}  Возвращает информацию на ярлыках, которые клеятся на коробки в заказе.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @return ApiResponse<GetOrderLabelsDataResponse?>

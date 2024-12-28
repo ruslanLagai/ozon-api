@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.LabelsSortingType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -24,6 +25,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param businessId Идентификатор кабинета.
  * @param orderIds Список идентификаторов заказов.
+ * @param sortingType 
  */
 
 
@@ -35,7 +37,10 @@ data class GenerateMassOrderLabelsRequest (
 
     /* Список идентификаторов заказов. */
     @Json(name = "orderIds")
-    val orderIds: kotlin.collections.Set<kotlin.Long>
+    val orderIds: kotlin.collections.Set<kotlin.Long>,
+
+    @Json(name = "sortingType")
+    val sortingType: LabelsSortingType? = null
 
 )
 

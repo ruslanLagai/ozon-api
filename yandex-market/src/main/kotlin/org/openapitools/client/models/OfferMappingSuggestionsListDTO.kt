@@ -31,7 +31,7 @@ data class OfferMappingSuggestionsListDTO (
 
     /* Список товаров. */
     @Json(name = "offers")
-    val offers: kotlin.collections.List<EnrichedMappingsOfferDTO>? = null
+    val offers: kotlin.collections.List<EnrichedMappingsOfferDTO>
 
 )
 

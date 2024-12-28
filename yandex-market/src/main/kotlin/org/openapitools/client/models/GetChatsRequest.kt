@@ -34,7 +34,7 @@ data class GetChatsRequest (
 
     /* Фильтр по идентификаторам заказов на Маркете. */
     @Json(name = "orderIds")
-    val orderIds: kotlin.collections.List<kotlin.Long>? = null,
+    val orderIds: kotlin.collections.Set<kotlin.Long>? = null,
 
     /* Фильтр по типам чатов. */
     @Json(name = "types")

@@ -26,7 +26,7 @@ class CategoryContentParametersDTOTest : ShouldSpec() {
         // uncomment below to create an instance of CategoryContentParametersDTO
         //val modelInstance = CategoryContentParametersDTO()
 
-        // to test the property `categoryId` - Идентификатор категории на Маркете. Чтобы узнать идентификатор категории, к которой относится товар, воспользуйтесь запросом [POST categories/tree](../../reference/categories/getCategoriesTree.md).
+        // to test the property `categoryId` - Идентификатор категории на Маркете.  При изменении категории убедитесь, что характеристики товара и их значения в параметре `parameterValues` вы передаете для новой категории.  Список категорий Маркета можно получить с помощью запроса  [POST categories/tree](../../reference/categories/getCategoriesTree.md). 
         should("test categoryId") {
             // uncomment below to test the property
             //modelInstance.categoryId shouldBe ("TODO")

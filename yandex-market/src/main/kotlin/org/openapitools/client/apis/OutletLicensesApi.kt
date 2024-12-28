@@ -55,9 +55,9 @@ class OutletLicensesApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
 
     /**
      * Удаление лицензий для точек продаж
-     * Удаляет информацию о лицензиях для точек продаж.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/deleteOutletLicenses.md) %}  Удаляет информацию о лицензиях для точек продаж.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param ids Список идентификаторов лицензий. (optional)
+     * @param ids Список идентификаторов лицензий для удаления.
      * @return EmptyApiResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -67,7 +67,7 @@ class OutletLicensesApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun deleteOutletLicenses(campaignId: kotlin.Long, ids: kotlin.collections.Set<kotlin.Long>? = null) : EmptyApiResponse {
+    fun deleteOutletLicenses(campaignId: kotlin.Long, ids: kotlin.collections.Set<kotlin.Long>) : EmptyApiResponse {
         val localVarResponse = deleteOutletLicensesWithHttpInfo(campaignId = campaignId, ids = ids)
 
         return when (localVarResponse.responseType) {
@@ -87,16 +87,16 @@ class OutletLicensesApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
 
     /**
      * Удаление лицензий для точек продаж
-     * Удаляет информацию о лицензиях для точек продаж.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/deleteOutletLicenses.md) %}  Удаляет информацию о лицензиях для точек продаж.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param ids Список идентификаторов лицензий. (optional)
+     * @param ids Список идентификаторов лицензий для удаления.
      * @return ApiResponse<EmptyApiResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun deleteOutletLicensesWithHttpInfo(campaignId: kotlin.Long, ids: kotlin.collections.Set<kotlin.Long>?) : ApiResponse<EmptyApiResponse?> {
+    fun deleteOutletLicensesWithHttpInfo(campaignId: kotlin.Long, ids: kotlin.collections.Set<kotlin.Long>) : ApiResponse<EmptyApiResponse?> {
         val localVariableConfig = deleteOutletLicensesRequestConfig(campaignId = campaignId, ids = ids)
 
         return request<Unit, EmptyApiResponse>(
@@ -108,16 +108,14 @@ class OutletLicensesApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
      * To obtain the request config of the operation deleteOutletLicenses
      *
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param ids Список идентификаторов лицензий. (optional)
+     * @param ids Список идентификаторов лицензий для удаления.
      * @return RequestConfig
      */
-    fun deleteOutletLicensesRequestConfig(campaignId: kotlin.Long, ids: kotlin.collections.Set<kotlin.Long>?) : RequestConfig<Unit> {
+    fun deleteOutletLicensesRequestConfig(campaignId: kotlin.Long, ids: kotlin.collections.Set<kotlin.Long>) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (ids != null) {
-                    put("ids", toMultiValue(ids.toList(), "csv"))
-                }
+                put("ids", toMultiValue(ids.toList(), "csv"))
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
@@ -134,7 +132,7 @@ class OutletLicensesApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
 
     /**
      * Информация о лицензиях для точек продаж
-     * Возвращает информацию о лицензиях для точек продаж.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getOutletLicenses.md) %}  Возвращает информацию о лицензиях для точек продаж.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param outletIds Список идентификаторов точек продаж, для которых нужно получить информацию о лицензиях. Идентификаторы указываются через запятую.  В запросе должен быть либо параметр &#x60;outletIds&#x60;, либо параметр &#x60;ids&#x60;. Запрос с обоими параметрами или без них приведет к ошибке.  (optional)
      * @param ids Список идентификаторов лицензий. (optional)
@@ -167,7 +165,7 @@ class OutletLicensesApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
 
     /**
      * Информация о лицензиях для точек продаж
-     * Возвращает информацию о лицензиях для точек продаж.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getOutletLicenses.md) %}  Возвращает информацию о лицензиях для точек продаж.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param outletIds Список идентификаторов точек продаж, для которых нужно получить информацию о лицензиях. Идентификаторы указываются через запятую.  В запросе должен быть либо параметр &#x60;outletIds&#x60;, либо параметр &#x60;ids&#x60;. Запрос с обоими параметрами или без них приведет к ошибке.  (optional)
      * @param ids Список идентификаторов лицензий. (optional)
@@ -219,7 +217,7 @@ class OutletLicensesApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
 
     /**
      * Создание и изменение лицензий для точек продаж
-     * Передает информацию о новых и существующих лицензиях для точек продаж. Поддерживаются только лицензии на розничную продажу алкоголя.  Чтобы размещать алкогольную продукцию на Маркете, надо также прислать гарантийное письмо (если вы еще не делали этого раньше) и правильно оформить предложения в прайс-листе. Далее информация о лицензиях проходит проверку.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/updateOutletLicenses.md) %}  Передает информацию о новых и существующих лицензиях для точек продаж. Поддерживаются только лицензии на розничную продажу алкоголя.  Чтобы размещать алкогольную продукцию на Маркете, надо также прислать гарантийное письмо (если вы еще не делали этого раньше) и правильно оформить предложения в прайс-листе. Далее информация о лицензиях проходит проверку.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param updateOutletLicenseRequest 
      * @return EmptyApiResponse
@@ -251,7 +249,7 @@ class OutletLicensesApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
 
     /**
      * Создание и изменение лицензий для точек продаж
-     * Передает информацию о новых и существующих лицензиях для точек продаж. Поддерживаются только лицензии на розничную продажу алкоголя.  Чтобы размещать алкогольную продукцию на Маркете, надо также прислать гарантийное письмо (если вы еще не делали этого раньше) и правильно оформить предложения в прайс-листе. Далее информация о лицензиях проходит проверку.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/updateOutletLicenses.md) %}  Передает информацию о новых и существующих лицензиях для точек продаж. Поддерживаются только лицензии на розничную продажу алкоголя.  Чтобы размещать алкогольную продукцию на Маркете, надо также прислать гарантийное письмо (если вы еще не делали этого раньше) и правильно оформить предложения в прайс-листе. Далее информация о лицензиях проходит проверку.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param updateOutletLicenseRequest 
      * @return ApiResponse<EmptyApiResponse?>

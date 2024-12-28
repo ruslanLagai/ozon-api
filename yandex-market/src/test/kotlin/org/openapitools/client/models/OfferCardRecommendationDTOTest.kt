@@ -32,7 +32,7 @@ class OfferCardRecommendationDTOTest : ShouldSpec() {
             //modelInstance.type shouldBe ("TODO")
         }
 
-        // to test the property `percent` - Процент выполнения рекомендации. Указывается для рекомендаций некоторых типов.
+        // to test the property `percent` - Процент выполнения рекомендации.  Указывается для рекомендаций некоторых типов:  * `PICTURE_COUNT`. * `VIDEO_COUNT`. * `MAIN`. * `ADDITIONAL`. * `DISTINCTIVE`. 
         should("test percent") {
             // uncomment below to test the property
             //modelInstance.percent shouldBe ("TODO")

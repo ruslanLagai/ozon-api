@@ -21,11 +21,11 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Решения по позиции в возврате.
+ * Решения по товару в возврате.
  *
  * @param returnItemId Идентификатор товара в возврате.
  * @param decisionType 
- * @param comment Комментарий к решению. Укажите:  * для `REFUND_MONEY_INCLUDING_SHIPMENT`— стоимость обратной пересылки;  * для `REPAIR` — когда вы устраните недостатки товара;  * для `DECLINE_REFUND` — причину отказа;  * для `OTHER_DECISION` — какое решение вы предлагаете. 
+ * @param comment Комментарий к решению. Укажите:  * для `REFUND_MONEY_INCLUDING_SHIPMENT`— стоимость обратной пересылки.  * для `REPAIR` — когда вы устраните недостатки товара.  * для `DECLINE_REFUND` — причину отказа.  * для `OTHER_DECISION` — какое решение вы предлагаете. 
  */
 
 
@@ -38,7 +38,7 @@ data class SetReturnDecisionRequest (
     @Json(name = "decisionType")
     val decisionType: ReturnRequestDecisionType,
 
-    /* Комментарий к решению. Укажите:  * для `REFUND_MONEY_INCLUDING_SHIPMENT`— стоимость обратной пересылки;  * для `REPAIR` — когда вы устраните недостатки товара;  * для `DECLINE_REFUND` — причину отказа;  * для `OTHER_DECISION` — какое решение вы предлагаете.  */
+    /* Комментарий к решению. Укажите:  * для `REFUND_MONEY_INCLUDING_SHIPMENT`— стоимость обратной пересылки.  * для `REPAIR` — когда вы устраните недостатки товара.  * для `DECLINE_REFUND` — причину отказа.  * для `OTHER_DECISION` — какое решение вы предлагаете.  */
     @Json(name = "comment")
     val comment: kotlin.String? = null
 

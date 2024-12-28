@@ -4,8 +4,13 @@ import ru.home.project.ozonapi.dto.delivery.Delivery
 import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.finance.response.RefundData
 import ru.home.project.ozonapi.dto.finance.response.Transaction
+import ru.home.project.ozonapi.dto.response.AnalyticDataDto
+import ru.home.project.ozonapi.dto.supply.request.AnalyticDimension
+import ru.home.project.ozonapi.dto.supply.request.AnalyticMetric
+import ru.home.project.ozonapi.dto.supply.response.AnalyticsData
 import ru.home.project.ozonapi.dto.supply.response.SupplyBundleItem
 import ru.home.project.ozonapi.model.Product
+import java.time.LocalDate
 import java.time.OffsetDateTime
 
 /**
@@ -47,4 +52,9 @@ interface OzonService {
      * Получение отправлений по статусу
      */
     fun getDeliveryByStatus(status: DeliveryStatus): List<Delivery>
+
+    /**
+     * Получение данных аналитики
+     */
+    fun getAnalyticData(from: LocalDate, to: LocalDate, metrics: List<AnalyticMetric>): ArrayList<AnalyticDataDto>
 }

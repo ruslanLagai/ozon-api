@@ -27,16 +27,16 @@ class PriceQuarantineVerdictDTOTest : ShouldSpec() {
         // uncomment below to create an instance of PriceQuarantineVerdictDTO
         //val modelInstance = PriceQuarantineVerdictDTO()
 
-        // to test the property `type`
-        should("test type") {
-            // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
-        }
-
         // to test the property `params` - Цена, из-за которой товар попал в карантин, и значения для сравнения. Конкретный набор параметров зависит от типа карантина.
         should("test params") {
             // uncomment below to test the property
             //modelInstance.params shouldBe ("TODO")
+        }
+
+        // to test the property `type`
+        should("test type") {
+            // uncomment below to test the property
+            //modelInstance.type shouldBe ("TODO")
         }
 
     }

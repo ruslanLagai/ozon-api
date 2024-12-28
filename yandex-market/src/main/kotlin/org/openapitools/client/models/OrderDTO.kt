@@ -39,19 +39,20 @@ import com.squareup.moshi.JsonClass
  * @param currency 
  * @param itemsTotal Платеж покупателя. 
  * @param deliveryTotal Стоимость доставки. 
- * @param buyerItemsTotal {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и без учета стоимости доставки. 
- * @param buyerTotal {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и с учетом стоимости доставки. 
- * @param buyerItemsTotalBeforeDiscount Цена продажи. Стоимость всех товаров в заказе в валюте покупателя до применения скидок и без учета стоимости доставки.
- * @param buyerTotalBeforeDiscount Стоимость всех товаров в заказе в валюте покупателя до применения скидок и с учетом стоимости доставки (`buyerItemsTotalBeforeDiscount` + стоимость доставки).
+ * @param buyerItemsTotalBeforeDiscount Стоимость всех товаров в заказе в валюте покупателя без учета стоимости доставки и до применения скидок по:  * акциям; * купонам; * промокодам. 
  * @param paymentType 
  * @param paymentMethod 
- * @param fake Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../pushapi/concepts/sandbox.md) заказ Маркета. 
+ * @param fake Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../concepts/sandbox.md) заказ Маркета. 
  * @param items Список товаров в заказе.
- * @param subsidies Список субсидий по типам.
  * @param delivery 
  * @param buyer 
- * @param notes Комментарий к заказу.
  * @param taxSystem 
+ * @param updatedAt 
+ * @param buyerItemsTotal {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и без учета стоимости доставки. 
+ * @param buyerTotal {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и с учетом стоимости доставки. 
+ * @param buyerTotalBeforeDiscount {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя до применения скидок и с учетом стоимости доставки (`buyerItemsTotalBeforeDiscount` + стоимость доставки). 
+ * @param subsidies Список субсидий по типам.
+ * @param notes Комментарий к заказу.
  * @param cancelRequested **Только для модели DBS**  Запрошена ли отмена. 
  * @param expiryDate 
  */
@@ -61,76 +62,80 @@ data class OrderDTO (
 
     /* Идентификатор заказа. */
     @Json(name = "id")
-    val id: kotlin.Long? = null,
+    val id: kotlin.Long,
 
     @Json(name = "status")
-    val status: OrderStatusType? = null,
+    val status: OrderStatusType,
 
     @Json(name = "substatus")
-    val substatus: OrderSubstatusType? = null,
+    val substatus: OrderSubstatusType,
 
     @Json(name = "creationDate")
-    val creationDate: kotlin.String? = null,
+    val creationDate: kotlin.String,
 
     @Json(name = "currency")
-    val currency: CurrencyType? = null,
+    val currency: CurrencyType,
 
     /* Платеж покупателя.  */
     @Json(name = "itemsTotal")
-    val itemsTotal: java.math.BigDecimal? = null,
+    val itemsTotal: java.math.BigDecimal,
 
     /* Стоимость доставки.  */
     @Json(name = "deliveryTotal")
-    val deliveryTotal: java.math.BigDecimal? = null,
+    val deliveryTotal: java.math.BigDecimal,
 
-    /* {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и без учета стоимости доставки.  */
+    /* Стоимость всех товаров в заказе в валюте покупателя без учета стоимости доставки и до применения скидок по:  * акциям; * купонам; * промокодам.  */
+    @Json(name = "buyerItemsTotalBeforeDiscount")
+    val buyerItemsTotalBeforeDiscount: java.math.BigDecimal,
+
+    @Json(name = "paymentType")
+    val paymentType: OrderPaymentType,
+
+    @Json(name = "paymentMethod")
+    val paymentMethod: OrderPaymentMethodType,
+
+    /* Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../concepts/sandbox.md) заказ Маркета.  */
+    @Json(name = "fake")
+    val fake: kotlin.Boolean,
+
+    /* Список товаров в заказе. */
+    @Json(name = "items")
+    val items: kotlin.collections.List<OrderItemDTO>,
+
+    @Json(name = "delivery")
+    val delivery: OrderDeliveryDTO,
+
+    @Json(name = "buyer")
+    val buyer: OrderBuyerDTO,
+
+    @Json(name = "taxSystem")
+    val taxSystem: OrderTaxSystemType,
+
+    @Json(name = "updatedAt")
+    val updatedAt: kotlin.String? = null,
+
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и без учета стоимости доставки.  */
     @Json(name = "buyerItemsTotal")
     @Deprecated(message = "This property is deprecated.")
     val buyerItemsTotal: java.math.BigDecimal? = null,
 
-    /* {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и с учетом стоимости доставки.  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и с учетом стоимости доставки.  */
     @Json(name = "buyerTotal")
     @Deprecated(message = "This property is deprecated.")
     val buyerTotal: java.math.BigDecimal? = null,
 
-    /* Цена продажи. Стоимость всех товаров в заказе в валюте покупателя до применения скидок и без учета стоимости доставки. */
-    @Json(name = "buyerItemsTotalBeforeDiscount")
-    val buyerItemsTotalBeforeDiscount: java.math.BigDecimal? = null,
-
-    /* Стоимость всех товаров в заказе в валюте покупателя до применения скидок и с учетом стоимости доставки (`buyerItemsTotalBeforeDiscount` + стоимость доставки). */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя до применения скидок и с учетом стоимости доставки (`buyerItemsTotalBeforeDiscount` + стоимость доставки).  */
     @Json(name = "buyerTotalBeforeDiscount")
+    @Deprecated(message = "This property is deprecated.")
     val buyerTotalBeforeDiscount: java.math.BigDecimal? = null,
-
-    @Json(name = "paymentType")
-    val paymentType: OrderPaymentType? = null,
-
-    @Json(name = "paymentMethod")
-    val paymentMethod: OrderPaymentMethodType? = null,
-
-    /* Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../pushapi/concepts/sandbox.md) заказ Маркета.  */
-    @Json(name = "fake")
-    val fake: kotlin.Boolean? = null,
-
-    /* Список товаров в заказе. */
-    @Json(name = "items")
-    val items: kotlin.collections.List<OrderItemDTO>? = null,
 
     /* Список субсидий по типам. */
     @Json(name = "subsidies")
     val subsidies: kotlin.collections.List<OrderSubsidyDTO>? = null,
 
-    @Json(name = "delivery")
-    val delivery: OrderDeliveryDTO? = null,
-
-    @Json(name = "buyer")
-    val buyer: OrderBuyerDTO? = null,
-
     /* Комментарий к заказу. */
     @Json(name = "notes")
     val notes: kotlin.String? = null,
-
-    @Json(name = "taxSystem")
-    val taxSystem: OrderTaxSystemType? = null,
 
     /* **Только для модели DBS**  Запрошена ли отмена.  */
     @Json(name = "cancelRequested")

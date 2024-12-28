@@ -53,10 +53,10 @@ class FeedbacksApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Новые и обновленные отзывы о магазине
-     * Возвращает новые и обновленные отзывы о магазине на Маркете.  Результаты возвращаются постранично, одна страница содержит не более 20 отзывов. Выходные данные содержат идентификатор следующей страницы.  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getFeedbackAndCommentUpdates.md) %}  {% note warning \&quot;Этот метод устарел\&quot; %}  Не используйте его.  {% endnote %}  Возвращает новые и обновленные отзывы о магазине на Маркете.  Результаты возвращаются постранично, одна страница содержит не более 20 отзывов. Выходные данные содержат идентификатор следующей страницы.  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @param fromDate Начальная дата обновления отзывов.  Если параметр указан, возвращаются отзывы, которые были написаны или обновлены с этой даты.  Формат даты: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
      * @return GetFeedbackListResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -67,7 +67,9 @@ class FeedbacksApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun getFeedbackAndCommentUpdates(campaignId: kotlin.Long, pageToken: kotlin.String? = null, limit: kotlin.Int? = null, fromDate: java.time.LocalDate? = null) : GetFeedbackListResponse {
+        @Suppress("DEPRECATION")
         val localVarResponse = getFeedbackAndCommentUpdatesWithHttpInfo(campaignId = campaignId, pageToken = pageToken, limit = limit, fromDate = fromDate)
 
         return when (localVarResponse.responseType) {
@@ -87,10 +89,10 @@ class FeedbacksApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Новые и обновленные отзывы о магазине
-     * Возвращает новые и обновленные отзывы о магазине на Маркете.  Результаты возвращаются постранично, одна страница содержит не более 20 отзывов. Выходные данные содержат идентификатор следующей страницы.  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getFeedbackAndCommentUpdates.md) %}  {% note warning \&quot;Этот метод устарел\&quot; %}  Не используйте его.  {% endnote %}  Возвращает новые и обновленные отзывы о магазине на Маркете.  Результаты возвращаются постранично, одна страница содержит не более 20 отзывов. Выходные данные содержат идентификатор следующей страницы.  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @param fromDate Начальная дата обновления отзывов.  Если параметр указан, возвращаются отзывы, которые были написаны или обновлены с этой даты.  Формат даты: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
      * @return ApiResponse<GetFeedbackListResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -98,7 +100,9 @@ class FeedbacksApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
+    @Deprecated(message = "This operation is deprecated.")
     fun getFeedbackAndCommentUpdatesWithHttpInfo(campaignId: kotlin.Long, pageToken: kotlin.String?, limit: kotlin.Int?, fromDate: java.time.LocalDate?) : ApiResponse<GetFeedbackListResponse?> {
+        @Suppress("DEPRECATION")
         val localVariableConfig = getFeedbackAndCommentUpdatesRequestConfig(campaignId = campaignId, pageToken = pageToken, limit = limit, fromDate = fromDate)
 
         return request<Unit, GetFeedbackListResponse>(
@@ -110,11 +114,12 @@ class FeedbacksApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * To obtain the request config of the operation getFeedbackAndCommentUpdates
      *
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @param fromDate Начальная дата обновления отзывов.  Если параметр указан, возвращаются отзывы, которые были написаны или обновлены с этой даты.  Формат даты: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
      * @return RequestConfig
      */
+    @Deprecated(message = "This operation is deprecated.")
     fun getFeedbackAndCommentUpdatesRequestConfig(campaignId: kotlin.Long, pageToken: kotlin.String?, limit: kotlin.Int?, fromDate: java.time.LocalDate?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()

@@ -30,7 +30,7 @@ data class GetBidsRecommendationsRequest (
 
     /* Список товаров, для которых нужно получить рекомендации по ставкам.  */
     @Json(name = "skus")
-    val skus: kotlin.collections.List<kotlin.String>
+    val skus: kotlin.collections.Set<kotlin.String>
 
 )
 

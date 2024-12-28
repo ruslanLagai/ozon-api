@@ -57,8 +57,8 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Информация о возврате или невыкупе
-     * Получает информацию по одному возврату или невыкупу.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * Информация о невыкупе или возврате
+     * {% include notitle [access](../../_auto/method_scopes/getReturn.md) %}  Получает информацию по одному невыкупу или возврату.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -90,8 +90,8 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Информация о возврате или невыкупе
-     * Получает информацию по одному возврату или невыкупу.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * Информация о невыкупе или возврате
+     * {% include notitle [access](../../_auto/method_scopes/getReturn.md) %}  Получает информацию по одному невыкупу или возврату.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -135,7 +135,7 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Получение заявления на возврат
-     * Загружает заявление покупателя на возврат товара.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getReturnApplication.md) %}  Загружает заявление покупателя на возврат товара.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -168,7 +168,7 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Получение заявления на возврат
-     * Загружает заявление покупателя на возврат товара.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getReturnApplication.md) %}  Загружает заявление покупателя на возврат товара.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -212,7 +212,7 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Получение фотографии возврата
-     * Получает фотографии, которые покупатель приложил к заявлению на возврат товара.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getReturnPhoto.md) %}  Получает фотографии, которые покупатель приложил к заявлению на возврат товара.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -247,7 +247,7 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Получение фотографии возврата
-     * Получает фотографии, которые покупатель приложил к заявлению на возврат товара.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getReturnPhoto.md) %}  Получает фотографии, которые покупатель приложил к заявлению на возврат товара.  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -294,18 +294,18 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Список возвратов и невыкупов
-     * Получает список возвратов и невыкупов.  Чтобы получить информацию по одному возврату или невыкупу, выполните запрос [GET campaigns/{campaignId}/orders/{orderId}/returns/{returnId}](../../reference/orders/getReturn.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * Список невыкупов и возвратов
+     * {% include notitle [access](../../_auto/method_scopes/getReturns.md) %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному возврату или невыкупу, выполните запрос [GET campaigns/{campaignId}/orders/{orderId}/returns/{returnId}](../../reference/orders/getReturn.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
-     * @param orderIds Идентификаторы заказов — для фильтрации результатов.  Несколько идентификаторов перечисляются через запятую без пробела. Максимальное количество идентификаторов — 50.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
+     * @param orderIds Идентификаторы заказов — для фильтрации результатов.  Несколько идентификаторов перечисляются через запятую без пробела.  (optional)
      * @param statuses Статусы возвратов или невыкупов — для фильтрации результатов.  Несколько статусов перечисляются через запятую.  (optional)
      * @param type Тип заказа для фильтрации:  * &#x60;RETURN&#x60; — возврат.  * &#x60;UNREDEEMED&#x60; — невыкуп.  Если не указывать, в ответе будут и возвраты, и невыкупы.  (optional)
      * @param fromDate Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  Формат: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
      * @param toDate Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  Формат: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
-     * @param fromDate2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Вместо него используйте &#x60;fromDate&#x60;.  {% endnote %}  Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
-     * @param toDate2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Вместо него используйте &#x60;toDate&#x60;.  {% endnote %}  Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
+     * @param fromDate2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;fromDate&#x60;.  {% endnote %}  Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
+     * @param toDate2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;toDate&#x60;.  {% endnote %}  Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
      * @return GetReturnsResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -315,7 +315,7 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getReturns(campaignId: kotlin.Long, pageToken: kotlin.String? = null, limit: kotlin.Int? = null, orderIds: kotlin.collections.List<kotlin.Long>? = null, statuses: kotlin.collections.List<RefundStatusType>? = null, type: ReturnType? = null, fromDate: java.time.LocalDate? = null, toDate: java.time.LocalDate? = null, fromDate2: java.time.LocalDate? = null, toDate2: java.time.LocalDate? = null) : GetReturnsResponse {
+    fun getReturns(campaignId: kotlin.Long, pageToken: kotlin.String? = null, limit: kotlin.Int? = null, orderIds: kotlin.collections.Set<kotlin.Long>? = null, statuses: kotlin.collections.Set<RefundStatusType>? = null, type: ReturnType? = null, fromDate: java.time.LocalDate? = null, toDate: java.time.LocalDate? = null, fromDate2: java.time.LocalDate? = null, toDate2: java.time.LocalDate? = null) : GetReturnsResponse {
         val localVarResponse = getReturnsWithHttpInfo(campaignId = campaignId, pageToken = pageToken, limit = limit, orderIds = orderIds, statuses = statuses, type = type, fromDate = fromDate, toDate = toDate, fromDate2 = fromDate2, toDate2 = toDate2)
 
         return when (localVarResponse.responseType) {
@@ -334,25 +334,25 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Список возвратов и невыкупов
-     * Получает список возвратов и невыкупов.  Чтобы получить информацию по одному возврату или невыкупу, выполните запрос [GET campaigns/{campaignId}/orders/{orderId}/returns/{returnId}](../../reference/orders/getReturn.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * Список невыкупов и возвратов
+     * {% include notitle [access](../../_auto/method_scopes/getReturns.md) %}  Получает список невыкупов и возвратов.  Чтобы получить информацию по одному возврату или невыкупу, выполните запрос [GET campaigns/{campaignId}/orders/{orderId}/returns/{returnId}](../../reference/orders/getReturn.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
-     * @param orderIds Идентификаторы заказов — для фильтрации результатов.  Несколько идентификаторов перечисляются через запятую без пробела. Максимальное количество идентификаторов — 50.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
+     * @param orderIds Идентификаторы заказов — для фильтрации результатов.  Несколько идентификаторов перечисляются через запятую без пробела.  (optional)
      * @param statuses Статусы возвратов или невыкупов — для фильтрации результатов.  Несколько статусов перечисляются через запятую.  (optional)
      * @param type Тип заказа для фильтрации:  * &#x60;RETURN&#x60; — возврат.  * &#x60;UNREDEEMED&#x60; — невыкуп.  Если не указывать, в ответе будут и возвраты, и невыкупы.  (optional)
      * @param fromDate Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  Формат: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
      * @param toDate Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  Формат: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
-     * @param fromDate2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Вместо него используйте &#x60;fromDate&#x60;.  {% endnote %}  Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
-     * @param toDate2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Вместо него используйте &#x60;toDate&#x60;.  {% endnote %}  Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
+     * @param fromDate2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;fromDate&#x60;.  {% endnote %}  Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
+     * @param toDate2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;toDate&#x60;.  {% endnote %}  Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
      * @return ApiResponse<GetReturnsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getReturnsWithHttpInfo(campaignId: kotlin.Long, pageToken: kotlin.String?, limit: kotlin.Int?, orderIds: kotlin.collections.List<kotlin.Long>?, statuses: kotlin.collections.List<RefundStatusType>?, type: ReturnType?, fromDate: java.time.LocalDate?, toDate: java.time.LocalDate?, fromDate2: java.time.LocalDate?, toDate2: java.time.LocalDate?) : ApiResponse<GetReturnsResponse?> {
+    fun getReturnsWithHttpInfo(campaignId: kotlin.Long, pageToken: kotlin.String?, limit: kotlin.Int?, orderIds: kotlin.collections.Set<kotlin.Long>?, statuses: kotlin.collections.Set<RefundStatusType>?, type: ReturnType?, fromDate: java.time.LocalDate?, toDate: java.time.LocalDate?, fromDate2: java.time.LocalDate?, toDate2: java.time.LocalDate?) : ApiResponse<GetReturnsResponse?> {
         val localVariableConfig = getReturnsRequestConfig(campaignId = campaignId, pageToken = pageToken, limit = limit, orderIds = orderIds, statuses = statuses, type = type, fromDate = fromDate, toDate = toDate, fromDate2 = fromDate2, toDate2 = toDate2)
 
         return request<Unit, GetReturnsResponse>(
@@ -364,18 +364,18 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation getReturns
      *
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
-     * @param orderIds Идентификаторы заказов — для фильтрации результатов.  Несколько идентификаторов перечисляются через запятую без пробела. Максимальное количество идентификаторов — 50.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
+     * @param orderIds Идентификаторы заказов — для фильтрации результатов.  Несколько идентификаторов перечисляются через запятую без пробела.  (optional)
      * @param statuses Статусы возвратов или невыкупов — для фильтрации результатов.  Несколько статусов перечисляются через запятую.  (optional)
      * @param type Тип заказа для фильтрации:  * &#x60;RETURN&#x60; — возврат.  * &#x60;UNREDEEMED&#x60; — невыкуп.  Если не указывать, в ответе будут и возвраты, и невыкупы.  (optional)
      * @param fromDate Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  Формат: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
      * @param toDate Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  Формат: &#x60;ГГГГ-ММ-ДД&#x60;.  (optional)
-     * @param fromDate2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Вместо него используйте &#x60;fromDate&#x60;.  {% endnote %}  Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
-     * @param toDate2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Вместо него используйте &#x60;toDate&#x60;.  {% endnote %}  Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
+     * @param fromDate2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;fromDate&#x60;.  {% endnote %}  Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
+     * @param toDate2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;toDate&#x60;.  {% endnote %}  Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  (optional)
      * @return RequestConfig
      */
-    fun getReturnsRequestConfig(campaignId: kotlin.Long, pageToken: kotlin.String?, limit: kotlin.Int?, orderIds: kotlin.collections.List<kotlin.Long>?, statuses: kotlin.collections.List<RefundStatusType>?, type: ReturnType?, fromDate: java.time.LocalDate?, toDate: java.time.LocalDate?, fromDate2: java.time.LocalDate?, toDate2: java.time.LocalDate?) : RequestConfig<Unit> {
+    fun getReturnsRequestConfig(campaignId: kotlin.Long, pageToken: kotlin.String?, limit: kotlin.Int?, orderIds: kotlin.collections.Set<kotlin.Long>?, statuses: kotlin.collections.Set<RefundStatusType>?, type: ReturnType?, fromDate: java.time.LocalDate?, toDate: java.time.LocalDate?, fromDate2: java.time.LocalDate?, toDate2: java.time.LocalDate?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -421,8 +421,8 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Принятие/изменение решения по позиции в возврате
-     * Выбирает решение по возврату от покупателя. После этого для подтверждения решения нужно выполнить запрос [POST campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit](../../reference/orders/submitReturnDecision.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * Принятие или изменение решения по возврату
+     * {% include notitle [access](../../_auto/method_scopes/setReturnDecision.md) %}  Выбирает решение по возврату от покупателя. После этого для подтверждения решения нужно выполнить запрос [POST campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit](../../reference/orders/submitReturnDecision.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -455,8 +455,8 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Принятие/изменение решения по позиции в возврате
-     * Выбирает решение по возврату от покупателя. После этого для подтверждения решения нужно выполнить запрос [POST campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit](../../reference/orders/submitReturnDecision.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * Принятие или изменение решения по возврату
+     * {% include notitle [access](../../_auto/method_scopes/setReturnDecision.md) %}  Выбирает решение по возврату от покупателя. После этого для подтверждения решения нужно выполнить запрос [POST campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision/submit](../../reference/orders/submitReturnDecision.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -502,8 +502,8 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Подтверждение решения по возвратным позициям
-     * Подтверждает выбранное решение по возврату, отправленное в запросе [POST campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision](../../reference/orders/setReturnDecision.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * Подтверждение решения по возврату
+     * {% include notitle [access](../../_auto/method_scopes/submitReturnDecision.md) %}  Подтверждает выбранное решение по возврату, отправленное в запросе [POST campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision](../../reference/orders/setReturnDecision.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.
@@ -535,8 +535,8 @@ class ReturnsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Подтверждение решения по возвратным позициям
-     * Подтверждает выбранное решение по возврату, отправленное в запросе [POST campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision](../../reference/orders/setReturnDecision.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
+     * Подтверждение решения по возврату
+     * {% include notitle [access](../../_auto/method_scopes/submitReturnDecision.md) %}  Подтверждает выбранное решение по возврату, отправленное в запросе [POST campaigns/{campaignId}/orders/{orderId}/returns/{returnId}/decision](../../reference/orders/setReturnDecision.md).  |**⚙️ Лимит:** 10 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @param returnId Идентификатор возврата.

@@ -23,7 +23,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Фильтрации товаров  В запросе можно указать либо фильтр offerIds, либо любые другие фильтры товаров. Совместное использование фильтра offerIds с другими фильтрациями приведет к ошибке. 
  *
- * @param offerIds Идентификаторы товаров, информация о которых нужна. <br><br> {% note warning \"Такой список возвращается только целиком\" %}  Не используйте это поле одновременно с фильтрами по статусам карточек, категориям, брендам или тегам. Если вы хотите воспользоваться фильтрами, оставьте поле пустым.  Если вы запрашиваете информацию по конкретным SKU, не заполняйте:  * `page_token` * `limit`  {% endnote %} 
+ * @param offerIds Идентификаторы товаров, информация о которых нужна.  {% note warning \"Такой список возвращается только целиком\" %}  Не используйте это поле одновременно с фильтрами по статусам карточек, категориям, брендам или тегам. Если вы хотите воспользоваться фильтрами, оставьте поле пустым.  Если вы запрашиваете информацию по конкретным SKU, не заполняйте:  * `page_token` * `limit`  {% endnote %}    
  * @param statuses Фильтр по статусам товаров. 
  * @param categoryIds Фильтр по категориям на Маркете.
  * @param vendorNames Фильтр по брендам.
@@ -33,25 +33,25 @@ import com.squareup.moshi.JsonClass
 
 data class GetCampaignOffersRequest (
 
-    /* Идентификаторы товаров, информация о которых нужна. <br><br> {% note warning \"Такой список возвращается только целиком\" %}  Не используйте это поле одновременно с фильтрами по статусам карточек, категориям, брендам или тегам. Если вы хотите воспользоваться фильтрами, оставьте поле пустым.  Если вы запрашиваете информацию по конкретным SKU, не заполняйте:  * `page_token` * `limit`  {% endnote %}  */
+    /* Идентификаторы товаров, информация о которых нужна.  {% note warning \"Такой список возвращается только целиком\" %}  Не используйте это поле одновременно с фильтрами по статусам карточек, категориям, брендам или тегам. Если вы хотите воспользоваться фильтрами, оставьте поле пустым.  Если вы запрашиваете информацию по конкретным SKU, не заполняйте:  * `page_token` * `limit`  {% endnote %}     */
     @Json(name = "offerIds")
-    val offerIds: kotlin.collections.List<kotlin.String>? = null,
+    val offerIds: kotlin.collections.Set<kotlin.String>? = null,
 
     /* Фильтр по статусам товаров.  */
     @Json(name = "statuses")
-    val statuses: kotlin.collections.List<OfferCampaignStatusType>? = null,
+    val statuses: kotlin.collections.Set<OfferCampaignStatusType>? = null,
 
     /* Фильтр по категориям на Маркете. */
     @Json(name = "categoryIds")
-    val categoryIds: kotlin.collections.List<kotlin.Int>? = null,
+    val categoryIds: kotlin.collections.Set<kotlin.Int>? = null,
 
     /* Фильтр по брендам. */
     @Json(name = "vendorNames")
-    val vendorNames: kotlin.collections.List<kotlin.String>? = null,
+    val vendorNames: kotlin.collections.Set<kotlin.String>? = null,
 
     /* Фильтр по тегам. */
     @Json(name = "tags")
-    val tags: kotlin.collections.List<kotlin.String>? = null
+    val tags: kotlin.collections.Set<kotlin.String>? = null
 
 )
 

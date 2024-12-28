@@ -31,7 +31,7 @@ data class DeliveryServicesDTO (
 
     /* Информация о службе доставки. */
     @Json(name = "deliveryService")
-    val deliveryService: kotlin.collections.List<DeliveryServiceInfoDTO>? = null
+    val deliveryService: kotlin.collections.List<DeliveryServiceInfoDTO>
 
 )
 

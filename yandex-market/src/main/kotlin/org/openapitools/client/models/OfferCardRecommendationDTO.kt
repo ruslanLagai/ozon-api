@@ -24,7 +24,7 @@ import com.squareup.moshi.JsonClass
  * Рекомендация по заполнению карточки товара.
  *
  * @param type 
- * @param percent Процент выполнения рекомендации. Указывается для рекомендаций некоторых типов.
+ * @param percent Процент выполнения рекомендации.  Указывается для рекомендаций некоторых типов:  * `PICTURE_COUNT`. * `VIDEO_COUNT`. * `MAIN`. * `ADDITIONAL`. * `DISTINCTIVE`. 
  */
 
 
@@ -33,7 +33,7 @@ data class OfferCardRecommendationDTO (
     @Json(name = "type")
     val type: OfferCardRecommendationType,
 
-    /* Процент выполнения рекомендации. Указывается для рекомендаций некоторых типов. */
+    /* Процент выполнения рекомендации.  Указывается для рекомендаций некоторых типов:  * `PICTURE_COUNT`. * `VIDEO_COUNT`. * `MAIN`. * `ADDITIONAL`. * `DISTINCTIVE`.  */
     @Json(name = "percent")
     val percent: kotlin.Int? = null
 

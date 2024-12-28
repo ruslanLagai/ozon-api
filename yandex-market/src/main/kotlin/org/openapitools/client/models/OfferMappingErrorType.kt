@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Типы ошибок:  * `UNKNOWN_CATEGORY` — указана неизвестная категория. * `CATEGORY_MISMATCH` — указана категория, которая не совпадает с категорией товара. * `EMPTY_MARKET_CATEGORY` — не указана категория Маркета при передаче характеристик категории. * `UNKNOWN_PARAMETER` — передана характеристика, которой нет среди характеристик категории. * `UNEXPECTED_BOOLEAN_VALUE` — вместо boolean-значения передано что-то другое. * `NUMBER_FORMAT` — передана строка, не обозначающая число, вместо числа. * `VALUE_BLANK` — передано пустое значение. * `INVALID_UNIT_ID` — передана единица измерения, недопустимая для характеристики. * `INVALID_GROUP_ID_LENGTH` — в названии превышено допустимое значение символов — 255. * `INVALID_GROUP_ID_CHARACTERS` — переданы недопустимые символы. Используйте только буквы и цифры. 
+ * Типы ошибок и предупреждений:  * `UNKNOWN_CATEGORY` — указана неизвестная категория. * `INVALID_CATEGORY` — указана нелистовая категория. Укажите ту, которая не имеет дочерних категорий. * `EMPTY_MARKET_CATEGORY` — не указана категория Маркета при передаче характеристик категории. * `UNKNOWN_PARAMETER` — передана характеристика, которой нет среди характеристик категории. * `UNEXPECTED_BOOLEAN_VALUE` — вместо boolean-значения передано что-то другое. * `NUMBER_FORMAT` — передана строка, не обозначающая число, вместо числа. * `INVALID_UNIT_ID` — передана единица измерения, недопустимая для характеристики. * `INVALID_GROUP_ID_LENGTH` — в названии превышено допустимое значение символов — 255. * `INVALID_GROUP_ID_CHARACTERS` — переданы [недопустимые символы](*ascii-code). * `INVALID_PICKER_URL` — передана ссылка на изображение для миниатюры, которой нет в переданных ссылках на изображение товара. * `LOCKED_DIMENSIONS` — переданы габариты упаковки, которые нельзя изменить. * `INVALID_COMMODITY_CODE` — передан некорректный товарный код. 
  *
- * Values: UNKNOWN_CATEGORY,CATEGORY_MISMATCH,EMPTY_MARKET_CATEGORY,UNKNOWN_PARAMETER,UNEXPECTED_BOOLEAN_VALUE,NUMBER_FORMAT,VALUE_BLANK,INVALID_UNIT_ID,INVALID_GROUP_ID_LENGTH,INVALID_GROUP_ID_CHARACTERS
+ * Values: UNKNOWN_CATEGORY,INVALID_CATEGORY,EMPTY_MARKET_CATEGORY,UNKNOWN_PARAMETER,UNEXPECTED_BOOLEAN_VALUE,NUMBER_FORMAT,INVALID_UNIT_ID,INVALID_GROUP_ID_LENGTH,INVALID_GROUP_ID_CHARACTERS,INVALID_PICKER_URL,LOCKED_DIMENSIONS,INVALID_COMMODITY_CODE
  */
 
 @JsonClass(generateAdapter = false)
@@ -31,8 +31,8 @@ enum class OfferMappingErrorType(val value: kotlin.String) {
     @Json(name = "UNKNOWN_CATEGORY")
     UNKNOWN_CATEGORY("UNKNOWN_CATEGORY"),
 
-    @Json(name = "CATEGORY_MISMATCH")
-    CATEGORY_MISMATCH("CATEGORY_MISMATCH"),
+    @Json(name = "INVALID_CATEGORY")
+    INVALID_CATEGORY("INVALID_CATEGORY"),
 
     @Json(name = "EMPTY_MARKET_CATEGORY")
     EMPTY_MARKET_CATEGORY("EMPTY_MARKET_CATEGORY"),
@@ -46,9 +46,6 @@ enum class OfferMappingErrorType(val value: kotlin.String) {
     @Json(name = "NUMBER_FORMAT")
     NUMBER_FORMAT("NUMBER_FORMAT"),
 
-    @Json(name = "VALUE_BLANK")
-    VALUE_BLANK("VALUE_BLANK"),
-
     @Json(name = "INVALID_UNIT_ID")
     INVALID_UNIT_ID("INVALID_UNIT_ID"),
 
@@ -56,7 +53,16 @@ enum class OfferMappingErrorType(val value: kotlin.String) {
     INVALID_GROUP_ID_LENGTH("INVALID_GROUP_ID_LENGTH"),
 
     @Json(name = "INVALID_GROUP_ID_CHARACTERS")
-    INVALID_GROUP_ID_CHARACTERS("INVALID_GROUP_ID_CHARACTERS");
+    INVALID_GROUP_ID_CHARACTERS("INVALID_GROUP_ID_CHARACTERS"),
+
+    @Json(name = "INVALID_PICKER_URL")
+    INVALID_PICKER_URL("INVALID_PICKER_URL"),
+
+    @Json(name = "LOCKED_DIMENSIONS")
+    LOCKED_DIMENSIONS("LOCKED_DIMENSIONS"),
+
+    @Json(name = "INVALID_COMMODITY_CODE")
+    INVALID_COMMODITY_CODE("INVALID_COMMODITY_CODE");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

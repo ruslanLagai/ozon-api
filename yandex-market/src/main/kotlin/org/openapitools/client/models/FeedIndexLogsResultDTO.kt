@@ -24,20 +24,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Результат выполнения запроса отчета по индексации прайс-листа.
  *
- * @param feed 
  * @param indexLogRecords Список отчетов по индексации прайс-листа.
+ * @param feed 
  * @param total Количество отчетов на всех страницах выходных данных.
  */
 
 
 data class FeedIndexLogsResultDTO (
 
-    @Json(name = "feed")
-    val feed: FeedIndexLogsFeedDTO? = null,
-
     /* Список отчетов по индексации прайс-листа. */
     @Json(name = "indexLogRecords")
-    val indexLogRecords: kotlin.collections.List<FeedIndexLogsRecordDTO>? = null,
+    val indexLogRecords: kotlin.collections.List<FeedIndexLogsRecordDTO>,
+
+    @Json(name = "feed")
+    val feed: FeedIndexLogsFeedDTO? = null,
 
     /* Количество отчетов на всех страницах выходных данных. */
     @Json(name = "total")

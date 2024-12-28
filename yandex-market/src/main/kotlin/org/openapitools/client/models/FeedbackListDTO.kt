@@ -24,19 +24,19 @@ import com.squareup.moshi.JsonClass
 /**
  * Отзывы пользователей Яндекс Маркета об указанном магазине.
  *
- * @param paging 
  * @param feedbackList Список отзывов.  Содержит не более 20 отзывов. 
+ * @param paging 
  */
 
 
 data class FeedbackListDTO (
 
-    @Json(name = "paging")
-    val paging: ScrollingPagerDTO? = null,
-
     /* Список отзывов.  Содержит не более 20 отзывов.  */
     @Json(name = "feedbackList")
-    val feedbackList: kotlin.collections.List<FeedbackDTO>? = null
+    val feedbackList: kotlin.collections.List<FeedbackDTO>,
+
+    @Json(name = "paging")
+    val paging: ScrollingPagerDTO? = null
 
 )
 

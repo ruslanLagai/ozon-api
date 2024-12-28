@@ -24,10 +24,10 @@ import com.squareup.moshi.JsonClass
  * Данные, необходимые для генерации отчета: идентификатор магазина, период, за который нужен отчет, а также фильтры. 
  *
  * @param businessId Идентификатор бизнеса.
- * @param dateTimeFrom {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Начало периода, включительно. 
- * @param dateTimeTo {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Конец периода, включительно. Максимальный период — 1 год. 
+ * @param dateTimeFrom {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Начало периода, включительно. 
+ * @param dateTimeTo {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Конец периода, включительно. Максимальный период — 3 месяца. 
  * @param dateFrom Начало периода, включительно.
- * @param dateTo Конец периода, включительно. Максимальный период — 1 год.
+ * @param dateTo Конец периода, включительно. Максимальный период — 3 месяца.
  * @param bankOrderId Номер платежного поручения.
  * @param bankOrderDateTime Дата платежного поручения.
  * @param placementPrograms Список моделей, которые нужны в отчете. 
@@ -42,11 +42,11 @@ data class GenerateUnitedNettingReportRequest (
     @Json(name = "businessId")
     val businessId: kotlin.Long,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Начало периода, включительно.  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Начало периода, включительно.  */
     @Json(name = "dateTimeFrom")
     val dateTimeFrom: java.time.OffsetDateTime? = null,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Конец периода, включительно. Максимальный период — 1 год.  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Конец периода, включительно. Максимальный период — 3 месяца.  */
     @Json(name = "dateTimeTo")
     val dateTimeTo: java.time.OffsetDateTime? = null,
 
@@ -54,7 +54,7 @@ data class GenerateUnitedNettingReportRequest (
     @Json(name = "dateFrom")
     val dateFrom: java.time.LocalDate? = null,
 
-    /* Конец периода, включительно. Максимальный период — 1 год. */
+    /* Конец периода, включительно. Максимальный период — 3 месяца. */
     @Json(name = "dateTo")
     val dateTo: java.time.LocalDate? = null,
 

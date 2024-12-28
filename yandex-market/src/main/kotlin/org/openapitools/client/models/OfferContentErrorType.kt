@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Типы ошибок:  * `OFFER_NOT_FOUND` — такого товара нет в каталоге. * `UNKNOWN_CATEGORY` — указана неизвестная категория. * `CATEGORY_MISMATCH` — указана категория, которая не совпадает с категорией товара. * `UNKNOWN_PARAMETER` — передана характеристика, которой нет среди характеристик категории. * `UNEXPECTED_BOOLEAN_VALUE` — вместо boolean-значения передано что-то другое. * `NUMBER_FORMAT` — передана строка, не обозначающая число, вместо числа. * `VALUE_BLANK` — передано пустое значение. * `INVALID_UNIT_ID` — передана единица измерения, недопустимая для характеристики. * `INVALID_GROUP_ID_LENGTH` — в названии превышено допустимое значение символов — 255. * `INVALID_GROUP_ID_CHARACTERS` — переданы недопустимые символы. Используйте только буквы и цифры. 
+ * Типы ошибок и предупреждений:  * `OFFER_NOT_FOUND` — такого товара нет в каталоге. * `UNKNOWN_CATEGORY` — указана неизвестная категория. * `INVALID_CATEGORY` — указана нелистовая категория. Укажите ту, которая не имеет дочерних категорий. * `UNKNOWN_PARAMETER` — передана характеристика, которой нет среди характеристик категории. * `UNEXPECTED_BOOLEAN_VALUE` — вместо boolean-значения передано что-то другое. * `NUMBER_FORMAT` — передана строка, не обозначающая число, вместо числа. * `INVALID_UNIT_ID` — передана единица измерения, недопустимая для характеристики. * `INVALID_GROUP_ID_LENGTH` — в названии превышено допустимое значение символов — 255. * `INVALID_GROUP_ID_CHARACTERS` — переданы [недопустимые символы](*ascii-code). 
  *
- * Values: OFFER_NOT_FOUND,UNKNOWN_CATEGORY,CATEGORY_MISMATCH,UNKNOWN_PARAMETER,UNEXPECTED_BOOLEAN_VALUE,NUMBER_FORMAT,VALUE_BLANK,INVALID_UNIT_ID,INVALID_GROUP_ID_LENGTH,INVALID_GROUP_ID_CHARACTERS
+ * Values: OFFER_NOT_FOUND,UNKNOWN_CATEGORY,INVALID_CATEGORY,UNKNOWN_PARAMETER,UNEXPECTED_BOOLEAN_VALUE,NUMBER_FORMAT,INVALID_UNIT_ID,INVALID_GROUP_ID_LENGTH,INVALID_GROUP_ID_CHARACTERS
  */
 
 @JsonClass(generateAdapter = false)
@@ -34,8 +34,8 @@ enum class OfferContentErrorType(val value: kotlin.String) {
     @Json(name = "UNKNOWN_CATEGORY")
     UNKNOWN_CATEGORY("UNKNOWN_CATEGORY"),
 
-    @Json(name = "CATEGORY_MISMATCH")
-    CATEGORY_MISMATCH("CATEGORY_MISMATCH"),
+    @Json(name = "INVALID_CATEGORY")
+    INVALID_CATEGORY("INVALID_CATEGORY"),
 
     @Json(name = "UNKNOWN_PARAMETER")
     UNKNOWN_PARAMETER("UNKNOWN_PARAMETER"),
@@ -45,9 +45,6 @@ enum class OfferContentErrorType(val value: kotlin.String) {
 
     @Json(name = "NUMBER_FORMAT")
     NUMBER_FORMAT("NUMBER_FORMAT"),
-
-    @Json(name = "VALUE_BLANK")
-    VALUE_BLANK("VALUE_BLANK"),
 
     @Json(name = "INVALID_UNIT_ID")
     INVALID_UNIT_ID("INVALID_UNIT_ID"),

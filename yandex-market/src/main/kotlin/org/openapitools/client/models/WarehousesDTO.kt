@@ -33,11 +33,11 @@ data class WarehousesDTO (
 
     /* Список складов, не входящих в группы. */
     @Json(name = "warehouses")
-    val warehouses: kotlin.collections.List<WarehouseDTO>? = null,
+    val warehouses: kotlin.collections.List<WarehouseDTO>,
 
     /* Список групп складов. */
     @Json(name = "warehouseGroups")
-    val warehouseGroups: kotlin.collections.List<WarehouseGroupDTO>? = null
+    val warehouseGroups: kotlin.collections.List<WarehouseGroupDTO>
 
 )
 

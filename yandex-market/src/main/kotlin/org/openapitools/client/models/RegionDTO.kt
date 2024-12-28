@@ -23,9 +23,9 @@ import com.squareup.moshi.JsonClass
 /**
  * Регион доставки.
  *
+ * @param id Идентификатор региона.
  * @param name Название региона.
  * @param type 
- * @param id Идентификатор региона.
  * @param parent 
  * @param children Дочерние регионы.
  */
@@ -33,16 +33,16 @@ import com.squareup.moshi.JsonClass
 
 data class RegionDTO (
 
+    /* Идентификатор региона. */
+    @Json(name = "id")
+    val id: kotlin.Long,
+
     /* Название региона. */
     @Json(name = "name")
     val name: kotlin.String,
 
     @Json(name = "type")
     val type: RegionType,
-
-    /* Идентификатор региона. */
-    @Json(name = "id")
-    val id: kotlin.Long? = null,
 
     @Json(name = "parent")
     val parent: RegionDTO? = null,

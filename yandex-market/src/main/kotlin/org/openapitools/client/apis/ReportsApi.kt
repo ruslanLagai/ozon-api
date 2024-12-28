@@ -27,6 +27,7 @@ import org.openapitools.client.models.ApiServerErrorResponse
 import org.openapitools.client.models.ApiUnauthorizedErrorResponse
 import org.openapitools.client.models.GenerateBoostConsolidatedRequest
 import org.openapitools.client.models.GenerateCompetitorsPositionReportRequest
+import org.openapitools.client.models.GenerateGoodsFeedbackRequest
 import org.openapitools.client.models.GenerateGoodsMovementReportRequest
 import org.openapitools.client.models.GenerateGoodsRealizationReportRequest
 import org.openapitools.client.models.GenerateGoodsTurnoverRequest
@@ -43,6 +44,7 @@ import org.openapitools.client.models.GenerateUnitedOrdersRequest
 import org.openapitools.client.models.GetReportInfoResponse
 import org.openapitools.client.models.PageFormatType
 import org.openapitools.client.models.ReportFormatType
+import org.openapitools.client.models.ReportLanguageType
 
 import com.squareup.moshi.Json
 
@@ -70,9 +72,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по бусту продаж
-     * Запускает генерацию **сводного отчета по бусту продаж** за заданный период. Отчет содержит информацию по всем кампаниям, созданным и через API, и в кабинете.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateBoostConsolidatedReport.md) %}  Запускает генерацию **сводного отчета по бусту продаж** за заданный период. Отчет содержит информацию по всем кампаниям, созданным и через API, и в кабинете.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/boost/consolidated/business_boost_consolidated.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateBoostConsolidatedRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -82,7 +84,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateBoostConsolidatedReport(generateBoostConsolidatedRequest: GenerateBoostConsolidatedRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generateBoostConsolidatedReport(generateBoostConsolidatedRequest: GenerateBoostConsolidatedRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generateBoostConsolidatedReportWithHttpInfo(generateBoostConsolidatedRequest = generateBoostConsolidatedRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -102,9 +104,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по бусту продаж
-     * Запускает генерацию **сводного отчета по бусту продаж** за заданный период. Отчет содержит информацию по всем кампаниям, созданным и через API, и в кабинете.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateBoostConsolidatedReport.md) %}  Запускает генерацию **сводного отчета по бусту продаж** за заданный период. Отчет содержит информацию по всем кампаниям, созданным и через API, и в кабинете.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/boost/consolidated/business_boost_consolidated.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateBoostConsolidatedRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -123,7 +125,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateBoostConsolidatedReport
      *
      * @param generateBoostConsolidatedRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generateBoostConsolidatedReportRequestConfig(generateBoostConsolidatedRequest: GenerateBoostConsolidatedRequest, format: ReportFormatType?) : RequestConfig<GenerateBoostConsolidatedRequest> {
@@ -150,9 +152,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет «Конкурентная позиция»
-     * Запускает генерацию **отчета «Конкурентная позиция»** за заданный период. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/analytics/competitors.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 10 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateCompetitorsPositionReport.md) %}  Запускает генерацию **отчета «Конкурентная позиция»** за заданный период. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/analytics/competitors.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% note info \&quot;Значение -1 в отчете\&quot; %}  Если в CSV-файле в столбце **POSITION** стоит -1, в этот день не было заказов с товарами в указанной категории.  {% endnote %}  {% include notitle [reports](../../_auto/reports/masterstat/competitors_position.md) %}  |**⚙️ Лимит:** 10 запросов в час| |-| 
      * @param generateCompetitorsPositionReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -162,7 +164,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateCompetitorsPositionReport(generateCompetitorsPositionReportRequest: GenerateCompetitorsPositionReportRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generateCompetitorsPositionReport(generateCompetitorsPositionReportRequest: GenerateCompetitorsPositionReportRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generateCompetitorsPositionReportWithHttpInfo(generateCompetitorsPositionReportRequest = generateCompetitorsPositionReportRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -182,9 +184,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет «Конкурентная позиция»
-     * Запускает генерацию **отчета «Конкурентная позиция»** за заданный период. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/analytics/competitors.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 10 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateCompetitorsPositionReport.md) %}  Запускает генерацию **отчета «Конкурентная позиция»** за заданный период. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/analytics/competitors.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% note info \&quot;Значение -1 в отчете\&quot; %}  Если в CSV-файле в столбце **POSITION** стоит -1, в этот день не было заказов с товарами в указанной категории.  {% endnote %}  {% include notitle [reports](../../_auto/reports/masterstat/competitors_position.md) %}  |**⚙️ Лимит:** 10 запросов в час| |-| 
      * @param generateCompetitorsPositionReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -203,7 +205,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateCompetitorsPositionReport
      *
      * @param generateCompetitorsPositionReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generateCompetitorsPositionReportRequestConfig(generateCompetitorsPositionReportRequest: GenerateCompetitorsPositionReportRequest, format: ReportFormatType?) : RequestConfig<GenerateCompetitorsPositionReportRequest> {
@@ -229,10 +231,10 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Отчет по движению товаров
-     * Запускает генерацию **отчета по движению товаров**. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#documents__flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
-     * @param generateGoodsMovementReportRequest 
-     * @param format Формат отчета. (optional)
+     * Отчет по отзывам о товарах
+     * {% include notitle [access](../../_auto/method_scopes/generateGoodsFeedbackReport.md) %}  Запускает генерацию **отчета по отзывам о товарах**. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/marketing/plus-reviews#stat)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/paid_opinion_models/paid_opinion_models.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * @param generateGoodsFeedbackRequest 
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -242,7 +244,87 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateGoodsMovementReport(generateGoodsMovementReportRequest: GenerateGoodsMovementReportRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generateGoodsFeedbackReport(generateGoodsFeedbackRequest: GenerateGoodsFeedbackRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
+        val localVarResponse = generateGoodsFeedbackReportWithHttpInfo(generateGoodsFeedbackRequest = generateGoodsFeedbackRequest, format = format)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GenerateReportResponse
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Отчет по отзывам о товарах
+     * {% include notitle [access](../../_auto/method_scopes/generateGoodsFeedbackReport.md) %}  Запускает генерацию **отчета по отзывам о товарах**. [Что это за отчет](https://yandex.ru/support2/marketplace/ru/marketing/plus-reviews#stat)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/paid_opinion_models/paid_opinion_models.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * @param generateGoodsFeedbackRequest 
+     * @param format Формат отчета. (optional, default to FILE)
+     * @return ApiResponse<GenerateReportResponse?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun generateGoodsFeedbackReportWithHttpInfo(generateGoodsFeedbackRequest: GenerateGoodsFeedbackRequest, format: ReportFormatType?) : ApiResponse<GenerateReportResponse?> {
+        val localVariableConfig = generateGoodsFeedbackReportRequestConfig(generateGoodsFeedbackRequest = generateGoodsFeedbackRequest, format = format)
+
+        return request<GenerateGoodsFeedbackRequest, GenerateReportResponse>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation generateGoodsFeedbackReport
+     *
+     * @param generateGoodsFeedbackRequest 
+     * @param format Формат отчета. (optional, default to FILE)
+     * @return RequestConfig
+     */
+    fun generateGoodsFeedbackReportRequestConfig(generateGoodsFeedbackRequest: GenerateGoodsFeedbackRequest, format: ReportFormatType?) : RequestConfig<GenerateGoodsFeedbackRequest> {
+        val localVariableBody = generateGoodsFeedbackRequest
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (format != null) {
+                    put("format", listOf(format.toString()))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/reports/goods-feedback/generate",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Отчет по движению товаров (FBY)
+     * {% include notitle [access](../../_auto/method_scopes/generateGoodsMovementReport.md) %}  Запускает генерацию **отчета по движению товаров**. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/sku/movement/movement_config.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * @param generateGoodsMovementReportRequest 
+     * @param format Формат отчета. (optional, default to FILE)
+     * @return GenerateReportResponse
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun generateGoodsMovementReport(generateGoodsMovementReportRequest: GenerateGoodsMovementReportRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generateGoodsMovementReportWithHttpInfo(generateGoodsMovementReportRequest = generateGoodsMovementReportRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -261,10 +343,10 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Отчет по движению товаров
-     * Запускает генерацию **отчета по движению товаров**. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#documents__flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * Отчет по движению товаров (FBY)
+     * {% include notitle [access](../../_auto/method_scopes/generateGoodsMovementReport.md) %}  Запускает генерацию **отчета по движению товаров**. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#flow)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/sku/movement/movement_config.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateGoodsMovementReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -283,7 +365,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateGoodsMovementReport
      *
      * @param generateGoodsMovementReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generateGoodsMovementReportRequestConfig(generateGoodsMovementReportRequest: GenerateGoodsMovementReportRequest, format: ReportFormatType?) : RequestConfig<GenerateGoodsMovementReportRequest> {
@@ -310,9 +392,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по реализации
-     * Запускает генерацию **отчета по реализации** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#documents__sales-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateGoodsRealizationReport.md) %}  Запускает генерацию **отчета по реализации** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#sales-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/goods/monthly/goods_realization.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateGoodsRealizationReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -322,7 +404,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateGoodsRealizationReport(generateGoodsRealizationReportRequest: GenerateGoodsRealizationReportRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generateGoodsRealizationReport(generateGoodsRealizationReportRequest: GenerateGoodsRealizationReportRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generateGoodsRealizationReportWithHttpInfo(generateGoodsRealizationReportRequest = generateGoodsRealizationReportRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -342,9 +424,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по реализации
-     * Запускает генерацию **отчета по реализации** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#documents__sales-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateGoodsRealizationReport.md) %}  Запускает генерацию **отчета по реализации** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports-fby-fbs.html#sales-report)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/goods/monthly/goods_realization.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateGoodsRealizationReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -363,7 +445,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateGoodsRealizationReport
      *
      * @param generateGoodsRealizationReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generateGoodsRealizationReportRequestConfig(generateGoodsRealizationReportRequest: GenerateGoodsRealizationReportRequest, format: ReportFormatType?) : RequestConfig<GenerateGoodsRealizationReportRequest> {
@@ -389,10 +471,10 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Отчет по оборачиваемости
-     * Запускает генерацию **отчета по оборачиваемости** за заданный период.  [Что это за отчет](https://yandex.ru/support/marketplace/analytics/turnover.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * Отчет по оборачиваемости (FBY)
+     * {% include notitle [access](../../_auto/method_scopes/generateGoodsTurnoverReport.md) %}  Запускает генерацию **отчета по оборачиваемости** за заданную дату.  [Что это за отчет](https://yandex.ru/support/marketplace/analytics/turnover.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/turnover/turnover.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateGoodsTurnoverRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -402,7 +484,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateGoodsTurnoverReport(generateGoodsTurnoverRequest: GenerateGoodsTurnoverRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generateGoodsTurnoverReport(generateGoodsTurnoverRequest: GenerateGoodsTurnoverRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generateGoodsTurnoverReportWithHttpInfo(generateGoodsTurnoverRequest = generateGoodsTurnoverRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -421,10 +503,10 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Отчет по оборачиваемости
-     * Запускает генерацию **отчета по оборачиваемости** за заданный период.  [Что это за отчет](https://yandex.ru/support/marketplace/analytics/turnover.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * Отчет по оборачиваемости (FBY)
+     * {% include notitle [access](../../_auto/method_scopes/generateGoodsTurnoverReport.md) %}  Запускает генерацию **отчета по оборачиваемости** за заданную дату.  [Что это за отчет](https://yandex.ru/support/marketplace/analytics/turnover.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/turnover/turnover.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateGoodsTurnoverRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -443,7 +525,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateGoodsTurnoverReport
      *
      * @param generateGoodsTurnoverRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generateGoodsTurnoverReportRequestConfig(generateGoodsTurnoverRequest: GenerateGoodsTurnoverRequest, format: ReportFormatType?) : RequestConfig<GenerateGoodsTurnoverRequest> {
@@ -469,8 +551,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Ярлыки‑наклейки на все коробки в нескольких заказах
-     * Запускает генерацию PDF-файла с ярлыками для переданных заказов. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * Готовые ярлыки‑наклейки на все коробки в нескольких заказах
+     * {% include notitle [access](../../_auto/method_scopes/generateMassOrderLabelsReport.md) %}  Запускает генерацию PDF-файла с ярлыками для переданных заказов. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param generateMassOrderLabelsRequest 
      * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7. (optional)
      * @return GenerateReportResponse
@@ -501,8 +583,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Ярлыки‑наклейки на все коробки в нескольких заказах
-     * Запускает генерацию PDF-файла с ярлыками для переданных заказов. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * Готовые ярлыки‑наклейки на все коробки в нескольких заказах
+     * {% include notitle [access](../../_auto/method_scopes/generateMassOrderLabelsReport.md) %}  Запускает генерацию PDF-файла с ярлыками для переданных заказов. Подробно о том, зачем они нужны и как выглядят, рассказано [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/orders/fbs/packaging/marking.html).  Узнать статус генерации и получить ссылку на готовый файл можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param generateMassOrderLabelsRequest 
      * @param format Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7. (optional)
      * @return ApiResponse<GenerateReportResponse?>
@@ -550,9 +632,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет «Цены на рынке»
-     * Запускает генерацию **отчета «Цены на рынке»**.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generatePricesReport.md) %}  Запускает генерацию **отчета «Цены на рынке»**.  {% note warning \&quot;Данные в этом отчете постоянно обновляются\&quot; %}  Поэтому информация в нем и в кабинете продавца на Маркете на странице **Цены** может отличаться.  {% endnote %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/prices/business_prices_v2.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generatePricesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -562,7 +644,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generatePricesReport(generatePricesReportRequest: GeneratePricesReportRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generatePricesReport(generatePricesReportRequest: GeneratePricesReportRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generatePricesReportWithHttpInfo(generatePricesReportRequest = generatePricesReportRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -582,9 +664,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет «Цены на рынке»
-     * Запускает генерацию **отчета «Цены на рынке»**.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generatePricesReport.md) %}  Запускает генерацию **отчета «Цены на рынке»**.  {% note warning \&quot;Данные в этом отчете постоянно обновляются\&quot; %}  Поэтому информация в нем и в кабинете продавца на Маркете на странице **Цены** может отличаться.  {% endnote %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/prices/business_prices_v2.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generatePricesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -603,7 +685,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generatePricesReport
      *
      * @param generatePricesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generatePricesReportRequestConfig(generatePricesReportRequest: GeneratePricesReportRequest, format: ReportFormatType?) : RequestConfig<GeneratePricesReportRequest> {
@@ -630,9 +712,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по полкам
-     * Запускает генерацию **сводного отчета по полкам** — рекламным блокам с баннером или видео и набором товаров. Подробнее о них читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/marketing/shelf).  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateShelfsStatisticsReport.md) %}  Запускает генерацию **сводного отчета по полкам** — рекламным блокам с баннером или видео и набором товаров. Подробнее о них читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/marketing/shelf).  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/incuts/shelfs_statistics.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateShelfsStatisticsRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -642,7 +724,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateShelfsStatisticsReport(generateShelfsStatisticsRequest: GenerateShelfsStatisticsRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generateShelfsStatisticsReport(generateShelfsStatisticsRequest: GenerateShelfsStatisticsRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generateShelfsStatisticsReportWithHttpInfo(generateShelfsStatisticsRequest = generateShelfsStatisticsRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -662,9 +744,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по полкам
-     * Запускает генерацию **сводного отчета по полкам** — рекламным блокам с баннером или видео и набором товаров. Подробнее о них читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/marketing/shelf).  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateShelfsStatisticsReport.md) %}  Запускает генерацию **сводного отчета по полкам** — рекламным блокам с баннером или видео и набором товаров. Подробнее о них читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/marketing/shelf).  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/incuts/shelfs_statistics.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateShelfsStatisticsRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -683,7 +765,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateShelfsStatisticsReport
      *
      * @param generateShelfsStatisticsRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generateShelfsStatisticsReportRequestConfig(generateShelfsStatisticsRequest: GenerateShelfsStatisticsRequest, format: ReportFormatType?) : RequestConfig<GenerateShelfsStatisticsRequest> {
@@ -709,8 +791,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Лист сборки
-     * Запускает генерацию **листа сборки** для отгрузки.  Узнать статус генерации и получить ссылку на готовый документ можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * Получение листа сборки
+     * {% include notitle [access](../../_auto/method_scopes/generateShipmentListDocumentReport.md) %}  Запускает генерацию **листа сборки** для отгрузки.  Узнать статус генерации и получить ссылку на готовый документ можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateShipmentListDocumentReportRequest 
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -740,8 +822,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Лист сборки
-     * Запускает генерацию **листа сборки** для отгрузки.  Узнать статус генерации и получить ссылку на готовый документ можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * Получение листа сборки
+     * {% include notitle [access](../../_auto/method_scopes/generateShipmentListDocumentReport.md) %}  Запускает генерацию **листа сборки** для отгрузки.  Узнать статус генерации и получить ссылку на готовый документ можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateShipmentListDocumentReportRequest 
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -782,9 +864,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет «Аналитика продаж»
-     * Запускает генерацию **отчета «Аналитика продаж»** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/shows-sales.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 10 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateShowsSalesReport.md) %}  Запускает генерацию **отчета «Аналитика продаж»** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/shows-sales.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/masterstat/sales_funnel.md) %}  |**⚙️ Лимит:** 10 запросов в час| |-| 
      * @param generateShowsSalesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -794,7 +876,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateShowsSalesReport(generateShowsSalesReportRequest: GenerateShowsSalesReportRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generateShowsSalesReport(generateShowsSalesReportRequest: GenerateShowsSalesReportRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generateShowsSalesReportWithHttpInfo(generateShowsSalesReportRequest = generateShowsSalesReportRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -814,9 +896,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет «Аналитика продаж»
-     * Запускает генерацию **отчета «Аналитика продаж»** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/shows-sales.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 10 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateShowsSalesReport.md) %}  Запускает генерацию **отчета «Аналитика продаж»** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/shows-sales.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/masterstat/sales_funnel.md) %}  |**⚙️ Лимит:** 10 запросов в час| |-| 
      * @param generateShowsSalesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -835,7 +917,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateShowsSalesReport
      *
      * @param generateShowsSalesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generateShowsSalesReportRequestConfig(generateShowsSalesReportRequest: GenerateShowsSalesReportRequest, format: ReportFormatType?) : RequestConfig<GenerateShowsSalesReportRequest> {
@@ -862,9 +944,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по остаткам на складах
-     * Запускает генерацию **отчета по остаткам на складах**. Отчет содержит данные:  * Для модели FBY — об остатках на складах Маркета. Такой отчет поддерживает фильтры. * Для модели FBS — об остатках на соответствующем складе магазина и всегда выводится целиком.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateStocksOnWarehousesReport.md) %}  Запускает генерацию **отчета по остаткам на складах**. Отчет содержит данные:  * Для модели FBY — об остатках на складах Маркета. * Для остальных моделей — об остатках на соответствующем складе магазина.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/stocks/stocks_on_warehouses.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateStocksOnWarehousesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -874,7 +956,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateStocksOnWarehousesReport(generateStocksOnWarehousesReportRequest: GenerateStocksOnWarehousesReportRequest, format: ReportFormatType? = null) : GenerateReportResponse {
+    fun generateStocksOnWarehousesReport(generateStocksOnWarehousesReportRequest: GenerateStocksOnWarehousesReportRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
         val localVarResponse = generateStocksOnWarehousesReportWithHttpInfo(generateStocksOnWarehousesReportRequest = generateStocksOnWarehousesReportRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -894,9 +976,9 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по остаткам на складах
-     * Запускает генерацию **отчета по остаткам на складах**. Отчет содержит данные:  * Для модели FBY — об остатках на складах Маркета. Такой отчет поддерживает фильтры. * Для модели FBS — об остатках на соответствующем складе магазина и всегда выводится целиком.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateStocksOnWarehousesReport.md) %}  Запускает генерацию **отчета по остаткам на складах**. Отчет содержит данные:  * Для модели FBY — об остатках на складах Маркета. * Для остальных моделей — об остатках на соответствующем складе магазина.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/stocks/stocks_on_warehouses.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateStocksOnWarehousesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -915,7 +997,7 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateStocksOnWarehousesReport
      *
      * @param generateStocksOnWarehousesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
      * @return RequestConfig
      */
     fun generateStocksOnWarehousesReportRequestConfig(generateStocksOnWarehousesReportRequest: GenerateStocksOnWarehousesReportRequest, format: ReportFormatType?) : RequestConfig<GenerateStocksOnWarehousesReportRequest> {
@@ -942,9 +1024,10 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по стоимости услуг
-     * Запускает генерацию **отчета по стоимости услуг** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports.html)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |&#x60;dateFrom&#x60; и &#x60;dateTo&#x60;            | |По дате формирования акта    |&#x60;year&#x60; и &#x60;month&#x60;                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateUnitedMarketplaceServicesReport.md) %}  Запускает генерацию **отчета по стоимости услуг** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports.html)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |&#x60;dateFrom&#x60; и &#x60;dateTo&#x60;            | |По дате формирования акта    |&#x60;year&#x60; и &#x60;month&#x60;                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/united/services/generator/united_marketplace_services.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateUnitedMarketplaceServicesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -954,8 +1037,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateUnitedMarketplaceServicesReport(generateUnitedMarketplaceServicesReportRequest: GenerateUnitedMarketplaceServicesReportRequest, format: ReportFormatType? = null) : GenerateReportResponse {
-        val localVarResponse = generateUnitedMarketplaceServicesReportWithHttpInfo(generateUnitedMarketplaceServicesReportRequest = generateUnitedMarketplaceServicesReportRequest, format = format)
+    fun generateUnitedMarketplaceServicesReport(generateUnitedMarketplaceServicesReportRequest: GenerateUnitedMarketplaceServicesReportRequest, format: ReportFormatType? = FILE, language: ReportLanguageType? = null) : GenerateReportResponse {
+        val localVarResponse = generateUnitedMarketplaceServicesReportWithHttpInfo(generateUnitedMarketplaceServicesReportRequest = generateUnitedMarketplaceServicesReportRequest, format = format, language = language)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as GenerateReportResponse
@@ -974,17 +1057,18 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по стоимости услуг
-     * Запускает генерацию **отчета по стоимости услуг** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports.html)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |&#x60;dateFrom&#x60; и &#x60;dateTo&#x60;            | |По дате формирования акта    |&#x60;year&#x60; и &#x60;month&#x60;                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateUnitedMarketplaceServicesReport.md) %}  Запускает генерацию **отчета по стоимости услуг** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/reports.html)  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**               |**Какие поля нужны**             | |-----------------------------|---------------------------------| |По дате начисления услуги    |&#x60;dateFrom&#x60; и &#x60;dateTo&#x60;            | |По дате формирования акта    |&#x60;year&#x60; и &#x60;month&#x60;                 |  Заказать отчеты обоих типов одним запросом нельзя.  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/united/services/generator/united_marketplace_services.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateUnitedMarketplaceServicesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun generateUnitedMarketplaceServicesReportWithHttpInfo(generateUnitedMarketplaceServicesReportRequest: GenerateUnitedMarketplaceServicesReportRequest, format: ReportFormatType?) : ApiResponse<GenerateReportResponse?> {
-        val localVariableConfig = generateUnitedMarketplaceServicesReportRequestConfig(generateUnitedMarketplaceServicesReportRequest = generateUnitedMarketplaceServicesReportRequest, format = format)
+    fun generateUnitedMarketplaceServicesReportWithHttpInfo(generateUnitedMarketplaceServicesReportRequest: GenerateUnitedMarketplaceServicesReportRequest, format: ReportFormatType?, language: ReportLanguageType?) : ApiResponse<GenerateReportResponse?> {
+        val localVariableConfig = generateUnitedMarketplaceServicesReportRequestConfig(generateUnitedMarketplaceServicesReportRequest = generateUnitedMarketplaceServicesReportRequest, format = format, language = language)
 
         return request<GenerateUnitedMarketplaceServicesReportRequest, GenerateReportResponse>(
             localVariableConfig
@@ -995,15 +1079,19 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateUnitedMarketplaceServicesReport
      *
      * @param generateUnitedMarketplaceServicesReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return RequestConfig
      */
-    fun generateUnitedMarketplaceServicesReportRequestConfig(generateUnitedMarketplaceServicesReportRequest: GenerateUnitedMarketplaceServicesReportRequest, format: ReportFormatType?) : RequestConfig<GenerateUnitedMarketplaceServicesReportRequest> {
+    fun generateUnitedMarketplaceServicesReportRequestConfig(generateUnitedMarketplaceServicesReportRequest: GenerateUnitedMarketplaceServicesReportRequest, format: ReportFormatType?, language: ReportLanguageType?) : RequestConfig<GenerateUnitedMarketplaceServicesReportRequest> {
         val localVariableBody = generateUnitedMarketplaceServicesReportRequest
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (format != null) {
                     put("format", listOf(format.toString()))
+                }
+                if (language != null) {
+                    put("language", listOf(language.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -1022,9 +1110,10 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по платежам
-     * Запускает генерацию **отчета по платежам** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/transactions.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**           |**Какие поля нужны**                   | |-------------------------|---------------------------------------| |О платежах за период     |&#x60;dateFrom&#x60; и &#x60;dateTo&#x60;                  | |О платежном поручении    |&#x60;bankOrderId&#x60; и &#x60;bankOrderDateTime&#x60;    |  Заказать отчеты обоих типов одним запросом нельзя.  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateUnitedNettingReport.md) %}  Запускает генерацию **отчета по платежам** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/transactions.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**           |**Какие поля нужны**                   | |-------------------------|---------------------------------------| |О платежах за период     |&#x60;dateFrom&#x60; и &#x60;dateTo&#x60;                  | |О платежном поручении    |&#x60;bankOrderId&#x60; и &#x60;bankOrderDateTime&#x60;    |  Заказать отчеты обоих типов одним запросом нельзя.  {% include notitle [reports](../../_auto/reports/united/netting/generator/united_netting.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateUnitedNettingReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1034,8 +1123,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateUnitedNettingReport(generateUnitedNettingReportRequest: GenerateUnitedNettingReportRequest, format: ReportFormatType? = null) : GenerateReportResponse {
-        val localVarResponse = generateUnitedNettingReportWithHttpInfo(generateUnitedNettingReportRequest = generateUnitedNettingReportRequest, format = format)
+    fun generateUnitedNettingReport(generateUnitedNettingReportRequest: GenerateUnitedNettingReportRequest, format: ReportFormatType? = FILE, language: ReportLanguageType? = null) : GenerateReportResponse {
+        val localVarResponse = generateUnitedNettingReportWithHttpInfo(generateUnitedNettingReportRequest = generateUnitedNettingReportRequest, format = format, language = language)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as GenerateReportResponse
@@ -1054,17 +1143,18 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по платежам
-     * Запускает генерацию **отчета по платежам** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/transactions.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**           |**Какие поля нужны**                   | |-------------------------|---------------------------------------| |О платежах за период     |&#x60;dateFrom&#x60; и &#x60;dateTo&#x60;                  | |О платежном поручении    |&#x60;bankOrderId&#x60; и &#x60;bankOrderDateTime&#x60;    |  Заказать отчеты обоих типов одним запросом нельзя.  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateUnitedNettingReport.md) %}  Запускает генерацию **отчета по платежам** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/transactions.html)  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  Тип отчета зависит от того, какие поля заполнены в запросе:  |**Тип отчета**           |**Какие поля нужны**                   | |-------------------------|---------------------------------------| |О платежах за период     |&#x60;dateFrom&#x60; и &#x60;dateTo&#x60;                  | |О платежном поручении    |&#x60;bankOrderId&#x60; и &#x60;bankOrderDateTime&#x60;    |  Заказать отчеты обоих типов одним запросом нельзя.  {% include notitle [reports](../../_auto/reports/united/netting/generator/united_netting.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateUnitedNettingReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun generateUnitedNettingReportWithHttpInfo(generateUnitedNettingReportRequest: GenerateUnitedNettingReportRequest, format: ReportFormatType?) : ApiResponse<GenerateReportResponse?> {
-        val localVariableConfig = generateUnitedNettingReportRequestConfig(generateUnitedNettingReportRequest = generateUnitedNettingReportRequest, format = format)
+    fun generateUnitedNettingReportWithHttpInfo(generateUnitedNettingReportRequest: GenerateUnitedNettingReportRequest, format: ReportFormatType?, language: ReportLanguageType?) : ApiResponse<GenerateReportResponse?> {
+        val localVariableConfig = generateUnitedNettingReportRequestConfig(generateUnitedNettingReportRequest = generateUnitedNettingReportRequest, format = format, language = language)
 
         return request<GenerateUnitedNettingReportRequest, GenerateReportResponse>(
             localVariableConfig
@@ -1075,15 +1165,19 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateUnitedNettingReport
      *
      * @param generateUnitedNettingReportRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return RequestConfig
      */
-    fun generateUnitedNettingReportRequestConfig(generateUnitedNettingReportRequest: GenerateUnitedNettingReportRequest, format: ReportFormatType?) : RequestConfig<GenerateUnitedNettingReportRequest> {
+    fun generateUnitedNettingReportRequestConfig(generateUnitedNettingReportRequest: GenerateUnitedNettingReportRequest, format: ReportFormatType?, language: ReportLanguageType?) : RequestConfig<GenerateUnitedNettingReportRequest> {
         val localVariableBody = generateUnitedNettingReportRequest
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (format != null) {
                     put("format", listOf(format.toString()))
+                }
+                if (language != null) {
+                    put("language", listOf(language.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -1102,9 +1196,10 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по заказам
-     * Запускает генерацию **отчета по заказам** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/orders.html)  {% note info \&quot;\&quot; %}  Это новый отчет. Раньше мы так называли генерацию детальной информации по заказам. [Как получить детальную информацию по заказам](../../reference/stats/getOrdersStats.md)  {% endnote %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateUnitedOrdersReport.md) %}  Запускает генерацию **отчета по заказам** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/orders.html)  {% note info \&quot;Это новый отчет\&quot; %}  Раньше мы так называли генерацию детальной информации по заказам. [Как получить детальную информацию по заказам](../../reference/stats/getOrdersStats.md)  {% endnote %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/united/orders/generator/united_orders.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateUnitedOrdersRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return GenerateReportResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1114,8 +1209,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateUnitedOrdersReport(generateUnitedOrdersRequest: GenerateUnitedOrdersRequest, format: ReportFormatType? = null) : GenerateReportResponse {
-        val localVarResponse = generateUnitedOrdersReportWithHttpInfo(generateUnitedOrdersRequest = generateUnitedOrdersRequest, format = format)
+    fun generateUnitedOrdersReport(generateUnitedOrdersRequest: GenerateUnitedOrdersRequest, format: ReportFormatType? = FILE, language: ReportLanguageType? = null) : GenerateReportResponse {
+        val localVarResponse = generateUnitedOrdersReportWithHttpInfo(generateUnitedOrdersRequest = generateUnitedOrdersRequest, format = format, language = language)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as GenerateReportResponse
@@ -1134,17 +1229,18 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Отчет по заказам
-     * Запускает генерацию **отчета по заказам** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/orders.html)  {% note info \&quot;\&quot; %}  Это новый отчет. Раньше мы так называли генерацию детальной информации по заказам. [Как получить детальную информацию по заказам](../../reference/stats/getOrdersStats.md)  {% endnote %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  |**⚙️ Лимит:** 100 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/generateUnitedOrdersReport.md) %}  Запускает генерацию **отчета по заказам** за заданный период. [Что это за отчет](https://yandex.ru/support/marketplace/analytics/orders.html)  {% note info \&quot;Это новый отчет\&quot; %}  Раньше мы так называли генерацию детальной информации по заказам. [Как получить детальную информацию по заказам](../../reference/stats/getOrdersStats.md)  {% endnote %}  Узнать статус генерации и получить ссылку на готовый отчет можно с помощью запроса [GET reports/info/{reportId}](../../reference/reports/getReportInfo.md).  {% include notitle [reports](../../_auto/reports/united/orders/generator/united_orders.md) %}  |**⚙️ Лимит:** 100 запросов в час| |-| 
      * @param generateUnitedOrdersRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return ApiResponse<GenerateReportResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun generateUnitedOrdersReportWithHttpInfo(generateUnitedOrdersRequest: GenerateUnitedOrdersRequest, format: ReportFormatType?) : ApiResponse<GenerateReportResponse?> {
-        val localVariableConfig = generateUnitedOrdersReportRequestConfig(generateUnitedOrdersRequest = generateUnitedOrdersRequest, format = format)
+    fun generateUnitedOrdersReportWithHttpInfo(generateUnitedOrdersRequest: GenerateUnitedOrdersRequest, format: ReportFormatType?, language: ReportLanguageType?) : ApiResponse<GenerateReportResponse?> {
+        val localVariableConfig = generateUnitedOrdersReportRequestConfig(generateUnitedOrdersRequest = generateUnitedOrdersRequest, format = format, language = language)
 
         return request<GenerateUnitedOrdersRequest, GenerateReportResponse>(
             localVariableConfig
@@ -1155,15 +1251,19 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation generateUnitedOrdersReport
      *
      * @param generateUnitedOrdersRequest 
-     * @param format Формат отчета. (optional)
+     * @param format Формат отчета. (optional, default to FILE)
+     * @param language Язык отчета. (optional)
      * @return RequestConfig
      */
-    fun generateUnitedOrdersReportRequestConfig(generateUnitedOrdersRequest: GenerateUnitedOrdersRequest, format: ReportFormatType?) : RequestConfig<GenerateUnitedOrdersRequest> {
+    fun generateUnitedOrdersReportRequestConfig(generateUnitedOrdersRequest: GenerateUnitedOrdersRequest, format: ReportFormatType?, language: ReportLanguageType?) : RequestConfig<GenerateUnitedOrdersRequest> {
         val localVariableBody = generateUnitedOrdersRequest
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (format != null) {
                     put("format", listOf(format.toString()))
+                }
+                if (language != null) {
+                    put("language", listOf(language.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -1181,8 +1281,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Статус генерации и скачивание готовых отчетов
-     * Возвращает статус генерации заданного отчета и, если отчет готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета. [Инструкция](../../step-by-step/reports.md)  |**⚙️ Лимит:** 100 запросов в минуту| |-| 
+     * Получение заданного отчета
+     * {% include notitle [access](../../_auto/method_scopes/getReportInfo.md) %}  Возвращает статус генерации заданного отчета и, если отчет готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета. [Инструкция](../../step-by-step/reports.md)  |**⚙️ Лимит:** 100 запросов в минуту| |-| 
      * @param reportId Идентификатор отчета, который вы получили после запуска генерации. 
      * @return GetReportInfoResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -1212,8 +1312,8 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Статус генерации и скачивание готовых отчетов
-     * Возвращает статус генерации заданного отчета и, если отчет готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета. [Инструкция](../../step-by-step/reports.md)  |**⚙️ Лимит:** 100 запросов в минуту| |-| 
+     * Получение заданного отчета
+     * {% include notitle [access](../../_auto/method_scopes/getReportInfo.md) %}  Возвращает статус генерации заданного отчета и, если отчет готов, ссылку для скачивания.  Чтобы воспользоваться этим запросом, вначале нужно запустить генерацию отчета. [Инструкция](../../step-by-step/reports.md)  |**⚙️ Лимит:** 100 запросов в минуту| |-| 
      * @param reportId Идентификатор отчета, который вы получили после запуска генерации. 
      * @return ApiResponse<GetReportInfoResponse?>
      * @throws IllegalStateException If the request is not correctly configured

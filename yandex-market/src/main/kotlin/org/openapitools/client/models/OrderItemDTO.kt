@@ -20,6 +20,7 @@ import org.openapitools.client.models.OrderItemInstanceDTO
 import org.openapitools.client.models.OrderItemInstanceType
 import org.openapitools.client.models.OrderItemPromoDTO
 import org.openapitools.client.models.OrderItemSubsidyDTO
+import org.openapitools.client.models.OrderItemTagType
 import org.openapitools.client.models.OrderVatType
 
 import com.squareup.moshi.Json
@@ -29,22 +30,23 @@ import com.squareup.moshi.JsonClass
  * Список товаров в заказе.
  *
  * @param id Идентификатор товара в заказе.  Позволяет идентифицировать товар в рамках данного заказа. 
- * @param offerId Ваш SKU — идентификатор товара в вашей системе.  Разрешена любая последовательность длиной до 255 знаков.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * SKU товара нельзя менять — можно только удалить товар и добавить заново с новым SKU.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
+ * @param offerId Ваш SKU — идентификатор товара в вашей системе.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
  * @param offerName Название товара.
  * @param price Цена на товар в валюте заказа без учета вознаграждения партнеру за скидки по промокодам, купонам и акциям (параметр `subsidies`). 
  * @param buyerPrice Цена на товар в валюте покупателя. В цене уже учтены скидки по:  * акциям; * купонам; * промокодам. 
- * @param buyerPriceBeforeDiscount Цена продажи. Стоимость товара в валюте покупателя до применения скидок. 
- * @param priceBeforeDiscount {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость товара в валюте магазина до применения скидок. 
+ * @param buyerPriceBeforeDiscount Стоимость товара в валюте покупателя до применения скидок по:  * акциям; * купонам; * промокодам. 
  * @param count Количество единиц товара.
  * @param vat 
- * @param shopSku Ваш SKU — идентификатор товара в вашей системе.  Разрешена любая последовательность длиной до 255 знаков.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * SKU товара нельзя менять — можно только удалить товар и добавить заново с новым SKU.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
- * @param subsidy {% note warning \"\" %}  Этот параметр устарел. Вместо него используйте `subsidies`.  {% endnote %}  Общее вознаграждение партнеру за DBS-доставку и все скидки на товар:  * по промокодам; * по купонам; * по баллам Плюса; * по акциям.  Передается в валюте заказа. 
- * @param partnerWarehouseId {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Идентификатор склада в системе партнера, на который сформирован заказ. 
+ * @param priceBeforeDiscount {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость товара в валюте магазина до применения скидок. 
+ * @param shopSku Ваш SKU — идентификатор товара в вашей системе.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
+ * @param subsidy {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `subsidies`.  {% endnote %}  Общее вознаграждение партнеру за DBS-доставку и все скидки на товар:  * по промокодам; * по купонам; * по баллам Плюса; * по акциям. 
+ * @param partnerWarehouseId {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Идентификатор склада в системе партнера, на который сформирован заказ. 
  * @param promos Информация о вознаграждениях партнеру за скидки на товар по промокодам, купонам и акциям.
- * @param instances Информация о маркировке единиц товара.  Возвращаются данные для маркировки, переданные в запросе [PUT campaigns/{campaignId}/orders/{orderId}/cis](../../reference/orders/provideOrderItemCis.md).  Если магазин еще не передавал коды для этого заказа, `instances` отсутствует. 
+ * @param instances Информация о маркировке единиц товара.  Возвращаются данные для маркировки, переданные в запросе [PUT campaigns/{campaignId}/orders/{orderId}/identifiers](../../reference/orders/provideOrderItemIdentifiers.md).  Если магазин еще не передавал коды для этого заказа, `instances` отсутствует. 
  * @param details Информация об удалении товара из заказа. 
  * @param subsidies Список субсидий по типам.
  * @param requiredInstanceTypes Список необходимых маркировок товара.
+ * @param tags Признаки товара.
  */
 
 
@@ -52,50 +54,50 @@ data class OrderItemDTO (
 
     /* Идентификатор товара в заказе.  Позволяет идентифицировать товар в рамках данного заказа.  */
     @Json(name = "id")
-    val id: kotlin.Long? = null,
+    val id: kotlin.Long,
 
-    /* Ваш SKU — идентификатор товара в вашей системе.  Разрешена любая последовательность длиной до 255 знаков.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * SKU товара нельзя менять — можно только удалить товар и добавить заново с новым SKU.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields)  */
+    /* Ваш SKU — идентификатор товара в вашей системе.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields)  */
     @Json(name = "offerId")
-    val offerId: kotlin.String? = null,
+    val offerId: kotlin.String,
 
     /* Название товара. */
     @Json(name = "offerName")
-    val offerName: kotlin.String? = null,
+    val offerName: kotlin.String,
 
     /* Цена на товар в валюте заказа без учета вознаграждения партнеру за скидки по промокодам, купонам и акциям (параметр `subsidies`).  */
     @Json(name = "price")
-    val price: java.math.BigDecimal? = null,
+    val price: java.math.BigDecimal,
 
     /* Цена на товар в валюте покупателя. В цене уже учтены скидки по:  * акциям; * купонам; * промокодам.  */
     @Json(name = "buyerPrice")
-    val buyerPrice: java.math.BigDecimal? = null,
+    val buyerPrice: java.math.BigDecimal,
 
-    /* Цена продажи. Стоимость товара в валюте покупателя до применения скидок.  */
+    /* Стоимость товара в валюте покупателя до применения скидок по:  * акциям; * купонам; * промокодам.  */
     @Json(name = "buyerPriceBeforeDiscount")
-    val buyerPriceBeforeDiscount: java.math.BigDecimal? = null,
+    val buyerPriceBeforeDiscount: java.math.BigDecimal,
 
-    /* {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость товара в валюте магазина до применения скидок.  */
+    /* Количество единиц товара. */
+    @Json(name = "count")
+    val count: kotlin.Int,
+
+    @Json(name = "vat")
+    val vat: OrderVatType,
+
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость товара в валюте магазина до применения скидок.  */
     @Json(name = "priceBeforeDiscount")
     @Deprecated(message = "This property is deprecated.")
     val priceBeforeDiscount: java.math.BigDecimal? = null,
 
-    /* Количество единиц товара. */
-    @Json(name = "count")
-    val count: kotlin.Int? = null,
-
-    @Json(name = "vat")
-    val vat: OrderVatType? = null,
-
-    /* Ваш SKU — идентификатор товара в вашей системе.  Разрешена любая последовательность длиной до 255 знаков.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * SKU товара нельзя менять — можно только удалить товар и добавить заново с новым SKU.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields)  */
+    /* Ваш SKU — идентификатор товара в вашей системе.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields)  */
     @Json(name = "shopSku")
     val shopSku: kotlin.String? = null,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Вместо него используйте `subsidies`.  {% endnote %}  Общее вознаграждение партнеру за DBS-доставку и все скидки на товар:  * по промокодам; * по купонам; * по баллам Плюса; * по акциям.  Передается в валюте заказа.  */
+    /* {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `subsidies`.  {% endnote %}  Общее вознаграждение партнеру за DBS-доставку и все скидки на товар:  * по промокодам; * по купонам; * по баллам Плюса; * по акциям.  */
     @Json(name = "subsidy")
     @Deprecated(message = "This property is deprecated.")
     val subsidy: java.math.BigDecimal? = null,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Идентификатор склада в системе партнера, на который сформирован заказ.  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Идентификатор склада в системе партнера, на который сформирован заказ.  */
     @Json(name = "partnerWarehouseId")
     @Deprecated(message = "This property is deprecated.")
     val partnerWarehouseId: kotlin.String? = null,
@@ -104,7 +106,7 @@ data class OrderItemDTO (
     @Json(name = "promos")
     val promos: kotlin.collections.List<OrderItemPromoDTO>? = null,
 
-    /* Информация о маркировке единиц товара.  Возвращаются данные для маркировки, переданные в запросе [PUT campaigns/{campaignId}/orders/{orderId}/cis](../../reference/orders/provideOrderItemCis.md).  Если магазин еще не передавал коды для этого заказа, `instances` отсутствует.  */
+    /* Информация о маркировке единиц товара.  Возвращаются данные для маркировки, переданные в запросе [PUT campaigns/{campaignId}/orders/{orderId}/identifiers](../../reference/orders/provideOrderItemIdentifiers.md).  Если магазин еще не передавал коды для этого заказа, `instances` отсутствует.  */
     @Json(name = "instances")
     val instances: kotlin.collections.List<OrderItemInstanceDTO>? = null,
 
@@ -118,7 +120,11 @@ data class OrderItemDTO (
 
     /* Список необходимых маркировок товара. */
     @Json(name = "requiredInstanceTypes")
-    val requiredInstanceTypes: kotlin.collections.List<OrderItemInstanceType>? = null
+    val requiredInstanceTypes: kotlin.collections.List<OrderItemInstanceType>? = null,
+
+    /* Признаки товара. */
+    @Json(name = "tags")
+    val tags: kotlin.collections.List<OrderItemTagType>? = null
 
 )
 

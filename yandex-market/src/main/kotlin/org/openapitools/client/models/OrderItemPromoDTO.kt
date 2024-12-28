@@ -24,8 +24,8 @@ import com.squareup.moshi.JsonClass
  * Информация о вознаграждениях партнеру за скидки на товар по промокодам, купонам и акциям.
  *
  * @param type 
+ * @param subsidy Вознаграждение партнеру от Маркета за товар, проданный в рамках акции. 
  * @param discount Размер пользовательской скидки в валюте покупателя. 
- * @param subsidy Вознаграждение партнеру от Маркета за товар, проданный в рамках акции.  Передается в валюте заказа. 
  * @param shopPromoId Идентификатор акции поставщика. 
  * @param marketPromoId Идентификатор акции в рамках соглашения на оказание услуг по продвижению сервиса между Маркетом и партнером.  Параметр передается, только если параметр `type=MARKET_DEAL`. 
  */
@@ -36,13 +36,13 @@ data class OrderItemPromoDTO (
     @Json(name = "type")
     val type: OrderPromoType,
 
+    /* Вознаграждение партнеру от Маркета за товар, проданный в рамках акции.  */
+    @Json(name = "subsidy")
+    val subsidy: java.math.BigDecimal,
+
     /* Размер пользовательской скидки в валюте покупателя.  */
     @Json(name = "discount")
     val discount: java.math.BigDecimal? = null,
-
-    /* Вознаграждение партнеру от Маркета за товар, проданный в рамках акции.  Передается в валюте заказа.  */
-    @Json(name = "subsidy")
-    val subsidy: java.math.BigDecimal? = null,
 
     /* Идентификатор акции поставщика.  */
     @Json(name = "shopPromoId")

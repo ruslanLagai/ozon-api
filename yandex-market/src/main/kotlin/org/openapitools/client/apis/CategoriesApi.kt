@@ -25,6 +25,8 @@ import org.openapitools.client.models.ApiLimitErrorResponse
 import org.openapitools.client.models.ApiNotFoundErrorResponse
 import org.openapitools.client.models.ApiServerErrorResponse
 import org.openapitools.client.models.ApiUnauthorizedErrorResponse
+import org.openapitools.client.models.GetCategoriesMaxSaleQuantumRequest
+import org.openapitools.client.models.GetCategoriesMaxSaleQuantumResponse
 import org.openapitools.client.models.GetCategoriesRequest
 import org.openapitools.client.models.GetCategoriesResponse
 
@@ -53,8 +55,80 @@ class CategoriesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
     }
 
     /**
+     * Лимит на установку кванта продажи и минимального количества товаров в заказе
+     * {% include notitle [access](../../_auto/method_scopes/getCategoriesMaxSaleQuantum.md) %}  Возвращает лимит на установку [кванта](*quantum) и минимального количества товаров в заказе, которые вы можете задать для товаров указанных категорий.  Если вы передадите значение кванта или минимального количества товаров выше установленного Маркетом ограничения, товар будет скрыт с витрины.  Подробнее о том, как продавать товары по несколько штук, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/fields/quantum).  |**⚙️ Лимит:** 1 000 запросов в час| |-| 
+     * @param getCategoriesMaxSaleQuantumRequest 
+     * @return GetCategoriesMaxSaleQuantumResponse
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getCategoriesMaxSaleQuantum(getCategoriesMaxSaleQuantumRequest: GetCategoriesMaxSaleQuantumRequest) : GetCategoriesMaxSaleQuantumResponse {
+        val localVarResponse = getCategoriesMaxSaleQuantumWithHttpInfo(getCategoriesMaxSaleQuantumRequest = getCategoriesMaxSaleQuantumRequest)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetCategoriesMaxSaleQuantumResponse
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Лимит на установку кванта продажи и минимального количества товаров в заказе
+     * {% include notitle [access](../../_auto/method_scopes/getCategoriesMaxSaleQuantum.md) %}  Возвращает лимит на установку [кванта](*quantum) и минимального количества товаров в заказе, которые вы можете задать для товаров указанных категорий.  Если вы передадите значение кванта или минимального количества товаров выше установленного Маркетом ограничения, товар будет скрыт с витрины.  Подробнее о том, как продавать товары по несколько штук, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/fields/quantum).  |**⚙️ Лимит:** 1 000 запросов в час| |-| 
+     * @param getCategoriesMaxSaleQuantumRequest 
+     * @return ApiResponse<GetCategoriesMaxSaleQuantumResponse?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getCategoriesMaxSaleQuantumWithHttpInfo(getCategoriesMaxSaleQuantumRequest: GetCategoriesMaxSaleQuantumRequest) : ApiResponse<GetCategoriesMaxSaleQuantumResponse?> {
+        val localVariableConfig = getCategoriesMaxSaleQuantumRequestConfig(getCategoriesMaxSaleQuantumRequest = getCategoriesMaxSaleQuantumRequest)
+
+        return request<GetCategoriesMaxSaleQuantumRequest, GetCategoriesMaxSaleQuantumResponse>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getCategoriesMaxSaleQuantum
+     *
+     * @param getCategoriesMaxSaleQuantumRequest 
+     * @return RequestConfig
+     */
+    fun getCategoriesMaxSaleQuantumRequestConfig(getCategoriesMaxSaleQuantumRequest: GetCategoriesMaxSaleQuantumRequest) : RequestConfig<GetCategoriesMaxSaleQuantumRequest> {
+        val localVariableBody = getCategoriesMaxSaleQuantumRequest
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/categories/max-sale-quantum",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * Дерево категорий
-     * Возвращает дерево категорий Маркета.  |**⚙️ Лимит:** 1 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCategoriesTree.md) %}  Возвращает дерево категорий Маркета.  |**⚙️ Лимит:** 1 000 запросов в час| |-| 
      * @param getCategoriesRequest  (optional)
      * @return GetCategoriesResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -85,7 +159,7 @@ class CategoriesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
 
     /**
      * Дерево категорий
-     * Возвращает дерево категорий Маркета.  |**⚙️ Лимит:** 1 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getCategoriesTree.md) %}  Возвращает дерево категорий Маркета.  |**⚙️ Лимит:** 1 000 запросов в час| |-| 
      * @param getCategoriesRequest  (optional)
      * @return ApiResponse<GetCategoriesResponse?>
      * @throws IllegalStateException If the request is not correctly configured

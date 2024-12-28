@@ -21,7 +21,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Запрос на установку базовых цен на товары.
+ * Запрос на установку цен, которые действуют во всех магазинах.
  *
  * @param offers Список товаров с ценами.
  */

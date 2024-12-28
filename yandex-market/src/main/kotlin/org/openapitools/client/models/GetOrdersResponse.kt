@@ -16,6 +16,7 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.FlippingPagerDTO
+import org.openapitools.client.models.ForwardScrollingPagerDTO
 import org.openapitools.client.models.OrderDTO
 
 import com.squareup.moshi.Json
@@ -24,19 +25,23 @@ import com.squareup.moshi.JsonClass
 /**
  * Модель для ответа API списка информации по заказам.
  *
- * @param pager 
  * @param orders Модель заказа. 
+ * @param pager 
+ * @param paging 
  */
 
 
 data class GetOrdersResponse (
 
+    /* Модель заказа.  */
+    @Json(name = "orders")
+    val orders: kotlin.collections.List<OrderDTO>,
+
     @Json(name = "pager")
     val pager: FlippingPagerDTO? = null,
 
-    /* Модель заказа.  */
-    @Json(name = "orders")
-    val orders: kotlin.collections.List<OrderDTO>? = null
+    @Json(name = "paging")
+    val paging: ForwardScrollingPagerDTO? = null
 
 )
 

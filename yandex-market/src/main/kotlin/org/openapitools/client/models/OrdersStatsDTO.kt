@@ -33,7 +33,7 @@ data class OrdersStatsDTO (
 
     /* Список заказов. */
     @Json(name = "orders")
-    val orders: kotlin.collections.List<OrdersStatsOrderDTO>? = null,
+    val orders: kotlin.collections.List<OrdersStatsOrderDTO>,
 
     @Json(name = "paging")
     val paging: ForwardScrollingPagerDTO? = null

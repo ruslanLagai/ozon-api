@@ -34,13 +34,13 @@ import com.squareup.moshi.JsonClass
  * @param address 
  * @param phones Номера телефонов точки продаж. Передавайте в формате: `+7 (999) 999-99-99`. 
  * @param workingSchedule 
+ * @param id Идентификатор точки продаж, присвоенный Маркетом.
  * @param coords Координаты точки продаж.  Формат: долгота, широта. Разделители: запятая и / или пробел. Например, `20.4522144, 54.7104264`.  Если параметр не передан, координаты будут определены по значениям параметров, вложенных в `address`. 
  * @param isMain Признак основной точки продаж.  Возможные значения:  * `false` — неосновная точка продаж. * `true` — основная точка продаж. 
  * @param shopOutletCode Идентификатор точки продаж, присвоенный магазином.
  * @param visibility 
  * @param deliveryRules Информация об условиях доставки для данной точки продаж.  Обязательный параметр, если параметр `type=DEPOT` или `type=MIXED`. 
  * @param storagePeriod Срок хранения заказа в собственном пункте выдачи заказов. Считается в днях.
- * @param id Идентификатор точки продаж, присвоенный Маркетом.
  * @param status 
  * @param region 
  * @param shopOutletId Идентификатор точки продаж, заданный магазином.
@@ -68,6 +68,10 @@ data class FullOutletDTO (
     @Json(name = "workingSchedule")
     val workingSchedule: OutletWorkingScheduleDTO,
 
+    /* Идентификатор точки продаж, присвоенный Маркетом. */
+    @Json(name = "id")
+    val id: kotlin.Long,
+
     /* Координаты точки продаж.  Формат: долгота, широта. Разделители: запятая и / или пробел. Например, `20.4522144, 54.7104264`.  Если параметр не передан, координаты будут определены по значениям параметров, вложенных в `address`.  */
     @Json(name = "coords")
     val coords: kotlin.String? = null,
@@ -90,10 +94,6 @@ data class FullOutletDTO (
     /* Срок хранения заказа в собственном пункте выдачи заказов. Считается в днях. */
     @Json(name = "storagePeriod")
     val storagePeriod: kotlin.Long? = null,
-
-    /* Идентификатор точки продаж, присвоенный Маркетом. */
-    @Json(name = "id")
-    val id: kotlin.Long? = null,
 
     @Json(name = "status")
     val status: OutletStatusType? = null,

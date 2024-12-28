@@ -25,23 +25,23 @@ import com.squareup.moshi.JsonClass
  * Информация об услугах Маркета.
  *
  * @param type 
- * @param amount Стоимость услуги в рублях.
  * @param parameters Параметры расчета тарифа.
+ * @param amount Стоимость услуги в рублях.
  */
 
 
 data class CalculatedTariffDTO (
 
     @Json(name = "type")
-    val type: CalculatedTariffType? = null,
-
-    /* Стоимость услуги в рублях. */
-    @Json(name = "amount")
-    val amount: java.math.BigDecimal? = null,
+    val type: CalculatedTariffType,
 
     /* Параметры расчета тарифа. */
     @Json(name = "parameters")
-    val parameters: kotlin.collections.List<TariffParameterDTO>? = null
+    val parameters: kotlin.collections.List<TariffParameterDTO>,
+
+    /* Стоимость услуги в рублях. */
+    @Json(name = "amount")
+    val amount: java.math.BigDecimal? = null
 
 )
 

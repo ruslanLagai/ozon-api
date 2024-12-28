@@ -11,9 +11,16 @@ import ru.home.project.ozonapi.dto.delivery.Delivery
 import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.finance.response.RefundData
 import ru.home.project.ozonapi.dto.finance.response.Transaction
+import ru.home.project.ozonapi.dto.response.AnalyticDataDto
+import ru.home.project.ozonapi.dto.supply.request.AnalyticDimension
+import ru.home.project.ozonapi.dto.supply.request.AnalyticMetric
+import ru.home.project.ozonapi.dto.supply.request.AnalyticOrder
+import ru.home.project.ozonapi.dto.supply.request.AnalyticSorting
+import ru.home.project.ozonapi.dto.supply.response.AnalyticsData
 import ru.home.project.ozonapi.dto.supply.response.SupplyBundleItem
 import ru.home.project.ozonapi.model.Product
 import ru.home.project.ozonapi.service.OzonService
+import java.time.LocalDate
 import java.time.LocalTime
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
@@ -126,6 +133,37 @@ class OzonServiceImpl(
             return listOf()
         }
         return deliveries
+    }
+
+    override fun getAnalyticData(from: LocalDate, to: LocalDate, metrics: List<AnalyticMetric>): ArrayList<AnalyticDataDto> {
+        var offset = 0
+        var hasNext = true
+        val result = ArrayList<AnalyticDataDto>()
+        while (hasNext) {
+            val supplyOrders = ozonApiClient.getAnalyticData(
+                from = from, to = to, metrics = metrics,
+                dimensions = listOf(AnalyticDimension.sku),
+                offset = offset
+            )
+            if (supplyOrders == null) {
+                log.error("No analytic data")
+                return result
+            }
+            if (supplyOrders.data.size < 1000) {
+                hasNext = false
+            }
+            val analyticDataDto = supplyOrders.data
+                .map {
+                    val metricMap = HashMap<AnalyticMetric, Int>()
+                    for (analyticMetric in metrics) {
+                        metricMap[analyticMetric] = it.metrics[metrics.indexOf(analyticMetric)]
+                    }
+                    AnalyticDataDto(sku = it.dimensions[0].id, name = it.dimensions[0].name, metrics = metricMap)
+                }
+            result.addAll(analyticDataDto)
+            offset++
+        }
+        return result
     }
 
     private fun getTransactions(from: OffsetDateTime, to: OffsetDateTime): List<Transaction> {

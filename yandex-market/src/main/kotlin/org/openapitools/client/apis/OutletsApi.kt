@@ -57,7 +57,7 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Создание точки продаж
-     * Создает точку продаж магазина на Маркете.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/createOutlet.md) %}  Создает точку продаж магазина на Маркете.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param changeOutletRequest 
      * @return CreateOutletResponse
@@ -89,7 +89,7 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Создание точки продаж
-     * Создает точку продаж магазина на Маркете.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/createOutlet.md) %}  Создает точку продаж магазина на Маркете.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param changeOutletRequest 
      * @return ApiResponse<CreateOutletResponse?>
@@ -132,7 +132,7 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Удаление точки продаж
-     * Удаляет точку продаж магазина на Маркете.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/deleteOutlet.md) %}  Удаляет точку продаж магазина на Маркете.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param outletId Идентификатор точки продаж.
      * @return EmptyApiResponse
@@ -164,7 +164,7 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Удаление точки продаж
-     * Удаляет точку продаж магазина на Маркете.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/deleteOutlet.md) %}  Удаляет точку продаж магазина на Маркете.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param outletId Идентификатор точки продаж.
      * @return ApiResponse<EmptyApiResponse?>
@@ -205,8 +205,8 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Информация о точке продаж
-     * Возвращает информацию о точках продаж магазина.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * Информация об одной точке продаж
+     * {% include notitle [access](../../_auto/method_scopes/getOutlet.md) %}  Возвращает информацию о точках продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param outletId Идентификатор точки продаж.
      * @return GetOutletResponse
@@ -237,8 +237,8 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Информация о точке продаж
-     * Возвращает информацию о точках продаж магазина.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * Информация об одной точке продаж
+     * {% include notitle [access](../../_auto/method_scopes/getOutlet.md) %}  Возвращает информацию о точках продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param outletId Идентификатор точки продаж.
      * @return ApiResponse<GetOutletResponse?>
@@ -279,13 +279,13 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Информация о точках продаж
-     * Возвращает список точек продаж магазина.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * Информация о нескольких точках продаж
+     * {% include notitle [access](../../_auto/method_scopes/getOutlets.md) %}  Возвращает список точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
      * @param regionId Идентификатор региона. Если задать идентификатор родительского региона любого уровня, в выходных данных будут отображены точки продаж всех дочерних регионов. Идентификатор региона можно получить c помощью метода [GET regions](../../reference/regions/searchRegionsByName.md).  (optional)
      * @param shopOutletCode Идентификатор точки продаж, присвоенный магазином. (optional)
-     * @param regionId2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Для указания региона используйте &#x60;region_id&#x60;.  {% endnote %}  (optional)
+     * @param regionId2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;region_id&#x60;.  {% endnote %}  (optional)
      * @return GetOutletsResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -314,13 +314,13 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
-     * Информация о точках продаж
-     * Возвращает список точек продаж магазина.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * Информация о нескольких точках продаж
+     * {% include notitle [access](../../_auto/method_scopes/getOutlets.md) %}  Возвращает список точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
      * @param regionId Идентификатор региона. Если задать идентификатор родительского региона любого уровня, в выходных данных будут отображены точки продаж всех дочерних регионов. Идентификатор региона можно получить c помощью метода [GET regions](../../reference/regions/searchRegionsByName.md).  (optional)
      * @param shopOutletCode Идентификатор точки продаж, присвоенный магазином. (optional)
-     * @param regionId2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Для указания региона используйте &#x60;region_id&#x60;.  {% endnote %}  (optional)
+     * @param regionId2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;region_id&#x60;.  {% endnote %}  (optional)
      * @return ApiResponse<GetOutletsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -339,10 +339,10 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * To obtain the request config of the operation getOutlets
      *
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
      * @param regionId Идентификатор региона. Если задать идентификатор родительского региона любого уровня, в выходных данных будут отображены точки продаж всех дочерних регионов. Идентификатор региона можно получить c помощью метода [GET regions](../../reference/regions/searchRegionsByName.md).  (optional)
      * @param shopOutletCode Идентификатор точки продаж, присвоенный магазином. (optional)
-     * @param regionId2 {% note warning \&quot;\&quot; %}  Этот параметр устарел. Для указания региона используйте &#x60;region_id&#x60;.  {% endnote %}  (optional)
+     * @param regionId2 {% note warning \&quot;Этот параметр устарел\&quot; %}  Вместо него используйте &#x60;region_id&#x60;.  {% endnote %}  (optional)
      * @return RequestConfig
      */
     fun getOutletsRequestConfig(campaignId: kotlin.Long, pageToken: kotlin.String?, regionId: kotlin.Long?, shopOutletCode: kotlin.String?, regionId2: kotlin.Long?) : RequestConfig<Unit> {
@@ -377,7 +377,7 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Изменение информации о точке продаж
-     * Изменяет информацию о точке продаж магазина на Маркете.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/updateOutlet.md) %}  Изменяет информацию о точке продаж магазина на Маркете.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param outletId Идентификатор точки продаж.
      * @param changeOutletRequest 
@@ -410,7 +410,7 @@ class OutletsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Изменение информации о точке продаж
-     * Изменяет информацию о точке продаж магазина на Маркете.  В течение суток этим и другими запросами о точках продаж, кроме запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md), можно получить и изменить информацию об определенном суммарном количестве точек продаж. Оно зависит от количества точек продаж магазина.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/updateOutlet.md) %}  Изменяет информацию о точке продаж магазина на Маркете.  |**⚙️ Лимит:** 100 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param outletId Идентификатор точки продаж.
      * @param changeOutletRequest 

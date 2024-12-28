@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Причины возврата:  * `BAD_QUALITY` — бракованный товар (есть недостатки).  * `DO_NOT_FIT` — товар не подошел.  * `WRONG_ITEM` — привезли не тот товар.  * `DAMAGE_DELIVERY` — товар поврежден при доставке.  * `LOYALTY_FAIL` — невозможно установить виновного в браке/пересорте.  * `CONTENT_FAIL` — ошибочное описание товара по вине Маркета.  * `UNKNOWN` — причина не известна. 
+ * Причины возврата:  * `BAD_QUALITY` — бракованный товар (есть недостатки).  * `DO_NOT_FIT` — товар не подошел.  * `WRONG_ITEM` — привезли не тот товар.  * `DAMAGE_DELIVERY` — товар поврежден при доставке.  * `LOYALTY_FAIL` — невозможно установить виновного в браке/пересорте.  * `CONTENT_FAIL` — ошибочное описание товара по вине Маркета.  * `DELIVERY_FAIL` — товар не привезли.  * `UNKNOWN` — причина не известна. 
  *
- * Values: BAD_QUALITY,DOES_NOT_FIT,WRONG_ITEM,DAMAGE_DELIVERY,LOYALTY_FAIL,CONTENT_FAIL,UNKNOWN
+ * Values: BAD_QUALITY,DOES_NOT_FIT,WRONG_ITEM,DAMAGE_DELIVERY,LOYALTY_FAIL,CONTENT_FAIL,DELIVERY_FAIL,UNKNOWN
  */
 
 @JsonClass(generateAdapter = false)
@@ -45,6 +45,9 @@ enum class ReturnDecisionReasonType(val value: kotlin.String) {
 
     @Json(name = "CONTENT_FAIL")
     CONTENT_FAIL("CONTENT_FAIL"),
+
+    @Json(name = "DELIVERY_FAIL")
+    DELIVERY_FAIL("DELIVERY_FAIL"),
 
     @Json(name = "UNKNOWN")
     UNKNOWN("UNKNOWN");

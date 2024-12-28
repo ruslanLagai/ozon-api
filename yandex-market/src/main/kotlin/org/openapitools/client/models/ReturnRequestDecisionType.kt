@@ -20,7 +20,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Решение по возврату.
+ * Решение по товару в возврате:  * `REFUND_MONEY` — вернуть деньги за товар. * `REFUND_MONEY_INCLUDING_SHIPMENT` — вернуть деньги за товар и обратную пересылку. * `REPAIR` — магазин устранит недостатки товара. * `REPLACE` — магазин заменит товар. * `SEND_TO_EXAMINATION` — магазин отправит товар на экспертизу. * `DECLINE_REFUND` — не возвращать деньги. * `OTHER_DECISION` — другое решение. 
  *
  * Values: REFUND_MONEY,REFUND_MONEY_INCLUDING_SHIPMENT,REPAIR,REPLACE,SEND_TO_EXAMINATION,DECLINE_REFUND,OTHER_DECISION
  */

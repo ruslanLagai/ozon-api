@@ -21,7 +21,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Общее вознаграждение партнеру за все скидки на товар:  * по промокодам, купонам и акциям; * по баллам Плюса.  Передается в валюте заказа. 
+ * Общее вознаграждение партнеру за все скидки на товар:  * по промокодам, купонам и акциям; * по баллам Плюса. 
  *
  * @param type 
  * @param amount Сумма субсидии.
@@ -31,11 +31,11 @@ import com.squareup.moshi.JsonClass
 data class OrderItemSubsidyDTO (
 
     @Json(name = "type")
-    val type: OrderItemSubsidyType? = null,
+    val type: OrderItemSubsidyType,
 
     /* Сумма субсидии. */
     @Json(name = "amount")
-    val amount: java.math.BigDecimal? = null
+    val amount: java.math.BigDecimal
 
 )
 

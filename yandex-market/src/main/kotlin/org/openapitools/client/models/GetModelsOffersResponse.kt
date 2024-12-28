@@ -24,24 +24,24 @@ import com.squareup.moshi.JsonClass
 /**
  * Ответ на запрос списка предложений для моделей.
  *
+ * @param models Список моделей товаров.
  * @param currency 
  * @param regionId Идентификатор региона, для которого выводится информация о предложениях модели (доставляемых в этот регион).  Информацию о регионе по идентификатору можно получить с помощью запроса [GET regions/{regionId}](../../reference/regions/searchRegionsById.md). 
- * @param models Список моделей товаров.
  */
 
 
 data class GetModelsOffersResponse (
+
+    /* Список моделей товаров. */
+    @Json(name = "models")
+    val models: kotlin.collections.List<EnrichedModelDTO>,
 
     @Json(name = "currency")
     val currency: CurrencyType? = null,
 
     /* Идентификатор региона, для которого выводится информация о предложениях модели (доставляемых в этот регион).  Информацию о регионе по идентификатору можно получить с помощью запроса [GET regions/{regionId}](../../reference/regions/searchRegionsById.md).  */
     @Json(name = "regionId")
-    val regionId: kotlin.Long? = null,
-
-    /* Список моделей товаров. */
-    @Json(name = "models")
-    val models: kotlin.collections.List<EnrichedModelDTO>? = null
+    val regionId: kotlin.Long? = null
 
 )
 

@@ -31,11 +31,11 @@ data class OrderParcelBoxDTO (
 
     /* Идентификатор грузоместа. */
     @Json(name = "id")
-    val id: kotlin.Long? = null,
+    val id: kotlin.Long,
 
     /* Идентификатор грузового места в информационной системе магазина. */
     @Json(name = "fulfilmentId")
-    val fulfilmentId: kotlin.String? = null
+    val fulfilmentId: kotlin.String
 
 )
 

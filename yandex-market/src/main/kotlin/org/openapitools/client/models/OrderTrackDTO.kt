@@ -22,20 +22,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Информация о трек-номере посылки (DBS).
  *
- * @param trackCode Трек‑номер посылки.
  * @param deliveryServiceId Идентификатор службы доставки. Информацию о службе доставки можно получить с помощью запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md).
+ * @param trackCode Трек‑номер посылки.
  */
 
 
 data class OrderTrackDTO (
 
-    /* Трек‑номер посылки. */
-    @Json(name = "trackCode")
-    val trackCode: kotlin.String? = null,
-
     /* Идентификатор службы доставки. Информацию о службе доставки можно получить с помощью запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md). */
     @Json(name = "deliveryServiceId")
-    val deliveryServiceId: kotlin.Long? = null
+    val deliveryServiceId: kotlin.Long,
+
+    /* Трек‑номер посылки. */
+    @Json(name = "trackCode")
+    val trackCode: kotlin.String? = null
 
 )
 

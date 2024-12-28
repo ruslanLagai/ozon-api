@@ -33,7 +33,7 @@ data class GetOffersResponse (
 
     /* Список предложений магазина. */
     @Json(name = "offers")
-    val offers: kotlin.collections.List<OfferDTO>? = null,
+    val offers: kotlin.collections.List<OfferDTO>,
 
     @Json(name = "pager")
     val pager: FlippingPagerDTO? = null

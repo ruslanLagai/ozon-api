@@ -26,7 +26,7 @@ class ProvideOrderDigitalCodesRequestTest : ShouldSpec() {
         // uncomment below to create an instance of ProvideOrderDigitalCodesRequest
         //val modelInstance = ProvideOrderDigitalCodesRequest()
 
-        // to test the property `items` - Список проданных ключей.  Если в заказе есть несколько **одинаковых** товаров (например, несколько ключей к одной и той же подписке), передайте каждый в виде отдельного элемента массива. `id` у этих элементов должен быть один и тот же. 
+        // to test the property `items` - Список проданных товаров.  Если в заказе есть несколько **одинаковых** товаров (например, несколько ключей к одной и той же подписке), передайте ключи в виде массива к этому товару. Параметр `id` у этих элементов должен быть один и тот же. 
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")

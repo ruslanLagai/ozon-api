@@ -30,7 +30,7 @@ data class DeleteCampaignOffersRequest (
 
     /* Идентификаторы товаров в каталоге. */
     @Json(name = "offerIds")
-    val offerIds: kotlin.collections.List<kotlin.String>
+    val offerIds: kotlin.collections.Set<kotlin.String>
 
 )
 

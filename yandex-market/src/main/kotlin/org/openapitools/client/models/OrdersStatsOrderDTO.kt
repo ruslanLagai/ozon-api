@@ -21,6 +21,7 @@ import org.openapitools.client.models.OrdersStatsDeliveryRegionDTO
 import org.openapitools.client.models.OrdersStatsItemDTO
 import org.openapitools.client.models.OrdersStatsOrderPaymentType
 import org.openapitools.client.models.OrdersStatsPaymentDTO
+import org.openapitools.client.models.OrdersStatsSubsidyDTO
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -28,22 +29,35 @@ import com.squareup.moshi.JsonClass
 /**
  * Информация о заказе.
  *
+ * @param items Список товаров в заказе после возможных изменений.
+ * @param payments Информация о денежных переводах по заказу.
+ * @param commissions Информация о комиссиях за заказ.
  * @param id Идентификатор заказа.
  * @param creationDate Дата создания заказа.  Формат даты: `ГГГГ-ММ-ДД`. 
  * @param statusUpdateDate Дата и время, когда статус заказа был изменен в последний раз.  Формат даты и времени: ISO 8601. Например, `2017-11-21T00:00:00`. Часовой пояс — UTC+03:00 (Москва). 
  * @param status 
  * @param partnerOrderId Идентификатор заказа в информационной системе магазина.
  * @param paymentType 
- * @param fake Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../pushapi/concepts/sandbox.md) заказ Маркета. 
+ * @param fake Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../concepts/sandbox.md) заказ Маркета. 
  * @param deliveryRegion 
- * @param items Список товаров в заказе после возможных изменений.
  * @param initialItems Список товаров в заказе до изменений.
- * @param payments Информация о денежных переводах по заказу.
- * @param commissions Информация о комиссиях за заказ.
+ * @param subsidies Начисление баллов, которые используются для уменьшения стоимости размещения, и их списание в случае возврата или невыкупа.
  */
 
 
 data class OrdersStatsOrderDTO (
+
+    /* Список товаров в заказе после возможных изменений. */
+    @Json(name = "items")
+    val items: kotlin.collections.List<OrdersStatsItemDTO>,
+
+    /* Информация о денежных переводах по заказу. */
+    @Json(name = "payments")
+    val payments: kotlin.collections.List<OrdersStatsPaymentDTO>,
+
+    /* Информация о комиссиях за заказ. */
+    @Json(name = "commissions")
+    val commissions: kotlin.collections.List<OrdersStatsCommissionDTO>,
 
     /* Идентификатор заказа. */
     @Json(name = "id")
@@ -67,28 +81,20 @@ data class OrdersStatsOrderDTO (
     @Json(name = "paymentType")
     val paymentType: OrdersStatsOrderPaymentType? = null,
 
-    /* Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../pushapi/concepts/sandbox.md) заказ Маркета.  */
+    /* Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../concepts/sandbox.md) заказ Маркета.  */
     @Json(name = "fake")
     val fake: kotlin.Boolean? = null,
 
     @Json(name = "deliveryRegion")
     val deliveryRegion: OrdersStatsDeliveryRegionDTO? = null,
 
-    /* Список товаров в заказе после возможных изменений. */
-    @Json(name = "items")
-    val items: kotlin.collections.List<OrdersStatsItemDTO>? = null,
-
     /* Список товаров в заказе до изменений. */
     @Json(name = "initialItems")
     val initialItems: kotlin.collections.List<OrdersStatsItemDTO>? = null,
 
-    /* Информация о денежных переводах по заказу. */
-    @Json(name = "payments")
-    val payments: kotlin.collections.List<OrdersStatsPaymentDTO>? = null,
-
-    /* Информация о комиссиях за заказ. */
-    @Json(name = "commissions")
-    val commissions: kotlin.collections.List<OrdersStatsCommissionDTO>? = null
+    /* Начисление баллов, которые используются для уменьшения стоимости размещения, и их списание в случае возврата или невыкупа. */
+    @Json(name = "subsidies")
+    val subsidies: kotlin.collections.List<OrdersStatsSubsidyDTO>? = null
 
 )
 

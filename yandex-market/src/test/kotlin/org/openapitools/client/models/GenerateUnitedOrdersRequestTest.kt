@@ -49,5 +49,11 @@ class GenerateUnitedOrdersRequestTest : ShouldSpec() {
             //modelInstance.campaignIds shouldBe ("TODO")
         }
 
+        // to test the property `promoId` - Идентификатор акции, товары из которой нужны в отчете.
+        should("test promoId") {
+            // uncomment below to test the property
+            //modelInstance.promoId shouldBe ("TODO")
+        }
+
     }
 }

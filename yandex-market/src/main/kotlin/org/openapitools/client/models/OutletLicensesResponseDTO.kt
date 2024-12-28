@@ -31,7 +31,7 @@ data class OutletLicensesResponseDTO (
 
     /* Список лицензий. */
     @Json(name = "licenses")
-    val licenses: kotlin.collections.List<FullOutletLicenseDTO>? = null
+    val licenses: kotlin.collections.List<FullOutletLicenseDTO>
 
 )
 

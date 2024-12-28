@@ -31,7 +31,7 @@ data class OrderItemsModificationResultDTO (
 
     /* Список позиций в заказе, подлежащих маркировке. */
     @Json(name = "items")
-    val items: kotlin.collections.List<BriefOrderItemDTO>? = null
+    val items: kotlin.collections.List<BriefOrderItemDTO>
 
 )
 

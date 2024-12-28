@@ -24,19 +24,19 @@ import com.squareup.moshi.JsonClass
 /**
  * Возвраты.
  *
- * @param paging 
  * @param returns Список возвратов.
+ * @param paging 
  */
 
 
 data class PagedReturnsDTO (
 
-    @Json(name = "paging")
-    val paging: ForwardScrollingPagerDTO? = null,
-
     /* Список возвратов. */
     @Json(name = "returns")
-    val returns: kotlin.collections.List<ReturnDTO>? = null
+    val returns: kotlin.collections.List<ReturnDTO>,
+
+    @Json(name = "paging")
+    val paging: ForwardScrollingPagerDTO? = null
 
 )
 

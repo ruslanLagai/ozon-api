@@ -28,6 +28,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Отзыв пользователя Яндекс Маркета об указанном магазине.
  *
+ * @param comments Переписка автора отзыва с магазином.
  * @param id Идентификатор отзыва.
  * @param createdAt Дата и время создания отзыва.  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-21T00:00:00+03:00`. 
  * @param text Комментарий автора отзыва.
@@ -35,10 +36,9 @@ import com.squareup.moshi.JsonClass
  * @param author 
  * @param pro Достоинства магазина, описанные в отзыве.
  * @param contra Недостатки магазина, описанные в отзыве.
- * @param comments Переписка автора отзыва с магазином.
  * @param shop 
  * @param resolved Решена ли проблема автора отзыва:  * `true` — да. * `false` — нет.  Если проблема решена, около отзыва на странице магазина появляется соответствующая надпись. 
- * @param verified {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Является ли отзыв рекомендованным:  * `true` — да. * `false` — нет. 
+ * @param verified {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Является ли отзыв рекомендованным:  * `true` — да. * `false` — нет. 
  * @param recommend Купил бы автор отзыва в магазине снова:  * `true` — да. * `false` — нет. 
  * @param grades 
  * @param order 
@@ -46,6 +46,10 @@ import com.squareup.moshi.JsonClass
 
 
 data class FeedbackDTO (
+
+    /* Переписка автора отзыва с магазином. */
+    @Json(name = "comments")
+    val comments: kotlin.collections.List<FeedbackCommentDTO>,
 
     /* Идентификатор отзыва. */
     @Json(name = "id")
@@ -73,10 +77,6 @@ data class FeedbackDTO (
     @Json(name = "contra")
     val contra: kotlin.String? = null,
 
-    /* Переписка автора отзыва с магазином. */
-    @Json(name = "comments")
-    val comments: kotlin.collections.List<FeedbackCommentDTO>? = null,
-
     @Json(name = "shop")
     val shop: FeedbackShopDTO? = null,
 
@@ -84,7 +84,7 @@ data class FeedbackDTO (
     @Json(name = "resolved")
     val resolved: kotlin.Boolean? = null,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Является ли отзыв рекомендованным:  * `true` — да. * `false` — нет.  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Является ли отзыв рекомендованным:  * `true` — да. * `false` — нет.  */
     @Json(name = "verified")
     val verified: kotlin.Boolean? = null,
 

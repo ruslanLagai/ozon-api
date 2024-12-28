@@ -62,6 +62,12 @@ class FullOutletDTOTest : ShouldSpec() {
             //modelInstance.workingSchedule shouldBe ("TODO")
         }
 
+        // to test the property `id` - Идентификатор точки продаж, присвоенный Маркетом.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
         // to test the property `coords` - Координаты точки продаж.  Формат: долгота, широта. Разделители: запятая и / или пробел. Например, `20.4522144, 54.7104264`.  Если параметр не передан, координаты будут определены по значениям параметров, вложенных в `address`. 
         should("test coords") {
             // uncomment below to test the property
@@ -96,12 +102,6 @@ class FullOutletDTOTest : ShouldSpec() {
         should("test storagePeriod") {
             // uncomment below to test the property
             //modelInstance.storagePeriod shouldBe ("TODO")
-        }
-
-        // to test the property `id` - Идентификатор точки продаж, присвоенный Маркетом.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `status`

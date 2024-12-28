@@ -21,7 +21,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Информация об авторе ответа.
+ * Информация об авторе комментария.
  *
  * @param type 
  * @param name Имя автора отзыва или название магазина.

@@ -30,7 +30,7 @@ data class GetCampaignLoginsResponse (
 
     /* Список логинов. */
     @Json(name = "logins")
-    val logins: kotlin.collections.List<kotlin.String>? = null
+    val logins: kotlin.collections.List<kotlin.String>
 
 )
 

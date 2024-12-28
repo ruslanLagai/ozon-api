@@ -26,7 +26,7 @@ class OrderItemInstanceModificationDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OrderItemInstanceModificationDTO
         //val modelInstance = OrderItemInstanceModificationDTO()
 
-        // to test the property `id` - Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) и в запросе Маркета [POST order/accept](../../pushapi/reference/orderAccept.md) — параметр `id` в `items`. 
+        // to test the property `id` - Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) — параметр `id` в `items`. 
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")

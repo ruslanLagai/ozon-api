@@ -38,7 +38,7 @@ class SetReturnDecisionRequestTest : ShouldSpec() {
             //modelInstance.decisionType shouldBe ("TODO")
         }
 
-        // to test the property `comment` - Комментарий к решению. Укажите:  * для `REFUND_MONEY_INCLUDING_SHIPMENT`— стоимость обратной пересылки;  * для `REPAIR` — когда вы устраните недостатки товара;  * для `DECLINE_REFUND` — причину отказа;  * для `OTHER_DECISION` — какое решение вы предлагаете. 
+        // to test the property `comment` - Комментарий к решению. Укажите:  * для `REFUND_MONEY_INCLUDING_SHIPMENT`— стоимость обратной пересылки.  * для `REPAIR` — когда вы устраните недостатки товара.  * для `DECLINE_REFUND` — причину отказа.  * для `OTHER_DECISION` — какое решение вы предлагаете. 
         should("test comment") {
             // uncomment below to test the property
             //modelInstance.comment shouldBe ("TODO")

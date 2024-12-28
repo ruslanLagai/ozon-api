@@ -33,7 +33,7 @@ data class SearchShipmentsResponseDTO (
 
     /* Список с информацией об отгрузках. */
     @Json(name = "shipments")
-    val shipments: kotlin.collections.List<ShipmentInfoDTO>? = null,
+    val shipments: kotlin.collections.List<ShipmentInfoDTO>,
 
     @Json(name = "paging")
     val paging: ForwardScrollingPagerDTO? = null

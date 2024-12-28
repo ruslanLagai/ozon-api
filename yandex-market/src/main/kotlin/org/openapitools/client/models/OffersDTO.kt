@@ -31,7 +31,7 @@ data class OffersDTO (
 
     /* Список предложений магазина. */
     @Json(name = "offers")
-    val offers: kotlin.collections.List<OfferDTO>? = null
+    val offers: kotlin.collections.List<OfferDTO>
 
 )
 

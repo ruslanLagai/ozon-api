@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.GenerateMassOrderLabelsRequest
+import org.openapitools.client.models.LabelsSortingType
 
 class GenerateMassOrderLabelsRequestTest : ShouldSpec() {
     init {
@@ -35,6 +36,12 @@ class GenerateMassOrderLabelsRequestTest : ShouldSpec() {
         should("test orderIds") {
             // uncomment below to test the property
             //modelInstance.orderIds shouldBe ("TODO")
+        }
+
+        // to test the property `sortingType`
+        should("test sortingType") {
+            // uncomment below to test the property
+            //modelInstance.sortingType shouldBe ("TODO")
         }
 
     }

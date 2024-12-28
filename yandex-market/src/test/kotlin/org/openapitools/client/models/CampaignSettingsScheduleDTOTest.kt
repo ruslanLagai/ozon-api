@@ -26,12 +26,6 @@ class CampaignSettingsScheduleDTOTest : ShouldSpec() {
         // uncomment below to create an instance of CampaignSettingsScheduleDTO
         //val modelInstance = CampaignSettingsScheduleDTO()
 
-        // to test the property `availableOnHolidays` - Признак работы службы доставки в государственные праздники. Возможные значения. * `false` — служба доставки не работает в праздничные дни. * `true` — служба доставки работает в праздничные дни. 
-        should("test availableOnHolidays") {
-            // uncomment below to test the property
-            //modelInstance.availableOnHolidays shouldBe ("TODO")
-        }
-
         // to test the property `customHolidays` - Список дней, в которые служба доставки не работает. Дни магазин указал в кабинете продавца на Маркете.
         should("test customHolidays") {
             // uncomment below to test the property
@@ -44,12 +38,6 @@ class CampaignSettingsScheduleDTOTest : ShouldSpec() {
             //modelInstance.customWorkingDays shouldBe ("TODO")
         }
 
-        // to test the property `period`
-        should("test period") {
-            // uncomment below to test the property
-            //modelInstance.period shouldBe ("TODO")
-        }
-
         // to test the property `totalHolidays` - Итоговый список нерабочих дней службы доставки. Список рассчитывается с учетом выходных, нерабочих дней и государственных праздников. Информацию по ним магазин указывает в кабинете продавца на Маркете.
         should("test totalHolidays") {
             // uncomment below to test the property
@@ -60,6 +48,18 @@ class CampaignSettingsScheduleDTOTest : ShouldSpec() {
         should("test weeklyHolidays") {
             // uncomment below to test the property
             //modelInstance.weeklyHolidays shouldBe ("TODO")
+        }
+
+        // to test the property `availableOnHolidays` - Признак работы службы доставки в государственные праздники. Возможные значения. * `false` — служба доставки не работает в праздничные дни. * `true` — служба доставки работает в праздничные дни. 
+        should("test availableOnHolidays") {
+            // uncomment below to test the property
+            //modelInstance.availableOnHolidays shouldBe ("TODO")
+        }
+
+        // to test the property `period`
+        should("test period") {
+            // uncomment below to test the property
+            //modelInstance.period shouldBe ("TODO")
         }
 
     }

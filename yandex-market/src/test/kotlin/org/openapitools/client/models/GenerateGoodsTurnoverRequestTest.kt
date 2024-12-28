@@ -31,5 +31,11 @@ class GenerateGoodsTurnoverRequestTest : ShouldSpec() {
             //modelInstance.campaignId shouldBe ("TODO")
         }
 
+        // to test the property `date` - Дата, за которую нужно рассчитать оборачиваемость. Если параметр не указан, используется текущая дата.
+        should("test date") {
+            // uncomment below to test the property
+            //modelInstance.date shouldBe ("TODO")
+        }
+
     }
 }

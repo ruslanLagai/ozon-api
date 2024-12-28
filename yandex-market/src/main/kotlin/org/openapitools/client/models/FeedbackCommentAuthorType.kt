@@ -20,7 +20,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Тип автора ответа:  * `USER` — пользователь. * `SHOP` — магазин. 
+ * Тип автора:  * `USER` — пользователь. * `SHOP` — магазин. 
  *
  * Values: USER,SHOP
  */

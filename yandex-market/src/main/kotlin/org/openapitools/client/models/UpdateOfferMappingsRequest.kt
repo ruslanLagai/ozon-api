@@ -24,6 +24,7 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param offerMappings Перечень товаров, которые нужно добавить или обновить.
+ * @param onlyPartnerMediaContent Будут использоваться только переданные вами изображения товаров.  Значение по умолчанию: `false`. Если вы хотите заменить изображения, которые добавил Маркет, передайте значение `true`. 
  */
 
 
@@ -31,7 +32,11 @@ data class UpdateOfferMappingsRequest (
 
     /* Перечень товаров, которые нужно добавить или обновить. */
     @Json(name = "offerMappings")
-    val offerMappings: kotlin.collections.List<UpdateOfferMappingDTO>
+    val offerMappings: kotlin.collections.List<UpdateOfferMappingDTO>,
+
+    /* Будут использоваться только переданные вами изображения товаров.  Значение по умолчанию: `false`. Если вы хотите заменить изображения, которые добавил Маркет, передайте значение `true`.  */
+    @Json(name = "onlyPartnerMediaContent")
+    val onlyPartnerMediaContent: kotlin.Boolean? = null
 
 )
 

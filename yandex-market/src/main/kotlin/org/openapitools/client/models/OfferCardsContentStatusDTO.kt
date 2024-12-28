@@ -33,7 +33,7 @@ data class OfferCardsContentStatusDTO (
 
     /* Страница списка товаров с информацией о состоянии карточек. */
     @Json(name = "offerCards")
-    val offerCards: kotlin.collections.List<OfferCardDTO>? = null,
+    val offerCards: kotlin.collections.List<OfferCardDTO>,
 
     @Json(name = "paging")
     val paging: ForwardScrollingPagerDTO? = null

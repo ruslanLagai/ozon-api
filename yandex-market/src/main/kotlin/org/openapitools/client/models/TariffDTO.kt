@@ -26,8 +26,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param type 
  * @param amount Значение тарифа в рублях.
- * @param percent {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Значение тарифа в процентах. 
  * @param parameters Параметры расчета тарифа.
+ * @param percent {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Значение тарифа в процентах. 
  */
 
 
@@ -40,14 +40,14 @@ data class TariffDTO (
     @Json(name = "amount")
     val amount: java.math.BigDecimal,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Значение тарифа в процентах.  */
-    @Json(name = "percent")
-    @Deprecated(message = "This property is deprecated.")
-    val percent: java.math.BigDecimal? = null,
-
     /* Параметры расчета тарифа. */
     @Json(name = "parameters")
-    val parameters: kotlin.collections.List<TariffParameterDTO>? = null
+    val parameters: kotlin.collections.List<TariffParameterDTO>,
+
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Значение тарифа в процентах.  */
+    @Json(name = "percent")
+    @Deprecated(message = "This property is deprecated.")
+    val percent: java.math.BigDecimal? = null
 
 )
 

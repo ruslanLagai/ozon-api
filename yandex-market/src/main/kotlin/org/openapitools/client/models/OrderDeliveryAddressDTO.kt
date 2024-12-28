@@ -23,27 +23,27 @@ import com.squareup.moshi.JsonClass
 /**
  * Адрес доставки.  Указывается, если `type=DELIVERY`, `type=POST` или `type=PICKUP` (адрес пункта выдачи). 
  *
- * @param country Страна.  Обязательный параметр. 
+ * @param country Страна. 
  * @param postcode Почтовый индекс.  Указывается, если выбрана доставка почтой (`delivery type=POST`). 
- * @param city Город или населенный пункт.  Обязательный параметр. 
+ * @param city Город или населенный пункт. 
  * @param district Район.
  * @param subway Станция метро.
- * @param street Улица.  Обязательный параметр. 
- * @param house Дом или владение.  Обязательный параметр. 
+ * @param street Улица. 
+ * @param house Дом или владение. 
  * @param block Корпус или строение.
  * @param entrance Подъезд.
  * @param entryphone Код домофона.
  * @param floor Этаж.
  * @param apartment Квартира или офис.
- * @param phone Телефон получателя заказа.  Обязательный параметр. 
- * @param recipient Фамилия, имя и отчество получателя заказа.  Обязательный параметр. 
+ * @param phone Телефон получателя заказа. 
+ * @param recipient Фамилия, имя и отчество получателя заказа. 
  * @param gps 
  */
 
 
 data class OrderDeliveryAddressDTO (
 
-    /* Страна.  Обязательный параметр.  */
+    /* Страна.  */
     @Json(name = "country")
     val country: kotlin.String? = null,
 
@@ -51,7 +51,7 @@ data class OrderDeliveryAddressDTO (
     @Json(name = "postcode")
     val postcode: kotlin.String? = null,
 
-    /* Город или населенный пункт.  Обязательный параметр.  */
+    /* Город или населенный пункт.  */
     @Json(name = "city")
     val city: kotlin.String? = null,
 
@@ -63,11 +63,11 @@ data class OrderDeliveryAddressDTO (
     @Json(name = "subway")
     val subway: kotlin.String? = null,
 
-    /* Улица.  Обязательный параметр.  */
+    /* Улица.  */
     @Json(name = "street")
     val street: kotlin.String? = null,
 
-    /* Дом или владение.  Обязательный параметр.  */
+    /* Дом или владение.  */
     @Json(name = "house")
     val house: kotlin.String? = null,
 
@@ -91,11 +91,11 @@ data class OrderDeliveryAddressDTO (
     @Json(name = "apartment")
     val apartment: kotlin.String? = null,
 
-    /* Телефон получателя заказа.  Обязательный параметр.  */
+    /* Телефон получателя заказа.  */
     @Json(name = "phone")
     val phone: kotlin.String? = null,
 
-    /* Фамилия, имя и отчество получателя заказа.  Обязательный параметр.  */
+    /* Фамилия, имя и отчество получателя заказа.  */
     @Json(name = "recipient")
     val recipient: kotlin.String? = null,
 

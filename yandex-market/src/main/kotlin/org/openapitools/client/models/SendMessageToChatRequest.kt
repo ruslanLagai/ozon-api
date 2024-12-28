@@ -22,13 +22,13 @@ import com.squareup.moshi.JsonClass
 /**
  * В какой чат нужно отправить сообщение и текст сообщения.
  *
- * @param message Текст сообщения. Максимальная длина — 4096 символа.
+ * @param message Текст сообщения.
  */
 
 
 data class SendMessageToChatRequest (
 
-    /* Текст сообщения. Максимальная длина — 4096 символа. */
+    /* Текст сообщения. */
     @Json(name = "message")
     val message: kotlin.String
 

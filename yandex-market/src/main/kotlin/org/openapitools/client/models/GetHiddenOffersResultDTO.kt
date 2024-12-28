@@ -24,19 +24,19 @@ import com.squareup.moshi.JsonClass
 /**
  * Список скрытых вами товаров. 
  *
- * @param paging 
  * @param hiddenOffers Список скрытых товаров.
+ * @param paging 
  */
 
 
 data class GetHiddenOffersResultDTO (
 
-    @Json(name = "paging")
-    val paging: ScrollingPagerDTO? = null,
-
     /* Список скрытых товаров. */
     @Json(name = "hiddenOffers")
-    val hiddenOffers: kotlin.collections.List<HiddenOfferDTO>? = null
+    val hiddenOffers: kotlin.collections.List<HiddenOfferDTO>,
+
+    @Json(name = "paging")
+    val paging: ScrollingPagerDTO? = null
 
 )
 

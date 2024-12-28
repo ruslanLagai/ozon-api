@@ -32,13 +32,13 @@ class GenerateUnitedNettingReportRequestTest : ShouldSpec() {
             //modelInstance.businessId shouldBe ("TODO")
         }
 
-        // to test the property `dateTimeFrom` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Начало периода, включительно. 
+        // to test the property `dateTimeFrom` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Начало периода, включительно. 
         should("test dateTimeFrom") {
             // uncomment below to test the property
             //modelInstance.dateTimeFrom shouldBe ("TODO")
         }
 
-        // to test the property `dateTimeTo` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Конец периода, включительно. Максимальный период — 1 год. 
+        // to test the property `dateTimeTo` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Конец периода, включительно. Максимальный период — 3 месяца. 
         should("test dateTimeTo") {
             // uncomment below to test the property
             //modelInstance.dateTimeTo shouldBe ("TODO")
@@ -50,7 +50,7 @@ class GenerateUnitedNettingReportRequestTest : ShouldSpec() {
             //modelInstance.dateFrom shouldBe ("TODO")
         }
 
-        // to test the property `dateTo` - Конец периода, включительно. Максимальный период — 1 год.
+        // to test the property `dateTo` - Конец периода, включительно. Максимальный период — 3 месяца.
         should("test dateTo") {
             // uncomment below to test the property
             //modelInstance.dateTo shouldBe ("TODO")

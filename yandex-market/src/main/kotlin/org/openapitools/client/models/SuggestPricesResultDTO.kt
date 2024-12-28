@@ -31,7 +31,7 @@ data class SuggestPricesResultDTO (
 
     /* Список товаров с ценами для продвижения. */
     @Json(name = "offers")
-    val offers: kotlin.collections.List<PriceSuggestOfferDTO>? = null
+    val offers: kotlin.collections.List<PriceSuggestOfferDTO>
 
 )
 

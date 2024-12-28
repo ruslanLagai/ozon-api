@@ -31,7 +31,7 @@ data class ShipmentBoxesDTO (
 
     /* Список грузовых мест. Маркет определил количество мест по длине этого списка.  */
     @Json(name = "boxes")
-    val boxes: kotlin.collections.List<ParcelBoxDTO>? = null
+    val boxes: kotlin.collections.List<ParcelBoxDTO>
 
 )
 

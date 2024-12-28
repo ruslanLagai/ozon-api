@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Способ отгрузки:  * `BUYER` — доставка покупателю.  * `MARKET_PARTNER_OUTLET` — доставка в пункт выдачи партнера.  * `MARKET_BRANDED_OUTLET` — доставка в пункт выдачи заказов Маркета.  * `SHOP_OUTLET` — доставка в пункт выдачи заказов магазина.  * `DROPOFF` — доставка в пункт выдачи, который принимает заказы от продавцов и передает их курьерам.  * `UNKNOWN` — неизвестный тип. 
+ * Способ отгрузки:  * `BUYER` — доставка покупателю.  * `MARKET_BRANDED_OUTLET` — доставка в пункт выдачи заказов Маркета.  * `SHOP_OUTLET` — доставка в пункт выдачи заказов магазина.  * `UNKNOWN` — неизвестный тип. 
  *
- * Values: UNKNOWN,BUYER,MARKET_PARTNER_OUTLET,MARKET_BRANDED_OUTLET,SHOP_OUTLET,DROPOFF
+ * Values: UNKNOWN,BUYER,MARKET_BRANDED_OUTLET,SHOP_OUTLET
  */
 
 @JsonClass(generateAdapter = false)
@@ -34,17 +34,11 @@ enum class OrderDeliveryDispatchType(val value: kotlin.String) {
     @Json(name = "BUYER")
     BUYER("BUYER"),
 
-    @Json(name = "MARKET_PARTNER_OUTLET")
-    MARKET_PARTNER_OUTLET("MARKET_PARTNER_OUTLET"),
-
     @Json(name = "MARKET_BRANDED_OUTLET")
     MARKET_BRANDED_OUTLET("MARKET_BRANDED_OUTLET"),
 
     @Json(name = "SHOP_OUTLET")
-    SHOP_OUTLET("SHOP_OUTLET"),
-
-    @Json(name = "DROPOFF")
-    DROPOFF("DROPOFF");
+    SHOP_OUTLET("SHOP_OUTLET");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

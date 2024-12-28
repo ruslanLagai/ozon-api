@@ -26,6 +26,7 @@ import com.squareup.moshi.JsonClass
  * @param dateFrom Начало периода, включительно.
  * @param dateTo Конец периода, включительно. Максимальный период — 1 год.
  * @param campaignIds Список магазинов, которые нужны в отчете.
+ * @param promoId Идентификатор акции, товары из которой нужны в отчете.
  */
 
 
@@ -45,7 +46,11 @@ data class GenerateUnitedOrdersRequest (
 
     /* Список магазинов, которые нужны в отчете. */
     @Json(name = "campaignIds")
-    val campaignIds: kotlin.collections.List<kotlin.Long>? = null
+    val campaignIds: kotlin.collections.List<kotlin.Long>? = null,
+
+    /* Идентификатор акции, товары из которой нужны в отчете. */
+    @Json(name = "promoId")
+    val promoId: kotlin.String? = null
 
 )
 

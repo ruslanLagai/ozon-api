@@ -25,13 +25,13 @@ class ParcelBoxDTOTest : ShouldSpec() {
         // uncomment below to create an instance of ParcelBoxDTO
         //val modelInstance = ParcelBoxDTO()
 
-        // to test the property `id` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %} 
+        // to test the property `id` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %} 
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `fulfilmentId` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %} 
+        // to test the property `fulfilmentId` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %} 
         should("test fulfilmentId") {
             // uncomment below to test the property
             //modelInstance.fulfilmentId shouldBe ("TODO")

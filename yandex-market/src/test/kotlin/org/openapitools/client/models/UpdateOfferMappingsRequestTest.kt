@@ -32,5 +32,11 @@ class UpdateOfferMappingsRequestTest : ShouldSpec() {
             //modelInstance.offerMappings shouldBe ("TODO")
         }
 
+        // to test the property `onlyPartnerMediaContent` - Будут использоваться только переданные вами изображения товаров.  Значение по умолчанию: `false`. Если вы хотите заменить изображения, которые добавил Маркет, передайте значение `true`. 
+        should("test onlyPartnerMediaContent") {
+            // uncomment below to test the property
+            //modelInstance.onlyPartnerMediaContent shouldBe ("TODO")
+        }
+
     }
 }

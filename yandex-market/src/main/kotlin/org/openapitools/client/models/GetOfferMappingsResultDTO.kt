@@ -24,19 +24,19 @@ import com.squareup.moshi.JsonClass
 /**
  * Информация о товарах.
  *
- * @param paging 
  * @param offerMappings Информация о товарах.
+ * @param paging 
  */
 
 
 data class GetOfferMappingsResultDTO (
 
-    @Json(name = "paging")
-    val paging: ScrollingPagerDTO? = null,
-
     /* Информация о товарах. */
     @Json(name = "offerMappings")
-    val offerMappings: kotlin.collections.List<GetOfferMappingDTO>? = null
+    val offerMappings: kotlin.collections.List<GetOfferMappingDTO>,
+
+    @Json(name = "paging")
+    val paging: ScrollingPagerDTO? = null
 
 )
 

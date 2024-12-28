@@ -25,7 +25,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param status 
  * @param description Описание статуса отгрузки.
- * @param updateTime Время последнего изменения статуса отгрузки.
+ * @param updateTime Время последнего изменения статуса отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC. 
  */
 
 
@@ -38,7 +38,7 @@ data class ShipmentStatusChangeDTO (
     @Json(name = "description")
     val description: kotlin.String? = null,
 
-    /* Время последнего изменения статуса отгрузки. */
+    /* Время последнего изменения статуса отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC.  */
     @Json(name = "updateTime")
     val updateTime: java.time.OffsetDateTime? = null
 

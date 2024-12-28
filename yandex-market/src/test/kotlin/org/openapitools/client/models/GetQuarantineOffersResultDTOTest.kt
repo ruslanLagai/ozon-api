@@ -27,16 +27,16 @@ class GetQuarantineOffersResultDTOTest : ShouldSpec() {
         // uncomment below to create an instance of GetQuarantineOffersResultDTO
         //val modelInstance = GetQuarantineOffersResultDTO()
 
-        // to test the property `paging`
-        should("test paging") {
-            // uncomment below to test the property
-            //modelInstance.paging shouldBe ("TODO")
-        }
-
         // to test the property `offers` - Страница списка товаров в карантине.
         should("test offers") {
             // uncomment below to test the property
             //modelInstance.offers shouldBe ("TODO")
+        }
+
+        // to test the property `paging`
+        should("test paging") {
+            // uncomment below to test the property
+            //modelInstance.paging shouldBe ("TODO")
         }
 
     }

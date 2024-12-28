@@ -20,32 +20,38 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Ключ цифрового товара.
+ * Цифровой товар.
  *
- * @param id Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) и в запросе Маркета [POST order/accept](../../pushapi/reference/orderAccept.md) — параметр `id` в `items`. 
- * @param code Сам ключ.
+ * @param id Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) — параметр `id` в `items`. 
  * @param slip Инструкция по активации.
- * @param activateTill Дата, до которой нужно активировать ключ. Если ключ действует бессрочно, укажите любую дату в отдаленном будущем.  Формат даты: `ГГГГ-ММ-ДД`. 
+ * @param activateTill Дата, до которой нужно активировать ключи. Если ключи действуют бессрочно, укажите любую дату в отдаленном будущем.  Формат даты: `ГГГГ-ММ-ДД`. 
+ * @param code {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `codes`. Совместное использование обоих параметров приведет к ошибке.  {% endnote %}  Сам ключ. 
+ * @param codes Ключи, относящиеся к товару.
  */
 
 
 data class OrderDigitalItemDTO (
 
-    /* Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) и в запросе Маркета [POST order/accept](../../pushapi/reference/orderAccept.md) — параметр `id` в `items`.  */
+    /* Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) — параметр `id` в `items`.  */
     @Json(name = "id")
     val id: kotlin.Long,
-
-    /* Сам ключ. */
-    @Json(name = "code")
-    val code: kotlin.String,
 
     /* Инструкция по активации. */
     @Json(name = "slip")
     val slip: kotlin.String,
 
-    /* Дата, до которой нужно активировать ключ. Если ключ действует бессрочно, укажите любую дату в отдаленном будущем.  Формат даты: `ГГГГ-ММ-ДД`.  */
+    /* Дата, до которой нужно активировать ключи. Если ключи действуют бессрочно, укажите любую дату в отдаленном будущем.  Формат даты: `ГГГГ-ММ-ДД`.  */
     @Json(name = "activate_till")
-    val activateTill: java.time.LocalDate
+    val activateTill: java.time.LocalDate,
+
+    /* {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `codes`. Совместное использование обоих параметров приведет к ошибке.  {% endnote %}  Сам ключ.  */
+    @Json(name = "code")
+    @Deprecated(message = "This property is deprecated.")
+    val code: kotlin.String? = null,
+
+    /* Ключи, относящиеся к товару. */
+    @Json(name = "codes")
+    val codes: kotlin.collections.Set<kotlin.String>? = null
 
 )
 

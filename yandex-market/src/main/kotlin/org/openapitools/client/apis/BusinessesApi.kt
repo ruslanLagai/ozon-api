@@ -53,7 +53,7 @@ class BusinessesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
 
     /**
      * Настройки кабинета
-     * Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе. |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getBusinessSettings.md) %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе. |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return GetBusinessSettingsResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -84,7 +84,7 @@ class BusinessesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
 
     /**
      * Настройки кабинета
-     * Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе. |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getBusinessSettings.md) %}  Возвращает информацию о настройках кабинета, идентификатор которого указан в запросе. |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @return ApiResponse<GetBusinessSettingsResponse?>
      * @throws IllegalStateException If the request is not correctly configured

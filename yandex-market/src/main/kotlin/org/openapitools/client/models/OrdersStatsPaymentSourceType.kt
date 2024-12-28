@@ -20,7 +20,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Способ денежного перевода: - `BUYER` — оплата или возврат деньгами. - `CASHBACK` — оплата или возврат баллами Плюса. - `MARKETPLACE` — оплата или возврат купонами. - `SPLIT` — оплата картой по частям (Сплит). 
+ * Способ денежного перевода: - `BUYER` — оплата или возврат деньгами.  Устаревшие способы: - `CASHBACK`. - `MARKETPLACE`. - `SPLIT`. 
  *
  * Values: BUYER,CASHBACK,MARKETPLACE,SPLIT
  */

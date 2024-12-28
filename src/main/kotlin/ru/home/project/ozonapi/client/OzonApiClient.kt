@@ -25,6 +25,7 @@ import ru.home.project.ozonapi.dto.stocks.response.StocksResultItem
 import ru.home.project.ozonapi.dto.supply.request.*
 import ru.home.project.ozonapi.dto.supply.response.*
 import java.time.Duration
+import java.time.LocalDate
 import java.time.OffsetDateTime
 
 /**
@@ -171,6 +172,28 @@ class OzonApiClient(
             .bodyToMono<DeliveryResponse>()
             .cache(Duration.ofSeconds(5))
             .mapNotNull { resp -> resp.result.ifEmpty { null } }
+            .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(1)))
+            .block()
+    }
+
+    fun getAnalyticData(from: LocalDate, to: LocalDate, metrics: List<AnalyticMetric>,
+                        dimensions: List<AnalyticDimension>, filters: List<AnalyticFilter>? = null,
+                        sort: List<AnalyticSorting>? = null, offset: Int): AnalyticsDataResult? {
+        val request = AnalyticsDataRequest(
+            from = from, to = to, metrics = metrics, dimension = dimensions, filters = filters,
+            sort = sort, offset = offset
+        )
+        return ozonClient.post()
+            .uri { uriBuilder: UriBuilder ->
+                uriBuilder
+                    .path("/v1/analytics/data")
+                    .build()
+            }
+            .body(BodyInserters.fromValue(request))
+            .retrieve()
+            .bodyToMono<AnalyticsDataResp>()
+            .cache(Duration.ofSeconds(5))
+            .mapNotNull { resp -> resp.result }
             .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(1)))
             .block()
     }

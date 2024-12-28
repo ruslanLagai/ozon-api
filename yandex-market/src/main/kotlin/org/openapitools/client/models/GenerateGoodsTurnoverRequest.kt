@@ -23,6 +23,7 @@ import com.squareup.moshi.JsonClass
  * Данные, необходимые для генерации отчета. 
  *
  * @param campaignId Идентификатор кампании.
+ * @param date Дата, за которую нужно рассчитать оборачиваемость. Если параметр не указан, используется текущая дата.
  */
 
 
@@ -30,7 +31,11 @@ data class GenerateGoodsTurnoverRequest (
 
     /* Идентификатор кампании. */
     @Json(name = "campaignId")
-    val campaignId: kotlin.Long
+    val campaignId: kotlin.Long,
+
+    /* Дата, за которую нужно рассчитать оборачиваемость. Если параметр не указан, используется текущая дата. */
+    @Json(name = "date")
+    val date: java.time.LocalDate? = null
 
 )
 

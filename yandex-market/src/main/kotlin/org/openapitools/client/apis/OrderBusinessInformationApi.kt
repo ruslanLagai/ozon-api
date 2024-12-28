@@ -54,7 +54,7 @@ class OrderBusinessInformationApi(basePath: kotlin.String = defaultBasePath, cli
 
     /**
      * Информация о покупателе — юридическом лице
-     * Возвращает информацию о покупателе по идентификатору заказа.  {% note info \&quot;\&quot; %}  Чтобы получить информацию о покупателе, который является физическим лицом, воспользуйтесь запросом [GET campaigns/{campaignId}/orders/{orderId}/buyer](../../reference/orders/getOrderBuyerInfo.md).  {% endnote %}  Получить данные можно, только если заказ находится в статусе &#x60;PROCESSING&#x60;, &#x60;DELIVERY&#x60;, &#x60;PICKUP&#x60; или &#x60;DELIVERED&#x60;.  |**⚙️ Лимит:** 3 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getOrderBusinessBuyerInfo.md) %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \&quot;Как получить информацию о покупателе, который является физическим лицом\&quot; %}  Воспользуйтесь запросом [GET campaigns/{campaignId}/orders/{orderId}/buyer](../../reference/orders/getOrderBuyerInfo.md).  {% endnote %}  Получить данные можно, только если заказ находится в статусе &#x60;PROCESSING&#x60;, &#x60;DELIVERY&#x60;, &#x60;PICKUP&#x60; или &#x60;DELIVERED&#x60;.  |**⚙️ Лимит:** 3 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @return GetBusinessBuyerInfoResponse
@@ -86,7 +86,7 @@ class OrderBusinessInformationApi(basePath: kotlin.String = defaultBasePath, cli
 
     /**
      * Информация о покупателе — юридическом лице
-     * Возвращает информацию о покупателе по идентификатору заказа.  {% note info \&quot;\&quot; %}  Чтобы получить информацию о покупателе, который является физическим лицом, воспользуйтесь запросом [GET campaigns/{campaignId}/orders/{orderId}/buyer](../../reference/orders/getOrderBuyerInfo.md).  {% endnote %}  Получить данные можно, только если заказ находится в статусе &#x60;PROCESSING&#x60;, &#x60;DELIVERY&#x60;, &#x60;PICKUP&#x60; или &#x60;DELIVERED&#x60;.  |**⚙️ Лимит:** 3 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getOrderBusinessBuyerInfo.md) %}  Возвращает информацию о покупателе по идентификатору заказа.  {% note info \&quot;Как получить информацию о покупателе, который является физическим лицом\&quot; %}  Воспользуйтесь запросом [GET campaigns/{campaignId}/orders/{orderId}/buyer](../../reference/orders/getOrderBuyerInfo.md).  {% endnote %}  Получить данные можно, только если заказ находится в статусе &#x60;PROCESSING&#x60;, &#x60;DELIVERY&#x60;, &#x60;PICKUP&#x60; или &#x60;DELIVERED&#x60;.  |**⚙️ Лимит:** 3 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @return ApiResponse<GetBusinessBuyerInfoResponse?>
@@ -128,7 +128,7 @@ class OrderBusinessInformationApi(basePath: kotlin.String = defaultBasePath, cli
 
     /**
      * Информация о документах
-     * Возвращает информацию о документах по идентификатору заказа.  |**⚙️ Лимит:** 3 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getOrderBusinessDocumentsInfo.md) %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус &#x60;DELIVERED&#x60;.  |**⚙️ Лимит:** 3 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @return GetBusinessDocumentsInfoResponse
@@ -160,7 +160,7 @@ class OrderBusinessInformationApi(basePath: kotlin.String = defaultBasePath, cli
 
     /**
      * Информация о документах
-     * Возвращает информацию о документах по идентификатору заказа.  |**⚙️ Лимит:** 3 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getOrderBusinessDocumentsInfo.md) %}  Возвращает информацию о документах по идентификатору заказа.  Получить данные можно после того, как заказ перейдет в статус &#x60;DELIVERED&#x60;.  |**⚙️ Лимит:** 3 000 запросов в час| |-| 
      * @param campaignId Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param orderId Идентификатор заказа.
      * @return ApiResponse<GetBusinessDocumentsInfoResponse?>

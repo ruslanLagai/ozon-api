@@ -31,7 +31,7 @@ data class GoodsStatsDTO (
 
     /* Список товаров. */
     @Json(name = "shopSkus")
-    val shopSkus: kotlin.collections.List<GoodsStatsGoodsDTO>? = null
+    val shopSkus: kotlin.collections.List<GoodsStatsGoodsDTO>
 
 )
 

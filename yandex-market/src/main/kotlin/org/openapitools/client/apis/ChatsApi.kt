@@ -60,7 +60,7 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Создание нового чата с покупателем
-     * Создает новый чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/createChat.md) %}  Создает новый чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param createChatRequest description
      * @return CreateChatResponse
@@ -92,7 +92,7 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Создание нового чата с покупателем
-     * Создает новый чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/createChat.md) %}  Создает новый чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param createChatRequest description
      * @return ApiResponse<CreateChatResponse?>
@@ -135,12 +135,12 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Получение истории сообщений в чате
-     * Возвращает историю сообщений в чате с покупателем.  |**⚙️ Лимит:** 10000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getChatHistory.md) %}  Возвращает историю сообщений в чате с покупателем.  |**⚙️ Лимит:** 10000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param chatId Идентификатор чата.
      * @param getChatHistoryRequest description
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @return GetChatHistoryResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -170,12 +170,12 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Получение истории сообщений в чате
-     * Возвращает историю сообщений в чате с покупателем.  |**⚙️ Лимит:** 10000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getChatHistory.md) %}  Возвращает историю сообщений в чате с покупателем.  |**⚙️ Лимит:** 10000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param chatId Идентификатор чата.
      * @param getChatHistoryRequest description
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @return ApiResponse<GetChatHistoryResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -196,8 +196,8 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param chatId Идентификатор чата.
      * @param getChatHistoryRequest description
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @return RequestConfig
      */
     fun getChatHistoryRequestConfig(businessId: kotlin.Long, chatId: kotlin.Long, getChatHistoryRequest: GetChatHistoryRequest, pageToken: kotlin.String?, limit: kotlin.Int?) : RequestConfig<GetChatHistoryRequest> {
@@ -228,11 +228,11 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Получение доступных чатов
-     * Возвращает ваши чаты с покупателями.  |**⚙️ Лимит:** 10000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getChats.md) %}  Возвращает ваши чаты с покупателями.  |**⚙️ Лимит:** 10000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param getChatsRequest description
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @return GetChatsResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -262,11 +262,11 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Получение доступных чатов
-     * Возвращает ваши чаты с покупателями.  |**⚙️ Лимит:** 10000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getChats.md) %}  Возвращает ваши чаты с покупателями.  |**⚙️ Лимит:** 10000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param getChatsRequest description
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @return ApiResponse<GetChatsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -286,8 +286,8 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
      *
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param getChatsRequest description
-     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60;, параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60; игнорируются.  (optional)
-     * @param limit Количество товаров на одной странице.  (optional)
+     * @param pageToken Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра &#x60;nextPageToken&#x60;, полученное при последнем запросе.  Если задан &#x60;page_token&#x60; и в запросе есть параметры &#x60;offset&#x60;, &#x60;page_number&#x60; и &#x60;page_size&#x60;, они игнорируются.  (optional)
+     * @param limit Количество значений на одной странице.  (optional)
      * @return RequestConfig
      */
     fun getChatsRequestConfig(businessId: kotlin.Long, getChatsRequest: GetChatsRequest, pageToken: kotlin.String?, limit: kotlin.Int?) : RequestConfig<GetChatsRequest> {
@@ -317,7 +317,7 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Отправка файла в чат
-     * Отправляет файл в чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/sendFileToChat.md) %}  Отправляет файл в чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param chatId Идентификатор чата.
      * @param file Содержимое файла. Максимальный размер файла — 5 Мбайт.
@@ -350,7 +350,7 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Отправка файла в чат
-     * Отправляет файл в чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/sendFileToChat.md) %}  Отправляет файл в чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param chatId Идентификатор чата.
      * @param file Содержимое файла. Максимальный размер файла — 5 Мбайт.
@@ -398,7 +398,7 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Отправка сообщения в чат
-     * Отправляет сообщение в чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/sendMessageToChat.md) %}  Отправляет сообщение в чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param chatId Идентификатор чата.
      * @param sendMessageToChatRequest description
@@ -431,7 +431,7 @@ class ChatsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient =
 
     /**
      * Отправка сообщения в чат
-     * Отправляет сообщение в чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/sendMessageToChat.md) %}  Отправляет сообщение в чат с покупателем.  |**⚙️ Лимит:** 1000 запросов в час| |-| 
      * @param businessId Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
      * @param chatId Идентификатор чата.
      * @param sendMessageToChatRequest description

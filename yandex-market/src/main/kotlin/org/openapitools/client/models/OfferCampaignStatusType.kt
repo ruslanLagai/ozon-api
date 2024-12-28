@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Статус товара:  * `PUBLISHED` — Готов к продаже. * `CHECKING` — На проверке. * `DISABLED_BY_PARTNER` — Скрыт вами. * `REJECTED_BY_MARKET` — Отклонен. * `DISABLED_AUTOMATICALLY` — Исправьте ошибки. * `CREATING_CARD` — Создается карточка. * `NO_CARD` — Нужна карточка. * `NO_STOCKS` — Нет на складе.  [Что обозначает каждый из статусов](https://yandex.ru/support/marketplace/assortment/add/statuses.html) 
+ * Статус товара:  * `PUBLISHED` — Готов к продаже. * `CHECKING` — На проверке. * `DISABLED_BY_PARTNER` — Скрыт вами. * `REJECTED_BY_MARKET` — Отклонен. * `DISABLED_AUTOMATICALLY` — Исправьте ошибки. * `CREATING_CARD` — Создается карточка. * `NO_CARD` — Нужна карточка. * `NO_STOCKS` — Нет на складе. * `ARCHIVED` — В архиве.  [Что обозначает каждый из статусов](https://yandex.ru/support/marketplace/assortment/add/statuses.html) 
  *
- * Values: PUBLISHED,CHECKING,DISABLED_BY_PARTNER,DISABLED_AUTOMATICALLY,REJECTED_BY_MARKET,CREATING_CARD,NO_CARD,NO_STOCKS
+ * Values: PUBLISHED,CHECKING,DISABLED_BY_PARTNER,DISABLED_AUTOMATICALLY,REJECTED_BY_MARKET,CREATING_CARD,NO_CARD,NO_STOCKS,ARCHIVED
  */
 
 @JsonClass(generateAdapter = false)
@@ -50,7 +50,10 @@ enum class OfferCampaignStatusType(val value: kotlin.String) {
     NO_CARD("NO_CARD"),
 
     @Json(name = "NO_STOCKS")
-    NO_STOCKS("NO_STOCKS");
+    NO_STOCKS("NO_STOCKS"),
+
+    @Json(name = "ARCHIVED")
+    ARCHIVED("ARCHIVED");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

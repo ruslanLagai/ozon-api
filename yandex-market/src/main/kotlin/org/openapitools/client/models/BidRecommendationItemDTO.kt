@@ -15,15 +15,17 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.BenefitType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Рекомендованная ставка и возможная доля показов.
+ * Рекомендованная ставка, возможная доля показов и доступные дополнительные инструменты продвижения.
  *
  * @param bid Значение ставки.
  * @param showPercent Доля показов. 
+ * @param benefits Список доступных субсидий.  Чтобы получить необходимый инструмент продвижения, установите ставку, которая будет рекомендована для этого инструмента или выше. 
  */
 
 
@@ -35,7 +37,11 @@ data class BidRecommendationItemDTO (
 
     /* Доля показов.  */
     @Json(name = "showPercent")
-    val showPercent: kotlin.Long
+    val showPercent: kotlin.Long,
+
+    /* Список доступных субсидий.  Чтобы получить необходимый инструмент продвижения, установите ставку, которая будет рекомендована для этого инструмента или выше.  */
+    @Json(name = "benefits")
+    val benefits: kotlin.collections.Set<BenefitType>? = null
 
 )
 

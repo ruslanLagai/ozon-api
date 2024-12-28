@@ -26,19 +26,19 @@ class UpdateOfferMappingResultDTOTest : ShouldSpec() {
         // uncomment below to create an instance of UpdateOfferMappingResultDTO
         //val modelInstance = UpdateOfferMappingResultDTO()
 
-        // to test the property `offerId` - Ваш SKU — идентификатор товара в вашей системе.  Разрешена любая последовательность длиной до 255 знаков.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * SKU товара нельзя менять — можно только удалить товар и добавить заново с новым SKU.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
+        // to test the property `offerId` - Ваш SKU — идентификатор товара в вашей системе.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
         should("test offerId") {
             // uncomment below to test the property
             //modelInstance.offerId shouldBe ("TODO")
         }
 
-        // to test the property `errors` - Ошибки — информация в каталоге не обновится.
+        // to test the property `errors` - Ошибки.  Если хотя бы по одному товару есть ошибка, информация в каталоге не обновится по всем переданным товарам. 
         should("test errors") {
             // uncomment below to test the property
             //modelInstance.errors shouldBe ("TODO")
         }
 
-        // to test the property `warnings` - Предупреждения — информация в каталоге обновится.
+        // to test the property `warnings` - Предупреждения.  Информация в каталоге обновится. 
         should("test warnings") {
             // uncomment below to test the property
             //modelInstance.warnings shouldBe ("TODO")

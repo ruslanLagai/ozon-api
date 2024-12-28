@@ -21,11 +21,11 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Текст ошибки.
+ * Текст ошибки или предупреждения.
  *
  * @param type 
- * @param message Текст ошибки.
- * @param parameterId Идентификатор характеристики, с которой связана ошибка.
+ * @param message Текст ошибки или предупреждения.
+ * @param parameterId Идентификатор характеристики, с которой связана ошибка или предупреждение.
  */
 
 
@@ -34,11 +34,11 @@ data class OfferContentErrorDTO (
     @Json(name = "type")
     val type: OfferContentErrorType,
 
-    /* Текст ошибки. */
+    /* Текст ошибки или предупреждения. */
     @Json(name = "message")
     val message: kotlin.String,
 
-    /* Идентификатор характеристики, с которой связана ошибка. */
+    /* Идентификатор характеристики, с которой связана ошибка или предупреждение. */
     @Json(name = "parameterId")
     val parameterId: kotlin.Long? = null
 

@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Особый тип товара:  * `MEDICINE` — лекарства. * `BOOK` — бумажные и электронные книги. * `AUDIOBOOK` — аудиокниги. * `ARTIST_TITLE` — музыкальная и видеопродукция. * `ON_DEMAND` — товары на заказ.  {% note info \"Если ваш товар — книга\" %}  Укажите год издания в характеристиках товара. [Подробнее о параметре](../../reference/business-assortment/updateOfferMappings.md#offerparamdto)  {% endnote %} 
+ * Особый тип товара:  * `MEDICINE` — лекарства. * `BOOK` — бумажные и электронные книги. * `AUDIOBOOK` — аудиокниги. * `ARTIST_TITLE` — музыкальная и видеопродукция. * `ON_DEMAND` — товары на заказ. * `ALCOHOL` — алкоголь.  {% note info \"Если ваш товар — книга\" %}  Укажите год издания в характеристиках товара. [Подробнее о параметре](../../reference/business-assortment/updateOfferMappings.md#offerparamdto)  {% endnote %} 
  *
- * Values: DEFAULT,MEDICINE,BOOK,AUDIOBOOK,ARTIST_TITLE,ON_DEMAND
+ * Values: DEFAULT,MEDICINE,BOOK,AUDIOBOOK,ARTIST_TITLE,ON_DEMAND,ALCOHOL
  */
 
 @JsonClass(generateAdapter = false)
@@ -44,7 +44,10 @@ enum class OfferType(val value: kotlin.String) {
     ARTIST_TITLE("ARTIST_TITLE"),
 
     @Json(name = "ON_DEMAND")
-    ON_DEMAND("ON_DEMAND");
+    ON_DEMAND("ON_DEMAND"),
+
+    @Json(name = "ALCOHOL")
+    ALCOHOL("ALCOHOL");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

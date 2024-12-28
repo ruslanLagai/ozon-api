@@ -33,7 +33,7 @@ data class GetRegionsResponse (
 
     /* Регион доставки. */
     @Json(name = "regions")
-    val regions: kotlin.collections.List<RegionDTO>? = null,
+    val regions: kotlin.collections.List<RegionDTO>,
 
     @Json(name = "paging")
     val paging: ForwardScrollingPagerDTO? = null

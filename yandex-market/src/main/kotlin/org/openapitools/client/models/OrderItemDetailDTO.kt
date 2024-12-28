@@ -33,14 +33,14 @@ data class OrderItemDetailDTO (
 
     /* Количество единиц товара. */
     @Json(name = "itemCount")
-    val itemCount: kotlin.Long? = null,
+    val itemCount: kotlin.Long,
 
     @Json(name = "itemStatus")
-    val itemStatus: OrderItemStatusType? = null,
+    val itemStatus: OrderItemStatusType,
 
     /* Формат даты: `ДД-ММ-ГГГГ`.  */
     @Json(name = "updateDate")
-    val updateDate: kotlin.String? = null
+    val updateDate: kotlin.String
 
 )
 

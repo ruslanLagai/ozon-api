@@ -28,8 +28,8 @@ import com.squareup.moshi.JsonClass
  * @param orderId Идентификатор заказа.
  * @param type 
  * @param status 
- * @param createdAt Дата и время создания чата.  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-21T00:00:00+03:00`. 
- * @param updatedAt Дата и время последнего сообщения в чате.
+ * @param createdAt Дата и время создания чата.  Формат даты: ISO 8601 со смещением относительно UTC. 
+ * @param updatedAt Дата и время последнего сообщения в чате.  Формат даты: ISO 8601 со смещением относительно UTC. 
  */
 
 
@@ -49,11 +49,11 @@ data class GetChatInfoDTO (
     @Json(name = "status")
     val status: ChatStatusType,
 
-    /* Дата и время создания чата.  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-21T00:00:00+03:00`.  */
+    /* Дата и время создания чата.  Формат даты: ISO 8601 со смещением относительно UTC.  */
     @Json(name = "createdAt")
     val createdAt: java.time.OffsetDateTime,
 
-    /* Дата и время последнего сообщения в чате. */
+    /* Дата и время последнего сообщения в чате.  Формат даты: ISO 8601 со смещением относительно UTC.  */
     @Json(name = "updatedAt")
     val updatedAt: java.time.OffsetDateTime
 

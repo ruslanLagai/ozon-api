@@ -25,7 +25,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param orderId Идентификатор заказа.
  * @param placesNumber Количество коробок в заказе.
- * @param url URL файла с ярлыками‑наклейками на все коробки в заказе.  Соответствует URL, по которому выполняется запрос [GET campaigns/{campaignId}/orders/{orderId}/delivery/labels](../../reference/orders/generateOrderLabels.md). 
+ * @param url {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  URL файла с ярлыками‑наклейками на все коробки в заказе.  Соответствует URL, по которому выполняется запрос [GET campaigns/{campaignId}/orders/{orderId}/delivery/labels](../../reference/orders/generateOrderLabels.md). 
  * @param parcelBoxLabels Информация на ярлыке.
  */
 
@@ -40,8 +40,9 @@ data class OrderLabelDTO (
     @Json(name = "placesNumber")
     val placesNumber: kotlin.Int,
 
-    /* URL файла с ярлыками‑наклейками на все коробки в заказе.  Соответствует URL, по которому выполняется запрос [GET campaigns/{campaignId}/orders/{orderId}/delivery/labels](../../reference/orders/generateOrderLabels.md).  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  URL файла с ярлыками‑наклейками на все коробки в заказе.  Соответствует URL, по которому выполняется запрос [GET campaigns/{campaignId}/orders/{orderId}/delivery/labels](../../reference/orders/generateOrderLabels.md).  */
     @Json(name = "url")
+    @Deprecated(message = "This property is deprecated.")
     val url: kotlin.String,
 
     /* Информация на ярлыке. */

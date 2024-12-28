@@ -22,18 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * Элемент отображает одно грузовое место. Вложенные поля больше не используются, передавайте элемент пустым в запросах и не обращайте внимание на содержимое в ответах.
  *
- * @param id {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %} 
- * @param fulfilmentId {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %} 
+ * @param id {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %} 
+ * @param fulfilmentId {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %} 
  */
 
 
 data class ParcelBoxDTO (
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  */
     @Json(name = "id")
     val id: kotlin.Long? = null,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  */
     @Json(name = "fulfilmentId")
     val fulfilmentId: kotlin.String? = null
 

@@ -27,6 +27,7 @@ import com.squareup.moshi.JsonClass
  * @param dateTo Конечная дата для фильтрации по дате отгрузки (включительно).  Формат даты: `ДД-ММ-ГГГГ`. 
  * @param statuses Список статусов отгрузок.
  * @param orderIds Список идентификаторов заказов из отгрузок.
+ * @param cancelledOrders Возвращать ли отмененные заказы.  Значение по умолчанию: `true`. Если возвращать отмененные заказы не нужно, передайте значение `false`. 
  */
 
 
@@ -34,11 +35,11 @@ data class SearchShipmentsRequest (
 
     /* Начальная дата для фильтрации по дате отгрузки (включительно).  Формат даты: `ДД-ММ-ГГГГ`.  */
     @Json(name = "dateFrom")
-    val dateFrom: java.time.LocalDate? = null,
+    val dateFrom: java.time.LocalDate,
 
     /* Конечная дата для фильтрации по дате отгрузки (включительно).  Формат даты: `ДД-ММ-ГГГГ`.  */
     @Json(name = "dateTo")
-    val dateTo: java.time.LocalDate? = null,
+    val dateTo: java.time.LocalDate,
 
     /* Список статусов отгрузок. */
     @Json(name = "statuses")
@@ -46,7 +47,11 @@ data class SearchShipmentsRequest (
 
     /* Список идентификаторов заказов из отгрузок. */
     @Json(name = "orderIds")
-    val orderIds: kotlin.collections.Set<kotlin.Long>? = null
+    val orderIds: kotlin.collections.Set<kotlin.Long>? = null,
+
+    /* Возвращать ли отмененные заказы.  Значение по умолчанию: `true`. Если возвращать отмененные заказы не нужно, передайте значение `false`.  */
+    @Json(name = "cancelledOrders")
+    val cancelledOrders: kotlin.Boolean? = true
 
 )
 

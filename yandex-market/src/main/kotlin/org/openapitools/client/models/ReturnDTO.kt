@@ -26,19 +26,19 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Возврат заказа.
+ * Возврат заказа.  Параметров `logisticPickupPoint`, `shipmentRecipientType` и `shipmentStatus` может не быть в случае возврата:   * С опцией **Быстрый возврат денег за дешевый брак**, когда товар остается у покупателя (`fastReturn=true`).   * По заказу от бизнеса, если:     * статус возврата `STARTED_BY_USER` или `WAITING_FOR_DECISION`;     * возврат отменен до передачи товара. 
  *
  * @param id Идентификатор возврата.
  * @param orderId Номер заказа.
- * @param creationDate Дата создания возврата клиентом.
- * @param updateDate Дата обновления возврата.
+ * @param items Список товаров в возврате.
+ * @param returnType 
+ * @param creationDate Дата создания возврата клиентом.  Формат даты: ISO 8601 со смещением относительно UTC. 
+ * @param updateDate Дата обновления возврата.  Формат даты: ISO 8601 со смещением относительно UTC. 
  * @param refundStatus 
  * @param logisticPickupPoint 
  * @param shipmentRecipientType 
  * @param shipmentStatus 
  * @param refundAmount Сумма возврата.
- * @param items Список товаров в возврате.
- * @param returnType 
  * @param fastReturn Используется ли опция **Быстрый возврат денег за дешевый брак**. 
  */
 
@@ -47,17 +47,24 @@ data class ReturnDTO (
 
     /* Идентификатор возврата. */
     @Json(name = "id")
-    val id: kotlin.Long? = null,
+    val id: kotlin.Long,
 
     /* Номер заказа. */
     @Json(name = "orderId")
-    val orderId: kotlin.Long? = null,
+    val orderId: kotlin.Long,
 
-    /* Дата создания возврата клиентом. */
+    /* Список товаров в возврате. */
+    @Json(name = "items")
+    val items: kotlin.collections.List<ReturnItemDTO>,
+
+    @Json(name = "returnType")
+    val returnType: ReturnType,
+
+    /* Дата создания возврата клиентом.  Формат даты: ISO 8601 со смещением относительно UTC.  */
     @Json(name = "creationDate")
     val creationDate: java.time.OffsetDateTime? = null,
 
-    /* Дата обновления возврата. */
+    /* Дата обновления возврата.  Формат даты: ISO 8601 со смещением относительно UTC.  */
     @Json(name = "updateDate")
     val updateDate: java.time.OffsetDateTime? = null,
 
@@ -76,13 +83,6 @@ data class ReturnDTO (
     /* Сумма возврата. */
     @Json(name = "refundAmount")
     val refundAmount: kotlin.Long? = null,
-
-    /* Список товаров в возврате. */
-    @Json(name = "items")
-    val items: kotlin.collections.List<ReturnItemDTO>? = null,
-
-    @Json(name = "returnType")
-    val returnType: ReturnType? = null,
 
     /* Используется ли опция **Быстрый возврат денег за дешевый брак**.  */
     @Json(name = "fastReturn")

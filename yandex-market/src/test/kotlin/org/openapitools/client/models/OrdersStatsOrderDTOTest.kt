@@ -25,11 +25,30 @@ import org.openapitools.client.models.OrdersStatsDeliveryRegionDTO
 import org.openapitools.client.models.OrdersStatsItemDTO
 import org.openapitools.client.models.OrdersStatsOrderPaymentType
 import org.openapitools.client.models.OrdersStatsPaymentDTO
+import org.openapitools.client.models.OrdersStatsSubsidyDTO
 
 class OrdersStatsOrderDTOTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of OrdersStatsOrderDTO
         //val modelInstance = OrdersStatsOrderDTO()
+
+        // to test the property `items` - Список товаров в заказе после возможных изменений.
+        should("test items") {
+            // uncomment below to test the property
+            //modelInstance.items shouldBe ("TODO")
+        }
+
+        // to test the property `payments` - Информация о денежных переводах по заказу.
+        should("test payments") {
+            // uncomment below to test the property
+            //modelInstance.payments shouldBe ("TODO")
+        }
+
+        // to test the property `commissions` - Информация о комиссиях за заказ.
+        should("test commissions") {
+            // uncomment below to test the property
+            //modelInstance.commissions shouldBe ("TODO")
+        }
 
         // to test the property `id` - Идентификатор заказа.
         should("test id") {
@@ -67,7 +86,7 @@ class OrdersStatsOrderDTOTest : ShouldSpec() {
             //modelInstance.paymentType shouldBe ("TODO")
         }
 
-        // to test the property `fake` - Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../pushapi/concepts/sandbox.md) заказ Маркета. 
+        // to test the property `fake` - Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../concepts/sandbox.md) заказ Маркета. 
         should("test fake") {
             // uncomment below to test the property
             //modelInstance.fake shouldBe ("TODO")
@@ -79,28 +98,16 @@ class OrdersStatsOrderDTOTest : ShouldSpec() {
             //modelInstance.deliveryRegion shouldBe ("TODO")
         }
 
-        // to test the property `items` - Список товаров в заказе после возможных изменений.
-        should("test items") {
-            // uncomment below to test the property
-            //modelInstance.items shouldBe ("TODO")
-        }
-
         // to test the property `initialItems` - Список товаров в заказе до изменений.
         should("test initialItems") {
             // uncomment below to test the property
             //modelInstance.initialItems shouldBe ("TODO")
         }
 
-        // to test the property `payments` - Информация о денежных переводах по заказу.
-        should("test payments") {
+        // to test the property `subsidies` - Начисление баллов, которые используются для уменьшения стоимости размещения, и их списание в случае возврата или невыкупа.
+        should("test subsidies") {
             // uncomment below to test the property
-            //modelInstance.payments shouldBe ("TODO")
-        }
-
-        // to test the property `commissions` - Информация о комиссиях за заказ.
-        should("test commissions") {
-            // uncomment below to test the property
-            //modelInstance.commissions shouldBe ("TODO")
+            //modelInstance.subsidies shouldBe ("TODO")
         }
 
     }

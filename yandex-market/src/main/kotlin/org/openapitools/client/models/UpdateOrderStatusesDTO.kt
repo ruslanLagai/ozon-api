@@ -31,7 +31,7 @@ data class UpdateOrderStatusesDTO (
 
     /* Список с обновленными заказами. */
     @Json(name = "orders")
-    val orders: kotlin.collections.List<UpdateOrderStatusDTO>? = null
+    val orders: kotlin.collections.List<UpdateOrderStatusDTO>
 
 )
 

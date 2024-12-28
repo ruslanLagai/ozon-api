@@ -31,7 +31,7 @@ data class FulfillmentWarehousesDTO (
 
     /* Список складов Маркета (FBY). */
     @Json(name = "warehouses")
-    val warehouses: kotlin.collections.List<FulfillmentWarehouseDTO>? = null
+    val warehouses: kotlin.collections.List<FulfillmentWarehouseDTO>
 
 )
 

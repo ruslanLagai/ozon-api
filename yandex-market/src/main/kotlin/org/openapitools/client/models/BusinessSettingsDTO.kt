@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CurrencyType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -22,15 +23,19 @@ import com.squareup.moshi.JsonClass
 /**
  * Настройки кабинета.
  *
- * @param onlyDefaultPrice Можно ли установить только [базовую цену](*rule): * `false` — можно задать и базовую цену, и цены в конкретных магазинах. * `true` — можно задать только базовую цену. 
+ * @param onlyDefaultPrice Управление ценами на товары:  * `false` — можно установить цену, которая действует:   * во всех магазинах кабинета — [POST businesses/{businessId}/offer-prices/updates](../../reference/business-assortment/updateBusinessPrices.md);   * в конкретном магазине — [POST campaigns/{campaignId}/offer-prices/updates](../../reference/assortment/updatePrices.md). * `true` — можно установить только цену, которая действует во всех магазинах кабинета, — [POST businesses/{businessId}/offer-prices/updates](../../reference/business-assortment/updateBusinessPrices.md). 
+ * @param currency 
  */
 
 
 data class BusinessSettingsDTO (
 
-    /* Можно ли установить только [базовую цену](*rule): * `false` — можно задать и базовую цену, и цены в конкретных магазинах. * `true` — можно задать только базовую цену.  */
+    /* Управление ценами на товары:  * `false` — можно установить цену, которая действует:   * во всех магазинах кабинета — [POST businesses/{businessId}/offer-prices/updates](../../reference/business-assortment/updateBusinessPrices.md);   * в конкретном магазине — [POST campaigns/{campaignId}/offer-prices/updates](../../reference/assortment/updatePrices.md). * `true` — можно установить только цену, которая действует во всех магазинах кабинета, — [POST businesses/{businessId}/offer-prices/updates](../../reference/business-assortment/updateBusinessPrices.md).  */
     @Json(name = "onlyDefaultPrice")
-    val onlyDefaultPrice: kotlin.Boolean? = null
+    val onlyDefaultPrice: kotlin.Boolean? = null,
+
+    @Json(name = "currency")
+    val currency: CurrencyType? = null
 
 )
 

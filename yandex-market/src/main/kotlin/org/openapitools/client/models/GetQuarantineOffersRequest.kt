@@ -35,23 +35,23 @@ data class GetQuarantineOffersRequest (
 
     /* Идентификаторы товаров, информация о которых нужна. <br><br> ⚠️ Не используйте это поле одновременно с фильтрами по статусам карточек, категориям, брендам или тегам. Если вы хотите воспользоваться фильтрами, оставьте поле пустым.  */
     @Json(name = "offerIds")
-    val offerIds: kotlin.collections.List<kotlin.String>? = null,
+    val offerIds: kotlin.collections.Set<kotlin.String>? = null,
 
     /* Фильтр по статусам карточек.  [Что такое карточка товара](https://yandex.ru/support/marketplace/assortment/content/index.html)  */
     @Json(name = "cardStatuses")
-    val cardStatuses: kotlin.collections.List<OfferCardStatusType>? = null,
+    val cardStatuses: kotlin.collections.Set<OfferCardStatusType>? = null,
 
     /* Фильтр по категориям на Маркете. */
     @Json(name = "categoryIds")
-    val categoryIds: kotlin.collections.List<kotlin.Int>? = null,
+    val categoryIds: kotlin.collections.Set<kotlin.Int>? = null,
 
     /* Фильтр по брендам. */
     @Json(name = "vendorNames")
-    val vendorNames: kotlin.collections.List<kotlin.String>? = null,
+    val vendorNames: kotlin.collections.Set<kotlin.String>? = null,
 
     /* Фильтр по тегам. */
     @Json(name = "tags")
-    val tags: kotlin.collections.List<kotlin.String>? = null
+    val tags: kotlin.collections.Set<kotlin.String>? = null
 
 )
 

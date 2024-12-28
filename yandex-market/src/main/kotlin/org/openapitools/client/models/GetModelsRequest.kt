@@ -30,7 +30,7 @@ data class GetModelsRequest (
 
     /* Список моделей. */
     @Json(name = "models")
-    val models: kotlin.collections.List<kotlin.Long>? = null
+    val models: kotlin.collections.List<kotlin.Long>
 
 )
 

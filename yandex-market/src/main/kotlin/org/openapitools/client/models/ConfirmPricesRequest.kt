@@ -30,7 +30,7 @@ data class ConfirmPricesRequest (
 
     /* Идентификаторы товаров, у которых подтверждается цена. */
     @Json(name = "offerIds")
-    val offerIds: kotlin.collections.List<kotlin.String>
+    val offerIds: kotlin.collections.Set<kotlin.String>
 
 )
 

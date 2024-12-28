@@ -36,7 +36,7 @@ data class SearchModelsResponse (
 
     /* Список моделей товаров. */
     @Json(name = "models")
-    val models: kotlin.collections.List<ModelDTO>? = null,
+    val models: kotlin.collections.List<ModelDTO>,
 
     @Json(name = "currency")
     val currency: CurrencyType? = null,

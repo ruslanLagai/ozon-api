@@ -33,7 +33,7 @@ data class GetCampaignsResponse (
 
     /* Список с информацией по каждому магазину. */
     @Json(name = "campaigns")
-    val campaigns: kotlin.collections.List<CampaignDTO>? = null,
+    val campaigns: kotlin.collections.List<CampaignDTO>,
 
     @Json(name = "pager")
     val pager: FlippingPagerDTO? = null

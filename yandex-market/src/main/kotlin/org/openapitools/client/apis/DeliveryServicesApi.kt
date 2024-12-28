@@ -53,7 +53,7 @@ class DeliveryServicesApi(basePath: kotlin.String = defaultBasePath, client: OkH
 
     /**
      * Справочник служб доставки
-     * Возвращает справочник служб доставки: идентификаторы и наименования. |**⚙️ Лимит:** 5 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getDeliveryServices.md) %}  Возвращает справочник служб доставки: идентификаторы и наименования. |**⚙️ Лимит:** 5 000 запросов в час| |-| 
      * @return GetDeliveryServicesResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -83,7 +83,7 @@ class DeliveryServicesApi(basePath: kotlin.String = defaultBasePath, client: OkH
 
     /**
      * Справочник служб доставки
-     * Возвращает справочник служб доставки: идентификаторы и наименования. |**⚙️ Лимит:** 5 000 запросов в час| |-| 
+     * {% include notitle [access](../../_auto/method_scopes/getDeliveryServices.md) %}  Возвращает справочник служб доставки: идентификаторы и наименования. |**⚙️ Лимит:** 5 000 запросов в час| |-| 
      * @return ApiResponse<GetDeliveryServicesResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception

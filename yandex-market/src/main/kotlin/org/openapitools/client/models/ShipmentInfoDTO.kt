@@ -28,21 +28,21 @@ import com.squareup.moshi.JsonClass
  * Список с информацией об отгрузках.
  *
  * @param id Идентификатор отгрузки.
- * @param planIntervalFrom Начало планового интервала отгрузки.
- * @param planIntervalTo Конец планового интервала отгрузки.
+ * @param planIntervalFrom Начало планового интервала отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC. 
+ * @param planIntervalTo Конец планового интервала отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC. 
+ * @param orderIds Идентификаторы заказов в отгрузке.
+ * @param draftCount Количество заказов, которое Маркет запланировал к отгрузке.
+ * @param plannedCount Количество заказов, которое Маркет подтвердил к отгрузке.
+ * @param factCount Количество заказов, принятых в сортировочном центре или пункте приема.
  * @param shipmentType 
  * @param warehouse 
  * @param warehouseTo 
  * @param externalId Идентификатор отгрузки в вашей системе. Если вы еще не передавали идентификатор, вернется идентификатор из параметра `id`.
  * @param deliveryService 
  * @param palletsCount 
- * @param orderIds Идентификаторы заказов в отгрузке.
- * @param draftCount Количество заказов, запланированных к отгрузке.
- * @param plannedCount Количество отгруженных заказов.
- * @param factCount Количество заказов, принятых в сортировочном центре или пункте приема.
  * @param status 
  * @param statusDescription Описание статуса отгрузки.
- * @param statusUpdateTime Время последнего изменения статуса отгрузки.
+ * @param statusUpdateTime Время последнего изменения статуса отгрузки  Формат даты: ISO 8601 со смещением относительно UTC. 
  */
 
 
@@ -50,15 +50,31 @@ data class ShipmentInfoDTO (
 
     /* Идентификатор отгрузки. */
     @Json(name = "id")
-    val id: kotlin.Long? = null,
+    val id: kotlin.Long,
 
-    /* Начало планового интервала отгрузки. */
+    /* Начало планового интервала отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC.  */
     @Json(name = "planIntervalFrom")
-    val planIntervalFrom: java.time.OffsetDateTime? = null,
+    val planIntervalFrom: java.time.OffsetDateTime,
 
-    /* Конец планового интервала отгрузки. */
+    /* Конец планового интервала отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC.  */
     @Json(name = "planIntervalTo")
-    val planIntervalTo: java.time.OffsetDateTime? = null,
+    val planIntervalTo: java.time.OffsetDateTime,
+
+    /* Идентификаторы заказов в отгрузке. */
+    @Json(name = "orderIds")
+    val orderIds: kotlin.collections.Set<kotlin.Long>,
+
+    /* Количество заказов, которое Маркет запланировал к отгрузке. */
+    @Json(name = "draftCount")
+    val draftCount: kotlin.Int,
+
+    /* Количество заказов, которое Маркет подтвердил к отгрузке. */
+    @Json(name = "plannedCount")
+    val plannedCount: kotlin.Int,
+
+    /* Количество заказов, принятых в сортировочном центре или пункте приема. */
+    @Json(name = "factCount")
+    val factCount: kotlin.Int,
 
     @Json(name = "shipmentType")
     val shipmentType: ShipmentType? = null,
@@ -79,22 +95,6 @@ data class ShipmentInfoDTO (
     @Json(name = "palletsCount")
     val palletsCount: PalletsCountDTO? = null,
 
-    /* Идентификаторы заказов в отгрузке. */
-    @Json(name = "orderIds")
-    val orderIds: kotlin.collections.Set<kotlin.Long>? = null,
-
-    /* Количество заказов, запланированных к отгрузке. */
-    @Json(name = "draftCount")
-    val draftCount: kotlin.Int? = null,
-
-    /* Количество отгруженных заказов. */
-    @Json(name = "plannedCount")
-    val plannedCount: kotlin.Int? = null,
-
-    /* Количество заказов, принятых в сортировочном центре или пункте приема. */
-    @Json(name = "factCount")
-    val factCount: kotlin.Int? = null,
-
     @Json(name = "status")
     val status: ShipmentStatusType? = null,
 
@@ -102,7 +102,7 @@ data class ShipmentInfoDTO (
     @Json(name = "statusDescription")
     val statusDescription: kotlin.String? = null,
 
-    /* Время последнего изменения статуса отгрузки. */
+    /* Время последнего изменения статуса отгрузки  Формат даты: ISO 8601 со смещением относительно UTC.  */
     @Json(name = "statusUpdateTime")
     val statusUpdateTime: java.time.OffsetDateTime? = null
 

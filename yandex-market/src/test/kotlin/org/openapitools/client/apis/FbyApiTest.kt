@@ -31,19 +31,26 @@ import org.openapitools.client.models.ApiServerErrorResponse
 import org.openapitools.client.models.ApiUnauthorizedErrorResponse
 import org.openapitools.client.models.CalculateTariffsRequest
 import org.openapitools.client.models.CalculateTariffsResponse
+import org.openapitools.client.models.CatalogLanguageType
 import org.openapitools.client.models.ConfirmPricesRequest
 import org.openapitools.client.models.CreateChatRequest
 import org.openapitools.client.models.CreateChatResponse
+import org.openapitools.client.models.CurrencyType
 import org.openapitools.client.models.DeleteCampaignOffersRequest
 import org.openapitools.client.models.DeleteCampaignOffersResponse
+import org.openapitools.client.models.DeleteGoodsFeedbackCommentRequest
 import org.openapitools.client.models.DeleteHiddenOffersRequest
 import org.openapitools.client.models.DeleteOffersFromArchiveRequest
 import org.openapitools.client.models.DeleteOffersFromArchiveResponse
 import org.openapitools.client.models.DeleteOffersRequest
 import org.openapitools.client.models.DeleteOffersResponse
+import org.openapitools.client.models.DeletePromoOffersRequest
+import org.openapitools.client.models.DeletePromoOffersResponse
 import org.openapitools.client.models.EmptyApiResponse
+import org.openapitools.client.models.FeedIndexLogsStatusType
 import org.openapitools.client.models.GenerateBoostConsolidatedRequest
 import org.openapitools.client.models.GenerateCompetitorsPositionReportRequest
+import org.openapitools.client.models.GenerateGoodsFeedbackRequest
 import org.openapitools.client.models.GenerateGoodsMovementReportRequest
 import org.openapitools.client.models.GenerateGoodsRealizationReportRequest
 import org.openapitools.client.models.GenerateGoodsTurnoverRequest
@@ -55,6 +62,7 @@ import org.openapitools.client.models.GenerateStocksOnWarehousesReportRequest
 import org.openapitools.client.models.GenerateUnitedMarketplaceServicesReportRequest
 import org.openapitools.client.models.GenerateUnitedNettingReportRequest
 import org.openapitools.client.models.GenerateUnitedOrdersRequest
+import org.openapitools.client.models.GetAllOffersResponse
 import org.openapitools.client.models.GetBidsInfoRequest
 import org.openapitools.client.models.GetBidsInfoResponse
 import org.openapitools.client.models.GetBidsRecommendationsRequest
@@ -65,8 +73,12 @@ import org.openapitools.client.models.GetBusinessSettingsResponse
 import org.openapitools.client.models.GetCampaignLoginsResponse
 import org.openapitools.client.models.GetCampaignOffersRequest
 import org.openapitools.client.models.GetCampaignOffersResponse
+import org.openapitools.client.models.GetCampaignRegionResponse
 import org.openapitools.client.models.GetCampaignResponse
+import org.openapitools.client.models.GetCampaignSettingsResponse
 import org.openapitools.client.models.GetCampaignsResponse
+import org.openapitools.client.models.GetCategoriesMaxSaleQuantumRequest
+import org.openapitools.client.models.GetCategoriesMaxSaleQuantumResponse
 import org.openapitools.client.models.GetCategoriesRequest
 import org.openapitools.client.models.GetCategoriesResponse
 import org.openapitools.client.models.GetCategoryContentParametersResponse
@@ -74,7 +86,15 @@ import org.openapitools.client.models.GetChatHistoryRequest
 import org.openapitools.client.models.GetChatHistoryResponse
 import org.openapitools.client.models.GetChatsRequest
 import org.openapitools.client.models.GetChatsResponse
+import org.openapitools.client.models.GetFeedIndexLogsResponse
+import org.openapitools.client.models.GetFeedResponse
+import org.openapitools.client.models.GetFeedbackListResponse
+import org.openapitools.client.models.GetFeedsResponse
 import org.openapitools.client.models.GetFulfillmentWarehousesResponse
+import org.openapitools.client.models.GetGoodsFeedbackCommentsRequest
+import org.openapitools.client.models.GetGoodsFeedbackCommentsResponse
+import org.openapitools.client.models.GetGoodsFeedbackRequest
+import org.openapitools.client.models.GetGoodsFeedbackResponse
 import org.openapitools.client.models.GetGoodsStatsRequest
 import org.openapitools.client.models.GetGoodsStatsResponse
 import org.openapitools.client.models.GetHiddenOffersResponse
@@ -85,17 +105,27 @@ import org.openapitools.client.models.GetOfferMappingsRequest
 import org.openapitools.client.models.GetOfferMappingsResponse
 import org.openapitools.client.models.GetOfferRecommendationsRequest
 import org.openapitools.client.models.GetOfferRecommendationsResponse
+import org.openapitools.client.models.GetOffersResponse
 import org.openapitools.client.models.GetOrderResponse
+import org.openapitools.client.models.GetOrdersResponse
 import org.openapitools.client.models.GetOrdersStatsRequest
 import org.openapitools.client.models.GetOrdersStatsResponse
 import org.openapitools.client.models.GetPricesByOfferIdsRequest
 import org.openapitools.client.models.GetPricesByOfferIdsResponse
 import org.openapitools.client.models.GetPricesResponse
+import org.openapitools.client.models.GetPromoOffersRequest
+import org.openapitools.client.models.GetPromoOffersResponse
+import org.openapitools.client.models.GetPromosRequest
+import org.openapitools.client.models.GetPromosResponse
+import org.openapitools.client.models.GetQualityRatingRequest
+import org.openapitools.client.models.GetQualityRatingResponse
 import org.openapitools.client.models.GetQuarantineOffersRequest
 import org.openapitools.client.models.GetQuarantineOffersResponse
 import org.openapitools.client.models.GetRegionWithChildrenResponse
 import org.openapitools.client.models.GetRegionsResponse
 import org.openapitools.client.models.GetReportInfoResponse
+import org.openapitools.client.models.GetReturnResponse
+import org.openapitools.client.models.GetReturnsResponse
 import org.openapitools.client.models.GetSuggestedOfferMappingEntriesRequest
 import org.openapitools.client.models.GetSuggestedOfferMappingEntriesResponse
 import org.openapitools.client.models.GetSuggestedOfferMappingsRequest
@@ -105,21 +135,32 @@ import org.openapitools.client.models.GetWarehouseStocksResponse
 import org.openapitools.client.models.OfferAvailabilityStatusType
 import org.openapitools.client.models.OfferMappingKindType
 import org.openapitools.client.models.OfferProcessingStatusType
+import org.openapitools.client.models.OrderBuyerType
+import org.openapitools.client.models.OrderDeliveryDispatchType
+import org.openapitools.client.models.OrderStatusType
+import org.openapitools.client.models.OrderSubstatusType
 import org.openapitools.client.models.PutSkuBidsRequest
+import org.openapitools.client.models.RefundStatusType
 import org.openapitools.client.models.ReportFormatType
+import org.openapitools.client.models.ReportLanguageType
+import org.openapitools.client.models.ReturnType
 import org.openapitools.client.models.SendMessageToChatRequest
+import org.openapitools.client.models.SetFeedParamsRequest
+import org.openapitools.client.models.SkipGoodsFeedbackReactionRequest
 import org.openapitools.client.models.SuggestPricesRequest
 import org.openapitools.client.models.SuggestPricesResponse
 import org.openapitools.client.models.UpdateBusinessPricesRequest
 import org.openapitools.client.models.UpdateCampaignOffersRequest
+import org.openapitools.client.models.UpdateGoodsFeedbackCommentRequest
+import org.openapitools.client.models.UpdateGoodsFeedbackCommentResponse
 import org.openapitools.client.models.UpdateOfferContentRequest
 import org.openapitools.client.models.UpdateOfferContentResponse
 import org.openapitools.client.models.UpdateOfferMappingEntryRequest
 import org.openapitools.client.models.UpdateOfferMappingsRequest
 import org.openapitools.client.models.UpdateOfferMappingsResponse
-import org.openapitools.client.models.UpdateOrderStatusRequest
-import org.openapitools.client.models.UpdateOrderStatusResponse
 import org.openapitools.client.models.UpdatePricesRequest
+import org.openapitools.client.models.UpdatePromoOffersRequest
+import org.openapitools.client.models.UpdatePromoOffersResponse
 
 class FbyApiTest : ShouldSpec() {
     init {
@@ -188,6 +229,15 @@ class FbyApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
+        // to test deleteGoodsFeedbackComment
+        should("test deleteGoodsFeedbackComment") {
+            // uncomment below to test deleteGoodsFeedbackComment
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val deleteGoodsFeedbackCommentRequest : DeleteGoodsFeedbackCommentRequest =  // DeleteGoodsFeedbackCommentRequest | 
+            //val result : EmptyApiResponse = apiInstance.deleteGoodsFeedbackComment(businessId, deleteGoodsFeedbackCommentRequest)
+            //result shouldBe ("TODO")
+        }
+
         // to test deleteHiddenOffers
         should("test deleteHiddenOffers") {
             // uncomment below to test deleteHiddenOffers
@@ -215,6 +265,15 @@ class FbyApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
+        // to test deletePromoOffers
+        should("test deletePromoOffers") {
+            // uncomment below to test deletePromoOffers
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val deletePromoOffersRequest : DeletePromoOffersRequest =  // DeletePromoOffersRequest | 
+            //val result : DeletePromoOffersResponse = apiInstance.deletePromoOffers(businessId, deletePromoOffersRequest)
+            //result shouldBe ("TODO")
+        }
+
         // to test generateBoostConsolidatedReport
         should("test generateBoostConsolidatedReport") {
             // uncomment below to test generateBoostConsolidatedReport
@@ -230,6 +289,15 @@ class FbyApiTest : ShouldSpec() {
             //val generateCompetitorsPositionReportRequest : GenerateCompetitorsPositionReportRequest =  // GenerateCompetitorsPositionReportRequest | 
             //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
             //val result : GenerateReportResponse = apiInstance.generateCompetitorsPositionReport(generateCompetitorsPositionReportRequest, format)
+            //result shouldBe ("TODO")
+        }
+
+        // to test generateGoodsFeedbackReport
+        should("test generateGoodsFeedbackReport") {
+            // uncomment below to test generateGoodsFeedbackReport
+            //val generateGoodsFeedbackRequest : GenerateGoodsFeedbackRequest =  // GenerateGoodsFeedbackRequest | 
+            //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
+            //val result : GenerateReportResponse = apiInstance.generateGoodsFeedbackReport(generateGoodsFeedbackRequest, format)
             //result shouldBe ("TODO")
         }
 
@@ -301,7 +369,8 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test generateUnitedMarketplaceServicesReport
             //val generateUnitedMarketplaceServicesReportRequest : GenerateUnitedMarketplaceServicesReportRequest =  // GenerateUnitedMarketplaceServicesReportRequest | 
             //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
-            //val result : GenerateReportResponse = apiInstance.generateUnitedMarketplaceServicesReport(generateUnitedMarketplaceServicesReportRequest, format)
+            //val language : ReportLanguageType =  // ReportLanguageType | Язык отчета.
+            //val result : GenerateReportResponse = apiInstance.generateUnitedMarketplaceServicesReport(generateUnitedMarketplaceServicesReportRequest, format, language)
             //result shouldBe ("TODO")
         }
 
@@ -310,7 +379,8 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test generateUnitedNettingReport
             //val generateUnitedNettingReportRequest : GenerateUnitedNettingReportRequest =  // GenerateUnitedNettingReportRequest | 
             //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
-            //val result : GenerateReportResponse = apiInstance.generateUnitedNettingReport(generateUnitedNettingReportRequest, format)
+            //val language : ReportLanguageType =  // ReportLanguageType | Язык отчета.
+            //val result : GenerateReportResponse = apiInstance.generateUnitedNettingReport(generateUnitedNettingReportRequest, format, language)
             //result shouldBe ("TODO")
         }
 
@@ -319,7 +389,18 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test generateUnitedOrdersReport
             //val generateUnitedOrdersRequest : GenerateUnitedOrdersRequest =  // GenerateUnitedOrdersRequest | 
             //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
-            //val result : GenerateReportResponse = apiInstance.generateUnitedOrdersReport(generateUnitedOrdersRequest, format)
+            //val language : ReportLanguageType =  // ReportLanguageType | Язык отчета.
+            //val result : GenerateReportResponse = apiInstance.generateUnitedOrdersReport(generateUnitedOrdersRequest, format, language)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getAllOffers
+        should("test getAllOffers") {
+            // uncomment below to test getAllOffers
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val feedId : kotlin.Long = 789 // kotlin.Long | Идентификатор прайс-листа.
+            //val chunk : kotlin.Int = 56 // kotlin.Int | Номер сегмента с результатами.  Значение по умолчанию: `0`.  {% note info \"Как запрашиваются номера сегментов\" %}  Последовательно, пока не будет получен сегмент с пустым ответом. Пустой ответ означает, что все предложения магазина получены.  {% endnote %}  {% note alert \"Нумерация начинается с 0\" %}  Чтобы запросить первую страницу, необходимо указать `chunk=0` и т. д.  {% endnote %} 
+            //val result : GetAllOffersResponse = apiInstance.getAllOffers(campaignId, feedId, chunk)
             //result shouldBe ("TODO")
         }
 
@@ -327,8 +408,8 @@ class FbyApiTest : ShouldSpec() {
         should("test getBidsInfoForBusiness") {
             // uncomment below to test getBidsInfoForBusiness
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val getBidsInfoRequest : GetBidsInfoRequest =  // GetBidsInfoRequest | description
             //val result : GetBidsInfoResponse = apiInstance.getBidsInfoForBusiness(businessId, pageToken, limit, getBidsInfoRequest)
             //result shouldBe ("TODO")
@@ -348,8 +429,8 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test getBusinessQuarantineOffers
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val getQuarantineOffersRequest : GetQuarantineOffersRequest =  // GetQuarantineOffersRequest | 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetQuarantineOffersResponse = apiInstance.getBusinessQuarantineOffers(businessId, getQuarantineOffersRequest, pageToken, limit)
             //result shouldBe ("TODO")
         }
@@ -383,8 +464,8 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test getCampaignOffers
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val getCampaignOffersRequest : GetCampaignOffersRequest =  // GetCampaignOffersRequest | 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetCampaignOffersResponse = apiInstance.getCampaignOffers(campaignId, getCampaignOffersRequest, pageToken, limit)
             //result shouldBe ("TODO")
         }
@@ -394,16 +475,32 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test getCampaignQuarantineOffers
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val getQuarantineOffersRequest : GetQuarantineOffersRequest =  // GetQuarantineOffersRequest | 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetQuarantineOffersResponse = apiInstance.getCampaignQuarantineOffers(campaignId, getQuarantineOffersRequest, pageToken, limit)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getCampaignRegion
+        should("test getCampaignRegion") {
+            // uncomment below to test getCampaignRegion
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val result : GetCampaignRegionResponse = apiInstance.getCampaignRegion(campaignId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getCampaignSettings
+        should("test getCampaignSettings") {
+            // uncomment below to test getCampaignSettings
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val result : GetCampaignSettingsResponse = apiInstance.getCampaignSettings(campaignId)
             //result shouldBe ("TODO")
         }
 
         // to test getCampaigns
         should("test getCampaigns") {
             // uncomment below to test getCampaigns
-            //val page : kotlin.Int = 56 // kotlin.Int | Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val result : GetCampaignsResponse = apiInstance.getCampaigns(page, pageSize)
             //result shouldBe ("TODO")
@@ -413,9 +510,17 @@ class FbyApiTest : ShouldSpec() {
         should("test getCampaignsByLogin") {
             // uncomment below to test getCampaignsByLogin
             //val login : kotlin.String = login_example // kotlin.String | Логин пользователя.
-            //val page : kotlin.Int = 56 // kotlin.Int | Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val result : GetCampaignsResponse = apiInstance.getCampaignsByLogin(login, page, pageSize)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getCategoriesMaxSaleQuantum
+        should("test getCategoriesMaxSaleQuantum") {
+            // uncomment below to test getCategoriesMaxSaleQuantum
+            //val getCategoriesMaxSaleQuantumRequest : GetCategoriesMaxSaleQuantumRequest =  // GetCategoriesMaxSaleQuantumRequest | 
+            //val result : GetCategoriesMaxSaleQuantumResponse = apiInstance.getCategoriesMaxSaleQuantum(getCategoriesMaxSaleQuantumRequest)
             //result shouldBe ("TODO")
         }
 
@@ -441,8 +546,8 @@ class FbyApiTest : ShouldSpec() {
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val chatId : kotlin.Long = 789 // kotlin.Long | Идентификатор чата.
             //val getChatHistoryRequest : GetChatHistoryRequest =  // GetChatHistoryRequest | description
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetChatHistoryResponse = apiInstance.getChatHistory(businessId, chatId, getChatHistoryRequest, pageToken, limit)
             //result shouldBe ("TODO")
         }
@@ -452,9 +557,50 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test getChats
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val getChatsRequest : GetChatsRequest =  // GetChatsRequest | description
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetChatsResponse = apiInstance.getChats(businessId, getChatsRequest, pageToken, limit)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getFeed
+        should("test getFeed") {
+            // uncomment below to test getFeed
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val feedId : kotlin.Long = 789 // kotlin.Long | Идентификатор прайс-листа.
+            //val result : GetFeedResponse = apiInstance.getFeed(campaignId, feedId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getFeedIndexLogs
+        should("test getFeedIndexLogs") {
+            // uncomment below to test getFeedIndexLogs
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val feedId : kotlin.Long = 789 // kotlin.Long | Идентификатор прайс-листа.
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
+            //val publishedTimeFrom : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Начальная дата. Используется для фильтрации записей — по дате и времени публикации предложений на Яндекс Маркете.  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-21T00:42:42+03:00`.  Значение по умолчанию: последние восемь дней со времени отправки запроса. 
+            //val publishedTimeTo : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Конечная дата. Используется для фильтрации записей — по дате и времени публикации предложений на Яндекс Маркете.  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-31T00:42:42+03:00`.  Значение по умолчанию: дата и время отправки запроса.  {% note info \"Вы не получите часть данных\" %}  Если во время переключения между страницами выходных данных на Яндекс Маркете появятся новые результаты индексации прайс-листа. Чтобы этого не произошло, зафиксируйте выходные данные с помощью входного параметра `published_time_to`. Значение параметра не должно быть датой из будущего.  {% endnote %} 
+            //val status : FeedIndexLogsStatusType =  // FeedIndexLogsStatusType | Статус индексации и проверки прайс-листа на соответствие техническим требованиям.  Возможные значения: * `ERROR` — произошли ошибки. * `OK` — обработан без ошибок. * `WARNING` — наблюдались некритичные проблемы. 
+            //val result : GetFeedIndexLogsResponse = apiInstance.getFeedIndexLogs(campaignId, feedId, limit, publishedTimeFrom, publishedTimeTo, status)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getFeedbackAndCommentUpdates
+        should("test getFeedbackAndCommentUpdates") {
+            // uncomment below to test getFeedbackAndCommentUpdates
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
+            //val fromDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Начальная дата обновления отзывов.  Если параметр указан, возвращаются отзывы, которые были написаны или обновлены с этой даты.  Формат даты: `ГГГГ-ММ-ДД`. 
+            //val result : GetFeedbackListResponse = apiInstance.getFeedbackAndCommentUpdates(campaignId, pageToken, limit, fromDate)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getFeeds
+        should("test getFeeds") {
+            // uncomment below to test getFeeds
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val result : GetFeedsResponse = apiInstance.getFeeds(campaignId)
             //result shouldBe ("TODO")
         }
 
@@ -462,6 +608,28 @@ class FbyApiTest : ShouldSpec() {
         should("test getFulfillmentWarehouses") {
             // uncomment below to test getFulfillmentWarehouses
             //val result : GetFulfillmentWarehousesResponse = apiInstance.getFulfillmentWarehouses()
+            //result shouldBe ("TODO")
+        }
+
+        // to test getGoodsFeedbackComments
+        should("test getGoodsFeedbackComments") {
+            // uncomment below to test getGoodsFeedbackComments
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val getGoodsFeedbackCommentsRequest : GetGoodsFeedbackCommentsRequest =  // GetGoodsFeedbackCommentsRequest | 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
+            //val result : GetGoodsFeedbackCommentsResponse = apiInstance.getGoodsFeedbackComments(businessId, getGoodsFeedbackCommentsRequest, pageToken, limit)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getGoodsFeedbacks
+        should("test getGoodsFeedbacks") {
+            // uncomment below to test getGoodsFeedbacks
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
+            //val getGoodsFeedbackRequest : GetGoodsFeedbackRequest =  // GetGoodsFeedbackRequest | 
+            //val result : GetGoodsFeedbackResponse = apiInstance.getGoodsFeedbacks(businessId, pageToken, limit, getGoodsFeedbackRequest)
             //result shouldBe ("TODO")
         }
 
@@ -479,10 +647,10 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test getHiddenOffers
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val offerId : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Идентификатор скрытого предложения. 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val offset : kotlin.Int = 56 // kotlin.Int | Позиция в списке, начиная с которой возвращаются результаты ответа.  Используется вместе с параметром `limit`.  Если задан `offset`, параметры `page_number` и `page_size` игнорируются.  `offset` игнорируется, если задан `page_token`. 
-            //val page : kotlin.Int = 56 // kotlin.Int | Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val result : GetHiddenOffersResponse = apiInstance.getHiddenOffers(campaignId, offerId, pageToken, limit, offset, page, pageSize)
             //result shouldBe ("TODO")
@@ -492,8 +660,8 @@ class FbyApiTest : ShouldSpec() {
         should("test getOfferCardsContentStatus") {
             // uncomment below to test getOfferCardsContentStatus
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val getOfferCardsContentStatusRequest : GetOfferCardsContentStatusRequest =  // GetOfferCardsContentStatusRequest | 
             //val result : GetOfferCardsContentStatusResponse = apiInstance.getOfferCardsContentStatus(businessId, pageToken, limit, getOfferCardsContentStatusRequest)
             //result shouldBe ("TODO")
@@ -510,8 +678,8 @@ class FbyApiTest : ShouldSpec() {
             //val availability : kotlin.collections.List<OfferAvailabilityStatusType> =  // kotlin.collections.List<OfferAvailabilityStatusType> | Фильтрация по планам поставок товара:  * `ACTIVE` — поставки будут. * `INACTIVE` — поставок не будет: товар есть на складе, но вы больше не планируете его поставлять. * `DELISTED` — архив: товар закончился на складе, и его поставок больше не будет.  Можно указать несколько значений в одном параметре, через запятую, или в нескольких одинаковых параметрах. Например:  ``` ...availability=INACTIVE,DELISTED... ...availability=INACTIVE&availability=DELISTED... ```  В запросе можно указать либо параметр `shopSku`, либо любые параметры для фильтрации товаров. Совместное использование параметра `shopSku` и параметров для фильтрации приведет к ошибке. 
             //val categoryId : kotlin.collections.List<kotlin.Int> =  // kotlin.collections.List<kotlin.Int> | Фильтрация по идентификатору категории на Маркете.  Чтобы узнать идентификатор категории, к которой относится товар, воспользуйтесь запросом [POST categories/tree](../../reference/categories/getCategoriesTree.md).  Можно указать несколько идентификаторов в одном параметре, через запятую, или в нескольких одинаковых параметрах. Например:  ``` ...category_id=14727164,14382343... ...category_id=14727164&category_id=14382343... ```  В запросе можно указать либо параметр `shopSku`, либо любые параметры для фильтрации товаров. Совместное использование параметра `shopSku` и параметров для фильтрации приведет к ошибке. 
             //val vendor : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Фильтрация по бренду товара.  Можно указать несколько брендов в одном параметре, через запятую, или в нескольких одинаковых параметрах. Например:  ``` ...vendor=Aqua%20Minerale,Borjomi... ...vendor=Aqua%20Minerale&vendor=Borjomi... ```  Чтобы товар попал в результаты фильтрации, его бренд должен точно совпадать с одним из указанных в запросе. Например, если указан бренд Schwarzkopf, то в результатах не будет товаров Schwarzkopf Professional.  Если в названии бренда есть символы, которые не входят в таблицу ASCII (в том числе кириллические символы), используйте для них URL-кодирование. Например, пробел — %20, апостроф «'» — %27 и т. д. Подробнее см. в разделе [Кодирование URL русскоязычной Википедии](https://ru.wikipedia.org/wiki/URL#Кодирование_URL).  В запросе можно указать либо параметр shopSku, либо любые параметры для фильтрации товаров. Совместное использование параметра shopSku и параметров для фильтрации приведет к ошибке. 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetOfferMappingEntriesResponse = apiInstance.getOfferMappingEntries(campaignId, offerId, shopSku, mappingKind, status, availability, categoryId, vendor, pageToken, limit)
             //result shouldBe ("TODO")
         }
@@ -520,10 +688,11 @@ class FbyApiTest : ShouldSpec() {
         should("test getOfferMappings") {
             // uncomment below to test getOfferMappings
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
+            //val language : CatalogLanguageType =  // CatalogLanguageType | Язык, на котором принимаются и возвращаются значения в параметрах `name` и `description`.  Значение по умолчанию: `RU`. 
             //val getOfferMappingsRequest : GetOfferMappingsRequest =  // GetOfferMappingsRequest | 
-            //val result : GetOfferMappingsResponse = apiInstance.getOfferMappings(businessId, pageToken, limit, getOfferMappingsRequest)
+            //val result : GetOfferMappingsResponse = apiInstance.getOfferMappings(businessId, pageToken, limit, language, getOfferMappingsRequest)
             //result shouldBe ("TODO")
         }
 
@@ -532,9 +701,24 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test getOfferRecommendations
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val getOfferRecommendationsRequest : GetOfferRecommendationsRequest =  // GetOfferRecommendationsRequest | 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetOfferRecommendationsResponse = apiInstance.getOfferRecommendations(businessId, getOfferRecommendationsRequest, pageToken, limit)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getOffers
+        should("test getOffers") {
+            // uncomment below to test getOffers
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val query : kotlin.String = query_example // kotlin.String | Поисковый запрос.  Поддерживается язык запросов.  Значение по умолчанию: все предложения магазина, размещенные на Маркете. 
+            //val feedId : kotlin.Long = 789 // kotlin.Long | Идентификатор прайс-листа.
+            //val shopCategoryId : kotlin.String = shopCategoryId_example // kotlin.String | Идентификатор категории предложения, указанный магазином в прайс-листе.  Параметр выводится только для предложений, у которых указана категория в прайс-листе.  Параметр доступен начиная с версии 2.0 партнерского API. 
+            //val currency : CurrencyType =  // CurrencyType | Валюта, в которой указана цена предложения.  Возможные значения:  * `RUR` — российский рубль.  * `UAH` — украинская гривна.  * `BYR` — белорусский рубль.  * `KZT` — казахстанский тенге.  * `UZS` — узбекский сум. 
+            //val matched : kotlin.Boolean = true // kotlin.Boolean | Фильтр по признаку соотнесения предложения и карточки модели.  Возможные значения:  * `0 / FALSE / NO` — поиск выполняется среди предложений, не соотнесенных ни с какой карточкой модели.  * `1 / TRUE / YES` — поиск выполняется среди предложений, соотнесенных с карточками моделей). 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val result : GetOffersResponse = apiInstance.getOffers(campaignId, query, feedId, shopCategoryId, currency, matched, page, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -565,12 +749,39 @@ class FbyApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
+        // to test getOrders
+        should("test getOrders") {
+            // uncomment below to test getOrders
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val orderIds : kotlin.collections.List<kotlin.Long> =  // kotlin.collections.List<kotlin.Long> | Фильтрация заказов по идентификаторам. <br><br> ⚠️ Не используйте это поле одновременно с другими фильтрами. Если вы хотите воспользоваться ими, оставьте поле пустым. 
+            //val status : kotlin.collections.Set<OrderStatusType> =  // kotlin.collections.Set<OrderStatusType> | Статус заказа:  * `CANCELLED` — заказ отменен.  * `DELIVERED` — заказ получен покупателем.  * `DELIVERY` — заказ передан в службу доставки.  * `PICKUP` — заказ доставлен в пункт самовывоза.  * `PROCESSING` — заказ находится в обработке.  * `UNPAID` — заказ оформлен, но еще не оплачен (если выбрана оплата при оформлении).  Также могут возвращаться другие значения. Обрабатывать их не требуется. 
+            //val substatus : kotlin.collections.Set<OrderSubstatusType> =  // kotlin.collections.Set<OrderSubstatusType> | Этап обработки заказа (если он имеет статус `PROCESSING`) или причина отмены заказа (если он имеет статус `CANCELLED`).  Возможные значения для заказа в статусе `PROCESSING`:  * `STARTED` — заказ подтвержден, его можно начать обрабатывать. * `READY_TO_SHIP` — заказ собран и готов к отправке. * `SHIPPED` — заказ передан службе доставки.  Возможные значения для заказа в статусе `CANCELLED`:  * `DELIVERY_SERVICE_UNDELIVERED` — служба доставки не смогла доставить заказ.  * `PROCESSING_EXPIRED` — значение более не используется.  * `REPLACING_ORDER` — покупатель решил заменить товар другим по собственной инициативе.  * `RESERVATION_EXPIRED` — покупатель не завершил оформление зарезервированного заказа в течение 10 минут.  * `RESERVATION_FAILED` — Маркет не может продолжить дальнейшую обработку заказа.  * `SHOP_FAILED` — магазин не может выполнить заказ.  * `USER_CHANGED_MIND` — покупатель отменил заказ по личным причинам.  * `USER_NOT_PAID` — покупатель не оплатил заказ (для типа оплаты `PREPAID`) в течение 30 минут.  * `USER_REFUSED_DELIVERY` — покупателя не устроили условия доставки.  * `USER_REFUSED_PRODUCT` — покупателю не подошел товар.  * `USER_REFUSED_QUALITY` — покупателя не устроило качество товара.  * `USER_UNREACHABLE` — не удалось связаться с покупателем. Для отмены с этой причиной необходимо выполнить условия:    * не менее 3 звонков с 8 до 21 в часовом поясе покупателя;   * перерыв между первым и третьим звонком не менее 90 минут;   * соединение не короче 5 секунд.    Если хотя бы одно из этих условий не выполнено (кроме случая, когда номер недоступен), отменить заказ не получится. Вернется ответ с кодом ошибки 400. * `USER_WANTS_TO_CHANGE_DELIVERY_DATE` — покупатель хочет получить заказ в другой день. * `CANCELLED_COURIER_NOT_FOUND` — не удалось найти курьера.  Также могут возвращаться другие значения. Обрабатывать их не требуется. 
+            //val fromDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Начальная дата для фильтрации заказов по дате оформления.  Формат даты: `ДД-ММ-ГГГГ`.  Между начальной и конечной датой (параметр `toDate`) должно быть не больше 30 дней.  Значение по умолчанию: 30 дней назад от текущей даты. 
+            //val toDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Конечная дата для фильтрации заказов по дате оформления.  Показываются заказы, созданные до 00:00 указанного дня.  Формат даты: `ДД-ММ-ГГГГ`.  Между начальной (параметр `fromDate`) и конечной датой должно быть не больше 30 дней.  Значение по умолчанию: текущая дата. 
+            //val supplierShipmentDateFrom : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Начальная дата для фильтрации заказов по дате отгрузки в службу доставки (параметр `shipmentDate`).  Формат даты: `ДД-ММ-ГГГГ`.  Между начальной и конечной датой (параметр `supplierShipmentDateTo`) должно быть не больше 30 дней.  Начальная дата включается в интервал для фильтрации. 
+            //val supplierShipmentDateTo : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Конечная дата для фильтрации заказов по дате отгрузки в службу доставки (параметр `shipmentDate`).  Формат даты: `ДД-ММ-ГГГГ`.  Между начальной (параметр `supplierShipmentDateFrom`) и конечной датой должно быть не больше 30 дней.  Конечная дата не включается в интервал для фильтрации. 
+            //val updatedAtFrom : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Начальная дата для фильтрации заказов по дате и времени обновления (параметр `updatedAt`).  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-21T00:42:42+03:00`.  Между начальной и конечной датой (параметр `updatedAtTo`) должно быть не больше 30 дней.  Начальная дата включается в интервал для фильтрации. 
+            //val updatedAtTo : java.time.OffsetDateTime = 2013-10-20T19:20:30+01:00 // java.time.OffsetDateTime | Конечная дата для фильтрации заказов по дате и времени обновления (параметр `updatedAt`).  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-21T00:42:42+03:00`.  Между начальной (параметр `updatedAtFrom`) и конечной датой должно быть не больше 30 дней.  Конечная дата не включается в интервал для фильтрации. 
+            //val dispatchType : OrderDeliveryDispatchType =  // OrderDeliveryDispatchType | Способ отгрузки
+            //val fake : kotlin.Boolean = true // kotlin.Boolean | Фильтрация заказов по типам:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../concepts/sandbox.md) заказ Маркета. 
+            //val hasCis : kotlin.Boolean = true // kotlin.Boolean | Нужно ли вернуть только те заказы, в составе которых есть хотя бы один товар с кодом идентификации [в системе «Честный ЗНАК»](https://честныйзнак.рф/):  * `true` — да.  * `false` — нет.  Такие коды присваиваются товарам, которые подлежат маркировке и относятся к определенным категориям. 
+            //val onlyWaitingForCancellationApprove : kotlin.Boolean = true // kotlin.Boolean | **Только для модели DBS**  Фильтрация заказов по наличию запросов покупателей на отмену.  При значение `true` возвращаются только заказы, которые находятся в статусе `DELIVERY` или `PICKUP` и которые пользователи решили отменить.  Чтобы подтвердить или отклонить отмену, отправьте запрос [PUT campaigns/{campaignId}/orders/{orderId}/cancellation/accept](../../reference/orders/acceptOrderCancellation). 
+            //val onlyEstimatedDelivery : kotlin.Boolean = true // kotlin.Boolean | Фильтрация заказов с долгой доставкой (31-60 дней) по подтвержденной дате доставки:  * `true` — возвращаются только заказы с неподтвержденной датой доставки. * `false` — фильтрация не применяется. 
+            //val buyerType : OrderBuyerType =  // OrderBuyerType | Фильтрация заказов по типу покупателя. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
+            //val result : GetOrdersResponse = apiInstance.getOrders(campaignId, orderIds, status, substatus, fromDate, toDate, supplierShipmentDateFrom, supplierShipmentDateTo, updatedAtFrom, updatedAtTo, dispatchType, fake, hasCis, onlyWaitingForCancellationApprove, onlyEstimatedDelivery, buyerType, page, pageSize, pageToken, limit)
+            //result shouldBe ("TODO")
+        }
+
         // to test getOrdersStats
         should("test getOrdersStats") {
             // uncomment below to test getOrdersStats
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val getOrdersStatsRequest : GetOrdersStatsRequest =  // GetOrdersStatsRequest | 
             //val result : GetOrdersStatsResponse = apiInstance.getOrdersStats(campaignId, pageToken, limit, getOrdersStatsRequest)
             //result shouldBe ("TODO")
@@ -580,8 +791,8 @@ class FbyApiTest : ShouldSpec() {
         should("test getPrices") {
             // uncomment below to test getPrices
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val archived : kotlin.Boolean = true // kotlin.Boolean | Фильтр по нахождению в архиве.
             //val result : GetPricesResponse = apiInstance.getPrices(campaignId, pageToken, limit, archived)
             //result shouldBe ("TODO")
@@ -591,10 +802,39 @@ class FbyApiTest : ShouldSpec() {
         should("test getPricesByOfferIds") {
             // uncomment below to test getPricesByOfferIds
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val getPricesByOfferIdsRequest : GetPricesByOfferIdsRequest =  // GetPricesByOfferIdsRequest | 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
-            //val result : GetPricesByOfferIdsResponse = apiInstance.getPricesByOfferIds(campaignId, getPricesByOfferIdsRequest, pageToken, limit)
+            //val result : GetPricesByOfferIdsResponse = apiInstance.getPricesByOfferIds(campaignId, pageToken, limit, getPricesByOfferIdsRequest)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getPromoOffers
+        should("test getPromoOffers") {
+            // uncomment below to test getPromoOffers
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val getPromoOffersRequest : GetPromoOffersRequest =  // GetPromoOffersRequest | 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
+            //val result : GetPromoOffersResponse = apiInstance.getPromoOffers(businessId, getPromoOffersRequest, pageToken, limit)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getPromos
+        should("test getPromos") {
+            // uncomment below to test getPromos
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val getPromosRequest : GetPromosRequest =  // GetPromosRequest | 
+            //val result : GetPromosResponse = apiInstance.getPromos(businessId, getPromosRequest)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getQualityRatings
+        should("test getQualityRatings") {
+            // uncomment below to test getQualityRatings
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val getQualityRatingRequest : GetQualityRatingRequest =  // GetQualityRatingRequest | 
+            //val result : GetQualityRatingResponse = apiInstance.getQualityRatings(businessId, getQualityRatingRequest)
             //result shouldBe ("TODO")
         }
 
@@ -606,12 +846,51 @@ class FbyApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
+        // to test getReturn
+        should("test getReturn") {
+            // uncomment below to test getReturn
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val orderId : kotlin.Long = 789 // kotlin.Long | Идентификатор заказа.
+            //val returnId : kotlin.Long = 789 // kotlin.Long | Идентификатор возврата.
+            //val result : GetReturnResponse = apiInstance.getReturn(campaignId, orderId, returnId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getReturnPhoto
+        should("test getReturnPhoto") {
+            // uncomment below to test getReturnPhoto
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val orderId : kotlin.Long = 789 // kotlin.Long | Идентификатор заказа.
+            //val returnId : kotlin.Long = 789 // kotlin.Long | Идентификатор возврата.
+            //val itemId : kotlin.Long = 789 // kotlin.Long | Идентификатор товара в возврате.
+            //val imageHash : kotlin.String = imageHash_example // kotlin.String | Хеш ссылки изображения для загрузки.
+            //val result : java.io.File = apiInstance.getReturnPhoto(campaignId, orderId, returnId, itemId, imageHash)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getReturns
+        should("test getReturns") {
+            // uncomment below to test getReturns
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
+            //val orderIds : kotlin.collections.Set<kotlin.Long> =  // kotlin.collections.Set<kotlin.Long> | Идентификаторы заказов — для фильтрации результатов.  Несколько идентификаторов перечисляются через запятую без пробела. 
+            //val statuses : kotlin.collections.Set<RefundStatusType> = STARTED_BY_USER,WAITING_FOR_DECISION // kotlin.collections.Set<RefundStatusType> | Статусы возвратов или невыкупов — для фильтрации результатов.  Несколько статусов перечисляются через запятую. 
+            //val type : ReturnType =  // ReturnType | Тип заказа для фильтрации:  * `RETURN` — возврат.  * `UNREDEEMED` — невыкуп.  Если не указывать, в ответе будут и возвраты, и невыкупы. 
+            //val fromDate : java.time.LocalDate = 2022-10-31 // java.time.LocalDate | Начальная дата для фильтрации возвратов или невыкупов по дате обновления.  Формат: `ГГГГ-ММ-ДД`. 
+            //val toDate : java.time.LocalDate = 2022-11-30 // java.time.LocalDate | Конечная дата для фильтрации возвратов или невыкупов по дате обновления.  Формат: `ГГГГ-ММ-ДД`. 
+            //val fromDate2 : java.time.LocalDate = 2022-10-31 // java.time.LocalDate | {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `fromDate`.  {% endnote %}  Начальная дата для фильтрации возвратов или невыкупов по дате обновления. 
+            //val toDate2 : java.time.LocalDate = 2022-11-30 // java.time.LocalDate | {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `toDate`.  {% endnote %}  Конечная дата для фильтрации возвратов или невыкупов по дате обновления. 
+            //val result : GetReturnsResponse = apiInstance.getReturns(campaignId, pageToken, limit, orderIds, statuses, type, fromDate, toDate, fromDate2, toDate2)
+            //result shouldBe ("TODO")
+        }
+
         // to test getStocks
         should("test getStocks") {
             // uncomment below to test getStocks
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val getWarehouseStocksRequest : GetWarehouseStocksRequest =  // GetWarehouseStocksRequest | 
             //val result : GetWarehouseStocksResponse = apiInstance.getStocks(campaignId, pageToken, limit, getWarehouseStocksRequest)
             //result shouldBe ("TODO")
@@ -653,11 +932,29 @@ class FbyApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
+        // to test putBidsForCampaign
+        should("test putBidsForCampaign") {
+            // uncomment below to test putBidsForCampaign
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val putSkuBidsRequest : PutSkuBidsRequest =  // PutSkuBidsRequest | description
+            //val result : EmptyApiResponse = apiInstance.putBidsForCampaign(campaignId, putSkuBidsRequest)
+            //result shouldBe ("TODO")
+        }
+
+        // to test refreshFeed
+        should("test refreshFeed") {
+            // uncomment below to test refreshFeed
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val feedId : kotlin.Long = 789 // kotlin.Long | Идентификатор прайс-листа.
+            //val result : EmptyApiResponse = apiInstance.refreshFeed(campaignId, feedId)
+            //result shouldBe ("TODO")
+        }
+
         // to test searchRegionChildren
         should("test searchRegionChildren") {
             // uncomment below to test searchRegionChildren
             //val regionId : kotlin.Long = 789 // kotlin.Long | Идентификатор региона.  Идентификатор региона можно получить c помощью запроса [GET regions](../../reference/regions/searchRegionsByName.md). 
-            //val page : kotlin.Int = 56 // kotlin.Int | Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val result : GetRegionWithChildrenResponse = apiInstance.searchRegionChildren(regionId, page, pageSize)
             //result shouldBe ("TODO")
@@ -675,8 +972,8 @@ class FbyApiTest : ShouldSpec() {
         should("test searchRegionsByName") {
             // uncomment below to test searchRegionsByName
             //val name : kotlin.String = name_example // kotlin.String | Название региона.  Важно учитывать регистр: первая буква должна быть заглавной, остальные — строчными. Например, `Москва`. 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetRegionsResponse = apiInstance.searchRegionsByName(name, pageToken, limit)
             //result shouldBe ("TODO")
         }
@@ -701,6 +998,25 @@ class FbyApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
+        // to test setFeedParams
+        should("test setFeedParams") {
+            // uncomment below to test setFeedParams
+            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val feedId : kotlin.Long = 789 // kotlin.Long | Идентификатор прайс-листа.
+            //val setFeedParamsRequest : SetFeedParamsRequest =  // SetFeedParamsRequest | 
+            //val result : EmptyApiResponse = apiInstance.setFeedParams(campaignId, feedId, setFeedParamsRequest)
+            //result shouldBe ("TODO")
+        }
+
+        // to test skipGoodsFeedbacksReaction
+        should("test skipGoodsFeedbacksReaction") {
+            // uncomment below to test skipGoodsFeedbacksReaction
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val skipGoodsFeedbackReactionRequest : SkipGoodsFeedbackReactionRequest =  // SkipGoodsFeedbackReactionRequest | 
+            //val result : EmptyApiResponse = apiInstance.skipGoodsFeedbacksReaction(businessId, skipGoodsFeedbackReactionRequest)
+            //result shouldBe ("TODO")
+        }
+
         // to test updateBusinessPrices
         should("test updateBusinessPrices") {
             // uncomment below to test updateBusinessPrices
@@ -716,6 +1032,15 @@ class FbyApiTest : ShouldSpec() {
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val updateCampaignOffersRequest : UpdateCampaignOffersRequest =  // UpdateCampaignOffersRequest | 
             //val result : EmptyApiResponse = apiInstance.updateCampaignOffers(campaignId, updateCampaignOffersRequest)
+            //result shouldBe ("TODO")
+        }
+
+        // to test updateGoodsFeedbackComment
+        should("test updateGoodsFeedbackComment") {
+            // uncomment below to test updateGoodsFeedbackComment
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val updateGoodsFeedbackCommentRequest : UpdateGoodsFeedbackCommentRequest =  // UpdateGoodsFeedbackCommentRequest | 
+            //val result : UpdateGoodsFeedbackCommentResponse = apiInstance.updateGoodsFeedbackComment(businessId, updateGoodsFeedbackCommentRequest)
             //result shouldBe ("TODO")
         }
 
@@ -742,17 +1067,8 @@ class FbyApiTest : ShouldSpec() {
             // uncomment below to test updateOfferMappings
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val updateOfferMappingsRequest : UpdateOfferMappingsRequest =  // UpdateOfferMappingsRequest | 
-            //val result : UpdateOfferMappingsResponse = apiInstance.updateOfferMappings(businessId, updateOfferMappingsRequest)
-            //result shouldBe ("TODO")
-        }
-
-        // to test updateOrderStatus
-        should("test updateOrderStatus") {
-            // uncomment below to test updateOrderStatus
-            //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val orderId : kotlin.Long = 789 // kotlin.Long | Идентификатор заказа.
-            //val updateOrderStatusRequest : UpdateOrderStatusRequest =  // UpdateOrderStatusRequest | 
-            //val result : UpdateOrderStatusResponse = apiInstance.updateOrderStatus(campaignId, orderId, updateOrderStatusRequest)
+            //val language : CatalogLanguageType =  // CatalogLanguageType | Язык, на котором принимаются и возвращаются значения в параметрах `name` и `description`.  Значение по умолчанию: `RU`. 
+            //val result : UpdateOfferMappingsResponse = apiInstance.updateOfferMappings(businessId, updateOfferMappingsRequest, language)
             //result shouldBe ("TODO")
         }
 
@@ -762,6 +1078,15 @@ class FbyApiTest : ShouldSpec() {
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val updatePricesRequest : UpdatePricesRequest =  // UpdatePricesRequest | 
             //val result : EmptyApiResponse = apiInstance.updatePrices(campaignId, updatePricesRequest)
+            //result shouldBe ("TODO")
+        }
+
+        // to test updatePromoOffers
+        should("test updatePromoOffers") {
+            // uncomment below to test updatePromoOffers
+            //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
+            //val updatePromoOffersRequest : UpdatePromoOffersRequest =  // UpdatePromoOffersRequest | 
+            //val result : UpdatePromoOffersResponse = apiInstance.updatePromoOffers(businessId, updatePromoOffersRequest)
             //result shouldBe ("TODO")
         }
 

@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
  * @param shippingCost Стоимость доставки товара в регион:  * `0` — доставка осуществляется бесплатно. * `-1` — магазин не осуществляет доставку этого товара (самовывоз).  Если стоимость доставки неизвестна, параметр не выводится. 
  * @param shopName Название магазина (в том виде, в котором отображается на Маркете).
  * @param shopRating Рейтинг магазина.  Возможные значения: * `-1` — у магазинов, недавно появившихся на Маркете, рейтинг появляется не сразу. До момента появления рейтинга для таких магазинов возвращается значение `-1`. * `1`. * `2`. * `3`. * `4`. * `5`. 
- * @param inStock {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %} 
+ * @param inStock {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %} 
  */
 
 
@@ -73,7 +73,7 @@ data class ModelOfferDTO (
     @Json(name = "shopRating")
     val shopRating: kotlin.Int? = null,
 
-    /* {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  */
+    /* {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  */
     @Json(name = "inStock")
     @Deprecated(message = "This property is deprecated.")
     val inStock: kotlin.Int? = null

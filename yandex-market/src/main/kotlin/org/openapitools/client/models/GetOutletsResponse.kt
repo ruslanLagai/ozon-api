@@ -35,7 +35,7 @@ data class GetOutletsResponse (
 
     /* Информация о точках продаж. */
     @Json(name = "outlets")
-    val outlets: kotlin.collections.List<FullOutletDTO>? = null,
+    val outlets: kotlin.collections.List<FullOutletDTO>,
 
     @Json(name = "paging")
     val paging: ScrollingPagerDTO? = null,

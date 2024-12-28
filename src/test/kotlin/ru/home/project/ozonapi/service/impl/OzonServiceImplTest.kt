@@ -2,6 +2,7 @@ package ru.home.project.ozonapi.service.impl
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.*
 import org.mockito.kotlin.any
 import org.mockito.kotlin.times
@@ -9,6 +10,8 @@ import org.mockito.kotlin.verify
 import ru.home.project.ozonapi.client.OzonApiClient
 import ru.home.project.ozonapi.dto.finance.response.TransactionsResp
 import ru.home.project.ozonapi.dto.stocks.response.GetStocksResponse
+import ru.home.project.ozonapi.dto.supply.request.AnalyticMetric
+import ru.home.project.ozonapi.dto.supply.response.AnalyticsDataResp
 import ru.home.project.ozonapi.util.readResource
 import java.time.LocalDate
 import java.time.LocalTime
@@ -88,5 +91,25 @@ class OzonServiceImplTest {
         val result = service.getStockItems("123")
 
         assertEquals(13, result.size)
+    }
+
+    @Test
+    fun getAnalyticData() {
+        val response = readResource("analytic/analytic-response.json", AnalyticsDataResp::class.java)
+        `when`(client.getAnalyticData(from = any(), to = any(), metrics =  any(), dimensions =  any(),
+            filters = isNull(), sort = isNull(), offset = ArgumentMatchers.eq(0))).thenReturn(response.result)
+
+        val result = service.getAnalyticData(from = LocalDate.now(), to = LocalDate.now(),
+            metrics = listOf(AnalyticMetric.hits_view_search, AnalyticMetric.hits_view, AnalyticMetric.hits_view_pdp,
+                AnalyticMetric.hits_tocart_pdp, AnalyticMetric.hits_tocart))
+
+        assertEquals(37, result.size)
+        assertEquals("1715482384", result.find { it.sku == "1715482384" }!!.sku)
+        assertEquals("Тапочки LagaHome Домашний уют", result.find { it.sku == "1715482384" }!!.name)
+        assertEquals(9031, result.find { it.sku == "1715482384" }!!.metrics[AnalyticMetric.hits_view_search])
+        assertEquals(9627, result.find { it.sku == "1715482384" }!!.metrics[AnalyticMetric.hits_view])
+        assertEquals(189, result.find { it.sku == "1715482384" }!!.metrics[AnalyticMetric.hits_view_pdp])
+        assertEquals(12, result.find { it.sku == "1715482384" }!!.metrics[AnalyticMetric.hits_tocart_pdp])
+        assertEquals(13, result.find { it.sku == "1715482384" }!!.metrics[AnalyticMetric.hits_tocart])
     }
 }

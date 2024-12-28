@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Вид маркировки товара:  * `CIS` — КИЗ, идентификатор единицы товара [в системе «Честный ЗНАК»](https://честныйзнак.рф/).  * `UIN` — УИН, уникальный идентификационный номер.  * `RNPT` — РНПТ, регистрационный номер партии товара.  * `GTD` — номер ГТД, грузовой таможенной декларации. 
+ * Вид маркировки товара:  * `CIS` — КИЗ, идентификатор единицы товара [в системе «Честный ЗНАК»](https://честныйзнак.рф/). Обязателен для заполнения.  * `CIS_OPTIONAL` — КИЗ, идентификатор единицы товара [в системе «Честный ЗНАК»](https://честныйзнак.рф/). Необязателен для заполнения, но в ближайшее время потребуется его передача.  * `UIN` — УИН, уникальный идентификационный номер.  * `RNPT` — РНПТ, регистрационный номер партии товара.  * `GTD` — номер ГТД, грузовой таможенной декларации. 
  *
- * Values: CIS,UIN,RNPT,GTD
+ * Values: CIS,CIS_OPTIONAL,UIN,RNPT,GTD
  */
 
 @JsonClass(generateAdapter = false)
@@ -30,6 +30,9 @@ enum class OrderItemInstanceType(val value: kotlin.String) {
 
     @Json(name = "CIS")
     CIS("CIS"),
+
+    @Json(name = "CIS_OPTIONAL")
+    CIS_OPTIONAL("CIS_OPTIONAL"),
 
     @Json(name = "UIN")
     UIN("UIN"),

@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Детали причин возврата:   * `DO_NOT_FIT`:     * `USER_DID_NOT_LIKE` — товар не понравился.     * `USER_CHANGED_MIND` — передумал покупать.     * `DELIVERED_TOO_LONG` — длительный срок доставки, поэтому передумал.    * `BAD_QUALITY`:     * `BAD_PACKAGE` — упаковка товара была нарушена.     * `DAMAGED` — царапины, сколы.     * `NOT_WORKING` — не включается / не работает.     * `INCOMPLETENESS` — некомплект (не хватает детали в наборе, к товару).    * `WRONG_ITEM`:     * `WRONG_ITEM` — не тот товар.     * `WRONG_COLOR` — не соответствует по цвету.     * `DID_NOT_MATCH_DESCRIPTION` — не соответствует заявленным характеристикам/описанию. 
+ * Детали причин возврата:   * `DO_NOT_FIT`:     * `USER_DID_NOT_LIKE` — товар не понравился.     * `USER_CHANGED_MIND` — передумал покупать.     * `DELIVERED_TOO_LONG` — передумал покупать из-за длительного срока доставки.    * `BAD_QUALITY`:     * `BAD_PACKAGE` — заводская упаковка повреждена.     * `DAMAGED` — царапины, сколы.     * `NOT_WORKING` — не включается, не работает.     * `INCOMPLETENESS` — некомплект (не хватает детали в наборе, к товару).     * `WRAPPING_DAMAGED` — транспортная упаковка повреждена.     * `ITEM_WAS_USED` — следы использования на товаре.     * `BROKEN` — товар разбит.     * `BAD_FLOWERS` — некачественные цветы.    * `WRONG_ITEM`:     * `WRONG_ITEM` — не тот товар.     * `WRONG_COLOR` — цвет не соответствует заявленному.     * `DID_NOT_MATCH_DESCRIPTION` — описание или характеристики не соответствуют заявленным.     * `WRONG_ORDER` — доставили чужой заказ.     * `WRONG_AMOUNT_DELIVERED` — неверное количество товара.     * `PARCEL_MISSING` — часть заказа отсутствует.     * `INCOMPLETE` — заказ не привезли полностью. 
  *
- * Values: USER_DID_NOT_LIKE,USER_CHANGED_MIND,DELIVERED_TOO_LONG,BAD_PACKAGE,DAMAGED,NOT_WORKING,INCOMPLETENESS,WRONG_ITEM,WRONG_COLOR,DID_NOT_MATCH_DESCRIPTION,UNKNOWN
+ * Values: USER_DID_NOT_LIKE,USER_CHANGED_MIND,DELIVERED_TOO_LONG,BAD_PACKAGE,DAMAGED,NOT_WORKING,INCOMPLETENESS,WRONG_ITEM,WRONG_COLOR,DID_NOT_MATCH_DESCRIPTION,WRONG_ORDER,WRONG_AMOUNT_DELIVERED,WRAPPING_DAMAGED,ITEM_WAS_USED,BROKEN,BAD_FLOWERS,PARCEL_MISSING,INCOMPLETE,UNKNOWN
  */
 
 @JsonClass(generateAdapter = false)
@@ -57,6 +57,30 @@ enum class ReturnDecisionSubreasonType(val value: kotlin.String) {
 
     @Json(name = "DID_NOT_MATCH_DESCRIPTION")
     DID_NOT_MATCH_DESCRIPTION("DID_NOT_MATCH_DESCRIPTION"),
+
+    @Json(name = "WRONG_ORDER")
+    WRONG_ORDER("WRONG_ORDER"),
+
+    @Json(name = "WRONG_AMOUNT_DELIVERED")
+    WRONG_AMOUNT_DELIVERED("WRONG_AMOUNT_DELIVERED"),
+
+    @Json(name = "WRAPPING_DAMAGED")
+    WRAPPING_DAMAGED("WRAPPING_DAMAGED"),
+
+    @Json(name = "ITEM_WAS_USED")
+    ITEM_WAS_USED("ITEM_WAS_USED"),
+
+    @Json(name = "BROKEN")
+    BROKEN("BROKEN"),
+
+    @Json(name = "BAD_FLOWERS")
+    BAD_FLOWERS("BAD_FLOWERS"),
+
+    @Json(name = "PARCEL_MISSING")
+    PARCEL_MISSING("PARCEL_MISSING"),
+
+    @Json(name = "INCOMPLETE")
+    INCOMPLETE("INCOMPLETE"),
 
     @Json(name = "UNKNOWN")
     UNKNOWN("UNKNOWN");
