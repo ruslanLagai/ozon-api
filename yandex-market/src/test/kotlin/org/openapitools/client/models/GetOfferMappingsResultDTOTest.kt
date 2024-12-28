@@ -27,16 +27,16 @@ class GetOfferMappingsResultDTOTest : ShouldSpec() {
         // uncomment below to create an instance of GetOfferMappingsResultDTO
         //val modelInstance = GetOfferMappingsResultDTO()
 
-        // to test the property `paging`
-        should("test paging") {
-            // uncomment below to test the property
-            //modelInstance.paging shouldBe ("TODO")
-        }
-
         // to test the property `offerMappings` - Информация о товарах.
         should("test offerMappings") {
             // uncomment below to test the property
             //modelInstance.offerMappings shouldBe ("TODO")
+        }
+
+        // to test the property `paging`
+        should("test paging") {
+            // uncomment below to test the property
+            //modelInstance.paging shouldBe ("TODO")
         }
 
     }

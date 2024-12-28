@@ -26,6 +26,12 @@ class OrderBuyerInfoDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OrderBuyerInfoDTO
         //val modelInstance = OrderBuyerInfoDTO()
 
+        // to test the property `type`
+        should("test type") {
+            // uncomment below to test the property
+            //modelInstance.type shouldBe ("TODO")
+        }
+
         // to test the property `id` - Идентификатор покупателя.
         should("test id") {
             // uncomment below to test the property
@@ -50,16 +56,16 @@ class OrderBuyerInfoDTOTest : ShouldSpec() {
             //modelInstance.middleName shouldBe ("TODO")
         }
 
-        // to test the property `type`
-        should("test type") {
-            // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
-        }
-
         // to test the property `phone` - Подменный номер телефона покупателя. Подробнее о таких номерах читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/orders/dbs/call#fake-number).  Формат номера: `+<код_страны><код_региона><номер_телефона>`. 
         should("test phone") {
             // uncomment below to test the property
             //modelInstance.phone shouldBe ("TODO")
+        }
+
+        // to test the property `trusted` - Проверенный покупатель.  Если параметр `trusted` вернулся со значением `true`, Маркет уже проверил покупателя — не звоните ему. Обработайте заказ как обычно и передайте его курьеру или отвезите в ПВЗ.  При необходимости свяжитесь с покупателем в чате. [Как это сделать](../../step-by-step/chats.md)  Подробнее о звонках покупателю читайте [в Справке Маркета для продавцов](https://yandex.ru/support/marketplace/ru/orders/dbs/call). 
+        should("test trusted") {
+            // uncomment below to test the property
+            //modelInstance.trusted shouldBe ("TODO")
         }
 
     }

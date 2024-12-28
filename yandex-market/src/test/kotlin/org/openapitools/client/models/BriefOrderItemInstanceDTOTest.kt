@@ -25,7 +25,7 @@ class BriefOrderItemInstanceDTOTest : ShouldSpec() {
         // uncomment below to create an instance of BriefOrderItemInstanceDTO
         //val modelInstance = BriefOrderItemInstanceDTO()
 
-        // to test the property `cis` - Код идентификации единицы товара [в системе «Честный ЗНАК»](https://честныйзнак.рф/).  {% note warning %}  Не экранируйте косую черту в коде символа-разделителя `\\u001d`!  ✅ `01030410947874432155Qbag!\\u001d93Zjqw`  ❌ `01030410947874432155Qbag!\\\\u001d93Zjqw`  Косые черты и кавычки в других местах экранируйте по правилам JSON: `\\\\` и `\\\"`  {% endnote %} 
+        // to test the property `cis` - Код идентификации единицы товара [в системе «Честный ЗНАК»](https://честныйзнак.рф/).  {% note warning \"Не экранируйте косую черту в коде символа-разделителя `\\u001d`\" %}  ✅ `01030410947874432155Qbag!\\u001d93Zjqw`  ❌ `01030410947874432155Qbag!\\\\u001d93Zjqw`  Косые черты и кавычки в других местах экранируйте по правилам JSON: `\\\\` и `\\\"`  {% endnote %} 
         should("test cis") {
             // uncomment below to test the property
             //modelInstance.cis shouldBe ("TODO")

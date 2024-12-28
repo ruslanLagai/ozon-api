@@ -27,6 +27,12 @@ class GetModelsResponseTest : ShouldSpec() {
         // uncomment below to create an instance of GetModelsResponse
         //val modelInstance = GetModelsResponse()
 
+        // to test the property `models` - Список моделей товаров.
+        should("test models") {
+            // uncomment below to test the property
+            //modelInstance.models shouldBe ("TODO")
+        }
+
         // to test the property `currency`
         should("test currency") {
             // uncomment below to test the property
@@ -37,12 +43,6 @@ class GetModelsResponseTest : ShouldSpec() {
         should("test regionId") {
             // uncomment below to test the property
             //modelInstance.regionId shouldBe ("TODO")
-        }
-
-        // to test the property `models` - Список моделей товаров.
-        should("test models") {
-            // uncomment below to test the property
-            //modelInstance.models shouldBe ("TODO")
         }
 
     }

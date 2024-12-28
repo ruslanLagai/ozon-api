@@ -67,10 +67,10 @@ class OutletsApiTest : ShouldSpec() {
         should("test getOutlets") {
             // uncomment below to test getOutlets
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
             //val regionId : kotlin.Long = 789 // kotlin.Long | Идентификатор региона. Если задать идентификатор родительского региона любого уровня, в выходных данных будут отображены точки продаж всех дочерних регионов. Идентификатор региона можно получить c помощью метода [GET regions](../../reference/regions/searchRegionsByName.md). 
             //val shopOutletCode : kotlin.String = shopOutletCode_example // kotlin.String | Идентификатор точки продаж, присвоенный магазином.
-            //val regionId2 : kotlin.Long = 789 // kotlin.Long | {% note warning \"\" %}  Этот параметр устарел. Для указания региона используйте `region_id`.  {% endnote %} 
+            //val regionId2 : kotlin.Long = 789 // kotlin.Long | {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `region_id`.  {% endnote %} 
             //val result : GetOutletsResponse = apiInstance.getOutlets(campaignId, pageToken, regionId, shopOutletCode, regionId2)
             //result shouldBe ("TODO")
         }

@@ -25,7 +25,7 @@ class SendMessageToChatRequestTest : ShouldSpec() {
         // uncomment below to create an instance of SendMessageToChatRequest
         //val modelInstance = SendMessageToChatRequest()
 
-        // to test the property `message` - Текст сообщения. Максимальная длина — 4096 символа.
+        // to test the property `message` - Текст сообщения.
         should("test message") {
             // uncomment below to test the property
             //modelInstance.message shouldBe ("TODO")

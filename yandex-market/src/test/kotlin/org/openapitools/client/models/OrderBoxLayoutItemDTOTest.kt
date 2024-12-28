@@ -27,7 +27,7 @@ class OrderBoxLayoutItemDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OrderBoxLayoutItemDTO
         //val modelInstance = OrderBoxLayoutItemDTO()
 
-        // to test the property `id` - Идентификатор товара в заказе.  {% cut \"Где его взять\" %}  Идентификатор приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) и в запросе Маркета [POST order/accept](../../pushapi/reference/orderAccept.md) — параметр `id` в `items`.  {% endcut %}   
+        // to test the property `id` - Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) — параметр `id` в `items`. 
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")

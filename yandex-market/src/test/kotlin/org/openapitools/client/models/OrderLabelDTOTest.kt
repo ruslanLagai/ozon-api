@@ -38,7 +38,7 @@ class OrderLabelDTOTest : ShouldSpec() {
             //modelInstance.placesNumber shouldBe ("TODO")
         }
 
-        // to test the property `url` - URL файла с ярлыками‑наклейками на все коробки в заказе.  Соответствует URL, по которому выполняется запрос [GET campaigns/{campaignId}/orders/{orderId}/delivery/labels](../../reference/orders/generateOrderLabels.md). 
+        // to test the property `url` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  URL файла с ярлыками‑наклейками на все коробки в заказе.  Соответствует URL, по которому выполняется запрос [GET campaigns/{campaignId}/orders/{orderId}/delivery/labels](../../reference/orders/generateOrderLabels.md). 
         should("test url") {
             // uncomment below to test the property
             //modelInstance.url shouldBe ("TODO")

@@ -77,28 +77,10 @@ class OrderDTOTest : ShouldSpec() {
             //modelInstance.deliveryTotal shouldBe ("TODO")
         }
 
-        // to test the property `buyerItemsTotal` - {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и без учета стоимости доставки. 
-        should("test buyerItemsTotal") {
-            // uncomment below to test the property
-            //modelInstance.buyerItemsTotal shouldBe ("TODO")
-        }
-
-        // to test the property `buyerTotal` - {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и с учетом стоимости доставки. 
-        should("test buyerTotal") {
-            // uncomment below to test the property
-            //modelInstance.buyerTotal shouldBe ("TODO")
-        }
-
-        // to test the property `buyerItemsTotalBeforeDiscount` - Цена продажи. Стоимость всех товаров в заказе в валюте покупателя до применения скидок и без учета стоимости доставки.
+        // to test the property `buyerItemsTotalBeforeDiscount` - Стоимость всех товаров в заказе в валюте покупателя без учета стоимости доставки и до применения скидок по:  * акциям; * купонам; * промокодам. 
         should("test buyerItemsTotalBeforeDiscount") {
             // uncomment below to test the property
             //modelInstance.buyerItemsTotalBeforeDiscount shouldBe ("TODO")
-        }
-
-        // to test the property `buyerTotalBeforeDiscount` - Стоимость всех товаров в заказе в валюте покупателя до применения скидок и с учетом стоимости доставки (`buyerItemsTotalBeforeDiscount` + стоимость доставки).
-        should("test buyerTotalBeforeDiscount") {
-            // uncomment below to test the property
-            //modelInstance.buyerTotalBeforeDiscount shouldBe ("TODO")
         }
 
         // to test the property `paymentType`
@@ -113,7 +95,7 @@ class OrderDTOTest : ShouldSpec() {
             //modelInstance.paymentMethod shouldBe ("TODO")
         }
 
-        // to test the property `fake` - Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../pushapi/concepts/sandbox.md) заказ Маркета. 
+        // to test the property `fake` - Тип заказа:  * `false` — настоящий заказ покупателя.  * `true` — [тестовый](../../concepts/sandbox.md) заказ Маркета. 
         should("test fake") {
             // uncomment below to test the property
             //modelInstance.fake shouldBe ("TODO")
@@ -123,12 +105,6 @@ class OrderDTOTest : ShouldSpec() {
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")
-        }
-
-        // to test the property `subsidies` - Список субсидий по типам.
-        should("test subsidies") {
-            // uncomment below to test the property
-            //modelInstance.subsidies shouldBe ("TODO")
         }
 
         // to test the property `delivery`
@@ -143,16 +119,46 @@ class OrderDTOTest : ShouldSpec() {
             //modelInstance.buyer shouldBe ("TODO")
         }
 
-        // to test the property `notes` - Комментарий к заказу.
-        should("test notes") {
-            // uncomment below to test the property
-            //modelInstance.notes shouldBe ("TODO")
-        }
-
         // to test the property `taxSystem`
         should("test taxSystem") {
             // uncomment below to test the property
             //modelInstance.taxSystem shouldBe ("TODO")
+        }
+
+        // to test the property `updatedAt`
+        should("test updatedAt") {
+            // uncomment below to test the property
+            //modelInstance.updatedAt shouldBe ("TODO")
+        }
+
+        // to test the property `buyerItemsTotal` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и без учета стоимости доставки. 
+        should("test buyerItemsTotal") {
+            // uncomment below to test the property
+            //modelInstance.buyerItemsTotal shouldBe ("TODO")
+        }
+
+        // to test the property `buyerTotal` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя после применения скидок и с учетом стоимости доставки. 
+        should("test buyerTotal") {
+            // uncomment below to test the property
+            //modelInstance.buyerTotal shouldBe ("TODO")
+        }
+
+        // to test the property `buyerTotalBeforeDiscount` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость всех товаров в заказе в валюте покупателя до применения скидок и с учетом стоимости доставки (`buyerItemsTotalBeforeDiscount` + стоимость доставки). 
+        should("test buyerTotalBeforeDiscount") {
+            // uncomment below to test the property
+            //modelInstance.buyerTotalBeforeDiscount shouldBe ("TODO")
+        }
+
+        // to test the property `subsidies` - Список субсидий по типам.
+        should("test subsidies") {
+            // uncomment below to test the property
+            //modelInstance.subsidies shouldBe ("TODO")
+        }
+
+        // to test the property `notes` - Комментарий к заказу.
+        should("test notes") {
+            // uncomment below to test the property
+            //modelInstance.notes shouldBe ("TODO")
         }
 
         // to test the property `cancelRequested` - **Только для модели DBS**  Запрошена ли отмена. 

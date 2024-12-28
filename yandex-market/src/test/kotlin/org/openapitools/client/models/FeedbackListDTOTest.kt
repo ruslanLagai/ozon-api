@@ -27,16 +27,16 @@ class FeedbackListDTOTest : ShouldSpec() {
         // uncomment below to create an instance of FeedbackListDTO
         //val modelInstance = FeedbackListDTO()
 
-        // to test the property `paging`
-        should("test paging") {
-            // uncomment below to test the property
-            //modelInstance.paging shouldBe ("TODO")
-        }
-
         // to test the property `feedbackList` - Список отзывов.  Содержит не более 20 отзывов. 
         should("test feedbackList") {
             // uncomment below to test the property
             //modelInstance.feedbackList shouldBe ("TODO")
+        }
+
+        // to test the property `paging`
+        should("test paging") {
+            // uncomment below to test the property
+            //modelInstance.paging shouldBe ("TODO")
         }
 
     }

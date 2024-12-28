@@ -26,7 +26,7 @@ class OfferDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OfferDTO
         //val modelInstance = OfferDTO()
 
-        // to test the property `modelId` - Идентификатор модели Маркета, с которой соотнесено предложение.  Если предложение не соотнесено ни с какой карточкой модели, то параметр `modelid` содержит значение `0`.  {% note info %}  Идентификатор модели присутствует в URL карточки модели в виде значения параметра `product`. Например: `https://market.yandex.ru/product/13584121`.  {% endnote %} 
+        // to test the property `modelId` - Идентификатор модели Маркета, с которой соотнесено предложение.  Если предложение не соотнесено ни с какой карточкой модели, то параметр `modelid` содержит значение `0`.  {% note info \"Где отображается идентификатор модели\" %}  В URL карточки модели в виде значения параметра `product`. Например: `https://market.yandex.ru/product/13584121`.  {% endnote %} 
         should("test modelId") {
             // uncomment below to test the property
             //modelInstance.modelId shouldBe ("TODO")
@@ -98,19 +98,19 @@ class OfferDTOTest : ShouldSpec() {
             //modelInstance.currency shouldBe ("TODO")
         }
 
-        // to test the property `bid` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Ставка на клик. 
+        // to test the property `bid` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Ставка на клик. 
         should("test bid") {
             // uncomment below to test the property
             //modelInstance.bid shouldBe ("TODO")
         }
 
-        // to test the property `cbid` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Ставка на клик. 
+        // to test the property `cbid` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Ставка на клик. 
         should("test cbid") {
             // uncomment below to test the property
             //modelInstance.cbid shouldBe ("TODO")
         }
 
-        // to test the property `fee` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Процент комиссии на товар при продаже по CPA. 
+        // to test the property `fee` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Процент комиссии на товар при продаже по CPA. 
         should("test fee") {
             // uncomment below to test the property
             //modelInstance.fee shouldBe ("TODO")

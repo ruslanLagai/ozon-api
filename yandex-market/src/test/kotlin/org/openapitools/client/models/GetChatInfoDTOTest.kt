@@ -51,13 +51,13 @@ class GetChatInfoDTOTest : ShouldSpec() {
             //modelInstance.status shouldBe ("TODO")
         }
 
-        // to test the property `createdAt` - Дата и время создания чата.  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-21T00:00:00+03:00`. 
+        // to test the property `createdAt` - Дата и время создания чата.  Формат даты: ISO 8601 со смещением относительно UTC. 
         should("test createdAt") {
             // uncomment below to test the property
             //modelInstance.createdAt shouldBe ("TODO")
         }
 
-        // to test the property `updatedAt` - Дата и время последнего сообщения в чате.
+        // to test the property `updatedAt` - Дата и время последнего сообщения в чате.  Формат даты: ISO 8601 со смещением относительно UTC. 
         should("test updatedAt") {
             // uncomment below to test the property
             //modelInstance.updatedAt shouldBe ("TODO")

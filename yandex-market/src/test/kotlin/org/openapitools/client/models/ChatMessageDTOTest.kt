@@ -33,7 +33,7 @@ class ChatMessageDTOTest : ShouldSpec() {
             //modelInstance.messageId shouldBe ("TODO")
         }
 
-        // to test the property `createdAt` - Дата и время создания сообщения.  Формат даты: ISO 8601 со смещением относительно UTC. Например, `2017-11-21T00:00:00+03:00`. 
+        // to test the property `createdAt` - Дата и время создания сообщения.  Формат даты: ISO 8601 со смещением относительно UTC. 
         should("test createdAt") {
             // uncomment below to test the property
             //modelInstance.createdAt shouldBe ("TODO")

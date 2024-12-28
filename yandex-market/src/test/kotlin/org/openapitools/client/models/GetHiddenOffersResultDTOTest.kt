@@ -27,16 +27,16 @@ class GetHiddenOffersResultDTOTest : ShouldSpec() {
         // uncomment below to create an instance of GetHiddenOffersResultDTO
         //val modelInstance = GetHiddenOffersResultDTO()
 
-        // to test the property `paging`
-        should("test paging") {
-            // uncomment below to test the property
-            //modelInstance.paging shouldBe ("TODO")
-        }
-
         // to test the property `hiddenOffers` - Список скрытых товаров.
         should("test hiddenOffers") {
             // uncomment below to test the property
             //modelInstance.hiddenOffers shouldBe ("TODO")
+        }
+
+        // to test the property `paging`
+        should("test paging") {
+            // uncomment below to test the property
+            //modelInstance.paging shouldBe ("TODO")
         }
 
     }

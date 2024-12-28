@@ -24,6 +24,7 @@ import org.openapitools.client.models.OrderItemInstanceDTO
 import org.openapitools.client.models.OrderItemInstanceType
 import org.openapitools.client.models.OrderItemPromoDTO
 import org.openapitools.client.models.OrderItemSubsidyDTO
+import org.openapitools.client.models.OrderItemTagType
 import org.openapitools.client.models.OrderVatType
 
 class OrderItemDTOTest : ShouldSpec() {
@@ -37,7 +38,7 @@ class OrderItemDTOTest : ShouldSpec() {
             //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `offerId` - Ваш SKU — идентификатор товара в вашей системе.  Разрешена любая последовательность длиной до 255 знаков.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * SKU товара нельзя менять — можно только удалить товар и добавить заново с новым SKU.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
+        // to test the property `offerId` - Ваш SKU — идентификатор товара в вашей системе.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
         should("test offerId") {
             // uncomment below to test the property
             //modelInstance.offerId shouldBe ("TODO")
@@ -61,16 +62,10 @@ class OrderItemDTOTest : ShouldSpec() {
             //modelInstance.buyerPrice shouldBe ("TODO")
         }
 
-        // to test the property `buyerPriceBeforeDiscount` - Цена продажи. Стоимость товара в валюте покупателя до применения скидок. 
+        // to test the property `buyerPriceBeforeDiscount` - Стоимость товара в валюте покупателя до применения скидок по:  * акциям; * купонам; * промокодам. 
         should("test buyerPriceBeforeDiscount") {
             // uncomment below to test the property
             //modelInstance.buyerPriceBeforeDiscount shouldBe ("TODO")
-        }
-
-        // to test the property `priceBeforeDiscount` - {% note warning \"\" %}  Этот параметр устарел.  {% endnote %}  Стоимость товара в валюте магазина до применения скидок. 
-        should("test priceBeforeDiscount") {
-            // uncomment below to test the property
-            //modelInstance.priceBeforeDiscount shouldBe ("TODO")
         }
 
         // to test the property `count` - Количество единиц товара.
@@ -85,19 +80,25 @@ class OrderItemDTOTest : ShouldSpec() {
             //modelInstance.vat shouldBe ("TODO")
         }
 
-        // to test the property `shopSku` - Ваш SKU — идентификатор товара в вашей системе.  Разрешена любая последовательность длиной до 255 знаков.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * SKU товара нельзя менять — можно только удалить товар и добавить заново с новым SKU.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
+        // to test the property `priceBeforeDiscount` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Стоимость товара в валюте магазина до применения скидок. 
+        should("test priceBeforeDiscount") {
+            // uncomment below to test the property
+            //modelInstance.priceBeforeDiscount shouldBe ("TODO")
+        }
+
+        // to test the property `shopSku` - Ваш SKU — идентификатор товара в вашей системе.  Правила использования SKU:  * У каждого товара SKU должен быть свой.  * Уже заданный SKU нельзя освободить и использовать заново для другого товара. Каждый товар должен получать новый идентификатор, до того никогда не использовавшийся в вашем каталоге.  SKU товара можно изменить в кабинете продавца на Маркете. О том, как это сделать, читайте [в Справке Маркета для продавцов](https://yandex.ru/support2/marketplace/ru/assortment/operations/edit-sku).  [Что такое SKU и как его назначать](https://yandex.ru/support/marketplace/assortment/add/index.html#fields) 
         should("test shopSku") {
             // uncomment below to test the property
             //modelInstance.shopSku shouldBe ("TODO")
         }
 
-        // to test the property `subsidy` - {% note warning \"\" %}  Этот параметр устарел. Вместо него используйте `subsidies`.  {% endnote %}  Общее вознаграждение партнеру за DBS-доставку и все скидки на товар:  * по промокодам; * по купонам; * по баллам Плюса; * по акциям.  Передается в валюте заказа. 
+        // to test the property `subsidy` - {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `subsidies`.  {% endnote %}  Общее вознаграждение партнеру за DBS-доставку и все скидки на товар:  * по промокодам; * по купонам; * по баллам Плюса; * по акциям. 
         should("test subsidy") {
             // uncomment below to test the property
             //modelInstance.subsidy shouldBe ("TODO")
         }
 
-        // to test the property `partnerWarehouseId` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Идентификатор склада в системе партнера, на который сформирован заказ. 
+        // to test the property `partnerWarehouseId` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Идентификатор склада в системе партнера, на который сформирован заказ. 
         should("test partnerWarehouseId") {
             // uncomment below to test the property
             //modelInstance.partnerWarehouseId shouldBe ("TODO")
@@ -109,7 +110,7 @@ class OrderItemDTOTest : ShouldSpec() {
             //modelInstance.promos shouldBe ("TODO")
         }
 
-        // to test the property `instances` - Информация о маркировке единиц товара.  Возвращаются данные для маркировки, переданные в запросе [PUT campaigns/{campaignId}/orders/{orderId}/cis](../../reference/orders/provideOrderItemCis.md).  Если магазин еще не передавал коды для этого заказа, `instances` отсутствует. 
+        // to test the property `instances` - Информация о маркировке единиц товара.  Возвращаются данные для маркировки, переданные в запросе [PUT campaigns/{campaignId}/orders/{orderId}/identifiers](../../reference/orders/provideOrderItemIdentifiers.md).  Если магазин еще не передавал коды для этого заказа, `instances` отсутствует. 
         should("test instances") {
             // uncomment below to test the property
             //modelInstance.instances shouldBe ("TODO")
@@ -131,6 +132,12 @@ class OrderItemDTOTest : ShouldSpec() {
         should("test requiredInstanceTypes") {
             // uncomment below to test the property
             //modelInstance.requiredInstanceTypes shouldBe ("TODO")
+        }
+
+        // to test the property `tags` - Признаки товара.
+        should("test tags") {
+            // uncomment below to test the property
+            //modelInstance.tags shouldBe ("TODO")
         }
 
     }

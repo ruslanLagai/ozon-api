@@ -31,12 +31,6 @@ class ParameterValueDTOTest : ShouldSpec() {
             //modelInstance.parameterId shouldBe ("TODO")
         }
 
-        // to test the property ``value`` - Значение.
-        should("test `value`") {
-            // uncomment below to test the property
-            //modelInstance.`value` shouldBe ("TODO")
-        }
-
         // to test the property `unitId` - Идентификатор единицы измерения. Если вы не передали параметр `unitId`, используется единица измерения по умолчанию.
         should("test unitId") {
             // uncomment below to test the property
@@ -47,6 +41,12 @@ class ParameterValueDTOTest : ShouldSpec() {
         should("test valueId") {
             // uncomment below to test the property
             //modelInstance.valueId shouldBe ("TODO")
+        }
+
+        // to test the property ``value`` - Значение.
+        should("test `value`") {
+            // uncomment below to test the property
+            //modelInstance.`value` shouldBe ("TODO")
         }
 
     }

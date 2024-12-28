@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.BidRecommendationItemDTO
+import org.openapitools.client.models.BenefitType
 
 class BidRecommendationItemDTOTest : ShouldSpec() {
     init {
@@ -35,6 +36,12 @@ class BidRecommendationItemDTOTest : ShouldSpec() {
         should("test showPercent") {
             // uncomment below to test the property
             //modelInstance.showPercent shouldBe ("TODO")
+        }
+
+        // to test the property `benefits` - Список доступных субсидий.  Чтобы получить необходимый инструмент продвижения, установите ставку, которая будет рекомендована для этого инструмента или выше. 
+        should("test benefits") {
+            // uncomment below to test the property
+            //modelInstance.benefits shouldBe ("TODO")
         }
 
     }

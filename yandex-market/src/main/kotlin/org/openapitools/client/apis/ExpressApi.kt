@@ -147,6 +147,7 @@ import org.openapitools.client.models.ProvideOrderItemIdentifiersResponse
 import org.openapitools.client.models.PutSkuBidsRequest
 import org.openapitools.client.models.RefundStatusType
 import org.openapitools.client.models.ReportFormatType
+import org.openapitools.client.models.ReportFormatType.FILE
 import org.openapitools.client.models.ReportLanguageType
 import org.openapitools.client.models.ReturnType
 import org.openapitools.client.models.SendMessageToChatRequest

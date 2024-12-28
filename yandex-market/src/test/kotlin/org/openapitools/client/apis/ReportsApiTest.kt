@@ -27,6 +27,7 @@ import org.openapitools.client.models.ApiServerErrorResponse
 import org.openapitools.client.models.ApiUnauthorizedErrorResponse
 import org.openapitools.client.models.GenerateBoostConsolidatedRequest
 import org.openapitools.client.models.GenerateCompetitorsPositionReportRequest
+import org.openapitools.client.models.GenerateGoodsFeedbackRequest
 import org.openapitools.client.models.GenerateGoodsMovementReportRequest
 import org.openapitools.client.models.GenerateGoodsRealizationReportRequest
 import org.openapitools.client.models.GenerateGoodsTurnoverRequest
@@ -43,6 +44,7 @@ import org.openapitools.client.models.GenerateUnitedOrdersRequest
 import org.openapitools.client.models.GetReportInfoResponse
 import org.openapitools.client.models.PageFormatType
 import org.openapitools.client.models.ReportFormatType
+import org.openapitools.client.models.ReportLanguageType
 
 class ReportsApiTest : ShouldSpec() {
     init {
@@ -64,6 +66,15 @@ class ReportsApiTest : ShouldSpec() {
             //val generateCompetitorsPositionReportRequest : GenerateCompetitorsPositionReportRequest =  // GenerateCompetitorsPositionReportRequest | 
             //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
             //val result : GenerateReportResponse = apiInstance.generateCompetitorsPositionReport(generateCompetitorsPositionReportRequest, format)
+            //result shouldBe ("TODO")
+        }
+
+        // to test generateGoodsFeedbackReport
+        should("test generateGoodsFeedbackReport") {
+            // uncomment below to test generateGoodsFeedbackReport
+            //val generateGoodsFeedbackRequest : GenerateGoodsFeedbackRequest =  // GenerateGoodsFeedbackRequest | 
+            //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
+            //val result : GenerateReportResponse = apiInstance.generateGoodsFeedbackReport(generateGoodsFeedbackRequest, format)
             //result shouldBe ("TODO")
         }
 
@@ -152,7 +163,8 @@ class ReportsApiTest : ShouldSpec() {
             // uncomment below to test generateUnitedMarketplaceServicesReport
             //val generateUnitedMarketplaceServicesReportRequest : GenerateUnitedMarketplaceServicesReportRequest =  // GenerateUnitedMarketplaceServicesReportRequest | 
             //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
-            //val result : GenerateReportResponse = apiInstance.generateUnitedMarketplaceServicesReport(generateUnitedMarketplaceServicesReportRequest, format)
+            //val language : ReportLanguageType =  // ReportLanguageType | Язык отчета.
+            //val result : GenerateReportResponse = apiInstance.generateUnitedMarketplaceServicesReport(generateUnitedMarketplaceServicesReportRequest, format, language)
             //result shouldBe ("TODO")
         }
 
@@ -161,7 +173,8 @@ class ReportsApiTest : ShouldSpec() {
             // uncomment below to test generateUnitedNettingReport
             //val generateUnitedNettingReportRequest : GenerateUnitedNettingReportRequest =  // GenerateUnitedNettingReportRequest | 
             //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
-            //val result : GenerateReportResponse = apiInstance.generateUnitedNettingReport(generateUnitedNettingReportRequest, format)
+            //val language : ReportLanguageType =  // ReportLanguageType | Язык отчета.
+            //val result : GenerateReportResponse = apiInstance.generateUnitedNettingReport(generateUnitedNettingReportRequest, format, language)
             //result shouldBe ("TODO")
         }
 
@@ -170,7 +183,8 @@ class ReportsApiTest : ShouldSpec() {
             // uncomment below to test generateUnitedOrdersReport
             //val generateUnitedOrdersRequest : GenerateUnitedOrdersRequest =  // GenerateUnitedOrdersRequest | 
             //val format : ReportFormatType =  // ReportFormatType | Формат отчета.
-            //val result : GenerateReportResponse = apiInstance.generateUnitedOrdersReport(generateUnitedOrdersRequest, format)
+            //val language : ReportLanguageType =  // ReportLanguageType | Язык отчета.
+            //val result : GenerateReportResponse = apiInstance.generateUnitedOrdersReport(generateUnitedOrdersRequest, format, language)
             //result shouldBe ("TODO")
         }
 

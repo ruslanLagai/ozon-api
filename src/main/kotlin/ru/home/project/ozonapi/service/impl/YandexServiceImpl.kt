@@ -53,13 +53,13 @@ class YandexServiceImpl(
             processReport(file, "SERVICE_PRICE") { value: Double -> response.crossDoc += value }
         },
         Pair(ReportType.PaidStorage) { file: String, response: YandexReportResult ->
-            processReport(file, "PAID_STORAGE_IN_ROUBLES") { value: Double -> response.paidStorage = value }
+            processReport(file, "PAID_STORAGE") { value: Double -> response.paidStorage = value }
         },
         Pair(ReportType.Shelf) { file: String, response: YandexReportResult ->
-            processReport(file, "SERVICE_PRICE_IN_ROUBLES") { value: Double -> response.shelf = value }
+            processReport(file, "SERVICE_PRICE") { value: Double -> response.shelf = value }
         },
         Pair(ReportType.Utilization) { file: String, response: YandexReportResult ->
-            processReport(file, "SERVICE_PRICE_IN_ROUBLES") { value: Double -> response.utilization = value }
+            processReport(file, "SERVICE_PRICE") { value: Double -> response.utilization = value }
         },
         Pair(ReportType.ReceptionSurplus) { file: String, response: YandexReportResult ->
             processReport(file, "SERVICE_PRICE") { value: Double -> response.crossDoc += value }

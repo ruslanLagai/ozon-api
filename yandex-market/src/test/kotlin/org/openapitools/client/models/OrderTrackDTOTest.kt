@@ -25,16 +25,16 @@ class OrderTrackDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OrderTrackDTO
         //val modelInstance = OrderTrackDTO()
 
-        // to test the property `trackCode` - Трек‑номер посылки.
-        should("test trackCode") {
-            // uncomment below to test the property
-            //modelInstance.trackCode shouldBe ("TODO")
-        }
-
         // to test the property `deliveryServiceId` - Идентификатор службы доставки. Информацию о службе доставки можно получить с помощью запроса [GET delivery/services](../../reference/orders/getDeliveryServices.md).
         should("test deliveryServiceId") {
             // uncomment below to test the property
             //modelInstance.deliveryServiceId shouldBe ("TODO")
+        }
+
+        // to test the property `trackCode` - Трек‑номер посылки.
+        should("test trackCode") {
+            // uncomment below to test the property
+            //modelInstance.trackCode shouldBe ("TODO")
         }
 
     }

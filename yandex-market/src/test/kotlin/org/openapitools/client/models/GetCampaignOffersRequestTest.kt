@@ -26,7 +26,7 @@ class GetCampaignOffersRequestTest : ShouldSpec() {
         // uncomment below to create an instance of GetCampaignOffersRequest
         //val modelInstance = GetCampaignOffersRequest()
 
-        // to test the property `offerIds` - Идентификаторы товаров, информация о которых нужна. <br><br> {% note warning \"Такой список возвращается только целиком\" %}  Не используйте это поле одновременно с фильтрами по статусам карточек, категориям, брендам или тегам. Если вы хотите воспользоваться фильтрами, оставьте поле пустым.  Если вы запрашиваете информацию по конкретным SKU, не заполняйте:  * `page_token` * `limit`  {% endnote %} 
+        // to test the property `offerIds` - Идентификаторы товаров, информация о которых нужна.  {% note warning \"Такой список возвращается только целиком\" %}  Не используйте это поле одновременно с фильтрами по статусам карточек, категориям, брендам или тегам. Если вы хотите воспользоваться фильтрами, оставьте поле пустым.  Если вы запрашиваете информацию по конкретным SKU, не заполняйте:  * `page_token` * `limit`  {% endnote %}    
         should("test offerIds") {
             // uncomment below to test the property
             //modelInstance.offerIds shouldBe ("TODO")

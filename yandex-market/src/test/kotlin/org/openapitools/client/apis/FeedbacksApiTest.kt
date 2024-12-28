@@ -36,8 +36,8 @@ class FeedbacksApiTest : ShouldSpec() {
         should("test getFeedbackAndCommentUpdates") {
             // uncomment below to test getFeedbackAndCommentUpdates
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val fromDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Начальная дата обновления отзывов.  Если параметр указан, возвращаются отзывы, которые были написаны или обновлены с этой даты.  Формат даты: `ГГГГ-ММ-ДД`. 
             //val result : GetFeedbackListResponse = apiInstance.getFeedbackAndCommentUpdates(campaignId, pageToken, limit, fromDate)
             //result shouldBe ("TODO")

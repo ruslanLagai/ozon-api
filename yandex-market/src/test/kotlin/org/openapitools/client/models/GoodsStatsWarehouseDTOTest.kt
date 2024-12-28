@@ -26,6 +26,12 @@ class GoodsStatsWarehouseDTOTest : ShouldSpec() {
         // uncomment below to create an instance of GoodsStatsWarehouseDTO
         //val modelInstance = GoodsStatsWarehouseDTO()
 
+        // to test the property `stocks` - Информация об остатках товаров на складе.
+        should("test stocks") {
+            // uncomment below to test the property
+            //modelInstance.stocks shouldBe ("TODO")
+        }
+
         // to test the property `id` - Идентификатор склада.
         should("test id") {
             // uncomment below to test the property
@@ -36,12 +42,6 @@ class GoodsStatsWarehouseDTOTest : ShouldSpec() {
         should("test name") {
             // uncomment below to test the property
             //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `stocks` - Информация об остатках товаров на складе.
-        should("test stocks") {
-            // uncomment below to test the property
-            //modelInstance.stocks shouldBe ("TODO")
         }
 
     }

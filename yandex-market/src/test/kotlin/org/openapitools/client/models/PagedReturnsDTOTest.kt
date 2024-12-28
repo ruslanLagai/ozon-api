@@ -27,16 +27,16 @@ class PagedReturnsDTOTest : ShouldSpec() {
         // uncomment below to create an instance of PagedReturnsDTO
         //val modelInstance = PagedReturnsDTO()
 
-        // to test the property `paging`
-        should("test paging") {
-            // uncomment below to test the property
-            //modelInstance.paging shouldBe ("TODO")
-        }
-
         // to test the property `returns` - Список возвратов.
         should("test returns") {
             // uncomment below to test the property
             //modelInstance.returns shouldBe ("TODO")
+        }
+
+        // to test the property `paging`
+        should("test paging") {
+            // uncomment below to test the property
+            //modelInstance.paging shouldBe ("TODO")
         }
 
     }

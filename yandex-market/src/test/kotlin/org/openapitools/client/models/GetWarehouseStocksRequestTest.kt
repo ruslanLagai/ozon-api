@@ -25,7 +25,7 @@ class GetWarehouseStocksRequestTest : ShouldSpec() {
         // uncomment below to create an instance of GetWarehouseStocksRequest
         //val modelInstance = GetWarehouseStocksRequest()
 
-        // to test the property `withTurnover` - **Только для модели FBY**  Возвращать ли информацию по оборачиваемости.  Значение по умолчанию — `false`. Если информация нужна, передавайте значение `true`. 
+        // to test the property `withTurnover` - **Только для модели FBY**  Возвращать ли информацию по оборачиваемости.  Значение по умолчанию: `false`. Если информация нужна, передайте значение `true`. 
         should("test withTurnover") {
             // uncomment below to test the property
             //modelInstance.withTurnover shouldBe ("TODO")

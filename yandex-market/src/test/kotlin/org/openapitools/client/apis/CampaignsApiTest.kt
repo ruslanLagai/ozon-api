@@ -71,7 +71,7 @@ class CampaignsApiTest : ShouldSpec() {
         // to test getCampaigns
         should("test getCampaigns") {
             // uncomment below to test getCampaigns
-            //val page : kotlin.Int = 56 // kotlin.Int | Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val result : GetCampaignsResponse = apiInstance.getCampaigns(page, pageSize)
             //result shouldBe ("TODO")
@@ -81,7 +81,7 @@ class CampaignsApiTest : ShouldSpec() {
         should("test getCampaignsByLogin") {
             // uncomment below to test getCampaignsByLogin
             //val login : kotlin.String = login_example // kotlin.String | Логин пользователя.
-            //val page : kotlin.Int = 56 // kotlin.Int | Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val result : GetCampaignsResponse = apiInstance.getCampaignsByLogin(login, page, pageSize)
             //result shouldBe ("TODO")

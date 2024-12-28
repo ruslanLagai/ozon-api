@@ -38,7 +38,7 @@ class OutletLicensesApiTest : ShouldSpec() {
         should("test deleteOutletLicenses") {
             // uncomment below to test deleteOutletLicenses
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
-            //val ids : kotlin.collections.Set<kotlin.Long> =  // kotlin.collections.Set<kotlin.Long> | Список идентификаторов лицензий.
+            //val ids : kotlin.collections.Set<kotlin.Long> =  // kotlin.collections.Set<kotlin.Long> | Список идентификаторов лицензий для удаления.
             //val result : EmptyApiResponse = apiInstance.deleteOutletLicenses(campaignId, ids)
             //result shouldBe ("TODO")
         }

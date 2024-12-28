@@ -27,16 +27,16 @@ class FeedIndexLogsResultDTOTest : ShouldSpec() {
         // uncomment below to create an instance of FeedIndexLogsResultDTO
         //val modelInstance = FeedIndexLogsResultDTO()
 
-        // to test the property `feed`
-        should("test feed") {
-            // uncomment below to test the property
-            //modelInstance.feed shouldBe ("TODO")
-        }
-
         // to test the property `indexLogRecords` - Список отчетов по индексации прайс-листа.
         should("test indexLogRecords") {
             // uncomment below to test the property
             //modelInstance.indexLogRecords shouldBe ("TODO")
+        }
+
+        // to test the property `feed`
+        should("test feed") {
+            // uncomment below to test the property
+            //modelInstance.feed shouldBe ("TODO")
         }
 
         // to test the property `total` - Количество отчетов на всех страницах выходных данных.

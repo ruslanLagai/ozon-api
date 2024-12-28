@@ -20,6 +20,7 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.GetOrdersResponse
 import org.openapitools.client.models.FlippingPagerDTO
+import org.openapitools.client.models.ForwardScrollingPagerDTO
 import org.openapitools.client.models.OrderDTO
 
 class GetOrdersResponseTest : ShouldSpec() {
@@ -27,16 +28,22 @@ class GetOrdersResponseTest : ShouldSpec() {
         // uncomment below to create an instance of GetOrdersResponse
         //val modelInstance = GetOrdersResponse()
 
+        // to test the property `orders` - Модель заказа. 
+        should("test orders") {
+            // uncomment below to test the property
+            //modelInstance.orders shouldBe ("TODO")
+        }
+
         // to test the property `pager`
         should("test pager") {
             // uncomment below to test the property
             //modelInstance.pager shouldBe ("TODO")
         }
 
-        // to test the property `orders` - Модель заказа. 
-        should("test orders") {
+        // to test the property `paging`
+        should("test paging") {
             // uncomment below to test the property
-            //modelInstance.orders shouldBe ("TODO")
+            //modelInstance.paging shouldBe ("TODO")
         }
 
     }

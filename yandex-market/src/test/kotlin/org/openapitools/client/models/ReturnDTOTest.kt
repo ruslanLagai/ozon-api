@@ -43,13 +43,25 @@ class ReturnDTOTest : ShouldSpec() {
             //modelInstance.orderId shouldBe ("TODO")
         }
 
-        // to test the property `creationDate` - Дата создания возврата клиентом.
+        // to test the property `items` - Список товаров в возврате.
+        should("test items") {
+            // uncomment below to test the property
+            //modelInstance.items shouldBe ("TODO")
+        }
+
+        // to test the property `returnType`
+        should("test returnType") {
+            // uncomment below to test the property
+            //modelInstance.returnType shouldBe ("TODO")
+        }
+
+        // to test the property `creationDate` - Дата создания возврата клиентом.  Формат даты: ISO 8601 со смещением относительно UTC. 
         should("test creationDate") {
             // uncomment below to test the property
             //modelInstance.creationDate shouldBe ("TODO")
         }
 
-        // to test the property `updateDate` - Дата обновления возврата.
+        // to test the property `updateDate` - Дата обновления возврата.  Формат даты: ISO 8601 со смещением относительно UTC. 
         should("test updateDate") {
             // uncomment below to test the property
             //modelInstance.updateDate shouldBe ("TODO")
@@ -83,18 +95,6 @@ class ReturnDTOTest : ShouldSpec() {
         should("test refundAmount") {
             // uncomment below to test the property
             //modelInstance.refundAmount shouldBe ("TODO")
-        }
-
-        // to test the property `items` - Список товаров в возврате.
-        should("test items") {
-            // uncomment below to test the property
-            //modelInstance.items shouldBe ("TODO")
-        }
-
-        // to test the property `returnType`
-        should("test returnType") {
-            // uncomment below to test the property
-            //modelInstance.returnType shouldBe ("TODO")
         }
 
         // to test the property `fastReturn` - Используется ли опция **Быстрый возврат денег за дешевый брак**. 

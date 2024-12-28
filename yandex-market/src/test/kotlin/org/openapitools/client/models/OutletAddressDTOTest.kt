@@ -25,7 +25,7 @@ class OutletAddressDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OutletAddressDTO
         //val modelInstance = OutletAddressDTO()
 
-        // to test the property `regionId` - Идентификатор региона.  Идентификатор можно получить c помощью запроса [GET regions](../../reference/regions/searchRegionsByName.md).  {% note alert %}  При создании и редактировании точек продаж можно указывать только регионы типов `TOWN` (город), `CITY` (крупный город) и `REPUBLIC_AREA` (район субъекта федерации). Тип региона указан в выходных параметрах type запросов [GET regions](../../reference/regions/searchRegionsByName.md) и [GET regions/{regionId}](../../reference/regions/searchRegionsById.md).  {% endnote %} 
+        // to test the property `regionId` - Идентификатор региона.  Идентификатор можно получить c помощью запроса [GET regions](../../reference/regions/searchRegionsByName.md).  {% note alert \"Типы регионов при создании и редактировании точек продаж\" %}  Указывайте только регионы типов `TOWN` (город), `CITY` (крупный город) и `REPUBLIC_AREA` (район субъекта федерации). Тип региона указан в выходных параметрах `type` запросов [GET regions](../../reference/regions/searchRegionsByName.md) и [GET regions/{regionId}](../../reference/regions/searchRegionsById.md).  {% endnote %} 
         should("test regionId") {
             // uncomment below to test the property
             //modelInstance.regionId shouldBe ("TODO")
@@ -73,7 +73,7 @@ class OutletAddressDTOTest : ShouldSpec() {
             //modelInstance.km shouldBe ("TODO")
         }
 
-        // to test the property `city` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его. Город или населенный пункт возвращается в параметре `regionId`.  {% endnote %} 
+        // to test the property `city` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  В ответах города и населенные пункты возвращаются в параметре `regionId`.  {% endnote %} 
         should("test city") {
             // uncomment below to test the property
             //modelInstance.city shouldBe ("TODO")

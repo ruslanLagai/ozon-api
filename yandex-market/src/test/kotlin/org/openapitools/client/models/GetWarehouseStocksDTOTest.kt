@@ -27,16 +27,16 @@ class GetWarehouseStocksDTOTest : ShouldSpec() {
         // uncomment below to create an instance of GetWarehouseStocksDTO
         //val modelInstance = GetWarehouseStocksDTO()
 
-        // to test the property `paging`
-        should("test paging") {
-            // uncomment below to test the property
-            //modelInstance.paging shouldBe ("TODO")
-        }
-
         // to test the property `warehouses` - Страница списка складов.
         should("test warehouses") {
             // uncomment below to test the property
             //modelInstance.warehouses shouldBe ("TODO")
+        }
+
+        // to test the property `paging`
+        should("test paging") {
+            // uncomment below to test the property
+            //modelInstance.paging shouldBe ("TODO")
         }
 
     }

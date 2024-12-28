@@ -25,7 +25,7 @@ class FeedParameterDTOTest : ShouldSpec() {
         // uncomment below to create an instance of FeedParameterDTO
         //val modelInstance = FeedParameterDTO()
 
-        // to test the property `name` - Название параметра.  Возможное значение: - `reparseIntervalMinutes` — период скачивания прайс-листа. Маркет будет скачивать прайс-лист через количество минут, указанное в параметре `value`. Например, при `value=1440`, Маркет будет скачивать прайс-лист один раз в сутки.  {% note alert %}  Несмотря на установленное значение, Маркет скачает прайс-лист один раз в сутки.  {% endnote %}  Обязательный параметр. 
+        // to test the property `name` - Название параметра.  Возможное значение: - `reparseIntervalMinutes` — период скачивания прайс-листа. Маркет будет скачивать прайс-лист через количество минут, указанное в параметре `value`. Например, при `value=1440`, Маркет будет скачивать прайс-лист один раз в сутки.  Несмотря на установленное значение, Маркет скачает прайс-лист один раз в сутки.  Обязательный параметр. 
         should("test name") {
             // uncomment below to test the property
             //modelInstance.name shouldBe ("TODO")

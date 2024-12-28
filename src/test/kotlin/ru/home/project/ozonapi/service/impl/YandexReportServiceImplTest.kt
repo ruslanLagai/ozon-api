@@ -29,14 +29,14 @@ class YandexReportServiceImplTest {
         val campaigns = readResourceMoshi("yandex/campaigns/campaigns.json", GetCampaignsResponse::class.java)
 
         `when`(yandexMarketClient.createReport(any(), any(), any(), any()))
-            .thenReturn(CompletableFuture.completedFuture("/Users/rlagay/Documents/Github/new/ozon-api/ozon-api/src/test/resources/yandex/reports/united-marketplace-services-a04385b3-74a0-4e8e-8b88-32dfed228159.zip"))
+            .thenReturn(CompletableFuture.completedFuture("/Users/rlagay/Documents/Github/new/ozon-api/ozon-api/src/test/resources/yandex/reports/yandex-report-2024-12-28T22:20:23.988676.zip"))
         `when`(yandexMarketClient.getCampaignList()).thenReturn(campaigns.campaigns)
 
         val result = yandexService.getReport(from, to).first
 
-        assertEquals(1575.59, result.shelf)
-        assertEquals(640.0, result.crossDoc)
-        assertEquals(193.63, result.paidStorage)
-        assertEquals(195.0, result.utilization)
+        assertEquals(0.0, result.shelf)
+        assertEquals(500.0, result.crossDoc)
+        assertEquals(0.0, result.paidStorage)
+        assertEquals(39.0, result.utilization)
     }
 }

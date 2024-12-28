@@ -26,7 +26,7 @@ class OrderDeliveryAddressDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OrderDeliveryAddressDTO
         //val modelInstance = OrderDeliveryAddressDTO()
 
-        // to test the property `country` - Страна.  Обязательный параметр. 
+        // to test the property `country` - Страна. 
         should("test country") {
             // uncomment below to test the property
             //modelInstance.country shouldBe ("TODO")
@@ -38,7 +38,7 @@ class OrderDeliveryAddressDTOTest : ShouldSpec() {
             //modelInstance.postcode shouldBe ("TODO")
         }
 
-        // to test the property `city` - Город или населенный пункт.  Обязательный параметр. 
+        // to test the property `city` - Город или населенный пункт. 
         should("test city") {
             // uncomment below to test the property
             //modelInstance.city shouldBe ("TODO")
@@ -56,13 +56,13 @@ class OrderDeliveryAddressDTOTest : ShouldSpec() {
             //modelInstance.subway shouldBe ("TODO")
         }
 
-        // to test the property `street` - Улица.  Обязательный параметр. 
+        // to test the property `street` - Улица. 
         should("test street") {
             // uncomment below to test the property
             //modelInstance.street shouldBe ("TODO")
         }
 
-        // to test the property `house` - Дом или владение.  Обязательный параметр. 
+        // to test the property `house` - Дом или владение. 
         should("test house") {
             // uncomment below to test the property
             //modelInstance.house shouldBe ("TODO")
@@ -98,13 +98,13 @@ class OrderDeliveryAddressDTOTest : ShouldSpec() {
             //modelInstance.apartment shouldBe ("TODO")
         }
 
-        // to test the property `phone` - Телефон получателя заказа.  Обязательный параметр. 
+        // to test the property `phone` - Телефон получателя заказа. 
         should("test phone") {
             // uncomment below to test the property
             //modelInstance.phone shouldBe ("TODO")
         }
 
-        // to test the property `recipient` - Фамилия, имя и отчество получателя заказа.  Обязательный параметр. 
+        // to test the property `recipient` - Фамилия, имя и отчество получателя заказа. 
         should("test recipient") {
             // uncomment below to test the property
             //modelInstance.recipient shouldBe ("TODO")

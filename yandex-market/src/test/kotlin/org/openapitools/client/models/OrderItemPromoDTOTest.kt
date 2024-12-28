@@ -32,16 +32,16 @@ class OrderItemPromoDTOTest : ShouldSpec() {
             //modelInstance.type shouldBe ("TODO")
         }
 
+        // to test the property `subsidy` - Вознаграждение партнеру от Маркета за товар, проданный в рамках акции. 
+        should("test subsidy") {
+            // uncomment below to test the property
+            //modelInstance.subsidy shouldBe ("TODO")
+        }
+
         // to test the property `discount` - Размер пользовательской скидки в валюте покупателя. 
         should("test discount") {
             // uncomment below to test the property
             //modelInstance.discount shouldBe ("TODO")
-        }
-
-        // to test the property `subsidy` - Вознаграждение партнеру от Маркета за товар, проданный в рамках акции.  Передается в валюте заказа. 
-        should("test subsidy") {
-            // uncomment below to test the property
-            //modelInstance.subsidy shouldBe ("TODO")
         }
 
         // to test the property `shopPromoId` - Идентификатор акции поставщика. 

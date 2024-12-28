@@ -26,6 +26,12 @@ class OrderBuyerDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OrderBuyerDTO
         //val modelInstance = OrderBuyerDTO()
 
+        // to test the property `type`
+        should("test type") {
+            // uncomment below to test the property
+            //modelInstance.type shouldBe ("TODO")
+        }
+
         // to test the property `id` - Идентификатор покупателя.
         should("test id") {
             // uncomment below to test the property
@@ -48,12 +54,6 @@ class OrderBuyerDTOTest : ShouldSpec() {
         should("test middleName") {
             // uncomment below to test the property
             //modelInstance.middleName shouldBe ("TODO")
-        }
-
-        // to test the property `type`
-        should("test type") {
-            // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
         }
 
     }

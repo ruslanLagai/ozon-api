@@ -33,6 +33,7 @@ import org.openapitools.client.models.SearchShipmentsRequest
 import org.openapitools.client.models.SearchShipmentsResponse
 import org.openapitools.client.models.SetShipmentPalletsCountRequest
 import org.openapitools.client.models.ShipmentPalletLabelPageFormatType
+import org.openapitools.client.models.ShipmentPalletLabelPageFormatType.A8
 import org.openapitools.client.models.TransferOrdersFromShipmentRequest
 
 import com.squareup.moshi.Json

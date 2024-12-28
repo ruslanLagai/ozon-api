@@ -79,7 +79,7 @@ class ModelOfferDTOTest : ShouldSpec() {
             //modelInstance.shopRating shouldBe ("TODO")
         }
 
-        // to test the property `inStock` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %} 
+        // to test the property `inStock` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %} 
         should("test inStock") {
             // uncomment below to test the property
             //modelInstance.inStock shouldBe ("TODO")

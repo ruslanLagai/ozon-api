@@ -33,16 +33,16 @@ class CalculatedTariffDTOTest : ShouldSpec() {
             //modelInstance.type shouldBe ("TODO")
         }
 
-        // to test the property `amount` - Стоимость услуги в рублях.
-        should("test amount") {
-            // uncomment below to test the property
-            //modelInstance.amount shouldBe ("TODO")
-        }
-
         // to test the property `parameters` - Параметры расчета тарифа.
         should("test parameters") {
             // uncomment below to test the property
             //modelInstance.parameters shouldBe ("TODO")
+        }
+
+        // to test the property `amount` - Стоимость услуги в рублях.
+        should("test amount") {
+            // uncomment below to test the property
+            //modelInstance.amount shouldBe ("TODO")
         }
 
     }

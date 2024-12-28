@@ -25,6 +25,8 @@ import org.openapitools.client.models.ApiLimitErrorResponse
 import org.openapitools.client.models.ApiNotFoundErrorResponse
 import org.openapitools.client.models.ApiServerErrorResponse
 import org.openapitools.client.models.ApiUnauthorizedErrorResponse
+import org.openapitools.client.models.GetCategoriesMaxSaleQuantumRequest
+import org.openapitools.client.models.GetCategoriesMaxSaleQuantumResponse
 import org.openapitools.client.models.GetCategoriesRequest
 import org.openapitools.client.models.GetCategoriesResponse
 
@@ -32,6 +34,14 @@ class CategoriesApiTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of CategoriesApi
         //val apiInstance = CategoriesApi()
+
+        // to test getCategoriesMaxSaleQuantum
+        should("test getCategoriesMaxSaleQuantum") {
+            // uncomment below to test getCategoriesMaxSaleQuantum
+            //val getCategoriesMaxSaleQuantumRequest : GetCategoriesMaxSaleQuantumRequest =  // GetCategoriesMaxSaleQuantumRequest | 
+            //val result : GetCategoriesMaxSaleQuantumResponse = apiInstance.getCategoriesMaxSaleQuantum(getCategoriesMaxSaleQuantumRequest)
+            //result shouldBe ("TODO")
+        }
 
         // to test getCategoriesTree
         should("test getCategoriesTree") {

@@ -151,6 +151,7 @@ import org.openapitools.client.models.ProvideOrderItemIdentifiersResponse
 import org.openapitools.client.models.PutSkuBidsRequest
 import org.openapitools.client.models.RefundStatusType
 import org.openapitools.client.models.ReportFormatType
+import org.openapitools.client.models.ReportFormatType.FILE
 import org.openapitools.client.models.ReportLanguageType
 import org.openapitools.client.models.ReturnType
 import org.openapitools.client.models.SearchShipmentsRequest
@@ -1422,7 +1423,7 @@ class FbsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun downloadShipmentPalletLabels(campaignId: kotlin.Long, shipmentId: kotlin.Long, format: ShipmentPalletLabelPageFormatType? = A8) : java.io.File {
+    fun downloadShipmentPalletLabels(campaignId: kotlin.Long, shipmentId: kotlin.Long, format: ShipmentPalletLabelPageFormatType? = ShipmentPalletLabelPageFormatType.A8) : java.io.File {
         val localVarResponse = downloadShipmentPalletLabelsWithHttpInfo(campaignId = campaignId, shipmentId = shipmentId, format = format)
 
         return when (localVarResponse.responseType) {
@@ -1656,7 +1657,7 @@ class FbsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateBoostConsolidatedReport(generateBoostConsolidatedRequest: GenerateBoostConsolidatedRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
+    fun generateBoostConsolidatedReport(generateBoostConsolidatedRequest: GenerateBoostConsolidatedRequest, format: ReportFormatType? = ReportFormatType.FILE) : GenerateReportResponse {
         val localVarResponse = generateBoostConsolidatedReportWithHttpInfo(generateBoostConsolidatedRequest = generateBoostConsolidatedRequest, format = format)
 
         return when (localVarResponse.responseType) {
@@ -1896,7 +1897,7 @@ class FbsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun generateGoodsRealizationReport(generateGoodsRealizationReportRequest: GenerateGoodsRealizationReportRequest, format: ReportFormatType? = FILE) : GenerateReportResponse {
+    fun generateGoodsRealizationReport(generateGoodsRealizationReportRequest: GenerateGoodsRealizationReportRequest, format: ReportFormatType? = ReportFormatType.FILE) : GenerateReportResponse {
         val localVarResponse = generateGoodsRealizationReportWithHttpInfo(generateGoodsRealizationReportRequest = generateGoodsRealizationReportRequest, format = format)
 
         return when (localVarResponse.responseType) {

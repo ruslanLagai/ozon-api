@@ -25,16 +25,10 @@ class OrderDigitalItemDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OrderDigitalItemDTO
         //val modelInstance = OrderDigitalItemDTO()
 
-        // to test the property `id` - Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) и в запросе Маркета [POST order/accept](../../pushapi/reference/orderAccept.md) — параметр `id` в `items`. 
+        // to test the property `id` - Идентификатор товара в заказе.  Он приходит в ответе на запрос [GET campaigns/{campaignId}/orders/{orderId}](../../reference/orders/getOrder.md) — параметр `id` в `items`. 
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `code` - Сам ключ.
-        should("test code") {
-            // uncomment below to test the property
-            //modelInstance.code shouldBe ("TODO")
         }
 
         // to test the property `slip` - Инструкция по активации.
@@ -43,10 +37,22 @@ class OrderDigitalItemDTOTest : ShouldSpec() {
             //modelInstance.slip shouldBe ("TODO")
         }
 
-        // to test the property `activateTill` - Дата, до которой нужно активировать ключ. Если ключ действует бессрочно, укажите любую дату в отдаленном будущем.  Формат даты: `ГГГГ-ММ-ДД`. 
+        // to test the property `activateTill` - Дата, до которой нужно активировать ключи. Если ключи действуют бессрочно, укажите любую дату в отдаленном будущем.  Формат даты: `ГГГГ-ММ-ДД`. 
         should("test activateTill") {
             // uncomment below to test the property
             //modelInstance.activateTill shouldBe ("TODO")
+        }
+
+        // to test the property `code` - {% note warning \"Этот параметр устарел\" %}  Вместо него используйте `codes`. Совместное использование обоих параметров приведет к ошибке.  {% endnote %}  Сам ключ. 
+        should("test code") {
+            // uncomment below to test the property
+            //modelInstance.code shouldBe ("TODO")
+        }
+
+        // to test the property `codes` - Ключи, относящиеся к товару.
+        should("test codes") {
+            // uncomment below to test the property
+            //modelInstance.codes shouldBe ("TODO")
         }
 
     }

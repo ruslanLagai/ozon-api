@@ -39,16 +39,16 @@ class TariffDTOTest : ShouldSpec() {
             //modelInstance.amount shouldBe ("TODO")
         }
 
-        // to test the property `percent` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Значение тарифа в процентах. 
-        should("test percent") {
-            // uncomment below to test the property
-            //modelInstance.percent shouldBe ("TODO")
-        }
-
         // to test the property `parameters` - Параметры расчета тарифа.
         should("test parameters") {
             // uncomment below to test the property
             //modelInstance.parameters shouldBe ("TODO")
+        }
+
+        // to test the property `percent` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Значение тарифа в процентах. 
+        should("test percent") {
+            // uncomment below to test the property
+            //modelInstance.percent shouldBe ("TODO")
         }
 
     }

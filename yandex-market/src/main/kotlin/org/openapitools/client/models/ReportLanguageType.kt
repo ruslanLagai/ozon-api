@@ -25,7 +25,5 @@ import com.squareup.moshi.JsonClass
  */
 
 
-data class ReportLanguageType (
-
-)
+class ReportLanguageType
 

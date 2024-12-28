@@ -37,7 +37,7 @@ class RegionsApiTest : ShouldSpec() {
         should("test searchRegionChildren") {
             // uncomment below to test searchRegionChildren
             //val regionId : kotlin.Long = 789 // kotlin.Long | Идентификатор региона.  Идентификатор региона можно получить c помощью запроса [GET regions](../../reference/regions/searchRegionsByName.md). 
-            //val page : kotlin.Int = 56 // kotlin.Int | Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val result : GetRegionWithChildrenResponse = apiInstance.searchRegionChildren(regionId, page, pageSize)
             //result shouldBe ("TODO")
@@ -55,8 +55,8 @@ class RegionsApiTest : ShouldSpec() {
         should("test searchRegionsByName") {
             // uncomment below to test searchRegionsByName
             //val name : kotlin.String = name_example // kotlin.String | Название региона.  Важно учитывать регистр: первая буква должна быть заглавной, остальные — строчными. Например, `Москва`. 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetRegionsResponse = apiInstance.searchRegionsByName(name, pageToken, limit)
             //result shouldBe ("TODO")
         }

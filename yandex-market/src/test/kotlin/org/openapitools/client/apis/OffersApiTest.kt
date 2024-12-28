@@ -57,7 +57,7 @@ class OffersApiTest : ShouldSpec() {
             // uncomment below to test getAllOffers
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val feedId : kotlin.Long = 789 // kotlin.Long | Идентификатор прайс-листа.
-            //val chunk : kotlin.Int = 56 // kotlin.Int | Номер сегмента с результатами.  Значение по умолчанию: `0`.  {% note info %}  Номера сегментов запрашиваются последовательно, пока не будет получен сегмент с пустым ответом. Пустой ответ означает, что все предложения магазина получены.  {% endnote %}  {% note alert %}  Нумерация начинается с 0. Чтобы запросить первую страницу, необходимо указать `chunk=0` и т. д.  {% endnote %} 
+            //val chunk : kotlin.Int = 56 // kotlin.Int | Номер сегмента с результатами.  Значение по умолчанию: `0`.  {% note info \"Как запрашиваются номера сегментов\" %}  Последовательно, пока не будет получен сегмент с пустым ответом. Пустой ответ означает, что все предложения магазина получены.  {% endnote %}  {% note alert \"Нумерация начинается с 0\" %}  Чтобы запросить первую страницу, необходимо указать `chunk=0` и т. д.  {% endnote %} 
             //val result : GetAllOffersResponse = apiInstance.getAllOffers(campaignId, feedId, chunk)
             //result shouldBe ("TODO")
         }
@@ -67,8 +67,8 @@ class OffersApiTest : ShouldSpec() {
             // uncomment below to test getCampaignOffers
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val getCampaignOffersRequest : GetCampaignOffersRequest =  // GetCampaignOffersRequest | 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetCampaignOffersResponse = apiInstance.getCampaignOffers(campaignId, getCampaignOffersRequest, pageToken, limit)
             //result shouldBe ("TODO")
         }
@@ -78,8 +78,8 @@ class OffersApiTest : ShouldSpec() {
             // uncomment below to test getOfferRecommendations
             //val businessId : kotlin.Long = 789 // kotlin.Long | Идентификатор кабинета. Чтобы узнать идентификатор, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md#businessdto).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val getOfferRecommendationsRequest : GetOfferRecommendationsRequest =  // GetOfferRecommendationsRequest | 
-            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается самая старая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token`, параметры `offset`, `page_number` и `page_size` игнорируются. 
-            //val limit : kotlin.Int = 20 // kotlin.Int | Количество товаров на одной странице. 
+            //val pageToken : kotlin.String = eyBuZXh0SWQ6IDIzNDIgfQ== // kotlin.String | Идентификатор страницы c результатами.  Если параметр не указан, возвращается первая страница.  Рекомендуется передавать значение выходного параметра `nextPageToken`, полученное при последнем запросе.  Если задан `page_token` и в запросе есть параметры `offset`, `page_number` и `page_size`, они игнорируются. 
+            //val limit : kotlin.Int = 20 // kotlin.Int | Количество значений на одной странице. 
             //val result : GetOfferRecommendationsResponse = apiInstance.getOfferRecommendations(businessId, getOfferRecommendationsRequest, pageToken, limit)
             //result shouldBe ("TODO")
         }
@@ -91,9 +91,9 @@ class OffersApiTest : ShouldSpec() {
             //val query : kotlin.String = query_example // kotlin.String | Поисковый запрос.  Поддерживается язык запросов.  Значение по умолчанию: все предложения магазина, размещенные на Маркете. 
             //val feedId : kotlin.Long = 789 // kotlin.Long | Идентификатор прайс-листа.
             //val shopCategoryId : kotlin.String = shopCategoryId_example // kotlin.String | Идентификатор категории предложения, указанный магазином в прайс-листе.  Параметр выводится только для предложений, у которых указана категория в прайс-листе.  Параметр доступен начиная с версии 2.0 партнерского API. 
-            //val currency : CurrencyType =  // CurrencyType | Валюта, в которой указана цена предложения.  Возможные значения:  * `BYN` — белорусский рубль.  * `KZT` — казахстанский тенге.  * `RUR` — российский рубль.  * `UAH` — украинская гривна. 
+            //val currency : CurrencyType =  // CurrencyType | Валюта, в которой указана цена предложения.  Возможные значения:  * `RUR` — российский рубль.  * `UAH` — украинская гривна.  * `BYR` — белорусский рубль.  * `KZT` — казахстанский тенге.  * `UZS` — узбекский сум. 
             //val matched : kotlin.Boolean = true // kotlin.Boolean | Фильтр по признаку соотнесения предложения и карточки модели.  Возможные значения:  * `0 / FALSE / NO` — поиск выполняется среди предложений, не соотнесенных ни с какой карточкой модели.  * `1 / TRUE / YES` — поиск выполняется среди предложений, соотнесенных с карточками моделей). 
-            //val page : kotlin.Int = 56 // kotlin.Int | Номер страницы результатов.  Значение по умолчанию: 1.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
+            //val page : kotlin.Int = 56 // kotlin.Int | {% note warning \"Если в методе есть `page_token`\" %}  Используйте его вместо параметра `page`.  [Подробнее о типах пагинации и их использовании](../../concepts/pagination.md)  {% endnote %}  Номер страницы результатов.  Используется вместе с параметром `page_size`.  `page_number` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Размер страницы.  Используется вместе с параметром `page_number`.  `page_size` игнорируется, если задан `page_token`, `limit` или `offset`. 
             //val result : GetOffersResponse = apiInstance.getOffers(campaignId, query, feedId, shopCategoryId, currency, matched, page, pageSize)
             //result shouldBe ("TODO")

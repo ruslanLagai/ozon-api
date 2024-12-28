@@ -19,16 +19,23 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.BusinessSettingsDTO
+import org.openapitools.client.models.CurrencyType
 
 class BusinessSettingsDTOTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of BusinessSettingsDTO
         //val modelInstance = BusinessSettingsDTO()
 
-        // to test the property `onlyDefaultPrice` - Можно ли установить только [базовую цену](*rule): * `false` — можно задать и базовую цену, и цены в конкретных магазинах. * `true` — можно задать только базовую цену. 
+        // to test the property `onlyDefaultPrice` - Управление ценами на товары:  * `false` — можно установить цену, которая действует:   * во всех магазинах кабинета — [POST businesses/{businessId}/offer-prices/updates](../../reference/business-assortment/updateBusinessPrices.md);   * в конкретном магазине — [POST campaigns/{campaignId}/offer-prices/updates](../../reference/assortment/updatePrices.md). * `true` — можно установить только цену, которая действует во всех магазинах кабинета, — [POST businesses/{businessId}/offer-prices/updates](../../reference/business-assortment/updateBusinessPrices.md). 
         should("test onlyDefaultPrice") {
             // uncomment below to test the property
             //modelInstance.onlyDefaultPrice shouldBe ("TODO")
+        }
+
+        // to test the property `currency`
+        should("test currency") {
+            // uncomment below to test the property
+            //modelInstance.currency shouldBe ("TODO")
         }
 
     }

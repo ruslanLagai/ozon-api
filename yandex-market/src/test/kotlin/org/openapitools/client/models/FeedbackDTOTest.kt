@@ -31,6 +31,12 @@ class FeedbackDTOTest : ShouldSpec() {
         // uncomment below to create an instance of FeedbackDTO
         //val modelInstance = FeedbackDTO()
 
+        // to test the property `comments` - Переписка автора отзыва с магазином.
+        should("test comments") {
+            // uncomment below to test the property
+            //modelInstance.comments shouldBe ("TODO")
+        }
+
         // to test the property `id` - Идентификатор отзыва.
         should("test id") {
             // uncomment below to test the property
@@ -73,12 +79,6 @@ class FeedbackDTOTest : ShouldSpec() {
             //modelInstance.contra shouldBe ("TODO")
         }
 
-        // to test the property `comments` - Переписка автора отзыва с магазином.
-        should("test comments") {
-            // uncomment below to test the property
-            //modelInstance.comments shouldBe ("TODO")
-        }
-
         // to test the property `shop`
         should("test shop") {
             // uncomment below to test the property
@@ -91,7 +91,7 @@ class FeedbackDTOTest : ShouldSpec() {
             //modelInstance.resolved shouldBe ("TODO")
         }
 
-        // to test the property `verified` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Является ли отзыв рекомендованным:  * `true` — да. * `false` — нет. 
+        // to test the property `verified` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Является ли отзыв рекомендованным:  * `true` — да. * `false` — нет. 
         should("test verified") {
             // uncomment below to test the property
             //modelInstance.verified shouldBe ("TODO")

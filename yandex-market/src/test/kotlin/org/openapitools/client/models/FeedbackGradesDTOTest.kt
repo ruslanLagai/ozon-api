@@ -26,6 +26,12 @@ class FeedbackGradesDTOTest : ShouldSpec() {
         // uncomment below to create an instance of FeedbackGradesDTO
         //val modelInstance = FeedbackGradesDTO()
 
+        // to test the property `factors` - Информация об оценках по параметрам, указанных в отзыве.  При создании отзыва автору предлагается поставить оценки магазину по нескольким параметрам: например, за скорость обработки заказа или удобство самовывоза. Набор параметров зависит от того, какой способ покупки (параметр `delivery`) указал автор. 
+        should("test factors") {
+            // uncomment below to test the property
+            //modelInstance.factors shouldBe ("TODO")
+        }
+
         // to test the property `average` - Общая оценка, указанная в отзыве: от `1` («Ужасный магазин») до `5` («Отличный магазин»).
         should("test average") {
             // uncomment below to test the property
@@ -42,12 +48,6 @@ class FeedbackGradesDTOTest : ShouldSpec() {
         should("test rejectCount") {
             // uncomment below to test the property
             //modelInstance.rejectCount shouldBe ("TODO")
-        }
-
-        // to test the property `factors` - Информация об оценках по параметрам, указанных в отзыве.  При создании отзыва автору предлагается поставить оценки магазину по нескольким параметрам: например, за скорость обработки заказа или удобство самовывоза. Набор параметров зависит от того, какой способ покупки (параметр `delivery`) указал автор. 
-        should("test factors") {
-            // uncomment below to test the property
-            //modelInstance.factors shouldBe ("TODO")
         }
 
     }

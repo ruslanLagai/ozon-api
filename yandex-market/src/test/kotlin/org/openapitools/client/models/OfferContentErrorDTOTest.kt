@@ -32,13 +32,13 @@ class OfferContentErrorDTOTest : ShouldSpec() {
             //modelInstance.type shouldBe ("TODO")
         }
 
-        // to test the property `message` - Текст ошибки.
+        // to test the property `message` - Текст ошибки или предупреждения.
         should("test message") {
             // uncomment below to test the property
             //modelInstance.message shouldBe ("TODO")
         }
 
-        // to test the property `parameterId` - Идентификатор характеристики, с которой связана ошибка.
+        // to test the property `parameterId` - Идентификатор характеристики, с которой связана ошибка или предупреждение.
         should("test parameterId") {
             // uncomment below to test the property
             //modelInstance.parameterId shouldBe ("TODO")

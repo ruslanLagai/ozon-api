@@ -94,22 +94,12 @@ class TelegramBot(
         val chatId = message.chatId
 
         val texts = message.text.chunked(4090)
-        var buffer = ""
 
-        for (text: String in texts) {
+        for (text : String in texts) {
             val msg = SendMessage()
             msg.chatId = chatId
-            msg.text = buffer + text.substringBeforeLast("\uD83D\uDCDD")
-            buffer = text.substringAfterLast("\uD83D\uDCDD")
+            msg.text = text
             messageList.add(msg)
-            if (texts.indexOf(text) == (texts.size - 1) &&  (msg.text + buffer).length < 4090) {
-                msg.text += buffer
-            } else if (texts.indexOf(text) == (texts.size - 1)) {
-                val last = SendMessage()
-                last.chatId = chatId
-                last.text = buffer
-                messageList.add(last)
-            }
         }
         return messageList
     }

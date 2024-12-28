@@ -44,7 +44,7 @@ class GetPriceWithDiscountDTOTest : ShouldSpec() {
             //modelInstance.updatedAt shouldBe ("TODO")
         }
 
-        // to test the property `discountBase` - Цена до скидки.  Число должно быть целым. Вы можете указать цену со скидкой от 5 до 75%.  Передавайте этот параметр при каждом обновлении цены, если предоставляете скидку на товар. 
+        // to test the property `discountBase` - Зачеркнутая цена.  Число должно быть целым. Вы можете указать цену со скидкой от 5 до 99%.  Передавайте этот параметр при каждом обновлении цены, если предоставляете скидку на товар. 
         should("test discountBase") {
             // uncomment below to test the property
             //modelInstance.discountBase shouldBe ("TODO")

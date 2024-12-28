@@ -37,16 +37,46 @@ class ShipmentDTOTest : ShouldSpec() {
             //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `planIntervalFrom` - Начало планового интервала отгрузки.
+        // to test the property `planIntervalFrom` - Начало планового интервала отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC. 
         should("test planIntervalFrom") {
             // uncomment below to test the property
             //modelInstance.planIntervalFrom shouldBe ("TODO")
         }
 
-        // to test the property `planIntervalTo` - Конец планового интервала отгрузки.
+        // to test the property `planIntervalTo` - Конец планового интервала отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC. 
         should("test planIntervalTo") {
             // uncomment below to test the property
             //modelInstance.planIntervalTo shouldBe ("TODO")
+        }
+
+        // to test the property `orderIds` - Идентификаторы заказов в отгрузке.
+        should("test orderIds") {
+            // uncomment below to test the property
+            //modelInstance.orderIds shouldBe ("TODO")
+        }
+
+        // to test the property `draftCount` - Количество заказов, которое Маркет запланировал к отгрузке.
+        should("test draftCount") {
+            // uncomment below to test the property
+            //modelInstance.draftCount shouldBe ("TODO")
+        }
+
+        // to test the property `plannedCount` - Количество заказов, которое Маркет подтвердил к отгрузке.
+        should("test plannedCount") {
+            // uncomment below to test the property
+            //modelInstance.plannedCount shouldBe ("TODO")
+        }
+
+        // to test the property `factCount` - Количество заказов, принятых в сортировочном центре или пункте приема.
+        should("test factCount") {
+            // uncomment below to test the property
+            //modelInstance.factCount shouldBe ("TODO")
+        }
+
+        // to test the property `availableActions` - Доступные действия над отгрузкой.
+        should("test availableActions") {
+            // uncomment below to test the property
+            //modelInstance.availableActions shouldBe ("TODO")
         }
 
         // to test the property `shipmentType`
@@ -85,40 +115,10 @@ class ShipmentDTOTest : ShouldSpec() {
             //modelInstance.palletsCount shouldBe ("TODO")
         }
 
-        // to test the property `orderIds` - Идентификаторы заказов в отгрузке.
-        should("test orderIds") {
-            // uncomment below to test the property
-            //modelInstance.orderIds shouldBe ("TODO")
-        }
-
-        // to test the property `draftCount` - Количество заказов, запланированных к отгрузке.
-        should("test draftCount") {
-            // uncomment below to test the property
-            //modelInstance.draftCount shouldBe ("TODO")
-        }
-
-        // to test the property `plannedCount` - Количество отгруженных заказов.
-        should("test plannedCount") {
-            // uncomment below to test the property
-            //modelInstance.plannedCount shouldBe ("TODO")
-        }
-
-        // to test the property `factCount` - Количество заказов, принятых в сортировочном центре или пункте приема.
-        should("test factCount") {
-            // uncomment below to test the property
-            //modelInstance.factCount shouldBe ("TODO")
-        }
-
         // to test the property `currentStatus`
         should("test currentStatus") {
             // uncomment below to test the property
             //modelInstance.currentStatus shouldBe ("TODO")
-        }
-
-        // to test the property `availableActions` - Доступные действия над отгрузкой.
-        should("test availableActions") {
-            // uncomment below to test the property
-            //modelInstance.availableActions shouldBe ("TODO")
         }
 
     }

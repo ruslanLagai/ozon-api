@@ -26,6 +26,12 @@ class RegionDTOTest : ShouldSpec() {
         // uncomment below to create an instance of RegionDTO
         //val modelInstance = RegionDTO()
 
+        // to test the property `id` - Идентификатор региона.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
         // to test the property `name` - Название региона.
         should("test name") {
             // uncomment below to test the property
@@ -36,12 +42,6 @@ class RegionDTOTest : ShouldSpec() {
         should("test type") {
             // uncomment below to test the property
             //modelInstance.type shouldBe ("TODO")
-        }
-
-        // to test the property `id` - Идентификатор региона.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `parent`

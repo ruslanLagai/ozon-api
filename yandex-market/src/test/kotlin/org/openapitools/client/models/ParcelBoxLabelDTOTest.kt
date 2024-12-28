@@ -79,7 +79,7 @@ class ParcelBoxLabelDTOTest : ShouldSpec() {
             //modelInstance.place shouldBe ("TODO")
         }
 
-        // to test the property `weight` - {% note warning \"\" %}  Этот параметр устарел. Не используйте его.  {% endnote %}  Общая масса всех товаров в заказе. Возвращается в формате: `weight кг`. 
+        // to test the property `weight` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Общая масса всех товаров в заказе. Возвращается в формате: `weight кг`. 
         should("test weight") {
             // uncomment below to test the property
             //modelInstance.weight shouldBe ("TODO")

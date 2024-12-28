@@ -40,7 +40,7 @@ class OrderLabelsApiTest : ShouldSpec() {
             //val orderId : kotlin.Long = 789 // kotlin.Long | Идентификатор заказа.
             //val shipmentId : kotlin.Long = 789 // kotlin.Long | Идентификатор грузоместа.
             //val boxId : kotlin.Long = 789 // kotlin.Long | Идентификатор коробки.
-            //val format : PageFormatType =  // PageFormatType | Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A6.
+            //val format : PageFormatType =  // PageFormatType | Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7.
             //val result : java.io.File = apiInstance.generateOrderLabel(campaignId, orderId, shipmentId, boxId, format)
             //result shouldBe ("TODO")
         }
@@ -50,7 +50,7 @@ class OrderLabelsApiTest : ShouldSpec() {
             // uncomment below to test generateOrderLabels
             //val campaignId : kotlin.Long = 789 // kotlin.Long | Идентификатор кампании в API и магазина в кабинете. Каждая кампания в API соответствует магазину в кабинете.  Чтобы узнать идентификаторы своих магазинов, воспользуйтесь запросом [GET campaigns](../../reference/campaigns/getCampaigns.md).  ℹ️ [Что такое кабинет и магазин на Маркете](https://yandex.ru/support/marketplace/account/introduction.html) 
             //val orderId : kotlin.Long = 789 // kotlin.Long | Идентификатор заказа.
-            //val format : PageFormatType =  // PageFormatType | Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A6.
+            //val format : PageFormatType =  // PageFormatType | Настройка размещения ярлыков на странице. Если параметра нет, возвращается PDF с ярлыками формата A7.
             //val result : java.io.File = apiInstance.generateOrderLabels(campaignId, orderId, format)
             //result shouldBe ("TODO")
         }

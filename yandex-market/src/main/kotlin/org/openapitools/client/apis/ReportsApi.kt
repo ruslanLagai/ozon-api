@@ -44,6 +44,7 @@ import org.openapitools.client.models.GenerateUnitedOrdersRequest
 import org.openapitools.client.models.GetReportInfoResponse
 import org.openapitools.client.models.PageFormatType
 import org.openapitools.client.models.ReportFormatType
+import org.openapitools.client.models.ReportFormatType.FILE
 import org.openapitools.client.models.ReportLanguageType
 
 import com.squareup.moshi.Json

@@ -50,5 +50,11 @@ class SearchShipmentsRequestTest : ShouldSpec() {
             //modelInstance.orderIds shouldBe ("TODO")
         }
 
+        // to test the property `cancelledOrders` - Возвращать ли отмененные заказы.  Значение по умолчанию: `true`. Если возвращать отмененные заказы не нужно, передайте значение `false`. 
+        should("test cancelledOrders") {
+            // uncomment below to test the property
+            //modelInstance.cancelledOrders shouldBe ("TODO")
+        }
+
     }
 }

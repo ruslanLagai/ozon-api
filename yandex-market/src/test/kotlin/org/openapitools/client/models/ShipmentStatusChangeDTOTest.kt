@@ -38,7 +38,7 @@ class ShipmentStatusChangeDTOTest : ShouldSpec() {
             //modelInstance.description shouldBe ("TODO")
         }
 
-        // to test the property `updateTime` - Время последнего изменения статуса отгрузки.
+        // to test the property `updateTime` - Время последнего изменения статуса отгрузки.  Формат даты: ISO 8601 со смещением относительно UTC. 
         should("test updateTime") {
             // uncomment below to test the property
             //modelInstance.updateTime shouldBe ("TODO")

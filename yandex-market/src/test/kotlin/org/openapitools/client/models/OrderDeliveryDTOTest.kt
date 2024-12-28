@@ -37,12 +37,6 @@ class OrderDeliveryDTOTest : ShouldSpec() {
         // uncomment below to create an instance of OrderDeliveryDTO
         //val modelInstance = OrderDeliveryDTO()
 
-        // to test the property `id` - Идентификатор доставки, присвоенный магазином.  Указывается, только если магазин передал данный идентификатор в ответе на запрос методом [POST cart](../../pushapi/reference/cart.md). 
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
         // to test the property `type`
         should("test type") {
             // uncomment below to test the property
@@ -55,28 +49,40 @@ class OrderDeliveryDTOTest : ShouldSpec() {
             //modelInstance.serviceName shouldBe ("TODO")
         }
 
-        // to test the property `price` - {% note warning \"\" %}  Этот параметр устарел. Стоимость доставки смотрите в параметре `deliveryTotal`.  {% endnote %}  Стоимость доставки в валюте заказа. 
-        should("test price") {
-            // uncomment below to test the property
-            //modelInstance.price shouldBe ("TODO")
-        }
-
         // to test the property `deliveryPartnerType`
         should("test deliveryPartnerType") {
             // uncomment below to test the property
             //modelInstance.deliveryPartnerType shouldBe ("TODO")
         }
 
-        // to test the property `courier`
-        should("test courier") {
-            // uncomment below to test the property
-            //modelInstance.courier shouldBe ("TODO")
-        }
-
         // to test the property `dates`
         should("test dates") {
             // uncomment below to test the property
             //modelInstance.dates shouldBe ("TODO")
+        }
+
+        // to test the property `deliveryServiceId` - Идентификатор службы доставки.
+        should("test deliveryServiceId") {
+            // uncomment below to test the property
+            //modelInstance.deliveryServiceId shouldBe ("TODO")
+        }
+
+        // to test the property `id` - {% note warning \"Этот параметр устарел\" %}  Не используйте его.  {% endnote %}  Идентификатор доставки, присвоенный магазином.  Указывается, только если магазин передал данный идентификатор в ответе на запрос методом `POST cart`. 
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `price` - {% note warning \"Этот параметр устарел\" %}  Стоимость доставки смотрите в параметре `deliveryTotal`.  {% endnote %}  Стоимость доставки в валюте заказа. 
+        should("test price") {
+            // uncomment below to test the property
+            //modelInstance.price shouldBe ("TODO")
+        }
+
+        // to test the property `courier`
+        should("test courier") {
+            // uncomment below to test the property
+            //modelInstance.courier shouldBe ("TODO")
         }
 
         // to test the property `region`
@@ -95,12 +101,6 @@ class OrderDeliveryDTOTest : ShouldSpec() {
         should("test vat") {
             // uncomment below to test the property
             //modelInstance.vat shouldBe ("TODO")
-        }
-
-        // to test the property `deliveryServiceId` - Идентификатор службы доставки.
-        should("test deliveryServiceId") {
-            // uncomment below to test the property
-            //modelInstance.deliveryServiceId shouldBe ("TODO")
         }
 
         // to test the property `liftType`
