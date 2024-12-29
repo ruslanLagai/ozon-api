@@ -43,7 +43,7 @@ class FinancialAmountCalculator: FinancialDataCalculator {
     override fun calculateYandexRevenue(order: OrdersStatsOrderDTO): Double {
         var payment = 0.0
         val processedPayments = ArrayList<String>()
-        order.payments
+        order.payments.asSequence()
             .filter { !processedPayments.contains(it.id) }
             .forEach {
                 if (OrdersStatsPaymentType.PAYMENT == it.type && it.total != null) {
@@ -72,7 +72,7 @@ class FinancialAmountCalculator: FinancialDataCalculator {
     override fun calculateYandexPrice(order: OrdersStatsOrderDTO): Double {
         var payment = 0.0
         val processedPayments = ArrayList<String>()
-        order.payments
+        order.payments.asSequence()
             .filter { !processedPayments.contains(it.id) }
             .forEach {
                 if (OrdersStatsPaymentType.PAYMENT == it.type && it.total != null) {
@@ -85,9 +85,14 @@ class FinancialAmountCalculator: FinancialDataCalculator {
 
     override fun calculateYandexCommission(order: OrdersStatsOrderDTO): Double {
         return order.commissions
-            ?.filter { OrdersStatsCommissionType.FEE == it.type }
-            ?.filter { it.actual != null }
-            ?.sumOf { it.actual!!.toDouble() } ?: 0.0
+            .filter { OrdersStatsCommissionType.FEE == it.type }
+            .filter { it.actual != null }
+            .sumOf { it.actual!!.toDouble() }
+    }
+    override fun calculateYandexSubsidies(order: OrdersStatsOrderDTO): Double {
+        return order.subsidies
+            ?.filter { OrdersStatsSubsidyOperationType.ACCRUAL == it.operationType }
+            ?.sumOf { it.amount.toDouble() } ?: 0.0
     }
 
     override fun calculateYandexDelivery(order: OrdersStatsOrderDTO): Double {

@@ -12,5 +12,6 @@ data class PositionFinanceData(
     val revenue: Double,
     val refund: Double,
     val marketing: Double = 0.0,
-    val acquiring: Double = 0.0
+    val acquiring: Double = 0.0,
+    val subsidies: Double = 0.0
 )

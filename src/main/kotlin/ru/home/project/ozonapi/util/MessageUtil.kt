@@ -105,6 +105,7 @@ fun produceYandexAllItemsMessage(result: List<RevenueResponse>): String {
                         " - Комиссия яндекс     $saleCommission\n" +
                         " - Логистика                $logistic\n" +
                         " - Реклама                  $marketing\n" +
+                        " - Соинвест                 $subsidies\n" +
                         " - Возвраты                 $refund\n" +
                         "Средняя прибыль      $averageRevenue\n" +
                         "Доставки                       $deliveryItemCount\n" +

@@ -54,6 +54,11 @@ interface FinancialDataCalculator {
     fun calculateYandexCommission(order: OrdersStatsOrderDTO): Double
 
     /**
+     * Расчет комиссии
+     */
+    fun calculateYandexSubsidies(order: OrdersStatsOrderDTO): Double
+
+    /**
      * Расчет логистики
      */
     fun calculateYandexDelivery(order: OrdersStatsOrderDTO): Double

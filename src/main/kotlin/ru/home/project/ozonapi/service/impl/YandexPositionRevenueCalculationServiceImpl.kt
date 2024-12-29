@@ -88,22 +88,23 @@ class YandexPositionRevenueCalculationServiceImpl(
                         || it.status == OrderStatsStatusType.CANCELLED_IN_DELIVERY
                         || it.status == OrderStatsStatusType.CANCELLED_IN_PROCESSING
 
-                // налог должен считаться тут от цены продажи!
                 val income = calculators.sumOf { calculator -> calculator.calculateYandexRevenue(it) }
                 val price = calculators.sumOf { calculator -> calculator.calculateYandexPrice(it) }
                 val commission = calculators.sumOf { calculator -> calculator.calculateYandexCommission(it) }
+                val subsidies = calculators.sumOf { calculator -> calculator.calculateYandexSubsidies(it) }
                 val logistic = calculators.sumOf { calculator -> calculator.calculateYandexDelivery(it) }
                 val marketing = calculators.sumOf { calculator -> calculator.calculateYandexMarketing(it) }
                 val acquiring = calculators.sumOf { calculator -> calculator.calculateYandexAcquiring(it) }
                 val taxes = taxPercentage * price
 
-                if (it.status == OrderStatsStatusType.DELIVERED && it.items != null) {
-                    deliveries += it.items!!.sumOf { item -> item.count ?: 0 }
-                } else if ((it.status == OrderStatsStatusType.PARTIALLY_RETURNED
-                    || it.status == OrderStatsStatusType.PARTIALLY_DELIVERED) && it.items != null) {
-                    val deliveredItem = it.items!!.sumOf { item -> item.count ?: 0 }
+                if (it.status == OrderStatsStatusType.DELIVERED) {
+                    deliveries += it.items.sumOf { item -> item.count ?: 0 }
+                } else if (it.status == OrderStatsStatusType.PARTIALLY_RETURNED
+                    || it.status == OrderStatsStatusType.PARTIALLY_DELIVERED
+                ) {
+                    val deliveredItem = it.items.sumOf { item -> item.count ?: 0 }
                     val returned = AtomicInteger()
-                    it.items!!.forEach { item ->
+                    it.items.forEach { item ->
                         item.details?.let { detail ->
                             detail.filter { i -> i.itemStatus == OrdersStatsItemStatusType.RETURNED }
                                 .forEach { i -> returned.addAndGet(i.itemCount?.toInt() ?: 0) }
@@ -112,14 +113,15 @@ class YandexPositionRevenueCalculationServiceImpl(
                     refunds += returned.get()
                     deliveries = deliveries + deliveredItem - returned.get()
                 } else if (isRefund) {
-                    if (it.items != null && !it.commissions.isNullOrEmpty()) {
-                        refunds += it.items!!.sumOf { item -> item.count ?: 0 }
+                    if (it.commissions.isNotEmpty()) {
+                        refunds += it.items.sumOf { item -> item.count ?: 0 }
                     }
                     refundCosts = commission + logistic + marketing + acquiring
                 }
 
                 PositionFinanceData(revenue = income, taxes = taxes, price = price, commission = commission,
-                    logistic = logistic, refund = refundCosts, lastMile = 0.0, marketing = marketing, acquiring = acquiring)
+                    logistic = logistic, refund = refundCosts, lastMile = 0.0, marketing = marketing, acquiring = acquiring,
+                    subsidies = subsidies)
             }.filter { positionFinanceData -> positionFinanceData.revenue != 0.0 || positionFinanceData.refund != 0.0 }
 
             val tax = revenues.sumOf { item -> if (item.revenue > 0) item.taxes else { 0.0 } }
@@ -127,6 +129,7 @@ class YandexPositionRevenueCalculationServiceImpl(
             val logisticCosts = revenues.sumOf { item -> item.logistic }
             val commissionCosts = revenues.sumOf { item -> item.commission }
             val marketingCosts = revenues.sumOf { item -> item.marketing }
+            val subsidiesAccural = revenues.sumOf { item -> item.subsidies }
             val totalPrice = revenues.sumOf { item -> item.price }
             val refundCosts = revenues.sumOf { item -> item.refund }
             val acquiringCosts = revenues.sumOf { item -> item.acquiring }
@@ -162,6 +165,7 @@ class YandexPositionRevenueCalculationServiceImpl(
                 price = BigDecimal(totalPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
                 costPrice = BigDecimal(positionCostPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
                 acquiring = BigDecimal(acquiringCosts).setScale(2, RoundingMode.HALF_UP).toDouble()
+                subsidies = BigDecimal(subsidiesAccural).setScale(2, RoundingMode.HALF_UP).toDouble()
             }
             return response
         } catch (e: WebClientException) {
