@@ -39,5 +39,6 @@ enum class AdditionalServiceType(val description: String) {
     MarketplaceServiceItemDirectFlowLogisticVDC("Логистика?"),
     MarketplaceServiceItemRedistributionReturnsPVZ("Обработка возвратов партнёрами"),
     ItemAgentServiceStarsMembership("Звёздные товары"),
-    MarketplaceServiceItemDisposalDetailed("Утилизация товара: Вы не забрали в срок")
+    MarketplaceServiceItemDisposalDetailed("Утилизация товара: Вы не забрали в срок"),
+    MarketplaceServiceItemElectronicServicesPremiumCashbackIndividualPoints("")
 }

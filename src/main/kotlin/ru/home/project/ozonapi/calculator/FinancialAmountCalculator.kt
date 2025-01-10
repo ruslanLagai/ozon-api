@@ -61,7 +61,7 @@ class FinancialAmountCalculator: FinancialDataCalculator {
         }
         var subsidies = 0.0
         order.subsidies?.forEach {
-            if (it.operationType == OrdersStatsSubsidyOperationType.ACCRUAL && it.type == OrdersStatsSubsidyType.SUBSIDY) {
+            if (it.operationType == OrdersStatsSubsidyOperationType.ACCRUAL) {
                 subsidies += it.amount.toDouble()
             }
         }
