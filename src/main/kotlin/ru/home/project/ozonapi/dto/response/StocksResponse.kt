@@ -15,5 +15,7 @@ data class StocksResponse(
     val orders: Set<ChinaOrderEntity> = HashSet(),
     val deliveries: Map<String, Product> = HashMap(),
     val yandexDeliveries: Map<String, Product> = HashMap(),
+    val productsInTransitToWarehouse: Map<String, Product> = HashMap(),
+    val productsInTransitToWarehouseWorth: Double = 0.0,
     var error: String = ""
 )

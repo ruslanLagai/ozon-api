@@ -136,7 +136,8 @@ class OzonTotalRevenueCalculationServiceImpl(
 
         // Просроченная доставка realFsb
         val realFbsLateDeliveryFee = transactions
-            .filter { transaction -> transaction.operationType == OperationType.DefectRateDeliveryDelayNonInt }
+            .filter { transaction -> transaction.operationType == OperationType.DefectRateDeliveryDelayNonInt
+                    || transaction.operationType == OperationType.DefectRateCancellation}
             .sumOf { transaction -> transaction.income }
 
         // Расходы на размещение товара

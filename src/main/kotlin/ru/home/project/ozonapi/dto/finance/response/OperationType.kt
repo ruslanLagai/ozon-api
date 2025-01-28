@@ -63,7 +63,8 @@ enum class OperationType(val description: String) {
     DefectRateDeliveryDelayNonInt("Просроченная доставка realFbs"),
     AccrualConsigWriteOff("Потеря по вине Ozon на складе"),
     MarketplaceSellerDecompensationItemByTypeDocOperation("Декомпенсации и возвращение товаров на сток"),
-    OperationMarketplaceServiceSupplyInboundCrossZoneAcceptance("Сортировка товара по зонам размещения")
+    OperationMarketplaceServiceSupplyInboundCrossZoneAcceptance("Сортировка товара по зонам размещения"),
+    DefectRateCancellation("Услуга за обработку операционных ошибок продавца: отмена")
 
 
 }

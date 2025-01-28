@@ -59,6 +59,10 @@ class StocksServiceImpl(
         var stocksOnWayWorth = orders.second.sumOf { it.stockCost }
         stocksOnWayWorth = BigDecimal(stocksOnWayWorth).setScale(2, RoundingMode.HALF_UP).toDouble()
 
+        val productsInTransitToWarehouse = getProductInTransitToWarehouse(positions)
+        var productsInTransitToWarehouseWorth = productsInTransitToWarehouse.values.sumOf { it.totalStock * (it.costPrice + it.addCost) }
+        productsInTransitToWarehouseWorth = BigDecimal(productsInTransitToWarehouseWorth).setScale(2, RoundingMode.HALF_UP).toDouble()
+
         val deliveries = getOrdersInOzonDelivery(positions)
         var deliveriesWorth = deliveries.sumOf { it.totalStock * (it.costPrice + it.addCost) }
         deliveriesWorth = BigDecimal(deliveriesWorth).setScale(2, RoundingMode.HALF_UP).toDouble()
@@ -73,7 +77,8 @@ class StocksServiceImpl(
 
         return StocksResponse(products = stocks, stocksWorth = stocksWorth, stocksOnWayWorth = stocksOnWayWorth,
             orders = orders.second, error = orders.first, deliveryWorth = deliveriesWorth, deliveries = deliveriesByArtikul,
-            yandexDeliveries = yandexDeliveriesByArtikul, yandexDeliveryWorth =  yandexDeliveriesWorth)
+            yandexDeliveries = yandexDeliveriesByArtikul, yandexDeliveryWorth =  yandexDeliveriesWorth,
+            productsInTransitToWarehouse = productsInTransitToWarehouse, productsInTransitToWarehouseWorth = productsInTransitToWarehouseWorth)
     }
 
     /**
@@ -218,6 +223,23 @@ class StocksServiceImpl(
             }
             stockRepository.updateQuantityByOzonId(supplyBundleItem.sku.toString(), quantity)
         }
+    }
+
+    /**
+     * Получение остатков товаров, включая товары в пути на склад озон (кросс док)
+     */
+    private fun getProductInTransitToWarehouse(positions: List<PositionEntity>): Map<String, Product> {
+        val products = ArrayList<Product>()
+
+        val orders = ozonService.getSupplyOrdersIntransit()
+
+        ozonService.getSupplyItemsInOrder(orders)
+            .map {
+                Product(name = it.name, sku = it.sku.toString(), artikul = it.artikul, totalStock = it.quantity)
+            }
+            .filter { it.totalStock != 0 }
+            .forEach { products.add(it) }
+        return mergeProducts(products, positions)
     }
 
     private fun mergeProducts(products: List<Product>, positions: List<PositionEntity>) =

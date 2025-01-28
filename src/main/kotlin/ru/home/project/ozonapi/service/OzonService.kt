@@ -44,6 +44,11 @@ interface OzonService {
     fun getSupplyOrders(): List<Int>
 
     /**
+     * Получение списка поставок в пути на склад
+     */
+    fun getSupplyOrdersIntransit(): List<Int>
+
+    /**
      * Получение остатков на складе озон FBO + FBS
      */
     fun getStockItems(cacheKey: String): List<Product>

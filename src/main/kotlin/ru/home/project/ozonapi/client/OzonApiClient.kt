@@ -101,13 +101,23 @@ class OzonApiClient(
     }
 
     fun getSupplyOrderList(): List<Int>? {
-        val request = SupplyOrdersRequest(filter = SupplyOrdersFilter(
-            states =  listOf(
-                SupplyState.ORDER_STATE_ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.ORDER_STATE_IN_TRANSIT,
-                SupplyState.ORDER_STATE_ACCEPTANCE_AT_STORAGE_WAREHOUSE, SupplyState.ORDER_STATE_REPORTS_CONFIRMATION_AWAITING,
-                SupplyState.ORDER_STATE_REPORT_REJECTED, SupplyState.ORDER_STATE_REJECTED_AT_SUPPLY_WAREHOUSE)),
-            paging = SupplyOrdersPaging()
+        val states =  listOf(
+            SupplyState.ORDER_STATE_ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.ORDER_STATE_IN_TRANSIT,
+            SupplyState.ORDER_STATE_ACCEPTANCE_AT_STORAGE_WAREHOUSE, SupplyState.ORDER_STATE_REPORTS_CONFIRMATION_AWAITING,
+            SupplyState.ORDER_STATE_REPORT_REJECTED, SupplyState.ORDER_STATE_REJECTED_AT_SUPPLY_WAREHOUSE)
+        return getSupplyOrderList(states)
+    }
+
+    fun getSupplyOrdersInTransit(): List<Int>? {
+        val states =  listOf(
+            SupplyState.ORDER_STATE_ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.ORDER_STATE_IN_TRANSIT,
+            SupplyState.ORDER_STATE_ACCEPTANCE_AT_STORAGE_WAREHOUSE
         )
+        return getSupplyOrderList(states)
+    }
+
+    fun getSupplyOrderList(states: List<SupplyState>): List<Int>? {
+        val request = SupplyOrdersRequest(filter = SupplyOrdersFilter(states = states), paging = SupplyOrdersPaging())
         return ozonClient.post()
             .uri { uriBuilder: UriBuilder ->
                 uriBuilder
