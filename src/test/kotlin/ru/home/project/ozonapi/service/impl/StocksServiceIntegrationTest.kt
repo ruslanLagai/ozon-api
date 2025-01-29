@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.GenericContainer
@@ -17,6 +18,7 @@ import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.ChinaStockEntity
 import ru.home.project.ozonapi.entity.StockEntity
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
+import ru.home.project.ozonapi.repository.OzonSupplyRepository
 import ru.home.project.ozonapi.repository.StockRepository
 import ru.home.project.ozonapi.service.StocksService
 import java.time.LocalDate
@@ -60,6 +62,9 @@ class StocksServiceIntegrationTest {
 
     @Autowired
     private lateinit var posiRepository: StockRepository
+
+    @MockBean
+    private lateinit var ozonSupplyRepository: OzonSupplyRepository
 
     @PostConstruct
     fun init() {

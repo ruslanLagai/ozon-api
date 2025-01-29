@@ -9,7 +9,7 @@ import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import ru.home.project.ozonapi.client.OzonApiClient
 import ru.home.project.ozonapi.dto.finance.response.TransactionsResp
-import ru.home.project.ozonapi.dto.stocks.response.GetStocksResponse
+import ru.home.project.ozonapi.dto.stocks.response.StocksResponse
 import ru.home.project.ozonapi.dto.supply.request.AnalyticMetric
 import ru.home.project.ozonapi.dto.supply.response.AnalyticsDataResp
 import ru.home.project.ozonapi.util.readResource
@@ -85,12 +85,12 @@ class OzonServiceImplTest {
 
     @Test
     fun `get stocks`() {
-        val response = readResource("stocks/stocks-response.json", GetStocksResponse::class.java)
-        `when`(client.getStocks()).thenReturn(response.result.items)
+        val response = readResource("stocks/stocks-response.json", StocksResponse::class.java)
+        `when`(client.getStocks()).thenReturn(response.items)
 
         val result = service.getStockItems("123")
 
-        assertEquals(13, result.size)
+        assertEquals(24, result.size)
     }
 
     @Test

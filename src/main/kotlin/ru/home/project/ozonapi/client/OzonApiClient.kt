@@ -20,7 +20,7 @@ import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.finance.response.TransactionsResp
 import ru.home.project.ozonapi.dto.stocks.request.GetStocksRequest
 import ru.home.project.ozonapi.dto.stocks.request.StocksFilter
-import ru.home.project.ozonapi.dto.stocks.response.GetStocksResponse
+import ru.home.project.ozonapi.dto.stocks.response.StocksResponse
 import ru.home.project.ozonapi.dto.stocks.response.StocksResultItem
 import ru.home.project.ozonapi.dto.supply.request.*
 import ru.home.project.ozonapi.dto.supply.response.*
@@ -82,17 +82,16 @@ class OzonApiClient(
             val response = ozonClient.post()
                 .uri { uriBuilder: UriBuilder ->
                     uriBuilder
-                        .path("/v3/product/info/stocks")
+                        .path("/v4/product/info/stocks")
                         .build()
                 }
                 .body(BodyInserters.fromValue(request))
                 .retrieve()
-                .bodyToMono<GetStocksResponse>()
+                .bodyToMono<StocksResponse>()
                 .cache(Duration.ofSeconds(5))
-                .mapNotNull { resp -> resp.result }
                 .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(1)))
                 .block()
-            if (response == null || response.total < 100) {
+            if (response == null || response.total < 1000) {
                 hasNext = false
             }
             response?.let { items.addAll(it.items) }

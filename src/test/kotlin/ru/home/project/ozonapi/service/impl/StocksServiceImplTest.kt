@@ -12,7 +12,7 @@ import ru.home.project.ozonapi.client.OzonApiClient
 import ru.home.project.ozonapi.client.YandexMarketClient
 import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.delivery.response.DeliveryResponse
-import ru.home.project.ozonapi.dto.stocks.response.GetStocksResponse
+import ru.home.project.ozonapi.dto.stocks.response.StocksResponse
 import ru.home.project.ozonapi.dto.supply.response.GetSupplyOrdersResp
 import ru.home.project.ozonapi.dto.supply.response.SupplyBundlesResp
 import ru.home.project.ozonapi.dto.supply.response.SupplyOrdersResp
@@ -72,7 +72,7 @@ class StocksServiceImplTest {
 
         val positions = listOf(umbrella1, umbrella2, umbrella3, umbrella4, umbrella5, umbrella6, hanger, spongeHolder, beachBag)
         val stocks = listOf(stock1, stock2, stock3, stock4)
-        val stocksResp = readResource("stocks/stocks-response.json", GetStocksResponse::class.java)
+        val stocksResp = readResource("stocks/stocks-response.json", StocksResponse::class.java)
         val deliveriesResp = readResource("deliveries/deliveries-response.json", DeliveryResponse::class.java)
         val supplyOrders = readResource("supply/supply-list.json", SupplyOrdersResp::class.java)
         val getSupplyOrders = readResource("supply/get-supply-orders.json", GetSupplyOrdersResp::class.java)
@@ -102,7 +102,7 @@ class StocksServiceImplTest {
             statuses = yandexInDeliveryStatuses
         )).thenReturn(yandexInDeliveryFby.orders)
 
-        `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.result.items)
+        `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.items)
         `when`(ozonApiClient.getSupplyOrderList()).thenReturn(supplyOrders.supplyOrders)
         `when`(ozonApiClient.getSupplyOrders(listOf(28439982, 28439770))).thenReturn(getSupplyOrders.orders)
         `when`(ozonApiClient.getSupplyOrderBundle(listOf("0190c509-5d53-765b-bb12-9e93fe7f2a86", "0190c507-0601-7031-b715-bcaca9670d04")))
@@ -125,16 +125,16 @@ class StocksServiceImplTest {
 
         assertEquals(2, result.orders.size)
         assertEquals(30000.0, result.stocksOnWayWorth)
-        assertEquals(173923.74, result.stocksWorth)
+        assertEquals(252140.73, result.stocksWorth)
         assertEquals(8751.59, result.deliveryWorth)
         assertEquals(6680.0, result.yandexDeliveryWorth)
 
-        assertEquals(14, result.products.size)
-        assertEquals(100, result.products["0000009"]!!.totalStock)
-        assertEquals(80, result.products["0000010"]!!.totalStock)
-        assertEquals(48, result.products["0000012"]!!.totalStock)
+        assertEquals(26, result.products.size)
+        assertEquals(154, result.products["0000009"]!!.totalStock)
+        assertEquals(94, result.products["0000010"]!!.totalStock)
+        assertEquals(129, result.products["0000012"]!!.totalStock)
         assertEquals(84, result.products["0000005"]!!.totalStock)
-        assertEquals(100, result.products["0000029"]!!.totalStock)
+        assertEquals(24, result.products["0000029"]!!.totalStock)
         assertEquals(2, result.orders.size)
         assertEquals(4, result.deliveries.size)
         assertEquals(7, result.deliveries["0000009"]!!.totalStock)
@@ -157,10 +157,10 @@ class StocksServiceImplTest {
     fun `test worth calculation - ozon + stock + deliveries`() {
         val positions = listOf(umbrella1, umbrella2, umbrella3, umbrella4, umbrella5, umbrella6)
         val stocks = listOf(stock1, stock2, stock3, stock4)
-        val stocksResp = readResource("stocks/stocks-response.json", GetStocksResponse::class.java)
+        val stocksResp = readResource("stocks/stocks-response.json", StocksResponse::class.java)
         val deliveriesResp = readResource("deliveries/deliveries-response.json", DeliveryResponse::class.java)
 
-        `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.result.items)
+        `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.items)
         `when`(ozonApiClient.getSupplyOrderList()).thenReturn(listOf())
         `when`(ozonApiClient.getDeliveriesByStatus(DeliveryStatus.delivering)).thenReturn(deliveriesResp.result)
 
@@ -172,8 +172,8 @@ class StocksServiceImplTest {
 
         assertEquals(0, result.orders.size)
         assertEquals(0.0, result.stocksOnWayWorth)
-        assertEquals(43757.95, result.stocksWorth)
-        assertEquals(13, result.products.size)
+        assertEquals(116994.94, result.stocksWorth)
+        assertEquals(24, result.products.size)
         assertEquals(8751.59, result.deliveryWorth)
         assertEquals(4, result.deliveries.size)
 
@@ -183,11 +183,11 @@ class StocksServiceImplTest {
     fun `test worth calculation - ozon + stock + order + deliveries`() {
         val positions = listOf(umbrella1, umbrella2, umbrella3, umbrella4, umbrella5, umbrella6)
         val stocks = listOf(stock1, stock2, stock3, stock4)
-        val stocksResp = readResource("stocks/stocks-response.json", GetStocksResponse::class.java)
+        val stocksResp = readResource("stocks/stocks-response.json", StocksResponse::class.java)
         val deliveriesResp = readResource("deliveries/deliveries-response.json", DeliveryResponse::class.java)
         val orders = setOf(orderEntity1, orderEntity2)
 
-        `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.result.items)
+        `when`(ozonApiClient.getStocks()).thenReturn(stocksResp.items)
         `when`(ozonApiClient.getSupplyOrderList()).thenReturn(listOf())
         `when`(positionRepository.findAll()).thenReturn(positions)
         `when`(stockRepository.findAll()).thenReturn(stocks)
@@ -199,8 +199,8 @@ class StocksServiceImplTest {
 
         assertEquals(2, result.orders.size)
         assertEquals(30000.0, result.stocksOnWayWorth)
-        assertEquals(43757.95, result.stocksWorth)
-        assertEquals(13, result.products.size)
+        assertEquals(116994.94, result.stocksWorth)
+        assertEquals(24, result.products.size)
         verify(stockRepository, times(0)).updateQuantityByOzonId(anyString(), anyInt())
     }
 }

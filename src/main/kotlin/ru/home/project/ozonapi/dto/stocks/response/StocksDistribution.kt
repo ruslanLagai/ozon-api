@@ -10,5 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 data class StocksDistribution(
     @JsonProperty("type") val type: String,
     @JsonProperty("present") val present: Int,
-    @JsonProperty("reserved") val reserved: Int
+    @JsonProperty("reserved") val reserved: Int,
+    @JsonProperty("sku") val sku: String,
+    @JsonProperty("shipment_type") val shipmentType: String
 )
