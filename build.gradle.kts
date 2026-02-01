@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "1.9.21"
-    id("org.springframework.boot") version "3.1.3"
-    id("io.spring.dependency-management") version "1.1.3"
-    id("org.jetbrains.kotlin.plugin.spring") version "1.9.21"
-    id("org.jetbrains.kotlin.plugin.jpa") version "1.9.21"
+    kotlin("jvm") version "2.1.20"
+    id("org.springframework.boot") version "3.5.6"
+    id("io.spring.dependency-management") version "1.1.7"
+    id("org.jetbrains.kotlin.plugin.spring") version "2.1.20"
+    id("org.jetbrains.kotlin.plugin.jpa") version "2.1.20"
 
 }
 
@@ -25,9 +25,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.session:spring-session-core")
     implementation("org.projectlombok:lombok:1.18.26")
-    implementation("org.apache.commons:commons-lang3:3.13.0")
+    implementation("org.apache.commons:commons-lang3")
     implementation("org.telegram:telegrambots-spring-boot-starter:6.7.0")
-    implementation("mysql:mysql-connector-java:8.0.33")
+    implementation("com.mysql:mysql-connector-j:9.4.0")
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-mysql")
     implementation("org.hibernate.validator:hibernate-validator")
@@ -40,9 +40,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
     testImplementation("org.mockito:mockito-core:5.5.0")
-    testImplementation("org.testcontainers:testcontainers:1.19.0")
-    testImplementation("org.testcontainers:junit-jupiter:1.19.0")
-    testImplementation("org.testcontainers:mysql:1.19.0")
+    testImplementation("org.testcontainers:testcontainers")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:mysql")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation ("com.squareup.moshi:moshi-kotlin:1.15.1")
     implementation ("com.squareup.moshi:moshi-adapters:1.15.1")
@@ -52,5 +52,9 @@ tasks.test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(20)
+    jvmToolchain(21)
 }
+//
+//springBoot {
+//    mainClass.value("ru.home.project.ozonapi.OzonApiApplication")
+//}

@@ -7,7 +7,7 @@ version '1.0.0'
 //}
 
 buildscript {
-    ext.kotlin_version = '1.9.23'
+    ext.kotlin_version = '2.1.20'
     ext.spotless_version = "6.25.0"
 
     repositories {

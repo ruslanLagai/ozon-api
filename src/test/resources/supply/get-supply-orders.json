@@ -1,10 +1,10 @@
 {
     "orders": [
         {
-            "supply_order_id": 28439982,
-            "supply_order_number": "2000008844168",
-            "creation_date": "18.07.2024",
-            "state": "ORDER_STATE_COMPLETED",
+            "order_id": 28439982,
+            "order_number": "2000008844168",
+            "created_date": "18.07.2024",
+            "state": "COMPLETED",
             "data_filling_deadline_utc": null,
             "creation_flow": "ORDER_CREATION_FLOW_UNDEFINED",
             "dropoff_warehouse_id": "1020000342660000",
@@ -49,10 +49,10 @@
             ]
         },
         {
-            "supply_order_id": 28439770,
-            "supply_order_number": "2000008844020",
-            "creation_date": "18.07.2024",
-            "state": "ORDER_STATE_COMPLETED",
+            "order_id": 28439770,
+            "order_number": "2000008844020",
+            "created_date": "18.07.2024",
+            "state": "COMPLETED",
             "data_filling_deadline_utc": null,
             "creation_flow": "ORDER_CREATION_FLOW_UNDEFINED",
             "dropoff_warehouse_id": "1020000342660000",
@@ -95,28 +95,6 @@
                     "storage_warehouse_id": 22294782253000
                 }
             ]
-        }
-    ],
-    "warehouses": [
-        {
-            "warehouse_id": 18044341087000,
-            "address": "Новосибирск Новосибирская область, Новосибирский район, Толмачевский сельсовет в районе поселка Красномайский",
-            "name": "Новосибирск_РФЦ_НОВЫЙ"
-        },
-        {
-            "warehouse_id": "1020000342660000",
-            "address": "Россия, обл. Московская, г. Люберцы, Россия, Московская область, Люберцы, улица Камова, 5к2",
-            "name": "МО_ЛЮБЕРЦЫ_103"
-        },
-        {
-            "warehouse_id": 23402539267000,
-            "address": "Республика Беларусь, 223053, Минская область, Минский район, Боровлянский сельсовет, с/с Боровлянский, д. 58/10, пом. 24 (район деревни Королев Стан)",
-            "name": "МИНСК_МПСЦ"
-        },
-        {
-            "warehouse_id": 22294782253000,
-            "address": " 236005, Калининградская область, г.о. город Калининград, г Калининград, ул Печатная, д. 56, этаж 1, помещ. 35",
-            "name": "КАЛИНИНГРАД_МРФЦ"
         }
     ]
 }

@@ -22,7 +22,10 @@ fun produceOzonAllItemsMessage(result: List<RevenueResponse>): String {
                 " - Комиссия озон                $totalCommissionCosts\n" +
                 " - Реклама                            $marketingCosts\n" +
                 "   • Трафареты                       $stencil\n" +
-                "   • Продвижение                 $promotionInSearch\n" +
+                "   • Оплата за заказ       $promotionInSearch\n" +
+                "   • Оплата за клик         $promotionPerClick\n" +
+                "   • Вывод в топ                 $gettingToTop\n" +
+                "   • Спец размещение         $specialPlacing\n" +
                 " - Возвраты                          $totalRefund\n" +
                 " - Отзывы                             $totalFeedBackCost\n" +
                 "   • Закрепление                   $pinFeedback\n" +
@@ -40,6 +43,8 @@ fun produceOzonAllItemsMessage(result: List<RevenueResponse>): String {
                 " - Рассрочка                        $installment\n" +
                 " - Продаж с рассрочкой    $installmentCount\n" +
                 " - Вывоз со склада            $stockReturn\n" +
+                " - Рассылка бонусов          $bonuses\n" +
+                " - Упаковка                          $packaging\n" +
                 "Доставки                              $totalDeliveryItemCount\n" +
                 "Возвраты                             $totalRefundsCount\n" +
                 "Количество продаж          $soldItemsCount\n" +

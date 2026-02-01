@@ -40,5 +40,13 @@ enum class AdditionalServiceType(val description: String) {
     MarketplaceServiceItemRedistributionReturnsPVZ("Обработка возвратов партнёрами"),
     ItemAgentServiceStarsMembership("Звёздные товары"),
     MarketplaceServiceItemDisposalDetailed("Утилизация товара: Вы не забрали в срок"),
-    MarketplaceServiceItemElectronicServicesPremiumCashbackIndividualPoints("")
+    MarketplaceServiceItemElectronicServicesPremiumCashbackIndividualPoints(""),
+    MarketplaceServiceItemTemporaryStorage("Временное размещение товара в СЦ/ПВЗ"),
+    MarketplaceServiceItemRedistributionLastMileCourier(""),
+    MarketplaceServiceItemRedistributionLastMilePVZ(""),
+    MarketplaceServiceItemPackageMaterialsProvision("Обеспечение материалами для упаковки товара"),
+    MarketplaceServiceItemPackageRedistribution("Упаковка товара партнёрами"),
+    MarketplaceServiceSellerReturnsCargoAssortment("Подготовка товара к вывозу: Брак"),
+    MarketplaceServiceProductMovementFromWarehouse("Вывоз товара со Склада силами Ozon: Доставка до ПВЗ"),
+    MarketplaceServiceItemTemporaryStorageRedistribution("Временное размещение товара партнерами")
 }

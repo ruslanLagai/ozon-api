@@ -7,5 +7,4 @@ import com.fasterxml.jackson.annotation.JsonProperty
  */
 data class GetSupplyOrdersResp(
     @JsonProperty("orders") val orders: List<SupplyOrderItem>,
-    @JsonProperty("warehouses") val warehouses: List<WarehouseItem>
 )

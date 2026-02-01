@@ -4,7 +4,7 @@
 # BUILD STAGE
 # ------------------------------------------------------------------------------
 
-FROM gradle:jdk20 as build
+FROM gradle:jdk21 as build
 
 ARG ARTIFACT_VERSION=0.1
 ARG MAVEN_OPTS
@@ -24,7 +24,7 @@ RUN --mount=type=cache,target=/root/.m2/ \
 # RUNTIME STAGE (deployment)
 # ------------------------------------------------------------------------------
 
-FROM openjdk:20-ea-9-slim
+FROM openjdk:21-ea-18-slim
 
 ARG ARTIFACT_VERSION=1.0
 ENV app_name=ozon-api

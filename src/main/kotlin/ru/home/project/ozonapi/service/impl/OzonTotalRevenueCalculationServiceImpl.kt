@@ -45,7 +45,7 @@ class OzonTotalRevenueCalculationServiceImpl(
         val cacheKey = "from_" + request.from.format(formatter) + "_to_" + request.to.format(formatter)
         val transactions = ozonService.getTransaction(request.from, request.to, cacheKey)
 
-        positions.chunked(5)
+        positions.chunked(10)
             .parallelStream()
             .forEach { list ->
                 list.stream().forEach {
@@ -59,12 +59,23 @@ class OzonTotalRevenueCalculationServiceImpl(
 
         // Расходы на рекламу
         val promotionInSearch = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationElectronicServicesPromotionInSearch }
+            .filter { transaction -> transaction.operationType == OperationType.OperationElectronicServicesPromotionInSearch 
+                || transaction.operationType == OperationType.OperationPromotionWithCostPerOrder
+            }
             .sumOf { transaction -> transaction.income }
         val stencil = transactions
             .filter { transaction -> transaction.operationType == OperationType.OperationElectronicServiceStencil }
             .sumOf { transaction -> transaction.income }
-        var marketing = promotionInSearch + stencil
+        val gettingToTop = transactions
+            .filter { transaction -> transaction.operationType == OperationType.OperationGettingToTheTop }
+            .sumOf { transaction -> transaction.income }
+        val specialPlacing = transactions
+            .filter { transaction -> transaction.operationType == OperationType.OperationOtherElectronicServices }
+            .sumOf { transaction -> transaction.income }
+        val promotionPerClick = transactions
+            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceCostPerClick }
+            .sumOf { transaction -> transaction.income }
+        var marketing = promotionInSearch + stencil + gettingToTop + specialPlacing + promotionPerClick
 
         if (marketing == 0.0) {
             marketing = transactions
@@ -99,13 +110,19 @@ class OzonTotalRevenueCalculationServiceImpl(
 
         // Расходы на отзывы
         val feedback = transactions
-            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSaleReviewsOperation }
+            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSaleReviewsOperation
+                    || transaction.operationType == OperationType.OperationPointsForReviews }
             .sumOf { transaction -> transaction.income }
 
         val pinFeedback = transactions
             .filter { transaction -> transaction.operationType == OperationType.OperationMarketPlaceItemPinReview }
             .sumOf { transaction -> transaction.income }
         val feedBackTotal = feedback + pinFeedback
+
+        // Рассылка бонусов
+        val bonuses = transactions
+            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServicePremiumCashbackBonusAccrual }
+            .sumOf { transaction -> transaction.income }
 
         // Расходы на утилизацию
         val destroyFee = transactions
@@ -114,12 +131,15 @@ class OzonTotalRevenueCalculationServiceImpl(
                     || transaction.operationType == OperationType.DisposalReasonDamagedPackaging
                     || transaction.operationType == OperationType.DisposalReasonDamagedReturn
                     || transaction.operationType == OperationType.DisposalReasonRezon
+                    || transaction.operationType == OperationType.OperationSellerReturnsCargoAssortmentInvalid
+                    || transaction.operationType == OperationType.SellerReturnsDeliveryToPickupPoint
             }
             .sumOf { transaction -> transaction.income }
 
         // Расходы на вывоз товара со склада озон
         val returnFromOzonStock = transactions
-            .filter { it.operationType == OperationType.OperationMarketplaceServicePreparingToReturn }
+            .filter { it.operationType == OperationType.OperationMarketplaceServicePreparingToReturn
+                    || it.operationType == OperationType.OperationSellerReturnsCargoAssortmentValid}
             .sumOf { it.income }
 
         // Расходы на видеообложку
@@ -142,7 +162,10 @@ class OzonTotalRevenueCalculationServiceImpl(
 
         // Расходы на размещение товара
         val storage = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStorage }
+            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStorage
+                    || transaction.operationType == OperationType.TemporaryStorage
+                    || transaction.operationType == OperationType.OperationMarketplaceItemTemporaryStorageRedistribution
+            }
             .sumOf { transaction -> transaction.income }
 
         var starMembershipCount = 0
@@ -176,6 +199,13 @@ class OzonTotalRevenueCalculationServiceImpl(
             .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceProcessingSpoilageSurplus }
             .sumOf { transaction -> transaction.income }
 
+        // Упаковка товара
+        val ozonPackaging = transactions
+            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplacePackageMaterialsProvision
+                    || transaction.operationType == OperationType.OperationMarketplacePackageRedistribution
+            }
+            .sumOf { transaction -> transaction.income }
+
         val compensationIncome = transactions.filter {
             it.operationType == OperationType.OperationDefectiveWriteOff
                     || it.operationType == OperationType.AccrualConsigDefectiveWriteOff
@@ -194,7 +224,7 @@ class OzonTotalRevenueCalculationServiceImpl(
             .sum()
         totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome +
                 crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage +
-                starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee + sorting
+                starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee + sorting + bonuses + ozonPackaging
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено
@@ -228,7 +258,10 @@ class OzonTotalRevenueCalculationServiceImpl(
                 soldItemsCount = soldItems
                 marketingCosts = BigDecimal(marketing).setScale(2, RoundingMode.HALF_UP).toDouble()
                 it.stencil = BigDecimal(stencil).setScale(2, RoundingMode.HALF_UP).toDouble()
+                it.gettingToTop = BigDecimal(gettingToTop).setScale(2, RoundingMode.HALF_UP).toDouble()
                 it.promotionInSearch = BigDecimal(promotionInSearch).setScale(2, RoundingMode.HALF_UP).toDouble()
+                it.specialPlacing = BigDecimal(specialPlacing).setScale(2, RoundingMode.HALF_UP).toDouble()
+                it.promotionPerClick = BigDecimal(promotionPerClick).setScale(2, RoundingMode.HALF_UP).toDouble()
                 feedbackCosts = feedback
                 destroyCosts = destroyFee
                 premium = premiumSubscription
@@ -246,6 +279,8 @@ class OzonTotalRevenueCalculationServiceImpl(
                 stockReturn = BigDecimal(returnFromOzonStock).setScale(2, RoundingMode.HALF_UP).toDouble()
                 rfbsDelivery = BigDecimal(deliveryToCustomer).setScale(2, RoundingMode.HALF_UP).toDouble()
                 it.sorting = sorting
+                it.bonuses = bonuses
+                packaging = ozonPackaging
             }
         }
 

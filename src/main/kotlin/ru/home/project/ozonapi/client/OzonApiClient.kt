@@ -101,26 +101,26 @@ class OzonApiClient(
 
     fun getSupplyOrderList(): List<Int>? {
         val states =  listOf(
-            SupplyState.ORDER_STATE_ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.ORDER_STATE_IN_TRANSIT,
-            SupplyState.ORDER_STATE_ACCEPTANCE_AT_STORAGE_WAREHOUSE, SupplyState.ORDER_STATE_REPORTS_CONFIRMATION_AWAITING,
-            SupplyState.ORDER_STATE_REPORT_REJECTED, SupplyState.ORDER_STATE_REJECTED_AT_SUPPLY_WAREHOUSE)
+            SupplyState.ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.IN_TRANSIT,
+            SupplyState.ACCEPTANCE_AT_STORAGE_WAREHOUSE, SupplyState.REPORTS_CONFIRMATION_AWAITING,
+            SupplyState.REPORT_REJECTED, SupplyState.REJECTED_AT_SUPPLY_WAREHOUSE)
         return getSupplyOrderList(states)
     }
 
     fun getSupplyOrdersInTransit(): List<Int>? {
         val states =  listOf(
-            SupplyState.ORDER_STATE_ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.ORDER_STATE_IN_TRANSIT,
-            SupplyState.ORDER_STATE_ACCEPTANCE_AT_STORAGE_WAREHOUSE
+            SupplyState.ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.IN_TRANSIT,
+            SupplyState.ACCEPTANCE_AT_STORAGE_WAREHOUSE
         )
         return getSupplyOrderList(states)
     }
 
     fun getSupplyOrderList(states: List<SupplyState>): List<Int>? {
-        val request = SupplyOrdersRequest(filter = SupplyOrdersFilter(states = states), paging = SupplyOrdersPaging())
+        val request = SupplyOrdersRequest(filter = SupplyOrdersFilter(states = states))
         return ozonClient.post()
             .uri { uriBuilder: UriBuilder ->
                 uriBuilder
-                    .path("/v2/supply-order/list")
+                    .path("/v3/supply-order/list")
                     .build()
             }
             .body(BodyInserters.fromValue(request))
@@ -133,11 +133,11 @@ class OzonApiClient(
     }
 
     fun getSupplyOrders(orderIds: List<Int>): List<SupplyOrderItem>? {
-        val request = SupplyOrderItemsRequest(orderIds = orderIds.map { it.toString() })
+        val request = SupplyOrderItemsRequest(orderIds = orderIds)
         return ozonClient.post()
             .uri { uriBuilder: UriBuilder ->
                 uriBuilder
-                    .path("/v2/supply-order/get")
+                    .path("/v3/supply-order/get")
                     .build()
             }
             .body(BodyInserters.fromValue(request))

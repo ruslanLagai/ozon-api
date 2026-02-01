@@ -29,9 +29,12 @@ data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: 
     var errorMessage: String? = null
     var marketingCosts: Double = 0.0
     var promotionInSearch: Double = 0.0
+    var specialPlacing: Double = 0.0
     var pinFeedback: Double = 0.0
     var totalFeedBackCost: Double = 0.0
     var stencil: Double = 0.0
+    var gettingToTop: Double = 0.0
+    var promotionPerClick: Double = 0.0
     var shelf: Double = 0.0
     var feedbackCosts: Double = 0.0
     var destroyCosts: Double = 0.0
@@ -53,4 +56,6 @@ data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: 
     var rfbsDelivery: Double = 0.0
     var sorting: Double = 0.0
     var subsidies: Double = 0.0
+    var bonuses: Double = 0.0
+    var packaging: Double = 0.0
 }

@@ -1,9 +1,9 @@
 {
-    "supply_order_id": [
+    "order_ids": [
         28439982,
         28439770,
         28439655,
         28130822
     ],
-    "last_supply_order_id": 0
+    "last_id": 0
 }

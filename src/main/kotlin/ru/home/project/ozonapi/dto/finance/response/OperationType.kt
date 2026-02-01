@@ -64,7 +64,20 @@ enum class OperationType(val description: String) {
     AccrualConsigWriteOff("Потеря по вине Ozon на складе"),
     MarketplaceSellerDecompensationItemByTypeDocOperation("Декомпенсации и возвращение товаров на сток"),
     OperationMarketplaceServiceSupplyInboundCrossZoneAcceptance("Сортировка товара по зонам размещения"),
-    DefectRateCancellation("Услуга за обработку операционных ошибок продавца: отмена")
+    DefectRateCancellation("Услуга за обработку операционных ошибок продавца: отмена"),
+    OperationMarketplaceServicePremiumCashbackBonusAccrual("Бонусы продавца - рассылка"),
+    OperationGettingToTheTop("Вывод в топ"),
+    OperationPointsForReviews("Баллы за отзывы"),
+    OperationPromotionWithCostPerOrder("Продвижение с оплатой за заказ"),
+    OperationMarketplaceCostPerClick("Оплата за клик"),
+    TemporaryStorage("Временное размещение товара в СЦ/ПВЗ"),
+    OperationMarketplacePackageMaterialsProvision("Обеспечение материалами для упаковки товара"),
+    OperationMarketplacePackageRedistribution("Упаковка товара партнёрами"),
+    OperationOtherElectronicServices("Иные электронные услуги"),
+    OperationSellerReturnsCargoAssortmentInvalid("Подготовка товара к вывозу: Брак"),
+    SellerReturnsDeliveryToPickupPoint("Вывоз товара со Склада силами Ozon: Доставка до ПВЗ"),
+    OperationMarketplaceItemTemporaryStorageRedistribution("Временное размещение товара партнерами"),
+    OperationSellerReturnsCargoAssortmentValid("Подготовка товара к вывозу: Валид"),
 
 
 }
