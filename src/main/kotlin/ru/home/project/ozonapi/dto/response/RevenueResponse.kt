@@ -58,4 +58,6 @@ data class RevenueResponse(val name: String?, var ozonId: String?, val artikul: 
     var subsidies: Double = 0.0
     var bonuses: Double = 0.0
     var packaging: Double = 0.0
+    var push: Double = 0.0
+    var externalPromotion: Double = 0.0
 }

@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class SupplyBundleItem(
-    @JsonProperty("icon_path") val iconPath: String?,
-    @JsonProperty("sku") val sku : Long,
-    @JsonProperty("offer_id") val artikul: String,
-    @JsonProperty("name") val name: String,
-    @JsonProperty("quantity") val quantity: Int
+    @param:JsonProperty("icon_path") val iconPath: String?,
+    @param:JsonProperty("sku") val sku : Long,
+    @param:JsonProperty("offer_id") val artikul: String,
+    @param:JsonProperty("name") val name: String,
+    @param:JsonProperty("quantity") val quantity: Int
 )

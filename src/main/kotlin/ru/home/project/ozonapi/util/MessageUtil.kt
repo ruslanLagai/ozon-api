@@ -26,6 +26,8 @@ fun produceOzonAllItemsMessage(result: List<RevenueResponse>): String {
                 "   • Оплата за клик         $promotionPerClick\n" +
                 "   • Вывод в топ                 $gettingToTop\n" +
                 "   • Спец размещение         $specialPlacing\n" +
+                "   • Рассылка пуш               $push\n" +
+                "   • Внешний трафик         $externalPromotion\n" +
                 " - Возвраты                          $totalRefund\n" +
                 " - Отзывы                             $totalFeedBackCost\n" +
                 "   • Закрепление                   $pinFeedback\n" +

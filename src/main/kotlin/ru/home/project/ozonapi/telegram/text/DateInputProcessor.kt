@@ -12,7 +12,6 @@ import ru.home.project.ozonapi.entity.ActionType
 import ru.home.project.ozonapi.entity.MarketType
 import ru.home.project.ozonapi.entity.TelegramChatEntity
 import ru.home.project.ozonapi.exception.OzonException
-import ru.home.project.ozonapi.exception.YandexException
 import ru.home.project.ozonapi.repository.TelegramChatRepository
 import ru.home.project.ozonapi.service.RevenueCalculationService
 import ru.home.project.ozonapi.service.TotalRefundsService
@@ -31,7 +30,6 @@ class DateInputProcessor(
     val telegramChatRepository: TelegramChatRepository,
     val revenueCalculationServices: List<RevenueCalculationService>,
     val ozonTotalRevenueCalculationServiceImpl: TotalRevenueCalculationService,
-    val yandexTotalRevenueCalculationServiceImpl: TotalRevenueCalculationService,
     val totalRefundsService: TotalRefundsService
 ): TextInputProcessor {
 
@@ -49,8 +47,7 @@ class DateInputProcessor(
     )
 
     private val marketProccessor = mapOf<MarketType, BiFunction<TelegramChatEntity, RevenueRequest, String>>(
-        Pair(MarketType.Ozon, BiFunction { chat, request -> calculateOzon(chat, request) }),
-        Pair(MarketType.Yandex, BiFunction { chat, request -> calculateYandex(chat, request) })
+        Pair(MarketType.Ozon, BiFunction { chat, request -> calculateOzon(chat, request) })
     )
 
     override fun processInput(input: String, update: Update): SendMessage? {
@@ -95,15 +92,6 @@ class DateInputProcessor(
         } finally {
             telegramChatRepository.updateStateByChatIdAndAction(chatId, false, ActionType.Revenue)
         }
-    }
-
-    private fun calculateYandex(
-        chatEntity: TelegramChatEntity,
-        request: RevenueRequest
-    ) = if (chatEntity.positionName == allItems) {
-        calculateAllItemsYandex(request)
-    } else {
-        calculateItemYandex(request)
     }
 
     private fun calculateOzon(
@@ -167,37 +155,6 @@ class DateInputProcessor(
             log.error("Error is: {}", it.message, it)
         }
         return text
-    }
-
-    private fun calculateAllItemsYandex(request: RevenueRequest): String {
-        val allItemsRequest = RevenueRequest(to = request.to, from = request.from, name = null)
-        var result: List<RevenueResponse>
-        var text = ""
-        kotlin.runCatching {
-            result = yandexTotalRevenueCalculationServiceImpl.calculateRevenue(allItemsRequest)
-
-            if (result.isEmpty()) {
-                log.warn("Revenue calculation is null, request '${allItemsRequest}'")
-                text = "Не удалось рассчитать маржинальность"
-            }
-            text = produceYandexAllItemsMessage(result)
-        }.onFailure {
-            text = when (it) {
-                is YandexException -> "Ошибка от апи Яндекс маркета, попробуйте позже"
-                else -> "Не удалось рассчитать маржинальность, попробуйте еще раз"
-            }
-        }
-        return text
-    }
-
-    private fun calculateItemYandex(request: RevenueRequest): String {
-        val result = revenueCalculationServices.map { it.calculateRevenue(request) }.firstOrNull(Objects::nonNull)
-
-        if (result == null) {
-            log.warn("Revenue calculation is null, request ${request}")
-            return "Не удалось рассчитать маржинальность"
-        }
-        return produceYandexItemMessage(result)
     }
 
     private fun calculateItem(request: RevenueRequest): String {

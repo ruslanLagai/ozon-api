@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "sku": 1134715033,
+      "quantity": 10,
+      "offer_id": "0000010",
+      "icon_path": "https://cdn1.ozone.ru/s3/multimedia-1-b/7854668147.jpg",
+      "name": "зонт механический 8 спиц, мини, карманный, складной, маленький",
+      "volume_in_litres": 2.738298,
+      "total_volume_in_litres": 28,
+      "barcode": "OZN1134715033",
+      "product_id": 603093898,
+      "quant": 1,
+      "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_NONE",
+      "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_GENERAL",
+      "is_quant_editable": true,
+      "tags": [],
+      "placement_zone": "SORT"
+    },
+    {
+      "sku": 1134733705,
+      "quantity": 10,
+      "offer_id": "0000012",
+      "icon_path": "https://cdn1.ozone.ru/s3/multimedia-1-7/7854671959.jpg",
+      "name": "зонт механический 8 спиц, мини, карманный, складной, маленький",
+      "volume_in_litres": 1.029,
+      "total_volume_in_litres": 11,
+      "barcode": "OZN1134733705",
+      "product_id": 603103737,
+      "quant": 1,
+      "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_NONE",
+      "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_GENERAL",
+      "is_quant_editable": true,
+      "tags": [],
+      "placement_zone": "SORT"
+    },
+    {
+      "sku": 3389954573,
+      "quantity": 10,
+      "offer_id": "0000063",
+      "icon_path": "https://cdn1.ozone.ru/s3/multimedia-1-u/9263515782.jpg",
+      "name": "зонт механический 8 спиц, мини, карманный, складной, маленький",
+      "volume_in_litres": 1.029,
+      "total_volume_in_litres": 11,
+      "barcode": "OZN3389954573",
+      "product_id": 3431350566,
+      "quant": 1,
+      "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_NONE",
+      "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_GENERAL",
+      "is_quant_editable": true,
+      "tags": [],
+      "placement_zone": "SORT"
+    }
+  ],
+  "total_count": 3,
+  "last_id": "3389954573",
+  "has_next": false
+}

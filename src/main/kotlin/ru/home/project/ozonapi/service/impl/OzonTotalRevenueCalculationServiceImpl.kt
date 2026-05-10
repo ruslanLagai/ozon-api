@@ -45,7 +45,7 @@ class OzonTotalRevenueCalculationServiceImpl(
         val cacheKey = "from_" + request.from.format(formatter) + "_to_" + request.to.format(formatter)
         val transactions = ozonService.getTransaction(request.from, request.to, cacheKey)
 
-        positions.chunked(10)
+        positions.chunked(100)
             .parallelStream()
             .forEach { list ->
                 list.stream().forEach {
@@ -57,43 +57,106 @@ class OzonTotalRevenueCalculationServiceImpl(
         }
         log.info("Calculated revenue for '${revenueList.size}'")
 
-        // Расходы на рекламу
-        val promotionInSearch = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationElectronicServicesPromotionInSearch 
-                || transaction.operationType == OperationType.OperationPromotionWithCostPerOrder
+        var promotionInSearch = 0.0
+        var externalPromotion = 0.0
+        var stencil = 0.0
+        var gettingToTop = 0.0
+        var specialPlacing = 0.0
+        var promotionPerClick = 0.0
+        var pushNotifications = 0.0
+        var oldMarketing = 0.0
+        var premiumSubscription = 0.0
+        var deliveryToCustomer = 0.0
+        var feedback = 0.0
+        var pinFeedback = 0.0
+        var bonuses = 0.0
+        var returnFromOzonStock = 0.0
+        var videoCover = 0.0
+        var crossDoc = 0.0
+        var realFbsLateDeliveryFee = 0.0
+        var storage = 0.0
+        var starMembershipCount = 0
+        var installmentCount = 0
+        var starMembership = 0.0
+        var installment = 0.0
+        var correction = 0.0
+        var sorting = 0.0
+        var spoilageSurplus = 0.0
+        var ozonPackaging = 0.0
+        var destroyFee = 0.0
+        var compensationIncome = 0.0
+        var courierReturnDelivery = 0.0
+        for (transaction in transactions) {
+            when (transaction.operationType) {
+                OperationType.OperationElectronicServicesPromotionInSearch -> promotionInSearch += transaction.income
+                OperationType.OperationPromotionWithCostPerOrder -> promotionInSearch += transaction.income
+                OperationType.OperationMarketplaceExternalPromotion -> externalPromotion += transaction.income
+                OperationType.OperationElectronicServiceStencil -> stencil += transaction.income
+                OperationType.OperationGettingToTheTop -> gettingToTop += transaction.income
+                OperationType.OperationOtherElectronicServices -> specialPlacing += transaction.income
+                OperationType.OperationMarketplaceCostPerClick -> promotionPerClick += transaction.income
+                OperationType.OperationMarketplaceSendingPushNotifications -> pushNotifications += transaction.income
+                OperationType.MarketplaceMarketingActionCostOperation -> oldMarketing += transaction.income
+                OperationType.OperationMarketplacePremiumSubscribtion -> premiumSubscription += transaction.income
+                OperationType.OperationSubscriptionPremium -> premiumSubscription += transaction.income
+                OperationType.MarketplaceSellerReexposureDeliveryReturnOperation -> deliveryToCustomer += transaction.income
+                OperationType.MarketplaceSaleReviewsOperation -> feedback += transaction.income
+                OperationType.OperationPointsForReviews -> feedback += transaction.income
+                OperationType.OperationMarketplaceAcceleratedProductReviews -> feedback += transaction.income
+                OperationType.OperationMarketPlaceItemPinReview -> pinFeedback += transaction.income
+                OperationType.OperationMarketplaceServicePremiumCashbackBonusAccrual -> bonuses += transaction.income
+                OperationType.OperationMarketplaceServicePreparingToReturn -> returnFromOzonStock += transaction.income
+                OperationType.OperationSellerReturnsCargoAssortmentValid -> returnFromOzonStock += transaction.income
+                OperationType.MarketplaceServiceItemVideoCover -> videoCover += transaction.income
+                OperationType.OperationMarketplaceCrossDockServiceWriteOff -> crossDoc += transaction.income
+                OperationType.MarketplaceServiceItemCrossdocking -> crossDoc += transaction.income
+                OperationType.OperationMarketplaceSupplyAdditional -> crossDoc += transaction.income
+                OperationType.OperationMarketplaceServiceProcessingNotIdentifiedSurplus -> crossDoc += transaction.income
+                OperationType.DefectRateDeliveryDelayNonInt -> realFbsLateDeliveryFee += transaction.income
+                OperationType.DefectRateCancellation -> realFbsLateDeliveryFee += transaction.income
+                OperationType.OperationMarketplaceServiceStorage -> storage += transaction.income
+                OperationType.OperationMarketplaceItemTemporaryStorageRedistribution -> storage += transaction.income
+                OperationType.TemporaryStorage -> storage += transaction.income
+                OperationType.StarsMembership -> {
+                    starMembershipCount += transaction.items.size
+                    starMembership += transaction.income
+                }
+                OperationType.MarketplaceSellerInstallmentOperation -> {
+                    installmentCount += transaction.items.size
+                    installment += transaction.income
+                }
+                OperationType.MarketplaceSellerCorrectionOperation -> correction += transaction.income
+                OperationType.MarketplaceCorrectionPointOperation -> correction += transaction.income
+                OperationType.OperationMarketplaceServiceSupplyInboundCrossZoneAcceptance -> sorting += transaction.income
+                OperationType.OperationMarketplaceServiceProcessingSpoilageSurplus -> spoilageSurplus += transaction.income
+                OperationType.OperationMarketplacePackageMaterialsProvision -> ozonPackaging += transaction.income
+                OperationType.OperationMarketplacePackageRedistribution -> ozonPackaging += transaction.income
+                OperationType.OperationMarketplaceServiceStockDisposal -> destroyFee += transaction.income
+                OperationType.DisposalReasonFailedToPickupOnTime -> destroyFee += transaction.income
+                OperationType.DisposalReasonDamagedPackaging -> destroyFee += transaction.income
+                OperationType.DisposalReasonDamagedReturn -> destroyFee += transaction.income
+                OperationType.DisposalReasonRezon -> destroyFee += transaction.income
+                OperationType.OperationSellerReturnsCargoAssortmentInvalid -> destroyFee += transaction.income
+                OperationType.SellerReturnsDeliveryToPickupPoint -> destroyFee += transaction.income
+                OperationType.DisposalReasonScattered -> destroyFee += transaction.income
+                OperationType.OperationDefectiveWriteOff -> compensationIncome += transaction.income
+                OperationType.AccrualConsigDefectiveWriteOff -> compensationIncome += transaction.income
+                OperationType.AccrualInternalClaim -> compensationIncome += transaction.income
+                OperationType.AccrualConsigWriteOff -> compensationIncome += transaction.income
+                OperationType.MarketplaceSellerDecompensationItemByTypeDocOperation -> compensationIncome += transaction.income
+                OperationType.OperationMarketplaceSellerReturnsGeneral -> courierReturnDelivery += transaction.income
+
+
+                else -> {
+                }
             }
-            .sumOf { transaction -> transaction.income }
-        val stencil = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationElectronicServiceStencil }
-            .sumOf { transaction -> transaction.income }
-        val gettingToTop = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationGettingToTheTop }
-            .sumOf { transaction -> transaction.income }
-        val specialPlacing = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationOtherElectronicServices }
-            .sumOf { transaction -> transaction.income }
-        val promotionPerClick = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceCostPerClick }
-            .sumOf { transaction -> transaction.income }
-        var marketing = promotionInSearch + stencil + gettingToTop + specialPlacing + promotionPerClick
-
-        if (marketing == 0.0) {
-            marketing = transactions
-                .filter { transaction -> transaction.operationType == OperationType.MarketplaceMarketingActionCostOperation }
-                .sumOf { transaction -> transaction.income }
         }
-
-
-        // Расходы на подписку
-        val premiumSubscription = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplacePremiumSubscribtion
-                    || transaction.operationType == OperationType.OperationSubscriptionPremium }
-            .sumOf { transaction -> transaction.income }
-
-        // Перечисление за доставку от покупателя
-        val deliveryToCustomer = transactions
-            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSellerReexposureDeliveryReturnOperation}
-            .sumOf { transaction -> transaction.income }
+        // Расходы на рекламу
+        var marketing = promotionInSearch + stencil + gettingToTop + specialPlacing + promotionPerClick + pushNotifications + externalPromotion
+        if (marketing == 0.0) {
+            marketing = oldMarketing
+        }
+        val feedBackTotal = feedback + pinFeedback
 
         // Количество проданных товаров за период
         val transactionsWithRefund = transactions
@@ -105,123 +168,10 @@ class OzonTotalRevenueCalculationServiceImpl(
             .filter { transaction -> transaction.operationType == OperationType.MarketplaceRedistributionOfAcquiringOperation }
             .filter { transaction -> !transactionsWithRefund.containsKey(transaction.posting.postingNumber) }
             .filter { transaction -> transaction.income < 0 }
-            .map { transaction -> transaction.items.size }
-            .sum()
-
-        // Расходы на отзывы
-        val feedback = transactions
-            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSaleReviewsOperation
-                    || transaction.operationType == OperationType.OperationPointsForReviews }
-            .sumOf { transaction -> transaction.income }
-
-        val pinFeedback = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketPlaceItemPinReview }
-            .sumOf { transaction -> transaction.income }
-        val feedBackTotal = feedback + pinFeedback
-
-        // Рассылка бонусов
-        val bonuses = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServicePremiumCashbackBonusAccrual }
-            .sumOf { transaction -> transaction.income }
-
-        // Расходы на утилизацию
-        val destroyFee = transactions
-            .filter {transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStockDisposal
-                    || transaction.operationType == OperationType.DisposalReasonFailedToPickupOnTime
-                    || transaction.operationType == OperationType.DisposalReasonDamagedPackaging
-                    || transaction.operationType == OperationType.DisposalReasonDamagedReturn
-                    || transaction.operationType == OperationType.DisposalReasonRezon
-                    || transaction.operationType == OperationType.OperationSellerReturnsCargoAssortmentInvalid
-                    || transaction.operationType == OperationType.SellerReturnsDeliveryToPickupPoint
-            }
-            .sumOf { transaction -> transaction.income }
-
-        // Расходы на вывоз товара со склада озон
-        val returnFromOzonStock = transactions
-            .filter { it.operationType == OperationType.OperationMarketplaceServicePreparingToReturn
-                    || it.operationType == OperationType.OperationSellerReturnsCargoAssortmentValid}
-            .sumOf { it.income }
-
-        // Расходы на видеообложку
-        val videoCover = transactions
-            .filter {transaction -> transaction.operationType == OperationType.MarketplaceServiceItemVideoCover }
-            .sumOf { transaction -> transaction.income }
-
-        // Расходы на кросс док
-        val crossDoc = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceCrossDockServiceWriteOff
-                    || transaction.operationType == OperationType.MarketplaceServiceItemCrossdocking
-                    || transaction.operationType == OperationType.OperationMarketplaceSupplyAdditional }
-            .sumOf { transaction -> transaction.income }
-
-        // Просроченная доставка realFsb
-        val realFbsLateDeliveryFee = transactions
-            .filter { transaction -> transaction.operationType == OperationType.DefectRateDeliveryDelayNonInt
-                    || transaction.operationType == OperationType.DefectRateCancellation}
-            .sumOf { transaction -> transaction.income }
-
-        // Расходы на размещение товара
-        val storage = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceStorage
-                    || transaction.operationType == OperationType.TemporaryStorage
-                    || transaction.operationType == OperationType.OperationMarketplaceItemTemporaryStorageRedistribution
-            }
-            .sumOf { transaction -> transaction.income }
-
-        var starMembershipCount = 0
-        // Звездные товары
-        val starMembership = transactions
-            .filter { transaction -> transaction.operationType == OperationType.StarsMembership }
-            .onEach { starMembershipCount += it.items.size }
-            .sumOf { transaction -> transaction.income }
-
-        // Звездные товары
-        var installmentCount = 0
-        val installment = transactions
-            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSellerInstallmentOperation }
-            .onEach { installmentCount += it.items.size }
-            .sumOf { transaction -> transaction.income }
-
-        // Корректировка
-        val correction = transactions
-            .filter { transaction -> transaction.operationType == OperationType.MarketplaceSellerCorrectionOperation
-                    || transaction.operationType == OperationType.MarketplaceCorrectionPointOperation
-            }
-            .sumOf { transaction -> transaction.income }
-
-        // Сортировка по зонам размещения
-        val sorting = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceSupplyInboundCrossZoneAcceptance }
-            .sumOf { transaction -> transaction.income }
-
-        // Обработка брака с приемки
-        val spoilageSurplus = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplaceServiceProcessingSpoilageSurplus }
-            .sumOf { transaction -> transaction.income }
-
-        // Упаковка товара
-        val ozonPackaging = transactions
-            .filter { transaction -> transaction.operationType == OperationType.OperationMarketplacePackageMaterialsProvision
-                    || transaction.operationType == OperationType.OperationMarketplacePackageRedistribution
-            }
-            .sumOf { transaction -> transaction.income }
-
-        val compensationIncome = transactions.filter {
-            it.operationType == OperationType.OperationDefectiveWriteOff
-                    || it.operationType == OperationType.AccrualConsigDefectiveWriteOff
-                    || it.operationType == OperationType.AccrualInternalClaim
-                    || it.operationType == OperationType.AccrualConsigWriteOff
-                    || it.operationType == OperationType.MarketplaceSellerDecompensationItemByTypeDocOperation
-        }.sumOf { it.income }
-
-        val courierReturnDelivery = transactions.filter {
-            it.operationType == OperationType.OperationMarketplaceSellerReturnsGeneral
-        }.sumOf { it.income }
+            .sumOf { transaction -> transaction.items.size }
 
         // Чистая прибыль
-        var totalRevenue = revenueList
-            .map(RevenueResponse::totalRevenue)
-            .sum()
+        var totalRevenue = revenueList.sumOf(RevenueResponse::totalRevenue)
         totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome +
                 crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage +
                 starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee + sorting + bonuses + ozonPackaging
@@ -262,7 +212,7 @@ class OzonTotalRevenueCalculationServiceImpl(
                 it.promotionInSearch = BigDecimal(promotionInSearch).setScale(2, RoundingMode.HALF_UP).toDouble()
                 it.specialPlacing = BigDecimal(specialPlacing).setScale(2, RoundingMode.HALF_UP).toDouble()
                 it.promotionPerClick = BigDecimal(promotionPerClick).setScale(2, RoundingMode.HALF_UP).toDouble()
-                feedbackCosts = feedback
+                feedbackCosts = BigDecimal(feedback).setScale(2, RoundingMode.HALF_UP).toDouble()
                 destroyCosts = destroyFee
                 premium = premiumSubscription
                 totalRefund = BigDecimal(totalRefundCosts).setScale(2, RoundingMode.HALF_UP).toDouble()
@@ -281,6 +231,8 @@ class OzonTotalRevenueCalculationServiceImpl(
                 it.sorting = sorting
                 it.bonuses = bonuses
                 packaging = ozonPackaging
+                push = pushNotifications
+                it.externalPromotion = BigDecimal(externalPromotion).setScale(2, RoundingMode.HALF_UP).toDouble()
             }
         }
 

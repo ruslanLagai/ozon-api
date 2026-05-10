@@ -15,6 +15,8 @@ interface PositionRepository: JpaRepository<PositionEntity, Long> {
 
     fun getPositionEntityByArtikul(artikul: String): PositionEntity?
 
+    fun getPositionEntityByOzonId(ozonId: String): PositionEntity
+
     @Transactional
     @Modifying
     @Query("update PositionEntity position set position.costPrice = ?2, position.additionalCost = ?3 where position.artikul = ?1")

@@ -12,6 +12,7 @@ import ru.home.project.ozonapi.dto.request.RevenueRequest
 import ru.home.project.ozonapi.dto.response.RevenueResponse
 import ru.home.project.ozonapi.entity.PositionEntity
 import ru.home.project.ozonapi.repository.PositionRepository
+import ru.home.project.ozonapi.repository.TransactionRepository
 import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.util.readResource
 import java.time.OffsetDateTime
@@ -24,8 +25,14 @@ class PositionRevenueCalculationServiceImplTest {
     private val ozonService = Mockito.mock(OzonService::class.java)
     private val repository = Mockito.mock(PositionRepository::class.java)
     private val financialAmountCalculator = FinancialAmountCalculator()
+    private val transactionsRepository = Mockito.mock(TransactionRepository::class.java)
 
-    private val positionRevenueService = PositionRevenueCalculationServiceImpl(ozonService, listOf(financialAmountCalculator), repository)
+    private val positionRevenueService = PositionRevenueCalculationServiceImpl(
+        ozonService,
+        financialAmountCalculator,
+        repository,
+        transactionsRepository
+    )
 
     @Test
     fun `calculate revenue - no position name`() {

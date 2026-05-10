@@ -1,14 +1,14 @@
 package ru.home.project.ozonapi.service.impl
 
-import jakarta.annotation.PostConstruct
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.junit.jupiter.Container
@@ -49,7 +49,7 @@ class RevenueIntegrationTest {
         }
     }
 
-    @MockBean
+    @MockitoBean
     private lateinit var flywayConfig: FlywayConfig
 
     @Autowired
@@ -58,12 +58,16 @@ class RevenueIntegrationTest {
     @Autowired
     private lateinit var calculationService: PositionRevenueCalculationServiceImpl
 
-    @PostConstruct
+    @BeforeEach
     fun init() {
-        val umbrella = PositionEntity(1, "Мини зонт", 437.15, 12.05, "1135684591", "0000015")
-        val unknown = PositionEntity(2, "Мини зонтт", 437.15, 12.05, "11356845232334291", "0000015")
-        positionRepository.save(umbrella)
-        positionRepository.save(unknown)
+        positionRepository.deleteAll()
+
+        positionRepository.save(
+            PositionEntity(name = "Мини зонт", costPrice = 437.15, additionalCost = 12.05, ozonId = "1135684591", artikul = "0000015")
+        )
+        positionRepository.save(
+            PositionEntity(name = "Мини зонтт", costPrice = 437.15, additionalCost = 12.05, ozonId = "11356845232334291", artikul = "0000016")
+        )
     }
 
     @Test

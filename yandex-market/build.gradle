@@ -50,6 +50,9 @@ spotless {
 
 test {
     useJUnitPlatform()
+    filter {
+        failOnNoMatchingTests = false
+    }
 }
 
 dependencies {

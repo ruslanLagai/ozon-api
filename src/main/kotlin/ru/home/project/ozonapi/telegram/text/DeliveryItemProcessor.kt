@@ -8,7 +8,6 @@ import org.telegram.telegrambots.meta.api.objects.Update
 import ru.home.project.ozonapi.entity.ActionType
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
 import ru.home.project.ozonapi.repository.TelegramChatRepository
-import ru.home.project.ozonapi.service.impl.ChinaOrdersService
 
 /**
  * @author rlagay
@@ -49,7 +48,7 @@ class DeliveryItemProcessor(
             if (order?.id == null) {
                 msg.text = "Не удалось найти поставку"
             } else {
-                chat.deliveryId = order.id
+                chat.deliveryId = order.id!!
                 telegramChatRepository.save(chat)
                 msg.text = "Добавьте данные по доставке в формате: \n" +
                         "<стоимость доставки>,<масса груза>,<объем груза (при наличии)>\n"

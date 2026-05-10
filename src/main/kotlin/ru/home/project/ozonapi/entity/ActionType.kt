@@ -10,5 +10,6 @@ enum class ActionType {
     Refund,
     StockWorth,
     AddOrder,
-    AddDelivery
+    AddDelivery,
+    AddFulfilment
 }

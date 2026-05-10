@@ -8,6 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class SupplyItem(
-    @JsonProperty("supply_id") val supplyId: String,
-    @JsonProperty("bundle_id") val bundleId : String
+    @param:JsonProperty("supply_id") val supplyId: Long,
+    @param:JsonProperty("bundle_id") val bundleId : String
 )

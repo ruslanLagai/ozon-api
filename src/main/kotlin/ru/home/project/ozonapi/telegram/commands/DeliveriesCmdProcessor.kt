@@ -3,6 +3,7 @@ package ru.home.project.ozonapi.telegram.commands
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
@@ -17,6 +18,7 @@ class DeliveriesCmdProcessor(
 
     private val log: Logger = LoggerFactory.getLogger(DeliveriesCmdProcessor::class.java)
 
+    @Transactional
     override fun processCmd(command: String, update: Update): SendMessage? {
         val msg = SendMessage()
         val sb = StringBuilder().append("Поставки в пути\n")
@@ -30,7 +32,7 @@ class DeliveriesCmdProcessor(
                     builder.append(" №${it.number}")
                 }
                 builder.append(" от " + it.orderDate + " на сумму " + it.stockCost)
-                it.products?.forEach {product ->
+                it.products.forEach { product ->
                     builder.append("\n").append("  • ").append(product.name).append(" - ")
                         .append(product.quantity).append(" штук")
                 }

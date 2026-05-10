@@ -1,4 +1,6 @@
 service:
+  yandex:
+    token: y0__wgBEJWixkIYwd0TIIOcj_cRRtg5RLDfSo8StNCHghHU3jSZ6H8
   ozon:
     api:
       api-key: 7845fe09-9410-4c36-a0ba-c3e2e799a0d1
@@ -7,9 +9,8 @@ service:
       url: https://api-seller.ozon.ru
     supply:
       cron: 0 0 * * * *
-  fbs:
-    order:
-      cron: 0 0 0 * * *
+    transactions:
+      cron: 0 0 * * * *
 server:
   shutdown: graceful
 spring:

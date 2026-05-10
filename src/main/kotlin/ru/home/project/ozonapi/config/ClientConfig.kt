@@ -2,8 +2,6 @@ package ru.home.project.ozonapi.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import org.openapitools.client.apis.*
-import org.openapitools.client.infrastructure.ApiClient
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
@@ -76,36 +74,5 @@ class ClientConfig {
                     )
                 })
             .build()
-    }
-
-    @Bean
-    fun yandexOrdersApi() : OrdersApi {
-        ApiClient.accessToken = "y0_AgAAAABtw_bLAAwDRgAAAAEIqA1lAACt17uMk_lGG5CFkGREF8eud1GbxQ"
-        return OrdersApi()
-    }
-
-    @Bean
-    fun OrdersStatsApi() : OrdersStatsApi {
-        return org.openapitools.client.apis.OrdersStatsApi()
-    }
-
-    @Bean
-    fun campaignsApi(): CampaignsApi {
-        return CampaignsApi()
-    }
-
-    @Bean
-    fun reportsApi() : ReportsApi {
-        return ReportsApi()
-    }
-
-    @Bean
-    fun warehousesApi() : WarehousesApi {
-        return WarehousesApi()
-    }
-
-    @Bean
-    fun stocksApi() : StocksApi {
-        return StocksApi()
     }
 }

@@ -133,7 +133,7 @@ class PostRevenueCalculationServiceImplTest {
     @Test
     fun `calculate revenue ozon exception`() {
 
-        `when`(ozonService.getTransaction(anyString())).thenThrow(WebClientResponseException::class.java)
+        `when`(ozonService.getTransaction(anyString())).thenThrow(WebClientResponseException.create(500, "Internal Server Error", null, null, null))
 
         val request = RevenueRequest("Держатель для полотенец", "", "66995153-0218-1")
         val result = postRevenueService.calculateRevenue(request)

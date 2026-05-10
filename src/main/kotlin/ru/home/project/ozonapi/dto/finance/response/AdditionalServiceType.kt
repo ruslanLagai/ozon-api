@@ -48,5 +48,6 @@ enum class AdditionalServiceType(val description: String) {
     MarketplaceServiceItemPackageRedistribution("Упаковка товара партнёрами"),
     MarketplaceServiceSellerReturnsCargoAssortment("Подготовка товара к вывозу: Брак"),
     MarketplaceServiceProductMovementFromWarehouse("Вывоз товара со Склада силами Ozon: Доставка до ПВЗ"),
-    MarketplaceServiceItemTemporaryStorageRedistribution("Временное размещение товара партнерами")
+    MarketplaceServiceItemTemporaryStorageRedistribution("Временное размещение товара партнерами"),
+    MarketplaceServiceItemDeliveryToHandoverPlaceOzon("Доставка до места выдачи силами Ozon")
 }

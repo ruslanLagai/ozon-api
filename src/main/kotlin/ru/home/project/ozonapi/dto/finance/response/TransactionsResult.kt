@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 /**
  * @author rlagay
  */
-data class TransactionsResult(@JsonProperty("operations") val operations: List<Transaction>,
-                              @JsonProperty("row_count") val rowCount : Int,
-                              @JsonProperty("page_count") val pageCount: Int)
+data class TransactionsResult(
+    @param:JsonProperty("operations") val operations: List<Transaction>,
+    @param:JsonProperty("row_count") val rowCount : Int,
+    @param:JsonProperty("page_count") val pageCount: Int)

@@ -6,6 +6,8 @@ service:
       url: ${OZON_API_URL}
     supply:
       cron: ${OZON_SUPPLY_CRON}
+    transactions:
+      cron: ${OZON_TRANSACTIONS_CRON}
   fbs:
     order:
       cron: ${FBS_ORDER_CRON}

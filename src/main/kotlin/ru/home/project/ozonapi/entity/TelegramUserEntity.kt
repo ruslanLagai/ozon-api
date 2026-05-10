@@ -5,12 +5,12 @@ import jakarta.persistence.*
 /**
  * @author rlagay
  */
-@Entity
-data class TelegramUserEntity(
+@Entity(name = "telegram_user_entity")
+class TelegramUserEntity(
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = 1,
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) var id: Long? = 1,
 
-    @Column(name = "username", nullable = false) val username: String,
+    @Column(name = "username", nullable = false) var username: String,
 
-    @Column(name = "name", nullable = true, unique = false) val name: String
+    @Column(name = "name", nullable = true, unique = false) var name: String
 )

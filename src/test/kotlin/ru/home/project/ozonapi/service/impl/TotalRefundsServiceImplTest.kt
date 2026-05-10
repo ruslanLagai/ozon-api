@@ -3,9 +3,9 @@ package ru.home.project.ozonapi.service.impl
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.GenericContainer
@@ -23,14 +23,15 @@ import java.time.ZoneOffset
  */
 @SpringBootTest
 @Testcontainers
+@Disabled("Refunds are not active")
 class TotalRefundsServiceImplTest {
 
     companion object {
         @Container
-        protected var container: MySQLContainer<*> = MySQLContainer("mysql:8")
+        private var container: MySQLContainer<*> = MySQLContainer("mysql:8")
 
         @Container
-        protected var redisContainer: GenericContainer<Nothing> = GenericContainer<Nothing>(DockerImageName.parse("redis:5.0.3-alpine"))
+        private var redisContainer: GenericContainer<Nothing> = GenericContainer<Nothing>(DockerImageName.parse("redis:5.0.3-alpine"))
             .withExposedPorts(6379)
 
         @JvmStatic

@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.reactive.function.client.WebClientException
 import ru.home.project.ozonapi.calculator.FinancialDataCalculator
 import ru.home.project.ozonapi.dto.finance.response.OperationType
@@ -14,6 +15,7 @@ import ru.home.project.ozonapi.dto.response.RevenueResponse
 import ru.home.project.ozonapi.entity.MarketType
 import ru.home.project.ozonapi.model.PositionFinanceData
 import ru.home.project.ozonapi.repository.PositionRepository
+import ru.home.project.ozonapi.repository.TransactionRepository
 import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.service.RevenueCalculationService
 import java.math.BigDecimal
@@ -28,8 +30,9 @@ import java.util.function.Predicate
 @Slf4j
 class PositionRevenueCalculationServiceImpl(
     val ozonService: OzonService,
-    val calculators: List<FinancialDataCalculator>,
-    val positionRepository: PositionRepository
+    val calculator: FinancialDataCalculator,
+    val positionRepository: PositionRepository,
+    val transactionsRepository: TransactionRepository
 ) : RevenueCalculationService {
 
     private val formatter: DateTimeFormatter = DateTimeFormatter.ISO_DATE_TIME
@@ -49,6 +52,7 @@ class PositionRevenueCalculationServiceImpl(
         val log: Logger = LoggerFactory.getLogger(PositionRevenueCalculationServiceImpl::class.java)
     }
 
+    @Transactional
     override fun calculateRevenue(request: RevenueRequest): RevenueResponse? {
         if (StringUtils.isBlank(request.name) || request.type != MarketType.Ozon) {
             log.debug("Position name is empty, skipping calculation for position")
@@ -135,7 +139,7 @@ class PositionRevenueCalculationServiceImpl(
                     refundCosts = transactionsWithRefunds
                         .filter { transaction -> deliveryOrRefundPredicate.test(transaction) }
                         .sumOf { transaction ->
-                            calculators.sumOf { calculator -> calculator.calculateRefund(transaction) }
+                            calculator.calculateRefund(transaction)
                         }
                     val returnItem = transactionsWithRefunds.firstOrNull { item -> item.operationType == OperationType.OperationItemReturn
                             || item.operationType == OperationType.ClientReturnAgentOperation}
@@ -213,46 +217,55 @@ class PositionRevenueCalculationServiceImpl(
                 val income = if (!isRefund) {
                     transactionList
                         .sumOf { transaction ->
-                            calculators.sumOf { calculator -> calculator.calculateRevenue(transaction) }
+                            calculator.calculateRevenue(transaction)
                         }
                 } else { 0.0 }
                 val price = transactionList
                     .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer
                             && (transaction.operationDate.isBefore(request.to.toLocalDateTime()) || transaction.operationDate == request.to.toLocalDateTime())
-                            && (transaction.operationDate.isAfter(request.from.toLocalDateTime()) || transaction.operationDate == request.from.toLocalDateTime())
-                    }
+                            && (transaction.operationDate.isAfter(request.from.toLocalDateTime()) || transaction.operationDate == request.from.toLocalDateTime()) }
                     .sumOf { transaction ->
-                        calculators.sumOf { calculator -> calculator.calculatePrice(transaction) }
+                        calculator.calculatePrice(transaction)
                     }
+                var totalCostPriceByFifo = 0.0
+
+                for (transaction in transactionList) {
+                    if (transaction.operationType == OperationType.OperationAgentDeliveredToCustomer) {
+                        val fifoCostPrice: Double = transactionsRepository.findByOperationId(transaction.operationId)
+                            .map { transactionEntity ->
+                                val costPriceEntity = transactionEntity.fifoCostPrice
+                                costPriceEntity.costPrice + costPriceEntity.crossDoc + costPriceEntity.fulfilment
+                            }
+                            .orElseGet { positionEntity.costPrice + positionEntity.additionalCost }
+                        totalCostPriceByFifo += fifoCostPrice
+                    }
+                }
+
                 val commission = if (!isRefund) {
                     transactionList
-                        .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer
-                        }
-                        .sumOf { transaction ->
-                            calculators.sumOf { calculator -> calculator.calculateCommission(transaction) }
-                        }
+                        .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer }
+                        .sumOf { transaction -> calculator.calculateCommission(transaction) }
                 } else { 0.0 }
                 val logistic = transactionList
                     .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer
                             || transaction.operationType == OperationType.MarketplaceServiceItemServiceFeeRFBS }
                     .sumOf { transaction ->
-                        calculators.sumOf { calculator -> calculator.calculateLogistic(transaction) }
+                        calculator.calculateLogistic(transaction)
                     }
                 val lastMile = transactionList
                     .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer }
                     .sumOf { transaction ->
-                        calculators.sumOf { calculator -> calculator.calculateLastMile(transaction) }
+                        calculator.calculateLastMile(transaction)
                     }
                 val taxes = taxPercentage * transactionList
                     .filter { transaction -> transaction.operationType == OperationType.OperationAgentDeliveredToCustomer }
                     .onEach { transaction ->
                         if (!isRefund) {
                             deliveries += transaction.items.size
-                        }
-                    }
+                        } }
                     .sumOf { transaction -> transaction.price }
                 PositionFinanceData(revenue = income, taxes = taxes, price = price, commission = commission,
-                    logistic = logistic, lastMile = lastMile, refund = refundCosts)
+                    logistic = logistic, lastMile = lastMile, refund = refundCosts, costPrice = totalCostPriceByFifo)
             }.filterValues { positionFinanceData -> positionFinanceData.revenue != 0.0
                     || positionFinanceData.refund != 0.0 }
 
@@ -263,17 +276,16 @@ class PositionRevenueCalculationServiceImpl(
             val commissionCosts = revenuesMap.values.sumOf { item -> item.commission }
             val totalPrice = revenuesMap.values.sumOf { item -> item.price }
             val refundCosts = revenuesMap.values.sumOf { item -> item.refund }
-            var positionCostPrice = 0.0
+            val totalCostPrice = revenuesMap.values.sumOf { item -> item.costPrice }
 
             var averageRevenue = if (deliveries != 0) { (totalRevenue + refundCosts) / deliveries } else { 0.0 }
+            val averageCostPrice = if (deliveries != 0) { (totalCostPrice) / deliveries } else { 0.0 }
 
             // пропускаем, если в периоде не было доставок (только отмены)
             if (totalRevenue > 0) {
-                val costPrice = positionEntity.costPrice + positionEntity.additionalCost
-                positionCostPrice = costPrice * deliveries
-                totalRevenue = totalRevenue - costPrice * deliveries + refundCosts
-                averageRevenue -= costPrice
-                log.debug("Cost price for '${request.name}' '$costPrice'" )
+                totalRevenue = totalRevenue - totalCostPrice + refundCosts
+                averageRevenue -= averageCostPrice
+                log.debug("Cost price for '${request.name}' '$totalCostPrice'" )
             }
 
             log.info("Revenue for '${request.name}' '$averageRevenue'" )
@@ -293,7 +305,7 @@ class PositionRevenueCalculationServiceImpl(
                 saleCommission = BigDecimal(commissionCosts).setScale(2, RoundingMode.HALF_UP).toDouble()
                 refund = BigDecimal(refundCosts).setScale(2, RoundingMode.HALF_UP).toDouble()
                 price = BigDecimal(totalPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
-                costPrice = BigDecimal(positionCostPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
+                costPrice = BigDecimal(totalCostPrice).setScale(2, RoundingMode.HALF_UP).toDouble()
             }
             return response
         } catch (e: WebClientException) {

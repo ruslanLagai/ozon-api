@@ -14,9 +14,7 @@ import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.response.AnalyticDataDto
 import ru.home.project.ozonapi.dto.supply.request.AnalyticDimension
 import ru.home.project.ozonapi.dto.supply.request.AnalyticMetric
-import ru.home.project.ozonapi.dto.supply.request.AnalyticOrder
-import ru.home.project.ozonapi.dto.supply.request.AnalyticSorting
-import ru.home.project.ozonapi.dto.supply.response.AnalyticsData
+import ru.home.project.ozonapi.dto.supply.request.SupplyState
 import ru.home.project.ozonapi.dto.supply.response.SupplyBundleItem
 import ru.home.project.ozonapi.model.Product
 import ru.home.project.ozonapi.service.OzonService
@@ -88,7 +86,9 @@ class OzonServiceImpl(
             log.info("No supply orders found for {}", orderIds.toTypedArray())
             return listOf()
         }
-        val bundleIds = supplyOrders.flatMap { it.supplies!!.map { item -> item.bundleId } }
+        val bundleIds = supplyOrders
+            .filter { it.state != SupplyState.CANCELLED }
+            .flatMap { it.supplies!!.map { item -> item.bundleId } }
         val supplyBundles = ozonApiClient.getSupplyOrderBundle(bundleIds)
         if (supplyBundles.isNullOrEmpty()) {
             log.info("No supply items for {}", orderIds.toTypedArray())
@@ -97,6 +97,23 @@ class OzonServiceImpl(
         return supplyBundles
     }
 
+    @Cacheable(cacheNames = ["ozon-supply-orders"], key = "#orderIds")
+    override fun getSupplyOrderIds(orderIds: Set<Int>): List<Long> {
+        if (orderIds.isEmpty()) {
+            return listOf()
+        }
+        val supplyOrders = ozonApiClient.getSupplyOrders(orderIds.toList())
+        if (supplyOrders == null) {
+            log.info("No supply orders found for {}", orderIds.toTypedArray())
+            return listOf()
+        }
+        return supplyOrders
+            .filter { it.state != SupplyState.CANCELLED }
+            .flatMap { it.supplies!! }
+            .map { it.supplyId }
+    }
+
+    @Cacheable(cacheNames = ["ozon-supply-list"], key = "1")
     override fun getSupplyOrders(): List<Int> {
         val supplyOrders = ozonApiClient.getSupplyOrderList()
         if (supplyOrders.isNullOrEmpty()) {

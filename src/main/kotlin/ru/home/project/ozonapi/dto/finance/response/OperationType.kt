@@ -78,6 +78,11 @@ enum class OperationType(val description: String) {
     SellerReturnsDeliveryToPickupPoint("Вывоз товара со Склада силами Ozon: Доставка до ПВЗ"),
     OperationMarketplaceItemTemporaryStorageRedistribution("Временное размещение товара партнерами"),
     OperationSellerReturnsCargoAssortmentValid("Подготовка товара к вывозу: Валид"),
+    OperationMarketplaceServiceProcessingNotIdentifiedSurplus("Обработка неопознанных излишков с приемки"),
+    OperationMarketplaceSendingPushNotifications("Рассылка пуш-уведомлений"),
+    OperationMarketplaceExternalPromotion("Внешнее продвижение"),
+    OperationMarketplaceAcceleratedProductReviews("Ускоренный сбор отзывов"),
+    DisposalReasonScattered("Утилизация товара: Пролились/просыпались из-за упаковки")
 
 
 }

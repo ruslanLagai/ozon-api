@@ -43,14 +43,25 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mysql")
+    testImplementation("com.h2database:h2")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation ("com.squareup.moshi:moshi-kotlin:1.15.1")
     implementation ("com.squareup.moshi:moshi-adapters:1.15.1")
+    testImplementation("org.wiremock.integrations:wiremock-spring-boot:4.0.9")
 }
 
 tasks.test {
     useJUnitPlatform()
 }
+
+project(":yandex-market") {
+    tasks.withType<Test>().configureEach {
+        filter {
+            isFailOnNoMatchingTests = false
+        }
+    }
+}
+
 kotlin {
     jvmToolchain(21)
 }

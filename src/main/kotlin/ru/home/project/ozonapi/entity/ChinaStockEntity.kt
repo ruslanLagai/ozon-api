@@ -6,7 +6,8 @@ import jakarta.persistence.*
  * @author rlagay
  */
 @Entity
-data class ChinaStockEntity(
+@Table(name = "china_stock_entity")
+class ChinaStockEntity(
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null,
 
@@ -25,4 +26,8 @@ data class ChinaStockEntity(
     @Column(name = "delivery_costs") val delivery: Double = 0.0,
 
     @Column(name = "delivery_usd") val deliveryUsd: Double = 0.0
-)
+) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "stock_entity_id")
+    var chinaOrderEntity: ChinaOrderEntity? = null
+}

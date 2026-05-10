@@ -1,0 +1,140 @@
+{
+  "orders": [
+    {
+      "order_id": 95031987,
+      "order_number": "2000046901421",
+      "created_date": "2026-03-27T06:02:55.087522Z",
+      "state": "IN_TRANSIT",
+      "state_updated_date": "2026-04-03T15:18:11.150044Z",
+      "data_filling_deadline": null,
+      "drop_off_warehouse": {
+        "warehouse_id": "1020000342660000",
+        "address": "Россия, Московская область, Люберцы, улица Камова, 5к2",
+        "name": "МО_ЛЮБЕРЦЫ_103"
+      },
+      "order_tags": {
+        "product_super_fbo": false,
+        "is_quant": false,
+        "is_econom": false,
+        "is_virtual": false,
+        "original_supply_id": 0,
+        "is_super_fbo": true,
+        "is_pickup": false,
+        "seller_warehouse_id": 0
+      },
+      "timeslot": {
+        "timeslot": {
+          "from": "2026-04-03T08:00:00Z",
+          "to": "2026-04-03T09:00:00Z"
+        },
+        "timezone_info": {
+          "offset": "10800s",
+          "iana_name": "Europe/Moscow"
+        }
+      },
+      "supplies": [
+        {
+          "state": "IN_TRANSIT",
+          "supply_id": 2000046901421,
+          "storage_warehouse": {
+            "warehouse_id": "1020000890160000",
+            "arrival_date": null,
+            "address": "Россия, край Хабаровский, г. Хабаровск., Донская улица, 2а/14",
+            "name": "ХАБАРОВСК_2_РФЦ"
+          },
+          "supply_tags": {
+            "freeze_stock_for_marking": false,
+            "is_ettn_required": false,
+            "is_evsd_required": false,
+            "is_jewelry": false,
+            "is_marking_possible": false,
+            "is_marking_required": false,
+            "is_utd": false
+          },
+          "is_crossdock": true,
+          "bundle_id": "019d2de3-7716-7d4f-a809-4c08360d5dee",
+          "macrolocal_cluster_id": null
+        }
+      ]
+    },
+    {
+      "order_id": 100667309,
+      "order_number": "103710725-1",
+      "created_date": "2026-04-25T07:44:36.783839Z",
+      "state": "IN_TRANSIT",
+      "state_updated_date": "2026-04-29T09:16:36.709398Z",
+      "data_filling_deadline": null,
+      "drop_off_warehouse": {
+        "warehouse_id": 22190776129000,
+        "address": "Россия, обл. Московская, г. Подольск, д. Борисовка, промышленная зона ПромТехАльянс, д. 1, стр. 2",
+        "name": "МО_ЩЕРБИНКА_ХАБ"
+      },
+      "order_tags": {
+        "product_super_fbo": false,
+        "is_quant": false,
+        "is_econom": false,
+        "is_virtual": false,
+        "original_supply_id": 0,
+        "is_super_fbo": true,
+        "is_pickup": false,
+        "seller_warehouse_id": 0
+      },
+      "timeslot": {
+        "timeslot": {
+          "from": "2026-04-25T15:00:00Z",
+          "to": "2026-04-25T16:00:00Z"
+        },
+        "timezone_info": {
+          "offset": "10800s",
+          "iana_name": "Europe/Moscow"
+        }
+      },
+      "supplies": [
+        {
+          "state": "COMPLETED",
+          "supply_id": 2000050150604,
+          "storage_warehouse": {
+            "warehouse_id": "1020001351243000",
+            "arrival_date": null,
+            "address": "Россия, край Ставропольский, г. Невинномысск, Россия, Ставропольский край, Невинномысск, Приозёрная улица, 25с1к1",
+            "name": "НЕВИННОМЫССК_РФЦ"
+          },
+          "supply_tags": {
+            "freeze_stock_for_marking": false,
+            "is_ettn_required": false,
+            "is_evsd_required": false,
+            "is_jewelry": false,
+            "is_marking_possible": false,
+            "is_marking_required": false,
+            "is_utd": false
+          },
+          "is_crossdock": true,
+          "bundle_id": "019dc398-fde2-7a39-bfd8-97b641fd1644",
+          "macrolocal_cluster_id": null
+        },
+        {
+          "state": "COMPLETED",
+          "supply_id": 2000050150600,
+          "storage_warehouse": {
+            "warehouse_id": 23128509046000,
+            "arrival_date": null,
+            "address": "Россия, 443961, обл. Самарская, г. Чапаевск, индустриальный парк Чапаевск, 3",
+            "name": "САМАРА_РФЦ"
+          },
+          "supply_tags": {
+            "freeze_stock_for_marking": false,
+            "is_ettn_required": false,
+            "is_evsd_required": false,
+            "is_jewelry": false,
+            "is_marking_possible": false,
+            "is_marking_required": false,
+            "is_utd": false
+          },
+          "is_crossdock": true,
+          "bundle_id": "019dc398-fde1-7668-b86c-230041f34734",
+          "macrolocal_cluster_id": null
+        }
+      ]
+    }
+  ]
+}

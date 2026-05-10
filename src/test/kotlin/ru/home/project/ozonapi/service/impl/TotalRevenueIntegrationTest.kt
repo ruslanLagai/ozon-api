@@ -2,13 +2,12 @@ package ru.home.project.ozonapi.service.impl
 
 import jakarta.annotation.PostConstruct
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.junit.jupiter.Container
@@ -51,10 +50,10 @@ class TotalRevenueIntegrationTest {
         }
     }
 
-    @MockBean
+    @MockitoBean
     private lateinit var flywayConfig: FlywayConfig
 
-    @MockBean
+    @MockitoBean
     private lateinit var telegramBot: TelegramBot
 
     @Autowired
@@ -63,20 +62,17 @@ class TotalRevenueIntegrationTest {
     @Autowired
     private lateinit var ozonTotalRevenueCalculationServiceImpl: TotalRevenueCalculationService
 
-    @Autowired
-    private lateinit var yandexTotalRevenueCalculationServiceImpl: TotalRevenueCalculationService
-
     @PostConstruct
     fun init() {
-        val umbrella1 = PositionEntity(1, "Мини зонт черный", 448.92, 11.69, "1135684591", "0000015")
-        val umbrella2 = PositionEntity(2, "Мини зонт лавандовый", 448.92, 11.69, "1134671293", "0000009")
-        val umbrella3 = PositionEntity(3, "Мини зонт голубой", 448.92, 11.69, "1134740183", "0000013")
-        val umbrella4 = PositionEntity(4, "Мини зонт бежевый", 448.92, 11.69, "1134715033", "0000010")
-        val umbrella5 = PositionEntity(5, "Мини зонт розовый", 448.92, 11.69, "1134731178", "0000011")
-        val umbrella6 = PositionEntity(6, "Мини зонт серый", 448.92, 11.69, "1134733705", "0000012")
-        val spongeHolder = PositionEntity(7, "Держатель для губки", 130.0, 3.0, "1075294535", "0000005", yandexArtikul = "0000005")
-        val iceMaker = PositionEntity(8, "Форма для льда розовая", 70.0, 11.69, "1052327634", "manlrhmf2c9kn9qoo71i")
-        val unknown = PositionEntity(9, "unknown", 437.15, 12.05, "105232763433", "00002")
+        val umbrella1 = PositionEntity(name = "Мини зонт черный", costPrice = 448.92, additionalCost = 11.69, ozonId = "1135684591", artikul = "0000015")
+        val umbrella2 = PositionEntity(name = "Мини зонт лавандовый", costPrice = 448.92, additionalCost = 11.69, ozonId = "1134671293", artikul = "0000009")
+        val umbrella3 = PositionEntity(name = "Мини зонт голубой", costPrice = 448.92, additionalCost = 11.69, ozonId = "1134740183", artikul = "0000013")
+        val umbrella4 = PositionEntity(name = "Мини зонт бежевый", costPrice = 448.92, additionalCost = 11.69, ozonId = "1134715033", artikul = "0000010")
+        val umbrella5 = PositionEntity(name = "Мини зонт розовый", costPrice = 448.92, additionalCost = 11.69, ozonId = "1134731178", artikul = "0000011")
+        val umbrella6 = PositionEntity(name = "Мини зонт серый", costPrice = 448.92, additionalCost = 11.69, ozonId = "1134733705", artikul = "0000012")
+        val spongeHolder = PositionEntity(name = "Держатель для губки", costPrice = 130.0, additionalCost = 3.0, ozonId = "1075294535", artikul = "0000005", yandexArtikul = "0000005")
+        val iceMaker = PositionEntity(name = "Форма для льда розовая", costPrice = 70.0, additionalCost = 11.69, ozonId = "1052327634", artikul = "manlrhmf2c9kn9qoo71i")
+        val unknown = PositionEntity(name = "unknown", costPrice = 437.15, additionalCost = 12.05, ozonId = "105232763433", artikul = "00002")
 
         positionRepository.save(umbrella1)
         positionRepository.save(umbrella2)
@@ -97,16 +93,4 @@ class TotalRevenueIntegrationTest {
         val result = ozonTotalRevenueCalculationServiceImpl.calculateRevenue(request)
         assertEquals(9, result.size)
     }
-
-    @Test
-    fun `calculate yandex revenue`() {
-        val request = RevenueRequest(null, null, null,
-            OffsetDateTime.of(LocalDate.of(2024, 6, 1), LocalTime.MIN, ZoneOffset.ofHours(0)),
-            OffsetDateTime.of(LocalDate.of(2024, 7, 30), LocalTime.MAX, ZoneOffset.ofHours(0))
-        )
-
-        val result = yandexTotalRevenueCalculationServiceImpl.calculateRevenue(request)
-        assertEquals(1, result.size)
-    }
-
 }

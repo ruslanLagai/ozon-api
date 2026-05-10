@@ -6,22 +6,26 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
 import org.testcontainers.utility.DockerImageName
+import ru.home.project.ozonapi.config.FlywayConfig
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.ChinaStockEntity
+import ru.home.project.ozonapi.entity.PositionEntity
 import ru.home.project.ozonapi.entity.StockEntity
 import ru.home.project.ozonapi.repository.ChinaOrdersRepository
 import ru.home.project.ozonapi.repository.OzonSupplyRepository
+import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.StockRepository
 import ru.home.project.ozonapi.service.StocksService
 import java.time.LocalDate
+import java.util.ArrayList
 
 /**
  * @author rlagay
@@ -33,10 +37,10 @@ class StocksServiceIntegrationTest {
     companion object {
 
         @Container
-        protected var container: MySQLContainer<*> = MySQLContainer("mysql:8")
+        private var container: MySQLContainer<*> = MySQLContainer("mysql:8")
 
         @Container
-        protected var redisContainer: GenericContainer<Nothing> = GenericContainer<Nothing>(DockerImageName.parse("redis:5.0.3-alpine"))
+        private var redisContainer: GenericContainer<Nothing> = GenericContainer<Nothing>(DockerImageName.parse("redis:5.0.3-alpine"))
             .withExposedPorts(6379)
 
         @JvmStatic
@@ -61,28 +65,36 @@ class StocksServiceIntegrationTest {
     private lateinit var stockRepository: StockRepository
 
     @Autowired
-    private lateinit var posiRepository: StockRepository
+    private lateinit var positionRepository: PositionRepository
 
-    @MockBean
+    @MockitoBean
+    private lateinit var flywayConfig: FlywayConfig
+
+    @MockitoBean
     private lateinit var ozonSupplyRepository: OzonSupplyRepository
 
     @PostConstruct
     fun init() {
+        positionRepository.save(PositionEntity(name = "Мини зонт лавандовый", costPrice = 448.92, additionalCost = 11.69, ozonId = "1134671293", artikul = "0000009"))
+        positionRepository.save(PositionEntity(name = "Мини зонт черный", costPrice = 448.92, additionalCost = 11.69, ozonId = "1135684591", artikul = "0000015"))
+        positionRepository.save(PositionEntity(name = "Мини зонт серый", costPrice = 448.92, additionalCost = 11.69, ozonId = "1134733705", artikul = "0000012"))
+        positionRepository.save(PositionEntity(name = "Вешалки плечики, серые", costPrice = 120.0, additionalCost = 0.0, ozonId = "1368971009", artikul = "0000027"))
+
         val umbrellas = listOf(
             ChinaStockEntity(name = "Мини зонт лавандовый", price = 19.8, priceRub = 277.2, artikul = "0000009", quantity = 40, ozonId = "1134671293"),
             ChinaStockEntity(name = "Мини зонт черный", price = 19.8, priceRub = 277.2, artikul = "0000015", quantity = 50, ozonId = "1135684591"),
             ChinaStockEntity(name = "Мини зонт серый", price = 19.8, priceRub = 277.2, artikul = "0000012", quantity = 10, ozonId = "1134733705")
         )
-        val umbrellaOrder = ChinaOrderEntity(supplier = "GOMARKT", delivered = false, mass = 40.0, volume = 0.4, stockCost = 30759.0, products = umbrellas, orderDate = LocalDate.now())
+        val umbrellaOrder = ChinaOrderEntity(supplier = "GOMARKT", delivered = false, mass = 40.0, volume = 0.4, stockCost = 30759.0, products = ArrayList(umbrellas), orderDate = LocalDate.now())
 
         val hanger = listOf(
             ChinaStockEntity(name = "Вешалки плечики, серые", price = 7.2, priceRub = 100.8, artikul = "0000027", quantity = 100, ozonId = "1368971009")
         )
-        val hangerOrder = ChinaOrderEntity(supplier = "GOMARKT", delivered = false, mass = 80.0, volume = 0.4, stockCost = 11977.0, products = hanger, orderDate = LocalDate.now())
+        val hangerOrder = ChinaOrderEntity(supplier = "GOMARKT", delivered = false, mass = 80.0, volume = 0.4, stockCost = 11977.0, products = ArrayList(hanger), orderDate = LocalDate.now())
 
         chinaOrdersRepository.save(umbrellaOrder)
         chinaOrdersRepository.save(hangerOrder)
-        posiRepository.findAll().forEach {
+        positionRepository.findAll().forEach {
             val stock = stockRepository.getByOzonId(it.ozonId)
             if (stock == null) {
                 stockRepository.save(

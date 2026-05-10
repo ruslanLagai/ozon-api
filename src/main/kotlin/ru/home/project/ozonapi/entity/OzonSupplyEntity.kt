@@ -5,12 +5,13 @@ import jakarta.persistence.*
 /**
  * @author rlagay
  */
+@Table(name = "ozon_supply_entity")
 @Entity
-data class OzonSupplyEntity(
+class OzonSupplyEntity(
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) val id: Long? = null,
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) var id: Long? = null,
 
-    @Column(name = "orderId", nullable = false, unique = true) val orderId: Int,
+    @Column(name = "order_id", nullable = false, unique = true) var orderId: Int,
 
-    @Column(name = "subtracted") val subtracted: Boolean = false
+    @Column(name = "subtracted") var subtracted: Boolean = false
 )

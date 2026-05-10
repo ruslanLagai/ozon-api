@@ -1,6 +1,5 @@
 package ru.home.project.ozonapi.dto.request
 
-import org.openapitools.client.models.OrdersStatsOrderDTO
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.entity.MarketType
 import java.time.OffsetDateTime
@@ -15,6 +14,5 @@ data class RevenueRequest(
     val from: OffsetDateTime? = null,
     val to: OffsetDateTime? = null,
     val transactions: List<Transaction>? = null,
-    val yandexOrders: List<OrdersStatsOrderDTO>? = null,
     val type: MarketType = MarketType.Ozon
 )
