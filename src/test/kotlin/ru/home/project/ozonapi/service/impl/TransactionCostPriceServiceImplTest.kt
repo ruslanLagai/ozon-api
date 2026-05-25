@@ -21,6 +21,7 @@ import ru.home.project.ozonapi.entity.TransactionEntity
 import ru.home.project.ozonapi.repository.CostPriceRepository
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.TransactionRepository
+import ru.home.project.ozonapi.service.OzonService
 import java.time.LocalDate
 import java.util.UUID
 
@@ -30,11 +31,13 @@ class TransactionCostPriceServiceImplTest {
     private val entityManager = mock<EntityManager>()
     private val positionRepository = mock<PositionRepository>()
     private val costPriceRepository = mock<CostPriceRepository>()
+    private val ozonService = mock<OzonService>()
 
     private val service = TransactionCostPriceServiceImpl(
         transactionRepository = transactionRepository,
         positionRepository = positionRepository,
-        costPriceRepository = costPriceRepository
+        costPriceRepository = costPriceRepository,
+        ozonService = ozonService
     )
 
     @Test

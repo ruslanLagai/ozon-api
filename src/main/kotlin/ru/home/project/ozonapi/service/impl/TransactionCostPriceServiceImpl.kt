@@ -12,6 +12,7 @@ import ru.home.project.ozonapi.entity.TransactionEntity
 import ru.home.project.ozonapi.repository.CostPriceRepository
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.TransactionRepository
+import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.service.TransactionCostPriceService
 import java.util.*
 
@@ -22,7 +23,8 @@ import java.util.*
 class TransactionCostPriceServiceImpl(
     private val transactionRepository: TransactionRepository,
     private val positionRepository: PositionRepository,
-    private val costPriceRepository: CostPriceRepository
+    private val costPriceRepository: CostPriceRepository,
+    private val ozonService: OzonService
 ) : TransactionCostPriceService {
 
     companion object {
@@ -32,6 +34,9 @@ class TransactionCostPriceServiceImpl(
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun updateCostPrice(deliveredOperaions: List<String>, returnedOperations: List<String>, sku: String) {
         val position = positionRepository.getPositionEntityByOzonId(sku)
+        val stocks = ozonService.getStockItems("key")
+        val stocksWithCostPrice = position.costPriceEntity.sumOf { it.leftQuantity }
+
         if (deliveredOperaions.isNotEmpty()) {
             position.costPriceEntity.let {
                 val current = it.firstOrNull { costPriceEntity -> costPriceEntity.leftQuantity > 0 }

@@ -132,6 +132,16 @@ class OzonServiceImpl(
         return supplyOrders
     }
 
+    override fun getSupplyOrders(states: List<SupplyState>): List<Int> {
+        val supplyOrders = ozonApiClient.getSupplyOrderList(states)
+        if (supplyOrders.isNullOrEmpty()) {
+            log.info("No supply orders")
+            return listOf()
+        }
+        return supplyOrders
+    }
+
+
     @Cacheable(cacheNames = ["ozon-supply"], key = "#cacheKey")
     override fun getStockItems(cacheKey: String): List<Product> {
         val stocks = ozonApiClient.getStocks()

@@ -3,6 +3,7 @@ package ru.home.project.ozonapi.service.impl
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import ru.home.project.ozonapi.dto.supply.request.SupplyState
 import ru.home.project.ozonapi.entity.OzonSupplyOrderIdEntity
 import ru.home.project.ozonapi.exception.InvalidChineOrderException
 import ru.home.project.ozonapi.exception.NoSupplyItemException
@@ -30,7 +31,13 @@ class CrossDocServiceImpl(
             val ozonSupplyIds = mutableSetOf<Int> ()
             val skusToBeProcessed: Set<Long> = products.map { it.ozonId }.map { it.toLong() }.toSet()
 
-            ozonService.getSupplyOrders().stream().forEach {
+            val states =  listOf(
+                SupplyState.ACCEPTED_AT_SUPPLY_WAREHOUSE, SupplyState.IN_TRANSIT,
+                SupplyState.ACCEPTANCE_AT_STORAGE_WAREHOUSE, SupplyState.REPORTS_CONFIRMATION_AWAITING,
+                SupplyState.REPORT_REJECTED, SupplyState.REJECTED_AT_SUPPLY_WAREHOUSE,
+                SupplyState.COMPLETED)
+
+            ozonService.getSupplyOrders(states).stream().forEach {
                 val supplyBundleItems = ozonService.getSupplyItemsInOrder(listOf(it))
                     .filter { item -> skusToBeProcessed.contains(item.sku) }
                 if (skusToBeProcessed.containsAll(supplyBundleItems.map { item -> item.sku })) {

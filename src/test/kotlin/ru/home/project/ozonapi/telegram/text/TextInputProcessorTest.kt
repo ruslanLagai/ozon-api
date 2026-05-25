@@ -236,7 +236,7 @@ class TextInputProcessorTest {
             Mockito.`when`(message.chatId).thenReturn(1)
             Mockito.`when`(message.text).thenReturn("/add_fulfilment")
             Mockito.`when`(message.isCommand).thenReturn(true)
-            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(true))
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDeliveredOrderByDeliveryDateDesc(true))
                 .thenReturn(
                     setOf(
                         ChinaOrderEntity(
@@ -270,7 +270,7 @@ class TextInputProcessorTest {
             Mockito.`when`(message.chatId).thenReturn(1)
             Mockito.`when`(message.text).thenReturn("/add_fulfilment")
             Mockito.`when`(message.isCommand).thenReturn(true)
-            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(true)).thenReturn(emptySet())
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDeliveredOrderByDeliveryDateDesc(true)).thenReturn(emptySet())
 
             val result = inputProcessors.map { it.processInput("/add_fulfilment", getUpdate()) }
                 .firstOrNull { it != null }
@@ -680,7 +680,7 @@ class TextInputProcessorTest {
             Mockito.`when`(message.isCommand).thenReturn(false)
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddFulfilment))
                 .thenReturn(telegramChatEntity)
-            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(true))
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDeliveredOrderByDeliveryDateDesc(true))
                 .thenReturn(setOf(ChinaOrderEntity(id = 7, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.of(2024, 7, 29), delivered = true)))
 
             val result = inputProcessors.map { it.processInput("unknown order", getUpdate()) }

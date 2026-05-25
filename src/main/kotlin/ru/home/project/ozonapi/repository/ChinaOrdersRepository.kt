@@ -15,6 +15,9 @@ interface ChinaOrdersRepository: JpaRepository<ChinaOrderEntity, Long> {
     fun getChinaOrderEntityByDelivered(state: Boolean): Set<ChinaOrderEntity>
 
     @EntityGraph("ChinaOrderEntity.withOzonSupplyIds")
+    fun getChinaOrderEntityByDeliveredOrderByDeliveryDateDesc(state: Boolean): Set<ChinaOrderEntity>
+
+    @EntityGraph("ChinaOrderEntity.withOzonSupplyIds")
     @Query("select coe from ChinaOrderEntity coe where coe.id = :id")
     fun findByIdWithOzonSupplyIds(id: Long): Optional<ChinaOrderEntity>
 }

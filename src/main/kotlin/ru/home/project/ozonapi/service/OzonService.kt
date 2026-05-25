@@ -5,9 +5,8 @@ import ru.home.project.ozonapi.dto.delivery.DeliveryStatus
 import ru.home.project.ozonapi.dto.finance.response.RefundData
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.response.AnalyticDataDto
-import ru.home.project.ozonapi.dto.supply.request.AnalyticDimension
 import ru.home.project.ozonapi.dto.supply.request.AnalyticMetric
-import ru.home.project.ozonapi.dto.supply.response.AnalyticsData
+import ru.home.project.ozonapi.dto.supply.request.SupplyState
 import ru.home.project.ozonapi.dto.supply.response.SupplyBundleItem
 import ru.home.project.ozonapi.model.Product
 import java.time.LocalDate
@@ -51,6 +50,11 @@ interface OzonService {
      * Получение списка поставок в пути на склад
      */
     fun getSupplyOrdersIntransit(): List<Int>
+
+    /**
+     * Получение списка поставок
+     */
+    fun getSupplyOrders(states: List<SupplyState>): List<Int>
 
     /**
      * Получение остатков на складе озон FBO + FBS

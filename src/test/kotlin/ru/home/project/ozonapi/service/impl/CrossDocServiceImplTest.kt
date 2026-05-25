@@ -191,7 +191,7 @@ class CrossDocServiceImplTest {
     }
 
     private fun stubSupplyData(itemsByOrderId: Map<Int, List<SupplyBundleItem>>) {
-        whenever(ozonService.getSupplyOrders()).thenReturn(supplyOrders)
+        whenever(ozonService.getSupplyOrders(any())).thenReturn(supplyOrders)
         itemsByOrderId.forEach { (orderId, items) ->
             whenever(ozonService.getSupplyItemsInOrder(listOf(orderId))).thenReturn(items)
         }
