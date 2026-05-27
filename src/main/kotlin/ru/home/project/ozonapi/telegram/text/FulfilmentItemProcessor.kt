@@ -3,6 +3,7 @@ package ru.home.project.ozonapi.telegram.text
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
 import ru.home.project.ozonapi.entity.ActionType
@@ -21,6 +22,7 @@ class FulfilmentItemProcessor(
         val log: Logger = LoggerFactory.getLogger(FulfilmentItemProcessor::class.java)
     }
 
+    @Transactional
     override fun processInput(input: String, update: Update): SendMessage? {
         val msg = SendMessage()
         val chatId = update.message.chatId
@@ -33,7 +35,7 @@ class FulfilmentItemProcessor(
 
         try {
             val chat = telegramChatRepository.getByChatIdAndStateAndAction(chatId, true, ActionType.AddFulfilment)
-            if (chat == null || chat.action != ActionType.AddFulfilment || input.contains(",")) {
+            if (chat == null || input.contains(",")) {
                 return null
             }
             val order = ordersRepository.getChinaOrderEntityByDelivered(true)
@@ -50,8 +52,7 @@ class FulfilmentItemProcessor(
             } else {
                 chat.deliveryId = order.id!!
                 telegramChatRepository.save(chat)
-                msg.text = "Добавьте данные по доставке в формате: \n" +
-                        "<стоимость доставки>,<масса груза>,<объем груза (при наличии)>\n"
+                msg.text = "Введите стоимость ФФ"
             }
             return msg
         } catch (e: Exception) {

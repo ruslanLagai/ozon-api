@@ -38,6 +38,7 @@ class CrossDocServiceImpl(
                 SupplyState.COMPLETED)
 
             ozonService.getSupplyOrders(states).stream().forEach {
+                Thread.sleep(1000)
                 val supplyBundleItems = ozonService.getSupplyItemsInOrder(listOf(it))
                     .filter { item -> skusToBeProcessed.contains(item.sku) }
                 if (skusToBeProcessed.containsAll(supplyBundleItems.map { item -> item.sku })) {

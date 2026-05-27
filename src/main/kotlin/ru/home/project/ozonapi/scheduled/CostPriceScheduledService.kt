@@ -69,8 +69,8 @@ class CostPriceScheduledService(
                 for (transaction in transactions) {
                     val operationType = transaction.operationType
                     when (operationType) {
-                        OperationType.OperationAgentDeliveredToCustomer -> delivered.add(transaction.operationId)
-                        OperationType.ClientReturnAgentOperation -> cancelled.add(transaction.operationId)
+                        OperationType.OperationAgentDeliveredToCustomer -> delivered.add(transaction.posting.postingNumber)
+                        OperationType.ClientReturnAgentOperation -> cancelled.add(transaction.posting.postingNumber)
                         else -> {}
                     }
                 }

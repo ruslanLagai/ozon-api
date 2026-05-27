@@ -1,5 +1,6 @@
 package ru.home.project.ozonapi.telegram.text
 
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
@@ -21,6 +22,8 @@ class FulfilmentDataInputProcessor(
     val crossDocService: CrossDocService
 ): TextInputProcessor {
 
+    private val log = LoggerFactory.getLogger(FulfilmentDataInputProcessor::class.java)
+
     override fun processInput(input: String, update: Update): SendMessage? {
         val msg = SendMessage()
         val chatId = update.message.chatId
@@ -33,7 +36,7 @@ class FulfilmentDataInputProcessor(
         try {
             val chat = telegramChatRepository.getByChatIdAndStateAndAction(chatId, true, ActionType.AddFulfilment)
 
-            if (chat == null || chat.action != ActionType.AddFulfilment) {
+            if (chat == null || chat.action != ActionType.AddFulfilment || data[0].length > 8) {
                 return null
             }
 
@@ -52,17 +55,20 @@ class FulfilmentDataInputProcessor(
         } catch (_: NumberFormatException) {
             msg.chatId = update.message?.chatId.toString()
             msg.text = "Некорректный формат данных, не удалось обработать 'стоимость ФФ'"
+            telegramChatRepository.updateStateByChatIdAndAction(chatId, false, ActionType.AddFulfilment)
             return msg
-        } catch (_: InvalidChineOrderException) {
+        } catch (e: InvalidChineOrderException) {
             msg.chatId = update.message?.chatId.toString()
             msg.text = "Поставка не найдена"
+            log.error("Поставка не найдена", e)
+            telegramChatRepository.updateStateByChatIdAndAction(chatId, false, ActionType.AddFulfilment)
             return msg
-        } catch (_: Exception) {
+        } catch (e: Exception) {
             msg.chatId = update.message?.chatId.toString()
             msg.text = "Не обновить стоимость ФФ"
-            return msg
-        } finally {
+            log.error("Error received", e)
             telegramChatRepository.updateStateByChatIdAndAction(chatId, false, ActionType.AddFulfilment)
+            return msg
         }
     }
 }
