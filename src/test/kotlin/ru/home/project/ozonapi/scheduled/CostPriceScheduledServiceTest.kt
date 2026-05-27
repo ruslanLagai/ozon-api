@@ -65,8 +65,8 @@ class CostPriceScheduledServiceTest {
         whenever(ozonService.getTransaction(any(), any(), any())).thenReturn(transactions)
         service.updateTransaction()
 
-        verify(transactionCostPriceService).updateCostPrice(listOf("delivered-1"), listOf("returned-1"), "sku-1")
-        verify(transactionCostPriceService).updateCostPrice(listOf("delivered-2"), emptyList(), "sku-2")
+        verify(transactionCostPriceService).updateCostPrice(listOf("posting-delivered-1"), listOf("posting-returned-1"), "sku-1")
+        verify(transactionCostPriceService).updateCostPrice(listOf("posting-delivered-2"), emptyList(), "sku-2")
         verify(transactionsService).runInTransaction<Unit>(any())
         verifyNoInteractions(crossDocAdditionalService)
         verifyNoInteractions(failedCostPriceTransactionRepository)
@@ -123,7 +123,7 @@ class CostPriceScheduledServiceTest {
         val failedEntities = failedCaptor.firstValue.toList()
         assertEquals(2, failedEntities.size)
         assertEquals(listOf("sku-1", "sku-2"), failedEntities.map { it.ozonId })
-        assertEquals(listOf("invalid-1", "invalid-1"), failedEntities.map { it.operationId })
+        assertEquals(listOf("posting-invalid-1", "posting-invalid-1"), failedEntities.map { it.operationId })
         assertEquals(listOf(1, 1), failedEntities.map { it.quantity })
         assertEquals(transactions.first().operationDate, failedEntities.first().operationDate)
     }

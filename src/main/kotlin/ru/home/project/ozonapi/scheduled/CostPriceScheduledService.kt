@@ -55,7 +55,7 @@ class CostPriceScheduledService(
             .filter { deliveryOrRefundPredicate.test(it) }
             .filter {
                 if (it.items.size != 1) {
-                    log.warn("Transaction with more than 1 item: {}, operationId ${it.operationId}", it)
+                    log.warn("Transaction with more than 1 item: {}, operationId ${it.operationId}, posting number ${it.posting.postingNumber}", it)
                     incorrectItems.add(it)
                 }
                 it.items.size == 1
@@ -90,7 +90,7 @@ class CostPriceScheduledService(
         transactionsService.runInTransaction {
             incorrectItems.map {
                 it.items.map { item ->
-                    FailedCostPriceTransactionEntity(ozonId = item.sku, operationId = it.operationId, quantity = 1, operationDate = it.operationDate)
+                    FailedCostPriceTransactionEntity(ozonId = item.sku, operationId = it.posting.postingNumber, quantity = 1, operationDate = it.operationDate)
                 }.toList()
             }
             .forEach { failedCostPriceTransactionRepository.saveAll(it) }

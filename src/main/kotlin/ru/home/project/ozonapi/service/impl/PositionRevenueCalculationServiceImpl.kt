@@ -231,7 +231,7 @@ class PositionRevenueCalculationServiceImpl(
 
                 for (transaction in transactionList) {
                     if (transaction.operationType == OperationType.OperationAgentDeliveredToCustomer) {
-                        val fifoCostPrice: Double = transactionsRepository.findByOperationId(transaction.operationId)
+                        val fifoCostPrice: Double = transactionsRepository.findByOperationId(transaction.posting.postingNumber)
                             .map { transactionEntity ->
                                 val costPriceEntity = transactionEntity.fifoCostPrice
                                 costPriceEntity.costPrice + costPriceEntity.crossDoc + costPriceEntity.fulfilment
