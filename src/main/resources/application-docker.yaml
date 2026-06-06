@@ -34,7 +34,9 @@ spring:
     schemas: ozon_name
   codec:
     max-in-memory-size: 10MB
-
+  docker:
+    compose:
+      enabled: false
 
 telegram:
   bot:

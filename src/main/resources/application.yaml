@@ -48,6 +48,11 @@ spring:
     schemas: ozon_name
   codec:
     max-in-memory-size: 10MB
+  docker:
+    compose:
+      file: dev/docker-compose.yaml
+      enabled: true
+
 
 
 telegram:

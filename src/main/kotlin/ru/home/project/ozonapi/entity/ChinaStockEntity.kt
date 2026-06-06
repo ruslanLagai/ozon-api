@@ -28,6 +28,6 @@ class ChinaStockEntity(
     @Column(name = "delivery_usd") val deliveryUsd: Double = 0.0
 ) {
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stock_entity_id")
+    @JoinColumn(name = "stock_entity_id", nullable = false)
     var chinaOrderEntity: ChinaOrderEntity? = null
 }

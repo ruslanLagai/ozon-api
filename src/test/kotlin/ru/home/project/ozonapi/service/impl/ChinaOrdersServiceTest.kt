@@ -3,6 +3,7 @@ package ru.home.project.ozonapi.service.impl
 import org.junit.jupiter.api.Assertions.assertAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertSame
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -12,6 +13,7 @@ import org.mockito.kotlin.argumentCaptor
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
+import ru.home.project.ozonapi.dto.request.ProductRequest
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.ChinaStockEntity
 import ru.home.project.ozonapi.entity.PositionEntity
@@ -32,6 +34,40 @@ class ChinaOrdersServiceTest {
     private val positionRepository = mock<PositionRepository>()
     private val stockRepository = mock<StockRepository>()
     private val chinaOrdersService = ChinaOrdersService(chinaOrdersRepository, positionRepository, stockRepository)
+
+    @Test
+    fun `save new order should set parent reference for all products`() {
+        val firstPosition = PositionEntity(name = "Зонт 1", artikul = "000001", ozonId = "1", additionalCost = 0.0, costPrice = 1.0)
+        val secondPosition = PositionEntity(name = "Зонт 2", artikul = "000002", ozonId = "2", additionalCost = 0.0, costPrice = 2.0)
+        whenever(positionRepository.getPositionEntityByArtikul("000001")).thenReturn(firstPosition)
+        whenever(positionRepository.getPositionEntityByArtikul("000002")).thenReturn(secondPosition)
+
+        chinaOrdersService.saveNewOrder(
+            supplier = "test-supplier",
+            stockWorthRub = 300.0,
+            number = "N-1",
+            products = listOf(
+                ProductRequest(artikul = "000001", quantity = 2, price = 25.0),
+                ProductRequest(artikul = "000002", quantity = 3, price = 75.0)
+            )
+        )
+
+        val orderCaptor = argumentCaptor<ChinaOrderEntity>()
+        verify(chinaOrdersRepository).save(orderCaptor.capture())
+
+        val savedOrder = orderCaptor.firstValue
+
+        assertAll(
+            { assertEquals("test-supplier", savedOrder.supplier) },
+            { assertEquals(300.0, savedOrder.stockCost) },
+            { assertEquals("N-1", savedOrder.number) },
+            { assertEquals(2, savedOrder.products.size) },
+            { assertSame(savedOrder, savedOrder.products[0].chinaOrderEntity) },
+            { assertSame(savedOrder, savedOrder.products[1].chinaOrderEntity) },
+            { assertEquals("000001", savedOrder.products[0].artikul) },
+            { assertEquals("000002", savedOrder.products[1].artikul) }
+        )
+    }
 
     @Test
     fun `test add delivery `() {

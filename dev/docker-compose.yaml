@@ -1,0 +1,23 @@
+services:
+  redis:
+    image: redis:5.0.3-alpine
+    ports:
+      - "6379:6379"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+  mysql_db:
+    image: library/mysql:8.0
+    ports:
+      - "3307:3306"
+    volumes:
+      - storage:/opt/data
+    environment:
+      - 'MYSQL_DB=mysql_db'
+      - 'MYSQL_PASSWORD=password'
+      - 'MYSQL_USER=myuser'
+      - 'MYSQL_DATABASE=ozon_name'
+volumes:
+  storage:

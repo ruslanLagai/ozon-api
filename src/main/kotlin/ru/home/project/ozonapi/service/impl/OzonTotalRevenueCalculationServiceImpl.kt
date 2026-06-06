@@ -143,6 +143,7 @@ class OzonTotalRevenueCalculationServiceImpl(
                 OperationType.AccrualConsigDefectiveWriteOff -> compensationIncome += transaction.income
                 OperationType.AccrualInternalClaim -> compensationIncome += transaction.income
                 OperationType.AccrualConsigWriteOff -> compensationIncome += transaction.income
+                OperationType.AccrualWithoutDocs -> compensationIncome += transaction.income
                 OperationType.MarketplaceSellerDecompensationItemByTypeDocOperation -> compensationIncome += transaction.income
                 OperationType.OperationMarketplaceSellerReturnsGeneral -> courierReturnDelivery += transaction.income
 
@@ -173,7 +174,7 @@ class OzonTotalRevenueCalculationServiceImpl(
         // Чистая прибыль
         var totalRevenue = revenueList.sumOf(RevenueResponse::totalRevenue)
         totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome +
-                crossDoc + videoCover + correction + spoilageSurplus + courierReturnDelivery + storage +
+                videoCover + correction + spoilageSurplus + courierReturnDelivery + storage +
                 starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee + sorting + bonuses + ozonPackaging
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 

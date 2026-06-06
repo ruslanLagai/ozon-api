@@ -82,7 +82,8 @@ enum class OperationType(val description: String) {
     OperationMarketplaceSendingPushNotifications("Рассылка пуш-уведомлений"),
     OperationMarketplaceExternalPromotion("Внешнее продвижение"),
     OperationMarketplaceAcceleratedProductReviews("Ускоренный сбор отзывов"),
-    DisposalReasonScattered("Утилизация товара: Пролились/просыпались из-за упаковки")
+    DisposalReasonScattered("Утилизация товара: Пролились/просыпались из-за упаковки"),
+    AccrualWithoutDocs("Начисление по спору")
 
 
 }

@@ -27,7 +27,7 @@ class CostPriceEntity(
 
     @Column(name = "fulfilment") var fulfilment: Double,
 
-    @Column(name = "ozon_id", unique = true, nullable = false) var ozonId: String,
+    @Column(name = "ozon_id", unique = false, nullable = false) var ozonId: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id", nullable = false, updatable = true, insertable = true)

@@ -31,13 +31,11 @@ class TransactionCostPriceServiceImplTest {
     private val entityManager = mock<EntityManager>()
     private val positionRepository = mock<PositionRepository>()
     private val costPriceRepository = mock<CostPriceRepository>()
-    private val ozonService = mock<OzonService>()
 
     private val service = TransactionCostPriceServiceImpl(
         transactionRepository = transactionRepository,
         positionRepository = positionRepository,
-        costPriceRepository = costPriceRepository,
-        ozonService = ozonService
+        costPriceRepository = costPriceRepository
     )
 
     @Test

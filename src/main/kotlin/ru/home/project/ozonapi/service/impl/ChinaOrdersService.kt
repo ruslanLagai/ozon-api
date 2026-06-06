@@ -35,19 +35,30 @@ class ChinaOrdersService(
 
     override fun saveNewOrder(supplier: String, stockWorthRub: Double, number: String?, products: List<ProductRequest>) {
         val stockEntities = ArrayList<ChinaStockEntity>()
+        val entity = ChinaOrderEntity(
+            supplier = supplier,
+            stockCost = stockWorthRub,
+            number = number,
+            orderDate = LocalDate.now()
+        )
+
         products.forEach {
             val position = positionRepository.getPositionEntityByArtikul(it.artikul)
             if (position == null) {
                 log.warn("No position found for {}", it.artikul)
                 throw NoPositionsException()
             }
-            val stockItem = ChinaStockEntity(name = position.name, quantity = it.quantity, ozonId = position.ozonId,
-                artikul = it.artikul, priceRub = it.price ?: 0.0)
+            val stockItem = ChinaStockEntity(
+                name = position.name,
+                quantity = it.quantity,
+                ozonId = position.ozonId,
+                artikul = it.artikul,
+                priceRub = it.price ?: 0.0
+            )
             stockEntities.add(stockItem)
         }
 
-        val entity = ChinaOrderEntity(supplier = supplier, stockCost = stockWorthRub, number = number, products = stockEntities,
-            orderDate = LocalDate.now())
+        stockEntities.forEach { entity.addProduct(it) }
         chinaOrdersRepository.save(entity)
     }
 
