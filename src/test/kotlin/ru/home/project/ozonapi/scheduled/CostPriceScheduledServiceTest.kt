@@ -8,23 +8,25 @@ import org.mockito.kotlin.argumentCaptor
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
+import org.springframework.data.domain.SliceImpl
 import ru.home.project.ozonapi.dto.finance.response.Item
 import ru.home.project.ozonapi.dto.finance.response.OperationType
 import ru.home.project.ozonapi.dto.finance.response.Posting
-import ru.home.project.ozonapi.dto.finance.response.ServiceItem
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.finance.response.TransactionType
+import ru.home.project.ozonapi.entity.CostPriceEntity
 import ru.home.project.ozonapi.entity.FailedCostPriceTransactionEntity
 import ru.home.project.ozonapi.entity.PositionEntity
+import ru.home.project.ozonapi.entity.TransactionEntity
 import ru.home.project.ozonapi.repository.FailedCostPriceTransactionRepository
 import ru.home.project.ozonapi.repository.PositionRepository
+import ru.home.project.ozonapi.repository.TransactionRepository
 import ru.home.project.ozonapi.service.AdditionalServicesForCostPriceService
 import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.service.TransactionCostPriceService
 import ru.home.project.ozonapi.service.TransactionsService
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
-import java.util.Optional
 import java.util.function.Supplier
 
 class CostPriceScheduledServiceTest {
@@ -35,6 +37,7 @@ class CostPriceScheduledServiceTest {
     private val transactionsService = mock<TransactionsService>()
     private val failedCostPriceTransactionRepository = mock<FailedCostPriceTransactionRepository>()
     private val crossDocAdditionalService = mock<AdditionalServicesForCostPriceService>()
+    private val transactionRepository = mock<TransactionRepository>()
 
     private val service = CostPriceScheduledService(
         ozonService = ozonService,
@@ -42,7 +45,8 @@ class CostPriceScheduledServiceTest {
         transactionCostPriceService = transactionCostPriceService,
         transactionsService = transactionsService,
         failedCostPriceTransactionRepository = failedCostPriceTransactionRepository,
-        crossDocAdditionalService = crossDocAdditionalService
+        crossDocAdditionalService = crossDocAdditionalService,
+        transactionRepository = transactionRepository
     )
 
     init {
@@ -61,12 +65,18 @@ class CostPriceScheduledServiceTest {
             transaction(operationId = "ignored-1", operationType = OperationType.OperationMarketplaceServiceStorage, items = listOf(item("sku-1"))),
             transaction(operationId = "delivered-2", operationType = OperationType.OperationAgentDeliveredToCustomer, items = listOf(item("sku-2")))
         )
+        val existed = listOf(
+            TransactionEntity(operationId = "posting-existed-1", ozonId = "sku-1", fifoCostPrice = mock<CostPriceEntity>(), isFailed = false),
+            TransactionEntity(operationId = "posting-delivered-2", ozonId = "sku-2", fifoCostPrice = mock<CostPriceEntity>(), isFailed = false),
+        )
 
+        whenever(transactionRepository.getAllByOperationIdIn(any(), any()))
+            .thenReturn(SliceImpl(existed))
         whenever(ozonService.getTransaction(any(), any(), any())).thenReturn(transactions)
         service.updateTransaction()
 
         verify(transactionCostPriceService).updateCostPrice(listOf("posting-delivered-1"), listOf("posting-returned-1"), "sku-1")
-        verify(transactionCostPriceService).updateCostPrice(listOf("posting-delivered-2"), emptyList(), "sku-2")
+        verify(transactionCostPriceService).updateCostPrice(emptyList(), emptyList(), "sku-2")
         verify(transactionsService).runInTransaction<Unit>(any())
         verifyNoInteractions(crossDocAdditionalService)
         verifyNoInteractions(failedCostPriceTransactionRepository)
@@ -155,7 +165,7 @@ class CostPriceScheduledServiceTest {
         income = income,
         price = 0.0,
         type = TransactionType.orders,
-        services = emptyList<ServiceItem>(),
+        services = emptyList(),
         posting = Posting(date = OffsetDateTime.now().toLocalDateTime(), postingNumber = postingNumber),
         items = items
     )

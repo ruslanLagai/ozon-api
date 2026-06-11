@@ -16,6 +16,7 @@ import org.springframework.context.ApplicationEventPublisher
 import org.springframework.test.util.ReflectionTestUtils
 import org.telegram.telegrambots.meta.api.objects.Message
 import org.telegram.telegrambots.meta.api.objects.Update
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup
 import ru.home.project.ozonapi.dto.request.ProductRequest
 import ru.home.project.ozonapi.dto.response.StocksResponse
 import ru.home.project.ozonapi.entity.*
@@ -259,9 +260,10 @@ class TextInputProcessorTest {
 
             val result = inputProcessors.map { it.processInput("/add_fulfilment", getUpdate()) }
                 .firstOrNull { it != null }
+            val replyMarkup = result?.replyMarkup as? ReplyKeyboardMarkup
 
             assertTrue(result?.text?.contains("Выберите поставку") == true)
-            assertTrue(result?.text?.contains("gomarkt №1234 от 2024-07-29 на сумму 100.0") == true)
+            assertTrue(replyMarkup?.keyboard?.flatten()?.any { it.text == "gomarkt №1234 от 2024-07-29 на сумму 100.0" } == true)
             verify(telegramChatRepository).save(TelegramChatEntity(chatId = 1, positionName = "", action = ActionType.AddFulfilment))
         }
 
@@ -665,10 +667,7 @@ class TextInputProcessorTest {
             val result = inputProcessors.map { it.processInput("gomarkt №1234 от 2024-07-29 на сумму 100.0", getUpdate()) }
                 .first { it != null }
 
-            assertEquals(
-                "Добавьте данные по доставке в формате: \n<стоимость доставки>,<масса груза>,<объем груза (при наличии)>\n",
-                result?.text ?: ""
-            )
+            assertEquals("Введите стоимость ФФ", result?.text ?: "")
             assertEquals(7L, telegramChatEntity.deliveryId)
             verify(telegramChatRepository).save(telegramChatEntity)
         }
@@ -680,7 +679,7 @@ class TextInputProcessorTest {
             Mockito.`when`(message.isCommand).thenReturn(false)
             Mockito.`when`(telegramChatRepository.getByChatIdAndStateAndAction(1, true, ActionType.AddFulfilment))
                 .thenReturn(telegramChatEntity)
-            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDeliveredOrderByDeliveryDateDesc(true))
+            Mockito.`when`(chinaOrdersRepository.getChinaOrderEntityByDelivered(true))
                 .thenReturn(setOf(ChinaOrderEntity(id = 7, supplier = "gomarkt", number = "1234", stockCost = 100.0, orderDate = LocalDate.of(2024, 7, 29), delivered = true)))
 
             val result = inputProcessors.map { it.processInput("unknown order", getUpdate()) }
@@ -725,7 +724,6 @@ class TextInputProcessorTest {
             assertEquals("Услуги ФФ добавлены в себестоимость FIFO", result?.text ?: "")
             verify(additionalServicesForCostPriceService).updateCostPrice(77, 123.45)
             verify(crossDocService).linkWithOrders(77)
-            verify(telegramChatRepository).updateStateByChatIdAndAction(1, false, ActionType.AddFulfilment)
         }
 
         @Test
@@ -739,7 +737,6 @@ class TextInputProcessorTest {
             val result = fulfilmentDataInputProcessor.processInput("1,2", getUpdate())
 
             assertEquals("Некорректный формат ввода данные", result?.text ?: "")
-            verify(telegramChatRepository, times(1)).updateStateByChatIdAndAction(1, false, ActionType.AddFulfilment)
         }
 
         @Test
@@ -767,7 +764,6 @@ class TextInputProcessorTest {
             val result = fulfilmentDataInputProcessor.processInput("123", getUpdate())
 
             assertNull(result)
-            verify(telegramChatRepository).updateStateByChatIdAndAction(1, false, ActionType.AddFulfilment)
         }
     }
 

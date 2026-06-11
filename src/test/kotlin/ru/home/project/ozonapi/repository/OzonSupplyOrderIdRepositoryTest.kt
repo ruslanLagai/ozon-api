@@ -27,10 +27,10 @@ class OzonSupplyOrderIdRepositoryTest : AbstractRepositoryTest() {
         order.ozonSupplyOrderIds.add(OzonSupplyOrderIdEntity(orderId = 555L, chinaOrderEntity = order))
         chinaOrdersRepository.save(order)
 
-        val found = repository.findByOrderId(555L).orElseThrow()
+        val found = repository.findByOrderId(555L)
 
-        assertEquals(555L, found.orderId)
-        assertEquals("supplier-1", found.chinaOrderEntity.supplier)
-        assertTrue(found.chinaOrderEntity.ozonSupplyOrderIds.any { it.orderId == 555L })
+        assertEquals(555L, found[0].orderId)
+        assertEquals("supplier-1", found[0].chinaOrderEntity.supplier)
+        assertTrue(found[0].chinaOrderEntity.ozonSupplyOrderIds.any { it.orderId == 555L })
     }
 }

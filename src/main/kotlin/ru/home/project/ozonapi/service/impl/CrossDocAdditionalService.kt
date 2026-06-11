@@ -20,15 +20,17 @@ class CrossDocAdditionalService(
 
     @Transactional
     override fun updateCostPrice(orderId: Long, additionalServices: Double) {
-        ozonSupplyOrderIdRepository.findByOrderId(orderId)
-            .ifPresentOrElse( { orderEntity ->
-                val chinaOrderEntity = orderEntity.chinaOrderEntity
-                val quantity = chinaOrderEntity.products.sumOf { it.quantity }
-                chinaOrderEntity.costPriceEntities.forEach {
-                    it.crossDoc = BigDecimal.valueOf(it.crossDoc + abs(additionalServices) / quantity)
-                        .setScale(2, RoundingMode.HALF_UP)
-                        .toDouble()
-                }
-            }, { log.warn("Поставка $orderId не найдена в БД") } )
+        val ozonSupplyOrders = ozonSupplyOrderIdRepository.findByOrderId(orderId)
+        val quantity = ozonSupplyOrders.sumOf {
+            orderIdEntity -> orderIdEntity.chinaOrderEntity.products.sumOf { it.quantity }
+        }
+        ozonSupplyOrders.forEach { orderIdEntity ->
+            val chinaOrderEntity = orderIdEntity.chinaOrderEntity
+            chinaOrderEntity.costPriceEntities.forEach {
+                it.crossDoc = BigDecimal.valueOf(it.crossDoc + abs(additionalServices) / quantity)
+                    .setScale(2, RoundingMode.HALF_UP)
+                    .toDouble()
+            }
+        }
     }
 }

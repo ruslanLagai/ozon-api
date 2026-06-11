@@ -2,6 +2,7 @@ package ru.home.project.ozonapi.scheduled
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.data.domain.Pageable
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -10,6 +11,7 @@ import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.entity.FailedCostPriceTransactionEntity
 import ru.home.project.ozonapi.repository.FailedCostPriceTransactionRepository
 import ru.home.project.ozonapi.repository.PositionRepository
+import ru.home.project.ozonapi.repository.TransactionRepository
 import ru.home.project.ozonapi.service.AdditionalServicesForCostPriceService
 import ru.home.project.ozonapi.service.OzonService
 import ru.home.project.ozonapi.service.TransactionCostPriceService
@@ -31,7 +33,8 @@ class CostPriceScheduledService(
     val transactionCostPriceService: TransactionCostPriceService,
     val transactionsService: TransactionsService,
     val failedCostPriceTransactionRepository: FailedCostPriceTransactionRepository,
-    val crossDocAdditionalService: AdditionalServicesForCostPriceService
+    val crossDocAdditionalService: AdditionalServicesForCostPriceService,
+    val transactionRepository: TransactionRepository
 ) {
 
     private val deliveryOrRefundPredicate = Predicate<Transaction> {
@@ -74,6 +77,17 @@ class CostPriceScheduledService(
                         else -> {}
                     }
                 }
+
+                var existed = transactionRepository.getAllByOperationIdIn(delivered, Pageable.ofSize(50).withPage(1))
+                var pageNum = 2
+                val toRemove = mutableSetOf<String>()
+                toRemove.addAll(existed.content.map { it.operationId })
+                while (existed.hasNext()) {
+                    existed = transactionRepository.getAllByOperationIdIn(delivered, Pageable.ofSize(50).withPage(pageNum))
+                    pageNum++
+                    toRemove.addAll(existed.content.map { it.operationId })
+                }
+                delivered.removeAll(toRemove)
 
                 transactionCostPriceService.updateCostPrice(deliveredOperaions = delivered, returnedOperations = cancelled, sku = sku)
             }

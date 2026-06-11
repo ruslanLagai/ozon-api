@@ -111,6 +111,10 @@ class TransactionCostPriceServiceImplTest {
             setOf(firstCostPrice.id, secondCostPrice.id),
             savedCostPricesCaptor.firstValue.map { entity -> entity.id }.toSet()
         )
+        assertEquals(
+            setOf(6, 2),
+            savedCostPricesCaptor.firstValue.map { entity -> entity.leftQuantity }.toSet()
+        )
     }
 
     @Test

@@ -8,7 +8,7 @@ import java.util.*
 interface OzonSupplyOrderIdRepository : JpaRepository<OzonSupplyOrderIdEntity, Long> {
 
     @EntityGraph("OzonSupplyOrderIdEntity.withChinaOrders")
-    fun findByOrderId(orderId: Long): Optional<OzonSupplyOrderIdEntity>
+    fun findByOrderId(orderId: Long): List<OzonSupplyOrderIdEntity>
 
 }
 

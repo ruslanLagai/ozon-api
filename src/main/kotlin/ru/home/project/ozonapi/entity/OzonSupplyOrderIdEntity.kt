@@ -24,7 +24,7 @@ class OzonSupplyOrderIdEntity(
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     var id: Long? = null,
 
-    @Column(name = "ozon_supply_order_id", nullable = false, unique = true)
+    @Column(name = "ozon_supply_order_id", nullable = false, unique = false)
     var orderId: Long,
 
     @ManyToOne(fetch = FetchType.LAZY)

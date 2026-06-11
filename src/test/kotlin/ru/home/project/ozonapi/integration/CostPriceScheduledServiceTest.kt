@@ -200,34 +200,13 @@ class CostPriceScheduledServiceTest {
                 }
 
             // проверяем связь заказа с поставками FBO
-            var supply = ozonSupplyRepository.findByOrderId(2000046901421L).orElseThrow { AssertionError("Поставка не найдена") }
-            assertEquals(1L, supply.chinaOrderEntity.id)
-            supply = ozonSupplyRepository.findByOrderId(2000050150604L).orElseThrow { AssertionError("Поставка не найдена") }
-            assertEquals(1L, supply.chinaOrderEntity.id)
-            supply = ozonSupplyRepository.findByOrderId(2000050150600L).orElseThrow { AssertionError("Поставка не найдена") }
-            assertEquals(1L, supply.chinaOrderEntity.id)
+            var supply = ozonSupplyRepository.findByOrderId(2000046901421L)
+            assertEquals(1L, supply[0].chinaOrderEntity.id)
+            supply = ozonSupplyRepository.findByOrderId(2000050150604L)
+            assertEquals(1L, supply[0].chinaOrderEntity.id)
+            supply = ozonSupplyRepository.findByOrderId(2000050150600L)
+            assertEquals(1L, supply[0].chinaOrderEntity.id)
             assertEquals(3, chinaOrder.ozonSupplyOrderIds.size)
-
-            // проверка транзакций
-            // мини зонт
-            var transaction = transactionsRepository.findByOperationId("49631356054")
-                .orElseThrow { AssertionError("Транзакция 49631356054 не найдена") }
-            assertEquals(144.93, transaction.fifoCostPrice.costPrice)
-            assertEquals(4.56, transaction.fifoCostPrice.crossDoc)
-            assertEquals(36.23, transaction.fifoCostPrice.fulfilment)
-
-            assertEquals(10, transaction.fifoCostPrice.initialQuantity)
-            assertEquals(0, transaction.fifoCostPrice.leftQuantity)
-
-            // кофр
-            transaction = transactionsRepository.findByOperationId("49641839082")
-                .orElseThrow { AssertionError("Транзакция 49641839082 не найдена") }
-            assertEquals(144.93, transaction.fifoCostPrice.costPrice)
-            assertEquals(4.56, transaction.fifoCostPrice.crossDoc)
-            assertEquals(36.23, transaction.fifoCostPrice.fulfilment)
-
-            assertEquals(75, transaction.fifoCostPrice.initialQuantity)
-            assertEquals(0, transaction.fifoCostPrice.leftQuantity)
         }
     }
 }

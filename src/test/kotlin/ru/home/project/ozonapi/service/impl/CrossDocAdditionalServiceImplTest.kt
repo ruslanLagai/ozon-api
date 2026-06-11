@@ -15,7 +15,6 @@ import ru.home.project.ozonapi.entity.OzonSupplyOrderIdEntity
 import ru.home.project.ozonapi.entity.PositionEntity
 import ru.home.project.ozonapi.repository.OzonSupplyOrderIdRepository
 import java.time.LocalDate
-import java.util.Optional
 import java.util.UUID
 
 @ExtendWith(MockitoExtension::class)
@@ -26,21 +25,37 @@ class CrossDocAdditionalServiceImplTest {
 
     @Test
     fun `updates cross doc for every cost price entity`() {
-        val order = chinaOrder(
+        val order1 = chinaOrder(
             products = listOf(
-                chinaProduct(quantity = 2),
-                chinaProduct(quantity = 4)
+                chinaProduct(quantity = 1),
+                chinaProduct(quantity = 3)
             ),
             costPrices = listOf(
                 costPriceEntity(crossDoc = 1.0),
                 costPriceEntity(crossDoc = 1.0)
             )
         )
-        stubSupply(orderId = 100L, order = order)
+        val order2 = chinaOrder(
+            products = listOf(
+                chinaProduct(quantity = 1),
+                chinaProduct(quantity = 1)
+            ),
+            costPrices = listOf(
+                costPriceEntity(crossDoc = 1.0),
+                costPriceEntity(crossDoc = 1.0)
+            )
+        )
+        whenever(ozonSupplyOrderIdRepository.findByOrderId(100L)).thenReturn(
+            listOf(
+                OzonSupplyOrderIdEntity(orderId = 100L, chinaOrderEntity = order1),
+                OzonSupplyOrderIdEntity(orderId = 100L, chinaOrderEntity = order2))
+        )
 
         service.updateCostPrice(orderId = 100L, additionalServices = 10.0)
 
-        assertEquals(listOf(2.67, 2.67), order.costPriceEntities.map { it.crossDoc })
+        assertEquals(listOf(2.67, 2.67), order1.costPriceEntities.map { it.crossDoc })
+        assertEquals(listOf(2.67, 2.67), order2.costPriceEntities.map { it.crossDoc })
+
         verify(ozonSupplyOrderIdRepository).findByOrderId(100L)
     }
 
@@ -60,7 +75,7 @@ class CrossDocAdditionalServiceImplTest {
 
     @Test
     fun `does nothing when supply order id is not found`() {
-        whenever(ozonSupplyOrderIdRepository.findByOrderId(300L)).thenReturn(Optional.empty())
+        whenever(ozonSupplyOrderIdRepository.findByOrderId(300L)).thenReturn(emptyList())
 
         assertDoesNotThrow {
             service.updateCostPrice(orderId = 300L, additionalServices = 15.0)
@@ -71,7 +86,7 @@ class CrossDocAdditionalServiceImplTest {
 
     private fun stubSupply(orderId: Long, order: ChinaOrderEntity) {
         whenever(ozonSupplyOrderIdRepository.findByOrderId(orderId)).thenReturn(
-            Optional.of(OzonSupplyOrderIdEntity(orderId = orderId, chinaOrderEntity = order))
+            listOf(OzonSupplyOrderIdEntity(orderId = orderId, chinaOrderEntity = order))
         )
     }
 
