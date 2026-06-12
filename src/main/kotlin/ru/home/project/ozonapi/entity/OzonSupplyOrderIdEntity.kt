@@ -27,6 +27,9 @@ class OzonSupplyOrderIdEntity(
     @Column(name = "ozon_supply_order_id", nullable = false, unique = false)
     var orderId: Long,
 
+    @Column(name = "ozon_supply_bundle_id", nullable = false, unique = false)
+    var bundleId: String,
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "china_order_entity_id", nullable = false)
     var chinaOrderEntity: ChinaOrderEntity
@@ -41,6 +44,7 @@ class OzonSupplyOrderIdEntity(
 
         if (id != other.id) return false
         if (orderId != other.orderId) return false
+        if (bundleId != other.bundleId) return false
 
         return true
     }

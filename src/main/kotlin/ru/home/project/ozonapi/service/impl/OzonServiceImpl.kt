@@ -22,6 +22,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
+import java.util.UUID
 
 /**
  * @author rlagay
@@ -98,7 +99,7 @@ class OzonServiceImpl(
     }
 
     @Cacheable(cacheNames = ["ozon-supply-orders"], key = "#orderIds")
-    override fun getSupplyOrderIds(orderIds: Set<Int>): List<Long> {
+    override fun getSupplyOrderIds(orderIds: Set<Int>): List<Pair<Long, String>> {
         if (orderIds.isEmpty()) {
             return listOf()
         }
@@ -110,7 +111,7 @@ class OzonServiceImpl(
         return supplyOrders
             .filter { it.state != SupplyState.CANCELLED }
             .flatMap { it.supplies!! }
-            .map { it.supplyId }
+            .map { Pair(it.supplyId, it.bundleId)}
     }
 
     @Cacheable(cacheNames = ["ozon-supply-list"], key = "1")
@@ -121,6 +122,16 @@ class OzonServiceImpl(
             return listOf()
         }
         return supplyOrders
+    }
+
+    @Cacheable(cacheNames = ["ozon-supply-bundles"], key = "1")
+    override fun getSupplyItemsByBundleIds(bundleIds: Set<String>): List<SupplyBundleItem> {
+        val supplyBundles = ozonApiClient.getSupplyOrderBundle(bundleIds.toList())
+        if (supplyBundles.isNullOrEmpty()) {
+            log.info("No products orders")
+            return listOf()
+        }
+        return supplyBundles
     }
 
     override fun getSupplyOrdersIntransit(): List<Int> {

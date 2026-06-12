@@ -8,12 +8,14 @@ import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
+import ru.home.project.ozonapi.dto.supply.response.SupplyBundleItem
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.ChinaStockEntity
 import ru.home.project.ozonapi.entity.CostPriceEntity
 import ru.home.project.ozonapi.entity.OzonSupplyOrderIdEntity
 import ru.home.project.ozonapi.entity.PositionEntity
 import ru.home.project.ozonapi.repository.OzonSupplyOrderIdRepository
+import ru.home.project.ozonapi.service.OzonService
 import java.time.LocalDate
 import java.util.UUID
 
@@ -21,7 +23,8 @@ import java.util.UUID
 class CrossDocAdditionalServiceImplTest {
 
     private val ozonSupplyOrderIdRepository = mock<OzonSupplyOrderIdRepository>()
-    private val service = CrossDocAdditionalService(ozonSupplyOrderIdRepository)
+    private val ozonService = mock<OzonService>()
+    private val service = CrossDocAdditionalService(ozonSupplyOrderIdRepository, ozonService)
 
     @Test
     fun `updates cross doc for every cost price entity`() {

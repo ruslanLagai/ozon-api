@@ -167,6 +167,9 @@ class CostPriceScheduledServiceTest {
                 .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
 
         stubFor(post("/v1/supply-order/bundle")
+            .willReturn(ok(supplyBundleMulti)
+                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
+        stubFor(post("/v1/supply-order/bundle")
             .withRequestBody(ContainsPattern("\"bundle_ids\":[\"019dc398-fde2-7a39-bfd8-97b641fd1644\",\"019dc398-fde1-7668-b86c-230041f34734\"]"))
             .willReturn(ok(supplyBundleMulti)
                 .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
@@ -196,7 +199,7 @@ class CostPriceScheduledServiceTest {
                 .forEach {
                     assertEquals(144.93, it.costPrice)
                     assertEquals(36.23, it.fulfilment)
-                    assertEquals(4.56, it.crossDoc)
+                    assertEquals(7.87, it.crossDoc)
                 }
 
             // проверяем связь заказа с поставками FBO

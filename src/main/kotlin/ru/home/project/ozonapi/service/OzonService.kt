@@ -40,11 +40,16 @@ interface OzonService {
     /**
      * Получение данных по поставке
      */
-    fun getSupplyOrderIds(orderIds: Set<Int>): List<Long>
+    fun getSupplyOrderIds(orderIds: Set<Int>):  List<Pair<Long, String>>
     /**
      * Получение списка поставок
      */
     fun getSupplyOrders(): List<Int>
+
+    /**
+     * Получение состава поставки по ид
+     */
+    fun getSupplyItemsByBundleIds(bundleIds: Set<String>): List<SupplyBundleItem>
 
     /**
      * Получение списка поставок в пути на склад

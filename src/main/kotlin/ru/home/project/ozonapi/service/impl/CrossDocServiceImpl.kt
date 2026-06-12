@@ -85,8 +85,8 @@ class CrossDocServiceImpl(
             val supplyIds = ozonService.getSupplyOrderIds(ozonSupplyIds)
             val existingIds = order.ozonSupplyOrderIds.map { it.orderId }.toSet()
             val ozonSupplyEntities = supplyIds.stream()
-                .filter { !existingIds.contains(it) }
-                .map { OzonSupplyOrderIdEntity(orderId = it, chinaOrderEntity = order) }
+                .filter { !existingIds.contains(it.first) }
+                .map { OzonSupplyOrderIdEntity(orderId = it.first, chinaOrderEntity = order, bundleId = it.second) }
                 .toList()
             order.ozonSupplyOrderIds.addAll(ozonSupplyEntities)
 

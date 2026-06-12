@@ -85,7 +85,7 @@ class ChinaOrdersRepositoryTest : AbstractRepositoryTest() {
             ozonSupplyOrderIds = mutableSetOf()
         )
         supplyIds.forEach { supplyId ->
-            order.ozonSupplyOrderIds.add(OzonSupplyOrderIdEntity(orderId = supplyId, chinaOrderEntity = order))
+            order.ozonSupplyOrderIds.add(OzonSupplyOrderIdEntity(orderId = supplyId, chinaOrderEntity = order, bundleId = "123"))
         }
         return order
     }

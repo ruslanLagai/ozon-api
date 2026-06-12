@@ -41,6 +41,7 @@ class CrossDocServiceImplTest {
     @Test
     fun `links order when products are split across several supplies`() {
         val expectedOrderIds = listOf(2000046901421, 2000050150604, 2000050150600)
+        val expectedBundleIds = listOf("019d2de3-7716-7d4f-a809-4c08360d5dee", "019dc398-fde2-7a39-bfd8-97b641fd1644", "019dc398-fde1-7668-b86c-230041f34734")
 
         val order = chinaOrder(
             id = 1L,
@@ -59,12 +60,13 @@ class CrossDocServiceImplTest {
                 supplyOrders[2] to supplyBundle3
             )
         )
-        whenever(ozonService.getSupplyOrderIds(any()))
-            .thenReturn(supplyOrdersDetails.flatMap { it.supplies!!.map { item -> item.supplyId } }.toList())
+        whenever(ozonService.getSupplyOrderIds(any())).thenReturn(
+            supplyOrdersDetails.flatMap { it.supplies!!.map { item -> Pair(item.supplyId, item.bundleId) } }.toList())
 
         crossDocService.linkWithOrders(order.id!!)
 
         assertEquals(expectedOrderIds, order.ozonSupplyOrderIds.map { it.orderId })
+        assertEquals(expectedBundleIds, order.ozonSupplyOrderIds.map { it.bundleId })
     }
 
     @Test
@@ -86,7 +88,8 @@ class CrossDocServiceImplTest {
                 supplyOrders[2] to supplyBundle3
             )
         )
-        whenever(ozonService.getSupplyOrderIds(eq(setOf(supplyOrders[0])))).thenReturn(listOf(2000046901421))
+        whenever(ozonService.getSupplyOrderIds(eq(setOf(supplyOrders[0]))))
+            .thenReturn(listOf(Pair(2000046901421, "12")))
 
         crossDocService.linkWithOrders(order.id!!)
 
@@ -157,7 +160,7 @@ class CrossDocServiceImplTest {
                 chinaProduct(sku = 1134733705L, quantity = 11)
             )
         )
-        order.ozonSupplyOrderIds.add(OzonSupplyOrderIdEntity(orderId = 2000046901421, chinaOrderEntity = order))
+        order.ozonSupplyOrderIds.add(OzonSupplyOrderIdEntity(orderId = 2000046901421, chinaOrderEntity = order, bundleId = "12"))
         stubOrder(order)
         stubSupplyData(
             mapOf(
@@ -171,6 +174,7 @@ class CrossDocServiceImplTest {
 
         assertEquals(1, order.ozonSupplyOrderIds.size)
         assertEquals(expectedOrderIds, order.ozonSupplyOrderIds.map { it.orderId })
+        assertEquals(listOf("12"), order.ozonSupplyOrderIds.map { it.bundleId })
     }
 
     @Test

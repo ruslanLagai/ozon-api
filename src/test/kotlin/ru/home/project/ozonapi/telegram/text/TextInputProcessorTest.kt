@@ -248,7 +248,7 @@ class TextInputProcessorTest {
                             orderDate = LocalDate.of(2024, 7, 29),
                             delivered = true,
                             ozonSupplyOrderIds = mutableSetOf(
-                                OzonSupplyOrderIdEntity(orderId = 10L, chinaOrderEntity = ChinaOrderEntity(
+                                OzonSupplyOrderIdEntity(orderId = 10L, bundleId = "123", chinaOrderEntity = ChinaOrderEntity(
                                     id = 99,
                                     supplier = "inner",
                                     orderDate = LocalDate.of(2024, 7, 29)

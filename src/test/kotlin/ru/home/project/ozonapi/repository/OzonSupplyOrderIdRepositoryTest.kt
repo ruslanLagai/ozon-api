@@ -24,7 +24,7 @@ class OzonSupplyOrderIdRepositoryTest : AbstractRepositoryTest() {
             stockCost = 1000.0,
             ozonSupplyOrderIds = mutableSetOf()
         )
-        order.ozonSupplyOrderIds.add(OzonSupplyOrderIdEntity(orderId = 555L, chinaOrderEntity = order))
+        order.ozonSupplyOrderIds.add(OzonSupplyOrderIdEntity(orderId = 555L, chinaOrderEntity = order, bundleId = "bundle-1"))
         chinaOrdersRepository.save(order)
 
         val found = repository.findByOrderId(555L)
@@ -32,5 +32,6 @@ class OzonSupplyOrderIdRepositoryTest : AbstractRepositoryTest() {
         assertEquals(555L, found[0].orderId)
         assertEquals("supplier-1", found[0].chinaOrderEntity.supplier)
         assertTrue(found[0].chinaOrderEntity.ozonSupplyOrderIds.any { it.orderId == 555L })
+        assertTrue(found[0].chinaOrderEntity.ozonSupplyOrderIds.any { it.bundleId == "bundle-1" })
     }
 }
