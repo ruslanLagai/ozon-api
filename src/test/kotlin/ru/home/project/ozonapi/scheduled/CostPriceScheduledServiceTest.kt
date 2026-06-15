@@ -75,8 +75,11 @@ class CostPriceScheduledServiceTest {
         whenever(ozonService.getTransaction(any(), any(), any())).thenReturn(transactions)
         service.updateTransaction()
 
-        verify(transactionCostPriceService).updateCostPrice(listOf("posting-delivered-1"), listOf("posting-returned-1"), "sku-1")
-        verify(transactionCostPriceService).updateCostPrice(emptyList(), emptyList(), "sku-2")
+        verify(transactionCostPriceService).updateCostPrice(listOf("posting-delivered-1"), "sku-1")
+        verify(transactionCostPriceService).updateReturnedOperationCostPrice(listOf("posting-returned-1"), "sku-1")
+        verify(transactionCostPriceService).updateCostPrice(emptyList(), "sku-2")
+        verify(transactionCostPriceService).updateReturnedOperationCostPrice(emptyList(), "sku-2")
+
         verify(transactionsService).runInTransaction<Unit>(any())
         verifyNoInteractions(crossDocAdditionalService)
         verifyNoInteractions(failedCostPriceTransactionRepository)

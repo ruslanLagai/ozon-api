@@ -8,5 +8,8 @@ interface TransactionCostPriceService{
     /**
      * Обновляет себестоимость товара для заданного списка операций
      */
-    fun updateCostPrice(deliveredOperaions: List<String>, returnedOperations: List<String>, sku: String)
+    fun updateCostPrice(deliveredOperaions: List<String>, sku: String)
+
+    fun updateReturnedOperationCostPrice(returnedOperations: List<String>, sku: String)
+
 }

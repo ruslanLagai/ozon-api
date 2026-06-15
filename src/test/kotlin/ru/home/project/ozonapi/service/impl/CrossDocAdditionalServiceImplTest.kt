@@ -34,8 +34,8 @@ class CrossDocAdditionalServiceImplTest {
                 chinaProduct(quantity = 3)
             ),
             costPrices = listOf(
-                costPriceEntity(crossDoc = 1.0),
-                costPriceEntity(crossDoc = 1.0)
+                costPriceEntity(crossDoc = 1.0, "1"),
+                costPriceEntity(crossDoc = 1.0, "2")
             )
         )
         val order2 = chinaOrder(
@@ -44,14 +44,20 @@ class CrossDocAdditionalServiceImplTest {
                 chinaProduct(quantity = 1)
             ),
             costPrices = listOf(
-                costPriceEntity(crossDoc = 1.0),
-                costPriceEntity(crossDoc = 1.0)
+                costPriceEntity(crossDoc = 1.0, "1"),
+                costPriceEntity(crossDoc = 1.0, "2")
+            )
+        )
+        whenever(ozonService.getSupplyItemsByBundleIds(setOf("bundleId-1", "bundleId-2"))).thenReturn(
+            listOf(
+                SupplyBundleItem(iconPath = null, sku = 1L, artikul = "", name = "", quantity = 4),
+                SupplyBundleItem(iconPath = null, sku = 2L, artikul = "", name = "", quantity = 2)
             )
         )
         whenever(ozonSupplyOrderIdRepository.findByOrderId(100L)).thenReturn(
             listOf(
-                OzonSupplyOrderIdEntity(orderId = 100L, chinaOrderEntity = order1),
-                OzonSupplyOrderIdEntity(orderId = 100L, chinaOrderEntity = order2))
+                OzonSupplyOrderIdEntity(orderId = 100L, chinaOrderEntity = order1, bundleId = "bundleId-1"),
+                OzonSupplyOrderIdEntity(orderId = 100L, chinaOrderEntity = order2, bundleId = "bundleId-2"))
         )
 
         service.updateCostPrice(orderId = 100L, additionalServices = 10.0)
@@ -66,9 +72,14 @@ class CrossDocAdditionalServiceImplTest {
     fun `rounds cross doc value to two digits after decimal`() {
         val order = chinaOrder(
             products = listOf(chinaProduct(quantity = 2)),
-            costPrices = listOf(costPriceEntity(crossDoc = 0.34))
+            costPrices = listOf(costPriceEntity(crossDoc = 0.34, id = "1"))
         )
         stubSupply(orderId = 200L, order = order)
+        whenever(ozonService.getSupplyItemsByBundleIds(setOf(""))).thenReturn(
+            listOf(
+                SupplyBundleItem(iconPath = null, sku = 1L, artikul = "", name = "", quantity = 2)
+            )
+        )
 
         service.updateCostPrice(orderId = 200L, additionalServices = 0.33)
 
@@ -89,7 +100,7 @@ class CrossDocAdditionalServiceImplTest {
 
     private fun stubSupply(orderId: Long, order: ChinaOrderEntity) {
         whenever(ozonSupplyOrderIdRepository.findByOrderId(orderId)).thenReturn(
-            listOf(OzonSupplyOrderIdEntity(orderId = orderId, chinaOrderEntity = order))
+            listOf(OzonSupplyOrderIdEntity(orderId = orderId, chinaOrderEntity = order, bundleId = ""))
         )
     }
 
@@ -120,17 +131,16 @@ class CrossDocAdditionalServiceImplTest {
             priceRub = 100.0
         )
 
-    private fun costPriceEntity(crossDoc: Double): CostPriceEntity {
-        val id = UUID.randomUUID()
+    private fun costPriceEntity(crossDoc: Double, id: String): CostPriceEntity {
         return CostPriceEntity(
-            id = id,
+            id = UUID.randomUUID(),
             leftQuantity = 10,
             initialQuantity = 10,
             supplyDate = LocalDate.now(),
             costPrice = 100.0,
             crossDoc = crossDoc,
             fulfilment = 0.0,
-            ozonId = "ozon-$id",
+            ozonId = id,
             position = PositionEntity(
                 id = 10L,
                 name = "position-$id",

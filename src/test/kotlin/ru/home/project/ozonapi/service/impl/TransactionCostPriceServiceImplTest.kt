@@ -47,6 +47,9 @@ class TransactionCostPriceServiceImplTest {
 
         service.updateCostPrice(
             deliveredOperaions = listOf("operation-1", "operation-2"),
+            sku = "ozon-1"
+        )
+        service.updateReturnedOperationCostPrice(
             returnedOperations = emptyList(),
             sku = "ozon-1"
         )
@@ -95,6 +98,9 @@ class TransactionCostPriceServiceImplTest {
 
         service.updateCostPrice(
             deliveredOperaions = emptyList(),
+            sku = "ozon-1"
+        )
+        service.updateReturnedOperationCostPrice(
             returnedOperations = returnedOperations,
             sku = "ozon-1"
         )
@@ -124,6 +130,9 @@ class TransactionCostPriceServiceImplTest {
 
         service.updateCostPrice(
             deliveredOperaions = emptyList(),
+            sku = "ozon-1"
+        )
+        service.updateReturnedOperationCostPrice(
             returnedOperations = emptyList(),
             sku = "ozon-1"
         )

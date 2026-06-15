@@ -87,9 +87,13 @@ class CostPriceScheduledService(
                     pageNum++
                     toRemove.addAll(existed.content.map { it.operationId })
                 }
+                log.info("To be removed: ${toRemove.joinToString()}")
                 delivered.removeAll(toRemove)
 
-                transactionCostPriceService.updateCostPrice(deliveredOperaions = delivered, returnedOperations = cancelled, sku = sku)
+                log.info("Delivered: ${delivered.joinToString()}")
+
+                transactionCostPriceService.updateCostPrice(deliveredOperaions = delivered, sku = sku)
+                transactionCostPriceService.updateReturnedOperationCostPrice(returnedOperations = cancelled, sku = sku)
             }
 
         ozonService.getTransaction(from, to, cacheKey)

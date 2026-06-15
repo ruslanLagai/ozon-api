@@ -30,7 +30,7 @@ class TransactionCostPriceServiceImpl(
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    override fun updateCostPrice(deliveredOperaions: List<String>, returnedOperations: List<String>, sku: String) {
+    override fun updateCostPrice(deliveredOperaions: List<String>, sku: String) {
         val position = positionRepository.getPositionEntityByOzonId(sku)
 
         if (deliveredOperaions.isNotEmpty()) {
@@ -66,7 +66,7 @@ class TransactionCostPriceServiceImpl(
 
                         while (delivered > 0) {
                             diff = delivered - fifoCostPrice!!.leftQuantity
-                            val toIndex =  if (diff > 0) fifoCostPrice.leftQuantity else delivered
+                            val toIndex = if (diff > 0) fifoCostPrice.leftQuantity else delivered
                             deliveredOperaions.subList(initialIndex, toIndex)
                                 .map { operationId ->
                                     TransactionEntity(
@@ -105,8 +105,13 @@ class TransactionCostPriceServiceImpl(
                         }
                         transactionRepository.saveAll(transactionEntities)
                     }
-            }
+                }
         }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    override fun updateReturnedOperationCostPrice(returnedOperations: List<String>, sku: String) {
+        val position = positionRepository.getPositionEntityByOzonId(sku)
 
         if (returnedOperations.isNotEmpty()) {
             position.costPriceEntity.let {
