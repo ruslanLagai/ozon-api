@@ -15,9 +15,11 @@ import ru.home.project.ozonapi.dto.finance.response.Posting
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.dto.finance.response.TransactionType
 import ru.home.project.ozonapi.entity.CostPriceEntity
+import ru.home.project.ozonapi.entity.CrossDocTransactionEntity
 import ru.home.project.ozonapi.entity.FailedCostPriceTransactionEntity
 import ru.home.project.ozonapi.entity.PositionEntity
 import ru.home.project.ozonapi.entity.TransactionEntity
+import ru.home.project.ozonapi.repository.CrossDocTransactionEntityRepository
 import ru.home.project.ozonapi.repository.FailedCostPriceTransactionRepository
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.TransactionRepository
@@ -27,6 +29,7 @@ import ru.home.project.ozonapi.service.TransactionCostPriceService
 import ru.home.project.ozonapi.service.TransactionsService
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
+import java.util.Optional
 import java.util.function.Supplier
 
 class CostPriceScheduledServiceTest {
@@ -38,6 +41,7 @@ class CostPriceScheduledServiceTest {
     private val failedCostPriceTransactionRepository = mock<FailedCostPriceTransactionRepository>()
     private val crossDocAdditionalService = mock<AdditionalServicesForCostPriceService>()
     private val transactionRepository = mock<TransactionRepository>()
+    private val crossDocTransactionEntityRepository = mock<CrossDocTransactionEntityRepository>()
 
     private val service = CostPriceScheduledService(
         ozonService = ozonService,
@@ -46,7 +50,8 @@ class CostPriceScheduledServiceTest {
         transactionsService = transactionsService,
         failedCostPriceTransactionRepository = failedCostPriceTransactionRepository,
         crossDocAdditionalService = crossDocAdditionalService,
-        transactionRepository = transactionRepository
+        transactionRepository = transactionRepository,
+        crossDocTransactionEntityRepository = crossDocTransactionEntityRepository,
     )
 
     init {
@@ -73,6 +78,7 @@ class CostPriceScheduledServiceTest {
         whenever(transactionRepository.getAllByOperationIdIn(any(), any()))
             .thenReturn(SliceImpl(existed))
         whenever(ozonService.getTransaction(any(), any(), any())).thenReturn(transactions)
+        whenever(crossDocTransactionEntityRepository.findByOrderId(any())).thenReturn(Optional.empty())
         service.updateTransaction()
 
         verify(transactionCostPriceService).updateCostPrice(listOf("posting-delivered-1"), "sku-1")
@@ -103,7 +109,7 @@ class CostPriceScheduledServiceTest {
                 income = 50.0
             )
         )
-
+        whenever(crossDocTransactionEntityRepository.findByOrderId(any())).thenReturn(Optional.empty())
         whenever(ozonService.getTransaction(any(), any(), any())).thenReturn(transactions)
 
         service.updateTransaction()
@@ -125,6 +131,7 @@ class CostPriceScheduledServiceTest {
         )
 
         whenever(ozonService.getTransaction(any(), any(), any())).thenReturn(transactions)
+        whenever(crossDocTransactionEntityRepository.findByOrderId(any())).thenReturn(Optional.empty())
 
         service.updateTransaction()
 

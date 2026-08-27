@@ -86,6 +86,8 @@ class OzonTotalRevenueCalculationServiceImpl(
         var destroyFee = 0.0
         var compensationIncome = 0.0
         var courierReturnDelivery = 0.0
+        var insurance = 0.0
+
         for (transaction in transactions) {
             when (transaction.operationType) {
                 OperationType.OperationElectronicServicesPromotionInSearch -> promotionInSearch += transaction.income
@@ -98,6 +100,7 @@ class OzonTotalRevenueCalculationServiceImpl(
                 OperationType.OperationMarketplaceSendingPushNotifications -> pushNotifications += transaction.income
                 OperationType.MarketplaceMarketingActionCostOperation -> oldMarketing += transaction.income
                 OperationType.OperationMarketplacePremiumSubscribtion -> premiumSubscription += transaction.income
+                OperationType.OperationSubscriptionPremiumPlus -> premiumSubscription += transaction.income
                 OperationType.OperationSubscriptionPremium -> premiumSubscription += transaction.income
                 OperationType.MarketplaceSellerReexposureDeliveryReturnOperation -> deliveryToCustomer += transaction.income
                 OperationType.MarketplaceSaleReviewsOperation -> feedback += transaction.income
@@ -136,9 +139,11 @@ class OzonTotalRevenueCalculationServiceImpl(
                 OperationType.DisposalReasonDamagedPackaging -> destroyFee += transaction.income
                 OperationType.DisposalReasonDamagedReturn -> destroyFee += transaction.income
                 OperationType.DisposalReasonRezon -> destroyFee += transaction.income
+                OperationType.DisposalReasonAutomatic -> destroyFee += transaction.income
                 OperationType.OperationSellerReturnsCargoAssortmentInvalid -> destroyFee += transaction.income
                 OperationType.SellerReturnsDeliveryToPickupPoint -> destroyFee += transaction.income
                 OperationType.DisposalReasonScattered -> destroyFee += transaction.income
+                OperationType.DisposalOfGoods -> destroyFee += transaction.income
                 OperationType.OperationDefectiveWriteOff -> compensationIncome += transaction.income
                 OperationType.AccrualConsigDefectiveWriteOff -> compensationIncome += transaction.income
                 OperationType.AccrualInternalClaim -> compensationIncome += transaction.income
@@ -146,7 +151,7 @@ class OzonTotalRevenueCalculationServiceImpl(
                 OperationType.AccrualWithoutDocs -> compensationIncome += transaction.income
                 OperationType.MarketplaceSellerDecompensationItemByTypeDocOperation -> compensationIncome += transaction.income
                 OperationType.OperationMarketplaceSellerReturnsGeneral -> courierReturnDelivery += transaction.income
-
+                OperationType.InsuranceServiceSellerItem -> insurance += transaction.income
 
                 else -> {
                 }
@@ -175,7 +180,7 @@ class OzonTotalRevenueCalculationServiceImpl(
         var totalRevenue = revenueList.sumOf(RevenueResponse::totalRevenue)
         totalRevenue += feedback + pinFeedback + destroyFee + premiumSubscription + marketing + compensationIncome +
                 videoCover + correction + spoilageSurplus + courierReturnDelivery + storage +
-                starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee + sorting + bonuses + ozonPackaging
+                starMembership + installment + deliveryToCustomer + realFbsLateDeliveryFee + sorting + bonuses + ozonPackaging + insurance
         totalRevenue = BigDecimal(totalRevenue).setScale(2, RoundingMode.HALF_UP).toDouble()
 
         // Всего доставлено
@@ -234,6 +239,7 @@ class OzonTotalRevenueCalculationServiceImpl(
                 packaging = ozonPackaging
                 push = pushNotifications
                 it.externalPromotion = BigDecimal(externalPromotion).setScale(2, RoundingMode.HALF_UP).toDouble()
+                it.insurance = insurance
             }
         }
 

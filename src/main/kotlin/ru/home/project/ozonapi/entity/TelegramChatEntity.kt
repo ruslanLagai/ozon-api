@@ -7,11 +7,11 @@ import java.time.OffsetDateTime
  * @author rlagay
  */
 @Entity
-data class TelegramChatEntity(
+class TelegramChatEntity(
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = 1,
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) var id: Long? = null,
 
-    @Column(name = "chat_id", nullable = false) val chatId: Long,
+    @Column(name = "chat_id", nullable = false) var chatId: Long,
 
     @Column(name = "position_name", nullable = true, unique = false) var positionName: String,
 

@@ -16,7 +16,7 @@ import java.time.LocalDate
 )
 class ChinaOrderEntity(
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) var id: Long? = null,
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) var id: Long? = null,
 
     @Column(name = "supplier", nullable = false) var supplier: String,
 

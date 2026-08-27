@@ -36,6 +36,7 @@ fun produceOzonAllItemsMessage(result: List<RevenueResponse>): String {
                 " - Премиум                          $premium\n" +
                 " - Компенсация                  $compensation\n" +
                 " - Кросс-док                         $xDoc\n" +
+                " - Стрпхование                  $insurance\n" +
                 " - Сортировка по зонам    $sorting\n" +
                 " - Обработка брака            $spoilageCosts\n" +
                 " - Видеообложка                  $videoCoverCosts\n" +

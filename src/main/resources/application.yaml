@@ -1,11 +1,10 @@
 service:
   yandex:
-    token: y0__wgBEJWixkIYwd0TIIOcj_cRRtg5RLDfSo8StNCHghHU3jSZ6H8
+    token: ${YANDEX_TOKEN}
   ozon:
     api:
-      api-key: 7845fe09-9410-4c36-a0ba-c3e2e799a0d1
-#      61302c6d-3a69-4c02-8b7d-45897058537d
-      client-id: 1224331
+      api-key: ${OZON_API_KEY}
+      client-id: ${OZON_CLIENT_ID}
       url: https://api-seller.ozon.ru
     supply:
       cron: 0 0 * * * *
@@ -19,7 +18,7 @@ spring:
     type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
     url: jdbc:mysql://localhost:3307/ozon_name?allowPublicKeyRetrieval=true
     username: root
-    password: j&4$R>TqA2
+    password: ${MYSQL_PASSWORD}
   jpa:
     properties:
       hibernate:
@@ -57,8 +56,8 @@ spring:
 
 telegram:
   bot:
-    token: 6514473532:AAFM-Ve3G4bssuM90j47kdywFbE1Hnn0ZeE
-    username: HouseMouseBot
+    token: ${TELEGRAM_BOT_TOKEN}
+    username: ${TELEGRAM_BOT_USERNAME}
 
 logging:
   level:

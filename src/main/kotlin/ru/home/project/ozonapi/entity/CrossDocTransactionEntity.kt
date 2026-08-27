@@ -5,27 +5,22 @@ import org.hibernate.Hibernate.getClass
 import org.hibernate.annotations.DynamicInsert
 import org.hibernate.annotations.DynamicUpdate
 import org.hibernate.proxy.HibernateProxy
-import java.time.LocalDateTime
 
 /**
  * @author rlagay
  */
 @Entity
-@Table(name = "failed_cost_price_entity")
+@Table(name = "cross_doc_transaction_entity", indexes = [
+    Index(name = "cross_doc_transaction_id", columnList = "orderId")
+])
 @DynamicUpdate
 @DynamicInsert
-class FailedCostPriceTransactionEntity(
+class CrossDocTransactionEntity(
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     var id: Long? = null,
 
-    @Column(name = "operation_id", nullable = false, unique = true) var operationId: String,
-
-    @Column(name = "quantity", nullable = false) var quantity: Int,
-
-    @Column(name = "ozon_id", nullable = false) var ozonId: String,
-
-    @Column(name = "fifo_cost_price") var operationDate: LocalDateTime,
+    @Column(name = "order_id", nullable = false, unique = true) var orderId: String,
 
     @Version var version: Long? = null
 ) {
@@ -37,11 +32,10 @@ class FailedCostPriceTransactionEntity(
         val thisEffectiveClass = this.javaClass
         if (thisEffectiveClass != oEffectiveClass) return false
 
-        o as FailedCostPriceTransactionEntity
+        o as CrossDocTransactionEntity
 
         if (id != o.id) return false
-        if (operationId != o.operationId) return false
-        if (ozonId != o.ozonId) return false
+        if (orderId != o.orderId) return false
 
         return true
     }

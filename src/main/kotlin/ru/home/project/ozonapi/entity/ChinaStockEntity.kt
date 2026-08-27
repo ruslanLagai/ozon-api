@@ -9,23 +9,23 @@ import jakarta.persistence.*
 @Table(name = "china_stock_entity")
 class ChinaStockEntity(
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null,
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) var id: Long? = null,
 
-    @Column(name = "name", nullable = true, unique = false) val name: String,
+    @Column(name = "name", nullable = true, unique = false) var name: String,
 
-    @Column(name = "quantity", nullable = false) val quantity: Int,
+    @Column(name = "quantity", nullable = false) var quantity: Int,
 
-    @Column(name = "ozon_id") val ozonId: String = "",
+    @Column(name = "ozon_id") var ozonId: String = "",
 
-    @Column(name = "artikul") val artikul: String = "",
+    @Column(name = "artikul") var artikul: String = "",
 
-    @Column(name = "price_rub") val priceRub: Double = 0.0,
+    @Column(name = "price_rub") var priceRub: Double = 0.0,
 
-    @Column(name = "price") val price: Double = 0.0,
+    @Column(name = "price") var price: Double = 0.0,
 
-    @Column(name = "delivery_costs") val delivery: Double = 0.0,
+    @Column(name = "delivery_costs") var delivery: Double = 0.0,
 
-    @Column(name = "delivery_usd") val deliveryUsd: Double = 0.0
+    @Column(name = "delivery_usd") var deliveryUsd: Double = 0.0
 ) {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stock_entity_id", nullable = false)

@@ -18,7 +18,7 @@ COPY yandex-market yandex-market
 
 RUN --mount=type=cache,target=/root/.m2/ \
     --mount=type=cache,sharing=locked,target=/root/.gradle \
-    gradle --no-daemon -s -i bootJar
+    env -u JAVA_HOME gradle --no-daemon -s -i bootJar
 
 # ------------------------------------------------------------------------------
 # RUNTIME STAGE (deployment)

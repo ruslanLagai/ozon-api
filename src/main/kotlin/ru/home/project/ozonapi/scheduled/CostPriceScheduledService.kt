@@ -1,14 +1,18 @@
 package ru.home.project.ozonapi.scheduled
 
+import org.hibernate.StaleObjectStateException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.data.domain.Example
 import org.springframework.data.domain.Pageable
+import org.springframework.orm.ObjectOptimisticLockingFailureException
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import ru.home.project.ozonapi.dto.finance.response.OperationType
 import ru.home.project.ozonapi.dto.finance.response.Transaction
 import ru.home.project.ozonapi.entity.FailedCostPriceTransactionEntity
+import ru.home.project.ozonapi.repository.CrossDocTransactionEntityRepository
 import ru.home.project.ozonapi.repository.FailedCostPriceTransactionRepository
 import ru.home.project.ozonapi.repository.PositionRepository
 import ru.home.project.ozonapi.repository.TransactionRepository
@@ -34,7 +38,8 @@ class CostPriceScheduledService(
     val transactionsService: TransactionsService,
     val failedCostPriceTransactionRepository: FailedCostPriceTransactionRepository,
     val crossDocAdditionalService: AdditionalServicesForCostPriceService,
-    val transactionRepository: TransactionRepository
+    val transactionRepository: TransactionRepository,
+    val crossDocTransactionEntityRepository: CrossDocTransactionEntityRepository
 ) {
 
     private val deliveryOrRefundPredicate = Predicate<Transaction> {
@@ -44,6 +49,35 @@ class CostPriceScheduledService(
     private val log: Logger = LoggerFactory.getLogger(CostPriceScheduledService::class.java)
 
     private val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
+
+    /**
+     * Retries [block] when it fails with [ObjectOptimisticLockingFailureException], since
+     * CostPriceEntity rows may be concurrently updated (e.g. delivery and return processing
+     * for the same sku), causing @Version conflicts on commit of the REQUIRES_NEW transactions.
+     */
+    private fun <T> retryOnOptimisticLock(operationName: String, maxAttempts: Int = 3, block: () -> T): T {
+        var attempt = 1
+        while (true) {
+            try {
+                return block()
+            } catch (ex: ObjectOptimisticLockingFailureException) {
+                if (attempt >= maxAttempts) {
+                    log.error("$operationName failed after $attempt attempts due to optimistic locking conflict", ex)
+                    throw ex
+                }
+                log.warn("$operationName hit optimistic locking conflict on attempt $attempt, retrying", ex)
+                attempt++
+            } catch (ex: StaleObjectStateException) {
+                log.warn("$operationName failed due to stale object state exception, this may indicate a serious issue with concurrent updates", ex)
+                if (attempt >= maxAttempts) {
+                    log.error("$operationName failed after $attempt attempts due to optimistic locking conflict", ex)
+                    throw ex
+                }
+                log.warn("$operationName hit optimistic locking conflict on attempt $attempt, retrying", ex)
+                attempt++
+            }
+        }
+    }
 
     @Scheduled(cron = "\${service.ozon.transactions.cron}")
     @Transactional
@@ -78,8 +112,8 @@ class CostPriceScheduledService(
                     }
                 }
 
-                var existed = transactionRepository.getAllByOperationIdIn(delivered, Pageable.ofSize(50).withPage(1))
-                var pageNum = 2
+                var existed = transactionRepository.getAllByOperationIdIn(delivered, Pageable.ofSize(50).withPage(0))
+                var pageNum = 1
                 val toRemove = mutableSetOf<String>()
                 toRemove.addAll(existed.content.map { it.operationId })
                 while (existed.hasNext()) {
@@ -92,26 +126,36 @@ class CostPriceScheduledService(
 
                 log.info("Delivered: ${delivered.joinToString()}")
 
-                transactionCostPriceService.updateCostPrice(deliveredOperaions = delivered, sku = sku)
-                transactionCostPriceService.updateReturnedOperationCostPrice(returnedOperations = cancelled, sku = sku)
+                retryOnOptimisticLock("updateCostPrice for sku=$sku") {
+                    transactionCostPriceService.updateCostPrice(deliveredOperaions = delivered, sku = sku)
+                }
+                retryOnOptimisticLock("updateReturnedOperationCostPrice for sku=$sku") {
+                    transactionCostPriceService.updateReturnedOperationCostPrice(returnedOperations = cancelled, sku = sku)
+                }
             }
 
         ozonService.getTransaction(from, to, cacheKey)
             .filter { it.operationType == OperationType.OperationMarketplaceCrossDockServiceWriteOff
                     || it.operationType == OperationType.MarketplaceServiceItemCrossdocking
                     || it.operationType == OperationType.OperationMarketplaceSupplyAdditional
-                    || it.operationType == OperationType.OperationMarketplaceServiceProcessingNotIdentifiedSurplus }
+                    || it.operationType == OperationType.OperationMarketplaceServiceProcessingNotIdentifiedSurplus
+            }
+            .filter { crossDocTransactionEntityRepository.findByOrderId(it.posting.postingNumber).isEmpty }
             .forEach { transaction ->
-                crossDocAdditionalService.updateCostPrice(transaction.posting.postingNumber.toLong(), transaction.income)
+                retryOnOptimisticLock("update cross doc for ${transaction.posting.postingNumber}") {
+                    crossDocAdditionalService.updateCostPrice(transaction.posting.postingNumber.toLong(), transaction.income)
+                }
             }
 
-        transactionsService.runInTransaction {
-            incorrectItems.map {
-                it.items.map { item ->
-                    FailedCostPriceTransactionEntity(ozonId = item.sku, operationId = it.posting.postingNumber, quantity = 1, operationDate = it.operationDate)
-                }.toList()
+        retryOnOptimisticLock("updateCostPrice for failed transactions") {
+            transactionsService.runInTransaction {
+                incorrectItems.map {
+                    it.items.map { item ->
+                        FailedCostPriceTransactionEntity(ozonId = item.sku, operationId = it.posting.postingNumber, quantity = 1, operationDate = it.operationDate)
+                    }.toList()
+                }.forEach { failedCostPriceTransactionRepository.saveAll(it) }
             }
-            .forEach { failedCostPriceTransactionRepository.saveAll(it) }
         }
+
     }
 }

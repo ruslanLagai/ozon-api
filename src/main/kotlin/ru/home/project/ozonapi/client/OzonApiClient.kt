@@ -221,7 +221,7 @@ class OzonApiClient(
             .bodyToMono<TransactionsResp>()
             .cache(Duration.ofSeconds(5))
             .mapNotNull { resp -> resp.result.operations }
-            .retryWhen(Retry.fixedDelay(5, Duration.ofSeconds(2)))
+            .retryWhen(Retry.backoff(5, Duration.ofSeconds(2)))
             .block()
     }
 }

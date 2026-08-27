@@ -12,11 +12,14 @@ import ru.home.project.ozonapi.dto.supply.response.SupplyBundleItem
 import ru.home.project.ozonapi.entity.ChinaOrderEntity
 import ru.home.project.ozonapi.entity.ChinaStockEntity
 import ru.home.project.ozonapi.entity.CostPriceEntity
+import ru.home.project.ozonapi.entity.CrossDocTransactionEntity
 import ru.home.project.ozonapi.entity.OzonSupplyOrderIdEntity
 import ru.home.project.ozonapi.entity.PositionEntity
+import ru.home.project.ozonapi.repository.CrossDocTransactionEntityRepository
 import ru.home.project.ozonapi.repository.OzonSupplyOrderIdRepository
 import ru.home.project.ozonapi.service.OzonService
 import java.time.LocalDate
+import java.util.Optional
 import java.util.UUID
 
 @ExtendWith(MockitoExtension::class)
@@ -24,7 +27,8 @@ class CrossDocAdditionalServiceImplTest {
 
     private val ozonSupplyOrderIdRepository = mock<OzonSupplyOrderIdRepository>()
     private val ozonService = mock<OzonService>()
-    private val service = CrossDocAdditionalService(ozonSupplyOrderIdRepository, ozonService)
+    private val crossDocTransactionEntityRepository = mock<CrossDocTransactionEntityRepository>()
+    private val service = CrossDocAdditionalService(ozonSupplyOrderIdRepository, ozonService, crossDocTransactionEntityRepository)
 
     @Test
     fun `updates cross doc for every cost price entity`() {
@@ -59,6 +63,7 @@ class CrossDocAdditionalServiceImplTest {
                 OzonSupplyOrderIdEntity(orderId = 100L, chinaOrderEntity = order1, bundleId = "bundleId-1"),
                 OzonSupplyOrderIdEntity(orderId = 100L, chinaOrderEntity = order2, bundleId = "bundleId-2"))
         )
+        whenever(crossDocTransactionEntityRepository.findByOrderId("100")).thenReturn(Optional.empty())
 
         service.updateCostPrice(orderId = 100L, additionalServices = 10.0)
 
@@ -66,6 +71,11 @@ class CrossDocAdditionalServiceImplTest {
         assertEquals(listOf(2.67, 2.67), order2.costPriceEntities.map { it.crossDoc })
 
         verify(ozonSupplyOrderIdRepository).findByOrderId(100L)
+        verify(crossDocTransactionEntityRepository).save(
+            CrossDocTransactionEntity(
+                orderId = "100"
+            )
+        )
     }
 
     @Test

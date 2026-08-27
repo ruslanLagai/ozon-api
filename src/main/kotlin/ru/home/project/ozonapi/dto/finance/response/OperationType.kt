@@ -39,6 +39,7 @@ enum class OperationType(val description: String) {
     OperationMarketplaceServiceStockDisposal("Утилизация"),
     OperationMarketplaceServiceSupplyInboundCargoShortage("Услуга по бронированию места и персонала для поставки с неполным составом в составе ГМ"),
     OperationMarketplacePremiumSubscribtion("Premium-подписка"),
+    OperationSubscriptionPremiumPlus("Premium-plus-подписка"),
     MarketplaceSellerInstallmentOperation("Ozon Рассрочка"),
     MarketplaceServiceItemVideoCover("Генерация видеообложки"),
     MarketplaceSellerCorrectionOperation("Корректировки стоимости услуг"),
@@ -60,6 +61,7 @@ enum class OperationType(val description: String) {
     DisposalReasonDamagedReturn("Утилизация товара: Повреждённые, были у покупателя"),
     DefectRateShipmentDelayNonInt("Услуга за обработку операционных ошибок продавца: просроченная отгрузка"),
     DisposalReasonRezon("Утилизация товара: Прочее"),
+    DisposalReasonAutomatic("Утилизация товара: Автоутилизация со стока"),
     DefectRateDeliveryDelayNonInt("Просроченная доставка realFbs"),
     AccrualConsigWriteOff("Потеря по вине Ozon на складе"),
     MarketplaceSellerDecompensationItemByTypeDocOperation("Декомпенсации и возвращение товаров на сток"),
@@ -83,7 +85,9 @@ enum class OperationType(val description: String) {
     OperationMarketplaceExternalPromotion("Внешнее продвижение"),
     OperationMarketplaceAcceleratedProductReviews("Ускоренный сбор отзывов"),
     DisposalReasonScattered("Утилизация товара: Пролились/просыпались из-за упаковки"),
-    AccrualWithoutDocs("Начисление по спору")
+    DisposalOfGoods("Утилизация товара"),
+    AccrualWithoutDocs("Начисление по спору"),
+    InsuranceServiceSellerItem("Страхование товара от массовых повреждений")
 
 
 }
